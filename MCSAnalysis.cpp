@@ -662,7 +662,7 @@ std::vector<double> MCSAnalysis::CalculatePathLength(double pz){
       tan(_sys["thXUS"] * atan(1.)/45.0);
     USplane.dYdz = scifievent->scifitracks()[jUS]->scifitrackpoints()[kUS]->gradient().y() +
       tan(_sys["thYUS"] * atan(1.)/45.0);
-    USplane.pz   = pz; // scifievent->scifitracks()[jUS]->scifitrackpoints()[kUS]->mom().z();
+    USplane.pz   = scifievent->scifitracks()[jUS]->scifitrackpoints()[kUS]->mom().z();
     USplane.px   = scifievent->scifitracks()[jUS]->scifitrackpoints()[kUS]->mom().x() +
       tan(_sys["thXUS"] * atan(1.)/45.0) * USplane.pz;
     USplane.py   = scifievent->scifitracks()[jUS]->scifitrackpoints()[kUS]->mom().y() +
@@ -693,7 +693,7 @@ std::vector<double> MCSAnalysis::CalculatePathLength(double pz){
       tan(_sys["thXDS"] * atan(1.)/45.0);
     DSplane.dYdz = scifievent->scifitracks()[jDS]->scifitrackpoints()[kDS]->gradient().y() +
       tan(_sys["thYDS"] * atan(1.)/45.0);
-    DSplane.pz   = pz; // scifievent->scifitracks()[jDS]->scifitrackpoints()[kDS]->mom().z();
+    DSplane.pz   = scifievent->scifitracks()[jDS]->scifitrackpoints()[kDS]->mom().z();
     DSplane.px   = scifievent->scifitracks()[jDS]->scifitrackpoints()[kDS]->mom().x() +
       tan(_sys["thXDS"] * atan(1.)/45.0) * DSplane.pz;
     DSplane.py   = scifievent->scifitracks()[jDS]->scifitrackpoints()[kDS]->mom().y() +
