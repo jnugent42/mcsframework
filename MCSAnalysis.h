@@ -21,6 +21,7 @@
 #include "Fit/Fitter.h"
 #include "Math/Functor.h"
 #include "Math/RootFinder.h"
+#include "TLine.h"
 
 // Read directly from the MAUS data structure.
 #include "src/common_cpp/DataStructure/TOFEvent.hh"
@@ -84,8 +85,10 @@ class MCSAnalysis {
   void SetRadialLimit(double a){ meanp=a; }
   void SetGradientLimit(double a){ sigmap=a; }
   void SetModelFileName(std::string a){ modelfile=a; }
+  void SetModelFileName2(std::string a){ modelfile2=a; }
   void SetModelName1(std::string a) {modelname1=a; }
   void SetModelName2(std::string a) {modelname2=a; }
+  void SetModelName3(std::string a) {modelname3=a; }
   void SetParentGeometryFile(std::string a) {geometryfile=a; }
   void SetFFTBinLimit(int a) { binlimit=a; }
   void SetFileName(std::string a) {outfilename=a; }
@@ -104,8 +107,10 @@ class MCSAnalysis {
   int binlimit;
   
   std::string modelfile;
+  std::string modelfile2;
   std::string modelname1;
   std::string modelname2;
+  std::string modelname3;
   std::string geometryfile;
 
   double USrefplaneZ;
@@ -131,6 +136,16 @@ class MCSAnalysis {
   RooUnfoldResponse tresp_thetaScatt;
   RooUnfoldResponse tresp_theta2Scatt;
 
+  RooUnfoldResponse mresp_thetaX;
+  RooUnfoldResponse mresp_thetaY;
+  RooUnfoldResponse mresp_thetaScatt;
+  RooUnfoldResponse mresp_theta2Scatt;
+  
+  RooUnfoldResponse fresp_thetaX;
+  RooUnfoldResponse fresp_thetaY;
+  RooUnfoldResponse fresp_thetaScatt;
+  RooUnfoldResponse fresp_theta2Scatt;
+  
   int USabsPlaneI;
   int DSabsPlaneI;
 
@@ -162,6 +177,15 @@ class MCSAnalysis {
   TH1D* tof21_sel;
   TH1D* calc_mom;
   TH2D* t_cor;
+  TH2D* residual_plot;
+  TH2D* TOF01vsTOF12;
+  TH2D* TOF01forvsTOF01absfor;
+  TH2D* TOFcom;
+  TH2D* TOF01vsMCTruth;
+  TH2D* TOF12vsMCTruth;
+  TH2D* TOF01forupvsMCTruth;
+  TH2D* TOF01fordownvsMCTruth;
+  TH2D* TOF01forupvsTOF01fordown;
   TH1D* cor_mom;
   TH1D* mctof10;
   TH1D* mctof10_sel;
@@ -207,7 +231,9 @@ class MCSAnalysis {
   double MomentumFromTOF(bool isdata);
   double BetheBloch(double pz);
   double TimeofFlight();
+  double TimeofFlight12();
   std::vector<double> CalculatePathLength(double pz);
+  std::vector<double> rCalculatePathLength(double pz);
   double CorMomFromTOF(double pz);
   bool findVirtualPlanes();
   void FillMuScattResponse(bool event_ok, Vars& US, Vars& DS, Vars& USMC, Vars& DSMC);

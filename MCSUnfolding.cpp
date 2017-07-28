@@ -14,9 +14,11 @@ struct specvals {
   std::string dataname;
   std::string trainname;
   std::string modelname;
+  std::string modelname2;
   std::string geometryname;
   std::string model1;			       
   std::string model2;
+  std::string model3;
   std::map<std::string, double> sys;
   std::map<std::string, double> histlimits;
   double TOF_ll;
@@ -44,16 +46,18 @@ static void print_element_names(xmlNode * a_node, specvals& spec)
 	  spec.outfile = (char*)xmlGetProp(cur_node, nm);
 	} else if ( xmlStrEqual(xmlGetProp(cur_node, id), xmlCharStrdup("datafile")) ){
 	  spec.dataname = (char*)xmlGetProp(cur_node, nm);
-	} else if ( xmlStrEqual(xmlGetProp(cur_node, id), xmlCharStrdup("outfilename")) ){
-	  spec.outfilename = (char*)xmlGetProp(cur_node, nm);
 	} else if ( xmlStrEqual(xmlGetProp(cur_node, id), xmlCharStrdup("trainfile")) ){
 	  spec.trainname = (char*)xmlGetProp(cur_node, nm);
 	} else if ( xmlStrEqual(xmlGetProp(cur_node, id), xmlCharStrdup("modelfile")) ){
+	  spec.modelname = (char*)xmlGetProp(cur_node, nm);
+	} else if ( xmlStrEqual(xmlGetProp(cur_node, id), xmlCharStrdup("modelfile2")) ){
 	  spec.modelname = (char*)xmlGetProp(cur_node, nm);
 	} else if ( xmlStrEqual(xmlGetProp(cur_node, id), xmlCharStrdup("model1")) ) {
 	  spec.model1 = (char*)xmlGetProp(cur_node, nm);
 	} else if ( xmlStrEqual(xmlGetProp(cur_node, id), xmlCharStrdup("model2")) ) {
 	  spec.model2 = (char*)xmlGetProp(cur_node, nm);
+	} else if ( xmlStrEqual(xmlGetProp(cur_node, id), xmlCharStrdup("model3")) ) {
+	  spec.model3 = (char*)xmlGetProp(cur_node, nm);
 	} else if ( xmlStrEqual(xmlGetProp(cur_node, id), xmlCharStrdup("geofile")) ) {
 	  spec.geometryname = (char*)xmlGetProp(cur_node, nm);
 	}else {
@@ -112,10 +116,10 @@ int main(int argc, char* argv[]) {
   specvals spec;
 
   spec.outfile = "";
-  spec.outfilename = "";
   spec.dataname  = "";
   spec.trainname = "";
   spec.modelname = "";
+  spec.modelname2 = "";
   spec.geometryname = "";
   spec.TOF_ll = 27.0;
   spec.TOF_ul = 42.0;
@@ -149,14 +153,14 @@ int main(int argc, char* argv[]) {
     spec.TOF_ul    = std::atof(argv[5]);
     spec.fid_rad   = std::atof(argv[6]);
     spec.modelname = argv[7];
+    spec.modelname2 = argv[7];
     spec.mode      = std::atoi(argv[8]);
-    spec.outfilename = argv[9];
   }
     
   if (spec.mode > 0){
     mode_tree = "reduced_tree";
   } else {
-    mode_tree = "reduced_MCtree";
+    mode_tree = "reduced_tree";
   }
   
   std::cout<<"Writing outfile to "<<spec.outfile<<std::endl; 
@@ -164,6 +168,7 @@ int main(int argc, char* argv[]) {
   std::cout<<"Reading data from "<<spec.dataname<<std::endl; 
   std::cout<<"Reading reference data from "<<spec.trainname<<std::endl; 
   std::cout<<"Reading models from "<<spec.modelname<<std::endl; 
+  std::cout<<"Reading models from "<<spec.modelname2<<std::endl; 
   std::cout<<"Use "<<spec.geometryname<<" for propagation\n";
   std::cout<<"\n";
   std::cout<<"TOF selection between "
@@ -191,6 +196,7 @@ int main(int argc, char* argv[]) {
   anal.SetModelFileName(spec.modelname.c_str());
   anal.SetModelName1(spec.model1);
   anal.SetModelName2(spec.model2);
+  anal.SetModelName3(spec.model3);
   anal.SetParentGeometryFile(spec.geometryname.c_str());
   anal.SetFileName(spec.outfilename.c_str());
 

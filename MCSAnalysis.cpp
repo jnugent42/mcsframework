@@ -31,8 +31,9 @@ MCSAnalysis::MCSAnalysis(std::string tree, std::string mctree, std::string outna
   _sys["FracEvents"] = 1.;
 
 
-  modelname1 = "Cobb";
-  modelname2 = "GEANT";
+  modelname2 = "Cobb";
+  modelname1 = "GEANT";
+  modelname3 = "Moliere";
  
   _histlimits["NbinsXY"] = histlimits.count("NbinsXY") != 0 ? histlimits["NbinsXY"]: 200;
   _histlimits["minXY"] = histlimits.count("minXY") != 0 ? histlimits["minXY"]: -0.2;
@@ -54,6 +55,16 @@ MCSAnalysis::MCSAnalysis(std::string tree, std::string mctree, std::string outna
   tresp_thetaScatt.Setup(_histlimits["NbinsTh"], _histlimits["minTh"], _histlimits["maxTh"]);
   tresp_theta2Scatt.Setup(_histlimits["NbinsTh2"], _histlimits["minTh2"], _histlimits["maxTh2"]);
 
+  mresp_thetaX.Setup(_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+  mresp_thetaY.Setup(_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+  mresp_thetaScatt.Setup(_histlimits["NbinsTh"], _histlimits["minTh"], _histlimits["maxTh"]);
+  mresp_theta2Scatt.Setup(_histlimits["NbinsTh2"], _histlimits["minTh2"], _histlimits["maxTh2"]);
+  
+  fresp_thetaX.Setup(_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+  fresp_thetaY.Setup(_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+  fresp_thetaScatt.Setup(_histlimits["NbinsTh"], _histlimits["minTh"], _histlimits["maxTh"]);
+  fresp_theta2Scatt.Setup(_histlimits["NbinsTh2"], _histlimits["minTh2"], _histlimits["maxTh2"]);
+  
   const int NBINS = 19;
   const int NPBINS = 30;
   double scat_bin_array[NBINS+1] =
@@ -85,6 +96,12 @@ MCSAnalysis::MCSAnalysis(std::string tree, std::string mctree, std::string outna
   // histograms of selection variables
   
   t_cor = new TH2D("t_cor","t_cor", 1000, 0, 1000,100, 8.05, 9.15);
+  TOFcom = new TH2D("TOF01 vs TOF12","TOF01 vs TOF12", 20, 200, 280,20, 200, 280);
+  TOF01vsMCTruth = new TH2D("TOF01vsMCTruth","TOF01vsMCTruth", 20, 200, 280,20, 200, 280);
+  TOF12vsMCTruth = new TH2D("TOF12vsMCTruth","TOF12vsMCTruth", 37, 150, 300,37, 150, 300);
+  TOF01forupvsMCTruth = new TH2D("TOF01forupvsMCTruth","TOF01forupvsMCTruth", 750, -11500, -9500,25, 200, 300);
+  TOF01fordownvsMCTruth = new TH2D("TOF01fordownvsMCTruth","TOF01fordownvsMCTruth", 50, 200, 400,25, 200, 300);
+  TOF01forupvsTOF01fordown = new TH2D("TOF01forupvsTOF01fordown","TOF01forupvsTOF01fordown", 750, -11500, -9500,50, 200, 400);
   tof10 = new TH1D("tof10","TOF Between Stations 1 and 0; t_{TOF1} - t_{TOF0} (ns)", 150, 10, 40);
   tof10_sel = new TH1D("tof10_sel","TOF Selection Between Stations 1 and 0; t_{TOF1} - t_{TOF0} (ns)", 150, 10, 40);
   tof21 = new TH1D("tof21","TOF Between Stations 2 and 1; t_{TOF2} - t_{TOF1} (ns)", 150, 0, 50);
@@ -93,8 +110,8 @@ MCSAnalysis::MCSAnalysis(std::string tree, std::string mctree, std::string outna
   mctof10_sel = new TH1D("mctof10_sel","TOF Selection Between Stations 1 and 0; t_{TOF1} - t_{TOF0} (ns)", 150, 10, 40);
   mctof21 = new TH1D("mctof21","TOF Between Stations 2 and 1; t_{TOF2} - t_{TOF1} (ns)", 150, 0, 50);
   mctof21_sel = new TH1D("mctof21_sel","TOF Selection Between Stations 2 and 1; t_{TOF2} - t_{TOF1} (ns)", 150, 0, 50);
-  calc_mom = new TH1D("calc_mom","Momentum Calculated from TOF; Momentum (MeV/c)", 400, 0, 400);
-  cor_mom = new TH1D("cor_mom","Cor Momentum Calculated from TOF; Momentum (MeV/c)", 400, 0, 400);
+  calc_mom = new TH1D("calc_mom","Momentum Calculated from TOF; Momentum (MeV/c)", 100, 0, 400);
+  cor_mom = new TH1D("cor_mom","Cor Momentum Calculated from TOF; Momentum (MeV/c)", 100, 0, 400);
   mccalc_mom = new TH1D("mccalc_mom","Momentum Calculated from TOF; Momentum (MeV/c)", 400, 0, 400);
   mctrue_mom = new TH1D("mctrue_mom","Momentum from Virtual Planes; Momentum (MeV/c)", 400, 0, 400);
   cuts_accept   = new TH1D("cuts_accept", 
@@ -185,6 +202,54 @@ void MCSAnalysis::Write(){
   calc_mom->GetXaxis()->SetRangeUser(120,280);
   cor_mom->Draw();
   c1->SaveAs("cor_mom.pdf");
+  c1->Clear();
+  TOFcom->GetXaxis()->SetTitle("pz TOF01");
+  TOFcom->GetYaxis()->SetTitle("pz TOF12");
+  TOFcom->Draw("colz");
+  TLine *line2 = new TLine(200,200,280,280);
+  line2->SetLineColor(kRed);
+  line2->Draw();
+  c1->SaveAs("TOFcom.pdf");
+  c1->Clear();
+  TOF01vsMCTruth->GetXaxis()->SetTitle("pz TOF01");
+  TOF01vsMCTruth->GetYaxis()->SetTitle("MCTruth");
+  TOF01vsMCTruth->Draw("colz");
+  TLine *line3 = new TLine(200,200,280,280);
+  line3->SetLineColor(kRed);
+  line3->Draw();
+  c1->SaveAs("TOF01vsMCTruth.pdf");
+  c1->Clear();
+  TOF12vsMCTruth->GetXaxis()->SetTitle("pz TOF12");
+  TOF12vsMCTruth->GetYaxis()->SetTitle("MCTruth");
+  TOF12vsMCTruth->Draw("colz");
+  TLine *line4 = new TLine(150,150,300,300);
+  line4->SetLineColor(kRed);
+  line4->Draw();
+  c1->SaveAs("TOF12vsMCTruth.pdf");
+  c1->Clear();
+  TOF01forupvsMCTruth->GetXaxis()->SetTitle("pz forumla upstream TOF01");
+  TOF01forupvsMCTruth->GetYaxis()->SetTitle("pz MCTruth");
+  TOF01forupvsMCTruth->Draw("colz");
+  TLine *line5 = new TLine(200,200,300,300);
+  line5->SetLineColor(kRed);
+  line5->Draw();
+  c1->SaveAs("TOF01forupvsMCTruth.pdf");
+  c1->Clear();
+  TOF01fordownvsMCTruth->GetXaxis()->SetTitle("pz formula downstream TOF01");
+  TOF01fordownvsMCTruth->GetYaxis()->SetTitle("pz MCTruth");
+  TOF01fordownvsMCTruth->Draw("colz");
+  TLine *line6 = new TLine(200,200,300,300);
+  line6->SetLineColor(kRed);
+  line6->Draw();
+  c1->SaveAs("TOF01fordownvsMCTruth.pdf");
+  c1->Clear();
+  TOF01forupvsTOF01fordown->GetXaxis()->SetTitle("pz formula upstream TOF01");
+  TOF01forupvsTOF01fordown->GetYaxis()->SetTitle("pz formula downstream TOF01");
+  TOF01forupvsTOF01fordown->Draw("colz");
+  TLine *line7 = new TLine(200,200,300,300);
+  line7->SetLineColor(kRed);
+  line7->Draw();
+  c1->SaveAs("TOF01forupvsTOF01fordown.pdf");
   mctof10->Write();
   mctof21->Write();
   mctof10_sel->Write();
@@ -221,6 +286,20 @@ void MCSAnalysis::Execute(int mode=0){
     //CalculateChi2(outfilename.c_str(), modelname2.c_str());
     //Write();
   }
+  else if (mode == -1){
+    referenceSelection();
+    DoUnfolding();
+    DoFFTDeconvolution();
+    ConvolveWithInputDistribution(modelname1.c_str());
+    DoDeconvolution(modelname1.c_str(), 1);
+    ConvolveWithInputDistribution(modelname2.c_str());
+    DoDeconvolution(modelname2.c_str(), 1);
+    ConvolveWithInputDistribution(modelname3.c_str());
+    DoDeconvolution(modelname3.c_str(), 1);
+    //FitGaussian(outfilename.c_str());
+    //CalculateChi2(outfilename.c_str(), modelname2.c_str());
+    //Write();
+  }
   /* else if (mode > 1){
     referenceSelection();
     ConvolveWithInputDistribution(modelname1.c_str());
@@ -239,6 +318,7 @@ void MCSAnalysis::dataSelection(){
   chain->SetBranchAddress("CkovBranch", &ckovevent);
   chain->SetBranchAddress("KLBranch", &klevent);
   chain->SetBranchAddress("EMRBranch", &emrevent);
+  chain->SetBranchAddress("MCEvent", &mcevent);
 
   // Restrict the number of entries to less than or equal to the mcchain entries
   
@@ -351,7 +431,6 @@ void MCSAnalysis::referenceSelection(){
     
     FillCollectionSciFi(_USMCset, jUS, kUS, pz, 0);
     FillCollectionSciFi(_DSMCset, jDS, kDS, pz, 1);
-    
   }
   make_beam_histograms(USAllTOF, "Upstream, Data Reference", "dataUSref_alltof");
   make_beam_histograms(DSAllTOF, "Downstream, Data Reference", "dataDSref_alltof");
@@ -428,6 +507,7 @@ void MCSAnalysis::generateMCSResponse(){
     DSVPreRadSel.append_instance(DSAbsHit);
     if ( !RadialSelection(pz) ) event_ok=false;
     if (event_ok) mccuts_accept->Fill("Fiducial Selection",1);
+    if (event_ok) mctrue_mom->Fill(mcevent->GetVirtualHits()->at(USrefplaneI).GetMomentum().z());
     if (event_ok) mctrue_mom->Fill(mcevent->GetVirtualHits()->at(USrefplaneI).GetMomentum().z());
     Vars USSciFiRec, DSSciFiRec;
     if (event_ok){
@@ -709,20 +789,63 @@ std::vector<double> MCSAnalysis::CalculatePathLength(double pz){
 
 }
 
+std::vector<double> MCSAnalysis::rCalculatePathLength(double pz){
+        
+    std::vector<double> path_length;
+    std::vector<double> vpath_length;
+
+    // Path length for muon between TOF1 and absorber
+    Vars TOF0;
+    Vars TOF1;
+    /*
+    std::cout << "jUS " << jUS << std::endl;
+    std::cout << "kUS " << kUS << std::endl;
+    */    
+    if( int(tofevent->GetTOFEventSpacePoint().GetTOF0SpacePointArray().size()) > 0) {
+      TOF0.X = tofevent->GetTOFEventSpacePoint().GetTOF0SpacePointArray()[0].GetGlobalPosX();
+      TOF0.Y = tofevent->GetTOFEventSpacePoint().GetTOF0SpacePointArray()[0].GetGlobalPosY();
+      TOF0.Z = tofevent->GetTOFEventSpacePoint().GetTOF0SpacePointArray()[0].GetGlobalPosZ();
+    }
+    if( int(tofevent->GetTOFEventSpacePoint().GetTOF1SpacePointArray().size()) > 0) {
+      TOF1.X = tofevent->GetTOFEventSpacePoint().GetTOF1SpacePointArray()[0].GetGlobalPosX();
+      TOF1.Y = tofevent->GetTOFEventSpacePoint().GetTOF1SpacePointArray()[0].GetGlobalPosY();
+      TOF1.Z = tofevent->GetTOFEventSpacePoint().GetTOF1SpacePointArray()[0].GetGlobalPosZ();
+    }
+    /*
+    std::cout << USabsoproj.X << std::endl;
+    std::cout << USplane.X << std::endl;
+    std::cout << USTOF1proj.X << std::endl;
+    */
+    vpath_length.push_back(TOF1.X - TOF0.X);
+    vpath_length.push_back(TOF1.Y - TOF0.Y);
+    vpath_length.push_back(TOF1.Z - TOF0.Z);
+    path_length.push_back(sqrt(vpath_length[0]*vpath_length[0] + vpath_length[1]*vpath_length[1] + vpath_length[2]*vpath_length[2]));
+
+    //Path length for muon between absorber and TOF2
+    vpath_length.clear();
+
+    return path_length;
+
+}
+
 double MCSAnalysis::CorMomFromTOF(double pz){
 
    // Initialise and collect initial TOF and pz
    double t_path = 0;
+   double pz12 = 0;
    double p_corrected = 0;
    double t_initial = TimeofFlight();
+   std::cout << "t_initial " << t_initial << std::endl;
    if (t_initial != 100) {
    t_initial = t_initial*0.299792458;
    std::vector<double> path_length = CalculatePathLength(pz);
-   if (path_length.size() == 2) {
    double s1 = path_length.at(0)/1000;
+   if (path_length.size() == 2) {
    double s2 = path_length.at(1)/1000;
+   std::cout << "(s1+s2) " << (s1+s2) << std::endl;
+
    pz = 105.65*(s1+s2)/sqrt(pow(t_initial,2)-pow((s1+s2),2));
-  
+   pz12 = pz;
    // delta - from Bethe-Bloch (units are cm)
    double z = 3.25;
    double rho = 0.694;
@@ -782,6 +905,7 @@ double MCSAnalysis::CorMomFromTOF(double pz){
    //std::cout << "pz " << pz << std::endl;
    pz = p_corrected;
    t_path = t0+dtime;
+   //std::cout << "p_corrected " << p_corrected << std::endl;
    /*
    std::cout << "p_corrected " << p_corrected << std::endl;
    std::cout << "counter " << counter << std::endl;
@@ -791,6 +915,90 @@ double MCSAnalysis::CorMomFromTOF(double pz){
    
    }
 
+   std::vector<double> rpath_length = rCalculatePathLength(pz);
+   double deltas = rpath_length.at(0)/1000;
+   double c = 299792458;
+   //c = 1;
+   pz = 105.65*(deltas)/sqrt(pow(t_initial,2)-pow((deltas),2));
+   double pz01 = pz;
+
+   //deltas = rpath_length.at(0)/10;
+   //double dEdx = BetheBloch(pz);//*1225/10000;
+   double dEdx = 1.815;
+   t_initial = t_initial;
+   //dEdx = 0;
+   std::cout << "dEdx " << dEdx << std::endl;
+   std::cout << "t_initial " << t_initial << std::endl;
+   std::cout << "pz " << pz << std::endl;
+   std::cout << "deltas " << deltas << std::endl;
+   std::cout << "(pow(5.287,2)-pow(12.92,2)+(2*12.92*16.95)-(2*5.287*16.95)) " << (pow(5.287,2)-pow(12.92,2)+(2*12.92*16.95)-(2*5.287*16.95)) << std::endl;
+   
+   double tterm = (105.65*deltas)/sqrt(pow(t_initial,2)-pow(deltas,2));
+   t_initial = t_initial/0.299792458;
+   t_initial = t_initial/1000000000;
+   double fterm = sqrt(1+((pow(dEdx,2)*pow(deltas,2))/(4*pow(105.65,2)*pow(c,2)*(pow(c*(t_initial)/(deltas),2)-1))));
+   double sterm = (dEdx*c*t_initial)/(2*(pow(c*(t_initial)/(deltas),2)-1));
+   double p01absfor = tterm*(fterm-sterm);
+   
+   std::cout << "fterm " << fterm << std::endl;
+   std::cout << "sterm " << sterm << std::endl;
+   std::cout << "tterm " << tterm << std::endl;
+
+   double a = -1 + ((pow(c,2)*pow(t_initial,2))/pow(deltas,2));
+   double b = -(((t_initial)*dEdx*(pow(5.287,2)-pow(12.92,2)+(2*12.92*16.95)-(2*5.287*16.95)))/pow(deltas,2));
+   double cp = ((pow(pow(5.287,2)-pow(12.92,2)+(2*12.92*16.95)-(2*5.287*16.95),2)*pow(dEdx,2))/(4*pow(deltas,2)*pow(c,2)))-(pow(105.65,2)*pow(c,2));
+   //cp = 0;
+   
+   std::cout << "a " << a << std::endl;
+   std::cout << "b " << b << std::endl;
+   std::cout << "cp " << cp << std::endl;
+   
+   double holder = pow(b,2)-4*a*cp;
+   std::cout << "holder " << holder << std::endl;
+   double pcr = (-b+sqrt(pow(b,2)-(4*a*cp)))/(2*a);
+   std::cout << "pcr " << pcr << std::endl;
+   
+  /* 
+   std::vector<double> rpath_length = rCalculatePathLength(pz);
+   double deltas = rpath_length.at(0)/1000;
+   double c = 299792458;
+   c = 1;
+   pz = 105.65*(deltas)/sqrt(pow(t_initial,2)-pow((deltas),2));
+   //deltas = rpath_length.at(0)/10;
+   double dEdx = BetheBloch(pz);//*1225/10000;
+   //double dEdx = 79.5;
+   t_initial = t_initial;
+   //dEdx = 0;
+   std::cout << "dEdx " << dEdx << std::endl;
+   std::cout << "t_initial " << t_initial << std::endl;
+   std::cout << "pz " << pz << std::endl;
+   std::cout << "deltas " << deltas << std::endl;
+   std::cout << "(pow(5.287,2)-pow(12.92,2)+(2*12.92*16.95)-(2*5.287*16.95)) " << (pow(5.287,2)-pow(12.92,2)+(2*12.92*16.95)-(2*5.287*16.95)) << std::endl;
+   
+   double fterm = sqrt(1+pow(dEdx,2)*pow(deltas+s1,2)/(4*pow(105.65,2)*pow(c,2)*(pow(c*t_initial/(deltas+s1),2)-1)));
+   double sterm = dEdx*c*t_initial*(deltas+s1)/((deltas+s1)*2*(pow(c*t_initial/(deltas+s1),2)-1));
+   double tterm = (105.65*c)/sqrt(pow(c*t_initial/(deltas+s1),2)-1);
+   double pcr = fterm*tterm-sterm;
+   
+   sumn1 = [0.10,0.05,8e-5,3.71e-3,0.565,3.25e-2,6.8855];
+   sumn2 = [0.05,8e-5,3.71e-3,0.565,3.25e-2,3.3825]; 
+   std::vector<double> dEdx = [36.5e-6,];
+   fsumn1 =
+   for (int i=0; i<sumn1.size(); i++) {
+	   b1 = dEdx[i]*(-pow(sumn1[i],2)+(2*sumno[i]*16.95))
+   double a = -sumn1.size() + sumn2.size() + pow(c,2)*pow(t_initial,2)/pow(deltas,2);
+   double b = -t_initial*dEdx*(pow(52.87,2)-pow(129.2,2)+(2*129.2*169.5)-(2*52.87*169.5))/pow(deltas,2);
+   double cp = (pow(pow(52.87,2)-pow(129.2,2)+(2*129.2*169.5)-(2*52.87*169.5),2)*pow(dEdx,2)/(4*pow(deltas,2)*pow(c,2)))-pow(105.65,2)*pow(c,2);
+   
+   std::cout << "a " << a << std::endl;
+   std::cout << "b " << b << std::endl;
+   std::cout << "cp " << cp << std::endl;
+   
+   double holder = pow(b,2)-4*a*cp;
+   std::cout << "holder " << holder << std::endl;
+   double pcr = (-b+sqrt(pow(b,2)-4*a*cp))/2*a;
+   std::cout << "pcr " << pcr << std::endl;
+   */
    // Iteration
    /*
    counter += 1;
@@ -806,12 +1014,64 @@ double MCSAnalysis::CorMomFromTOF(double pz){
    c1->Clear();
    }
    */
-   
-   cor_mom->Fill(p_corrected);
+   cor_mom->Fill(pcr);
+   double MCTruth_pz_up = 0;
+   double MCTruth_pz_down = 0;
+   for ( size_t j=0; j < mcevent->GetVirtualHits()->size(); j++){
+	   if (mcevent->GetVirtualHits()->at(j).GetPosition().z()-16803.7<50 && mcevent->GetVirtualHits()->at(j).GetPosition().z()-16803.7>-50) {
+		   MCTruth_pz_up = mcevent->GetVirtualHits()->at(j).GetMomentum().z();
+	   }
+	   if (mcevent->GetVirtualHits()->at(j).GetPosition().z()-17101.3<50 && mcevent->GetVirtualHits()->at(j).GetPosition().z()-17101.3>-50) {
+		   MCTruth_pz_down = mcevent->GetVirtualHits()->at(j).GetMomentum().z();
+	   }
+
+	   }
+   //std::cout << "MCTruth_pz_up " << MCTruth_pz_up << std::endl;
+   //std::cout << "MCTruth_pz_down " << MCTruth_pz_down << std::endl;
+   if (MCTruth_pz_up != 0 && MCTruth_pz_down != 0){
+   double true_delta = MCTruth_pz_up - MCTruth_pz_down;	   
+   double MCTruth_pz = (MCTruth_pz_up+MCTruth_pz_down)/2;
+   double residual = p_corrected - MCTruth_pz;
+   //std::cout << "true_delta " << true_delta << std::endl;
+   std::cout << "MCTruth_pz " << (MCTruth_pz_up+MCTruth_pz_down)/2 << std::endl;
+   std::cout << "residual " << residual << std::endl;
+   //residual_plot->Fill(MCTruth_pz,pcr);
+   if (pz12 != 0 ){
+	   std::cout << "pz01 " << pz01 << std::endl;
+	   std::cout << "pz12 " << pz12 << std::endl;
+	   //TOF01vsTOF12->Fill(pz01,pz12);
    }
+	   std::cout << "p01absfor " << p01absfor << std::endl;
+	   std::cout << "pcr " << pcr << std::endl;
+   double t_12 = TimeofFlight12()*0.299792458;
+   double pz12 = 105.65*(8.21)/sqrt(pow(t_12,2)-pow((8.21),2));
+   TOFcom->Fill(pz,pz12);
+   TOF01vsMCTruth->Fill(pz,MCTruth_pz);
+   TOF12vsMCTruth->Fill(pz12,MCTruth_pz);
+   TOF01forupvsMCTruth->Fill(p01absfor,MCTruth_pz);
+   TOF01fordownvsMCTruth->Fill(pcr,MCTruth_pz);
+   TOF01forupvsTOF01fordown->Fill(p01absfor,pcr);
+   }
+   }
+
 }
 
 double MCSAnalysis::TimeofFlight(){
+  double rawTOF1HitTime = -1., rawTOF0HitTime = -1.;
+  if( int(tofevent->GetTOFEventSpacePoint().GetTOF1SpacePointArray().size()) > 0)
+    rawTOF1HitTime  = 
+      tofevent->GetTOFEventSpacePoint().GetTOF1SpacePointArray()[0].GetTime();
+  if( int(tofevent->GetTOFEventSpacePoint().GetTOF0SpacePointArray().size()) > 0)
+    rawTOF0HitTime = 
+      tofevent->GetTOFEventSpacePoint().GetTOF0SpacePointArray()[0].GetTime();
+  double dt  = 100.0; // something rediculously large as a default number
+  if ( rawTOF1HitTime != -1 && rawTOF0HitTime != -1 ){
+    dt  = rawTOF1HitTime - rawTOF0HitTime; 
+  }
+  return dt;
+}
+
+double MCSAnalysis::TimeofFlight12(){
   double rawTOF1HitTime = -1., rawTOF2HitTime = -1.;
   if( int(tofevent->GetTOFEventSpacePoint().GetTOF1SpacePointArray().size()) > 0)
     rawTOF1HitTime  = 
@@ -874,7 +1134,9 @@ double MCSAnalysis::MomentumFromTOF(bool isdata=true){
     // Better estimate of the longitudinal momentum
     dt0 = (_sys["TOF2_z"] - _sys["TOF1_z"]) / 0.299792458 / 1000.; // ns. 
     dt  = rawTOF2HitTime - rawTOF1HitTime; 
+    double pz1 = pz;
     pz  = 105.65 / sqrt(dt*dt/dt0/dt0 - 1.0);
+    //TOFcom->Fill(pz1,pz);
   }
   if(isdata)
     calc_mom->Fill(pz);
@@ -885,11 +1147,18 @@ double MCSAnalysis::MomentumFromTOF(bool isdata=true){
 
 void MCSAnalysis::ConvolveWithInputDistribution(std::string distname){
   int isfirst = 0;
+  bool isGEANT;
+  bool isCobb;
+  bool isMoliere;
   if (distname.find(modelname1.c_str()) != std::string::npos)
-    isfirst = 1;
+    isGEANT = true;
+  if (distname.find(modelname2.c_str()) != std::string::npos)
+    isCobb = true;
+  if (distname.find(modelname3.c_str()) != std::string::npos)
+    isMoliere = true;
 
   TFile* infile = new TFile(modelfile.c_str());
-  
+
   std::string tmpname = "thetaX_refconv_";
   tmpname += distname;
   TH1D* thetaX_refconv = 
@@ -936,7 +1205,7 @@ void MCSAnalysis::ConvolveWithInputDistribution(std::string distname){
   std::cout<<"Convolution with "<<tmpname<<" from "<<modelfile<<std::endl;
   TH1D* hx = (TH1D*)infile->Get(tmpname.c_str());
   TH1D* hy = (TH1D*)infile->Get(tmpname.c_str());
-  
+
   // Collection DSConvSet;
   // for (int l=0; l<10; l++){
   for (int i=0; i<_USMCset.N(); i++){
@@ -1005,15 +1274,36 @@ void MCSAnalysis::ConvolveWithInputDistribution(std::string distname){
       thetaScatt_refconv->Fill(thetaScatt);
       theta2Scatt_refconv->Fill(thetaScatt*thetaScatt);
       thetaScatt_refconv_vp->Fill(_USMCset.E(i).pz, thetaScatt);
-      
+     
+      if (isGEANT) {
+    	  resp_thetaX.Fill(thetaX, d_thetaX);
+    	  resp_thetaY.Fill(thetaY, d_thetaY);
+    	  resp_thetaScatt.Fill(thetaScatt, dthetaScatt);
+    	  resp_theta2Scatt.Fill(thetaScatt*thetaScatt, dthetaScatt*dthetaScatt);
+      }
+      if (isCobb) {
+    	  tresp_thetaX.Fill(thetaX, d_thetaX);
+    	  tresp_thetaY.Fill(thetaY, d_thetaY);
+    	  tresp_thetaScatt.Fill(thetaScatt, dthetaScatt);
+    	  tresp_theta2Scatt.Fill(thetaScatt*thetaScatt, dthetaScatt*dthetaScatt);
+      }
+      if (isMoliere) {
+    	  mresp_thetaX.Fill(thetaX, d_thetaX);
+    	  mresp_thetaY.Fill(thetaY, d_thetaY);
+    	  mresp_thetaScatt.Fill(thetaScatt, dthetaScatt);
+    	  mresp_theta2Scatt.Fill(thetaScatt*thetaScatt, dthetaScatt*dthetaScatt);
+      }
+      /*
       isfirst == 1 ? tresp_thetaX.Fill(thetaX, d_thetaX) : resp_thetaX.Fill(thetaX, d_thetaX);
+      std::cout << "thetaX " << thetaX << std::endl;
       isfirst == 1 ? tresp_thetaY.Fill(thetaY, d_thetaY) : resp_thetaY.Fill(thetaY, d_thetaY);
+      std::cout << "thetaY " << thetaY << std::endl;
       isfirst == 1 ? tresp_thetaScatt.Fill(thetaScatt, dthetaScatt) : resp_thetaScatt.Fill(thetaScatt, dthetaScatt); 
+      std::cout << "thetaScatt " << thetaScatt << std::endl;
       isfirst == 1 ? tresp_theta2Scatt.Fill(thetaScatt*thetaScatt, dthetaScatt*dthetaScatt) : resp_theta2Scatt.Fill(thetaScatt*thetaScatt, dthetaScatt*dthetaScatt); 
+      */
     }
   }
-
-  
 
   outfile->cd();
   thetaXUS_thetaXDS->Write();
@@ -1115,6 +1405,7 @@ void MCSAnalysis::DoUnfolding(){
     response_theta2Scatt[i] = theta2Scatt_response->GetBinContent(i+1);
   }
 
+  /*
   TSpectrum *sX = new TSpectrum();
   sX->Deconvolution(source_thetaX, response_thetaX, _histlimits["NbinsXY"], 20, 10, 0.0);
 
@@ -1162,7 +1453,7 @@ void MCSAnalysis::DoUnfolding(){
   delete thetaY_response;
   delete thetaScatt_response;
   delete theta2Scatt_response;
-
+  */
 }
 
 
@@ -1278,16 +1569,35 @@ void MCSAnalysis::DoDeconvolution(std::string model, int n_sel=1){
     
     delete thetaX_reco;
     }
-  */
-  RooUnfoldBayes unfold_thetaX(isfirst==1 ? &tresp_thetaX : &resp_thetaX, thetaX_measdata, int(_sys["niter"]));
+    */
+  if (model.find(modelname1.c_str()) != std::string::npos) {
+	  fresp_thetaX = resp_thetaX;
+	  fresp_thetaY = resp_thetaY;
+	  fresp_thetaScatt = resp_thetaScatt;
+	  fresp_theta2Scatt = resp_theta2Scatt;
+  }
+  if (model.find(modelname2.c_str()) != std::string::npos) {
+	  fresp_thetaX = tresp_thetaX;
+	  fresp_thetaY = tresp_thetaY;
+	  fresp_thetaScatt = tresp_thetaScatt;
+	  fresp_theta2Scatt = tresp_theta2Scatt;
+  }
+  if (model.find(modelname3.c_str()) != std::string::npos) {
+	  fresp_thetaX = mresp_thetaX;
+	  fresp_thetaY = mresp_thetaY;
+	  fresp_thetaScatt = mresp_thetaScatt;
+	  fresp_theta2Scatt = mresp_theta2Scatt;
+  }
+
+  RooUnfoldBayes unfold_thetaX(&fresp_thetaX, thetaX_measdata, int(_sys["niter"]));
   unfold_thetaX.Print();
-  RooUnfoldBayes unfold_thetaY(isfirst==1 ? &tresp_thetaY : &resp_thetaY, thetaY_measdata, int(_sys["niter"]));
+  RooUnfoldBayes unfold_thetaY(&fresp_thetaY, thetaY_measdata, int(_sys["niter"]));
   unfold_thetaY.Print();
   RooUnfoldBayes 
-    unfold_thetaScatt(isfirst==1 ? &tresp_thetaScatt : &resp_thetaScatt, thetaScatt_measdata, int(_sys["niter"]));
+    unfold_thetaScatt(&fresp_thetaScatt, thetaScatt_measdata, int(_sys["niter"]));
   unfold_thetaScatt.Print();
   RooUnfoldBayes 
-    unfold_theta2Scatt(isfirst==1 ? &tresp_theta2Scatt : &resp_theta2Scatt, theta2Scatt_measdata, int(_sys["niter"]));
+    unfold_theta2Scatt(&fresp_theta2Scatt, theta2Scatt_measdata, int(_sys["niter"]));
   unfold_theta2Scatt.Print();
   
   for (int i=1; i<=19; i++){
