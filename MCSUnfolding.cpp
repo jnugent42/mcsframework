@@ -19,6 +19,7 @@ struct specvals {
   std::string model1;			       
   std::string model2;
   std::string model3;
+  std::string trkreffiname;
   std::map<std::string, double> sys;
   std::map<std::string, double> histlimits;
   double TOF_ll;
@@ -60,6 +61,8 @@ static void print_element_names(xmlNode * a_node, specvals& spec)
 	  spec.model3 = (char*)xmlGetProp(cur_node, nm);
 	} else if ( xmlStrEqual(xmlGetProp(cur_node, id), xmlCharStrdup("geofile")) ) {
 	  spec.geometryname = (char*)xmlGetProp(cur_node, nm);
+	} else if ( xmlStrEqual(xmlGetProp(cur_node, id), xmlCharStrdup("trkreffiname")) ) {
+	  spec.trkreffiname = (char*)xmlGetProp(cur_node, nm);
 	}else {
 	  std::cout<<"File designation not recognized. Will ignore "
 		   << xmlGetProp(cur_node, id) 
@@ -121,6 +124,7 @@ int main(int argc, char* argv[]) {
   spec.modelname = "";
   spec.modelname2 = "";
   spec.geometryname = "";
+  spec.trkreffiname = "";
   spec.TOF_ll = 27.0;
   spec.TOF_ul = 42.0;
   spec.fid_grad = 0.01;
@@ -158,9 +162,9 @@ int main(int argc, char* argv[]) {
   }
     
   if (spec.mode > 0){
-    mode_tree = "reduced_tree";
+    mode_tree = "reduced_MCtree";
   } else {
-    mode_tree = "reduced_tree";
+    mode_tree = "reduced_MCtree";
   }
   
   std::cout<<"Writing outfile to "<<spec.outfile<<std::endl; 
@@ -177,7 +181,7 @@ int main(int argc, char* argv[]) {
 	   <<spec.fid_rad<<" with scattering "<<spec.fid_grad<<std::endl;
   std::cout<<"\n";
 
-  MCSAnalysis anal("reduced_tree", mode_tree, spec.outfile, spec.histlimits);
+  MCSAnalysis anal("reduced_MCtree", mode_tree, spec.outfile, spec.histlimits);
 
   TFile* data = new TFile(spec.dataname.c_str());
   if(data->IsZombie()){
@@ -197,6 +201,13 @@ int main(int argc, char* argv[]) {
   anal.SetModelName1(spec.model1);
   anal.SetModelName2(spec.model2);
   anal.SetModelName3(spec.model3);
+  std::ostringstream strs;
+  /*
+  strs << spec.TOF_ll;
+  std::string str = strs.str();
+  string TEN = spec.trkreffiname.c_str()+str+".root";
+  */
+  anal.SetTrkrEffiName(spec.trkreffiname.c_str());
   anal.SetParentGeometryFile(spec.geometryname.c_str());
   anal.SetFileName(spec.outfilename.c_str());
 

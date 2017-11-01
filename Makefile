@@ -10,13 +10,21 @@ IFLAGS=-I${MAUS_ROOT_DIR}/ \
 	 -I${MAUS_THIRD_PARTY}/third_party/install/include/libxml2 \
 	 -I${MAUS_THIRD_PARTY}/third_party/install/include/python2.7 \
 	 -I${ROOTSYS}/include \
-	 -I/data/neutrino02/rbayes/MICE/MCS_selection/Unfolding/RooUnfold-1.1.1/src
-LFLAGS=-L${MAUS_ROOT_DIR}/build/ \
-	 `root-config --ldflags` \
-	 `${ROOTSYS}/bin/root-config --glibs` -lMausCpp \
-	 -L${MAUS_ROOT_DIR}/third_party/lib -lxml2\
-	 -L/data/neutrino02/rbayes/MICE/MCS_selection/Unfolding/RooUnfold-1.1.1/ \
+	 -I/home/ppe/j/jnugent/workarea/Unfolding/RooUnfold-1.1.1/src
+LFLAGS=-L${MAUS_THIRD_PARTY}/third_party/build/root/lib -lPyROOT \
+         -ljson \
+         -L${MAUS_THIRD_PARTY}/third_party/build/root/lib -lSpectrum \
+         -L${MAUS_THIRD_PARTY}/third_party/build/gcc-4.9.3/obj/x86_64-unknown-linux-gnu/libstdc++-v3/src/.libs -lstdc++ \
+         -L${MAUS_THIRD_PARTY}/third_party/install/lib \
+         -L${MAUS_THIRD_PARTY}/build \
+         -L/home/ppe/j/jnugent/workarea/Unfolding/RooUnfold-1.1.1 \
 	 -lRooUnfold \
+	 `root-config --ldflags` \
+	 `${ROOTSYS}/bin/root-config --glibs` \
+	 -lMausCpp \
+	 -L${MAUS_ROOT_DIR}/third_party/lib -lxml2\
+         -L/usr/lib64 \
+         -L/usr/lib64/root \
 	 -Wl,--no-as-needed
 EXECUTABLE=MCSUnfolding reduce_tof2_trigger reduce_tof1_trigger mod_reduce_tof1_trigger
 

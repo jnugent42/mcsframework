@@ -232,7 +232,6 @@ int main(int argc, char* argv[]) {
       std::cout<<"Adding "<<argv[ifile]<<" to file list."<<std::endl;
       filelist.push_back(argv[ifile]);
     }
-	
     
     MAUS::Data *data = new MAUS::Data();
     double tof2pos = 20500;
@@ -263,8 +262,8 @@ int main(int argc, char* argv[]) {
 	    240,0.5,24.5,500,0,200);
     // Create a new file to store the output
     std::string fname = "reduced_tree_";
-    int found = type.find_last_of("/");
-    fname += type.substr(found-9,9);
+    //int found = type.find_last_of("/");
+    //fname += type.substr(found-9,9);
     fname += ".root";
     TFile* outfile = new TFile(fname.c_str(),"RECREATE");
     
@@ -370,9 +369,12 @@ int main(int argc, char* argv[]) {
 	      ckovevent  = (*spill->GetReconEvents())[ii]->GetCkovEvent();
 	      klevent    = (*spill->GetReconEvents())[ii]->GetKLEvent();
 	      emrevent   = (*spill->GetReconEvents())[ii]->GetEMREvent();
-	      
+	      //mcevent = (*spill->GetMCEvents())[ii];
+	      mctree->Fill();
+	     
+	      //tree->Fill();
 	      if(type1.find("data")!=std::string::npos) tree->Fill();
-	      if(type1.find("mc")!=std::string::npos) mctree->Fill();
+	      //if(type1.find("sim")!=std::string::npos) mctree->Fill();
 	    }
 
 	    plane0digit = false;
@@ -391,10 +393,10 @@ int main(int argc, char* argv[]) {
 	    if( plane0digit && plane1digit ) TOF2count++;
 	  }
 	  
-	  if(type.find("mc")!=std::string::npos){
+	  if(type.find("sim")!=std::string::npos){
 	    for (size_t ij=0; ij<spill->GetMCEvents()->size(); ij++){
-	     mcevent = (*spill->GetMCEvents())[ij];
-	     mctree->Fill();
+	     //mcevent = (*spill->GetMCEvents())[ij];
+	     //mctree->Fill();
 	      // find particles that pass through TOF2 regardless of PID
 	      int nverthits = (*spill->GetMCEvents())[ij]->GetVirtualHits()->size();
 	      bool tof2trigger=false;
@@ -470,7 +472,7 @@ int main(int argc, char* argv[]) {
       tree->Write();
       tree->Print();
     }
-    if(type.find("mc")!=std::string::npos){
+    if(type.find("sim")!=std::string::npos){
       hrate.Write();
       hr.Write();
       hp.Write();

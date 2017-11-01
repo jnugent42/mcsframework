@@ -1,0 +1,448 @@
+Algorithm to analyse reduced MAUS root
+trees for multiple scattering measurements
+and to unfold the distribution
+
+Received 2 arguements.
+node type: Element, name: spec, with prop id: (null), prop name: (null), prop value: (null)
+node type: Element, name: file, with prop id: outfile, prop name: TOFAllscan/LiHMu_3172_tof_lim30.7147513286_u30.9147513286.root, prop value: (null)
+node type: Element, name: file, with prop id: datafile, prop name: LiHMuon_AllData/reduced_tree_datat1.root, prop value: (null)
+node type: Element, name: file, with prop id: trainfile, prop name: ZeroMuon_AllData/reduced_tree_datat1.root, prop value: (null)
+node type: Element, name: file, with prop id: modelfile, prop name: TOFAllscan/LiHMu_3172_tof_lim30.7147513286_u30.9147513286_mod.root, prop value: (null)
+node type: Element, name: file, with prop id: model1, prop name: Cobb, prop value: (null)
+node type: Element, name: file, with prop id: model2, prop name: GEANT, prop value: (null)
+node type: Element, name: cuts, with prop id: (null), prop name: TOF_ll, prop value: 30.7147513286
+node type: Element, name: cuts, with prop id: (null), prop name: TOF_ul, prop value: 30.9147513286
+node type: Element, name: cuts, with prop id: (null), prop name: fid_rad, prop value: 140.0
+node type: Element, name: cuts, with prop id: (null), prop name: fid_grad, prop value: 0.012
+node type: Element, name: cuts, with prop id: (null), prop name: mode, prop value: 2
+node type: Element, name: sys, with prop id: (null), prop name: niter, prop value: 10
+Writing outfile to TOFAllscan/LiHMu_3172_tof_lim30.7147513286_u30.9147513286.root
+Reading data from LiHMuon_AllData/reduced_tree_datat1.root
+Reading reference data from ZeroMuon_AllData/reduced_tree_datat1.root
+Reading models from TOFAllscan/LiHMu_3172_tof_lim30.7147513286_u30.9147513286_mod.root
+Use  for propagation
+
+TOF selection between 30.7148 and 30.9148
+Fiducial selection contained by radius 140 with scattering 0.012
+
+Adding systematic effect niter with value 10
+Info in <TCanvas::Print>: pdf file dataUS_alltof_XY.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUS_alltof_XdXdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUS_alltof_XdYdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUS_alltof_YdXdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUS_alltof_YdYdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUS_alltof_dXdzdYdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUS_alltof_XTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUS_alltof_YTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUS_alltof_dXdzTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUS_alltof_dYdzTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDS_alltof_XY.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDS_alltof_XdXdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDS_alltof_XdYdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDS_alltof_YdXdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDS_alltof_YdYdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDS_alltof_dXdzdYdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDS_alltof_XTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDS_alltof_YTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDS_alltof_dXdzTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDS_alltof_dYdzTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUS_prerad_XY.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUS_prerad_XdXdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUS_prerad_XdYdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUS_prerad_YdXdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUS_prerad_YdYdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUS_prerad_dXdzdYdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUS_prerad_XTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUS_prerad_YTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUS_prerad_dXdzTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUS_prerad_dYdzTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDS_prerad_XY.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDS_prerad_XdXdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDS_prerad_XdYdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDS_prerad_YdXdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDS_prerad_YdYdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDS_prerad_dXdzdYdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDS_prerad_XTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDS_prerad_YTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDS_prerad_dXdzTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDS_prerad_dYdzTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUS_XY.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUS_XdXdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUS_XdYdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUS_YdXdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUS_YdYdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUS_dXdzdYdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUS_XTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUS_YTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUS_dXdzTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUS_dYdzTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDS_XY.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDS_XdXdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDS_XdYdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDS_YdXdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDS_YdYdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDS_dXdzdYdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDS_XTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDS_YTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDS_dXdzTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDS_dYdzTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUSref_alltof_XY.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUSref_alltof_XdXdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUSref_alltof_XdYdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUSref_alltof_YdXdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUSref_alltof_YdYdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUSref_alltof_dXdzdYdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUSref_alltof_XTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUSref_alltof_YTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUSref_alltof_dXdzTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUSref_alltof_dYdzTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDSref_alltof_XY.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDSref_alltof_XdXdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDSref_alltof_XdYdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDSref_alltof_YdXdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDSref_alltof_YdYdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDSref_alltof_dXdzdYdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDSref_alltof_XTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDSref_alltof_YTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDSref_alltof_dXdzTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDSref_alltof_dYdzTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUSref_prerad_XY.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUSref_prerad_XdXdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUSref_prerad_XdYdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUSref_prerad_YdXdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUSref_prerad_YdYdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUSref_prerad_dXdzdYdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUSref_prerad_XTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUSref_prerad_YTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUSref_prerad_dXdzTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUSref_prerad_dYdzTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDSref_prerad_XY.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDSref_prerad_XdXdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDSref_prerad_XdYdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDSref_prerad_YdXdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDSref_prerad_YdYdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDSref_prerad_dXdzdYdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDSref_prerad_XTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDSref_prerad_YTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDSref_prerad_dXdzTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDSref_prerad_dYdzTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUSref_XY.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUSref_XdXdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUSref_XdYdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUSref_YdXdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUSref_YdYdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUSref_dXdzdYdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUSref_XTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUSref_YTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUSref_dXdzTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataUSref_dYdzTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDSref_XY.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDSref_XdXdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDSref_XdYdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDSref_YdXdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDSref_YdYdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDSref_dXdzdYdz.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDSref_XTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDSref_YTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDSref_dXdzTOF12.pdf has been created
+Info in <TCanvas::Print>: pdf file dataDSref_dYdzTOF12.pdf has been created
+Warning in <TFile::Append>: Replacing existing TH1: theta2Scatt_recoGold (Potential memory leak).
+Event 0
+Event 100000
+Event 200000
+Event 300000
+Event 400000
+Event 500000
+Event 600000
+Event 700000
+Event 800000
+Event 900000
+Event 1000000
+Event 1100000
+Event 1200000
+Event 1300000
+Event 1400000
+Event 1500000
+Event 1600000
+Event 1700000
+Event 1800000
+Event 1900000
+Event 2000000
+Event 2100000
+Event 2200000
+Event 2300000
+Event 2400000
+Event 2500000
+Event 2600000
+Event 2700000
+Event 2800000
+Event 2900000
+Event 3000000
+Event 3100000
+Event 3200000
+Event 3300000
+Event 3400000
+Event 3500000
+Event 3600000
+Event 3700000
+Event 3800000
+Event 3900000
+Event 4000000
+Event 4100000
+Event 4200000
+Event 4300000
+Event 4400000
+Event 4500000
+Event 4600000
+Event 4700000
+Event 4800000
+Event 4900000
+Event 5000000
+Event 5100000
+Event 5200000
+Event 0
+Event 100000
+Event 200000
+Event 300000
+Event 400000
+Event 500000
+Event 600000
+Event 700000
+Event 800000
+Event 900000
+Event 1000000
+Event 1100000
+Event 1200000
+Event 1300000
+Convolution with thetaX_Cobb from TOFAllscan/LiHMu_3172_tof_lim30.7147513286_u30.9147513286_mod.root
+Warning in <TFile::Append>: Replacing existing TH1: scattering_proj_x_DC (Potential memory leak).
+Warning in <TFile::Append>: Replacing existing TH1: scattering_proj_y_DC (Potential memory leak).
+OBJ: RooUnfoldBayes	response	Unfold Response
+regularisation parameter = 10, ntoys = 50
+OBJ: RooUnfoldBayes	response	Unfold Response
+regularisation parameter = 10, ntoys = 50
+OBJ: RooUnfoldBayes	response	Unfold Response
+regularisation parameter = 10, ntoys = 50
+OBJ: RooUnfoldBayes	response	Unfold Response
+regularisation parameter = 10, ntoys = 50
+Now unfolding...
+Iteration : 0
+Chi^2 of change 28.7227
+Iteration : 1
+Chi^2 of change 3.14457
+Iteration : 2
+Chi^2 of change 1.73588
+Iteration : 3
+Chi^2 of change 1.08953
+Iteration : 4
+Chi^2 of change 0.661459
+Iteration : 5
+Chi^2 of change 0.433235
+Iteration : 6
+Chi^2 of change 0.295032
+Iteration : 7
+Chi^2 of change 0.202637
+Iteration : 8
+Chi^2 of change 0.145805
+Iteration : 9
+Chi^2 of change 0.105777
+Calculating covariances due to number of measured events
+Now unfolding...
+Iteration : 0
+Chi^2 of change 18.3348
+Iteration : 1
+Chi^2 of change 3.09235
+Iteration : 2
+Chi^2 of change 1.61326
+Iteration : 3
+Chi^2 of change 0.906434
+Iteration : 4
+Chi^2 of change 0.52032
+Iteration : 5
+Chi^2 of change 0.299611
+Iteration : 6
+Chi^2 of change 0.183597
+Iteration : 7
+Chi^2 of change 0.114353
+Iteration : 8
+Chi^2 of change 0.0746613
+Iteration : 9
+Chi^2 of change 0.0515019
+Calculating covariances due to number of measured events
+Now unfolding...
+Iteration : 0
+Chi^2 of change 20.5049
+Iteration : 1
+Chi^2 of change 5.24485
+Iteration : 2
+Chi^2 of change 2.01858
+Iteration : 3
+Chi^2 of change 1.26972
+Iteration : 4
+Chi^2 of change 0.829456
+Iteration : 5
+Chi^2 of change 0.530084
+Iteration : 6
+Chi^2 of change 0.35213
+Iteration : 7
+Chi^2 of change 0.254029
+Iteration : 8
+Chi^2 of change 0.192357
+Iteration : 9
+Chi^2 of change 0.151462
+Calculating covariances due to number of measured events
+Now unfolding...
+Iteration : 0
+Chi^2 of change 47.0817
+Iteration : 1
+Chi^2 of change 2.22696
+Iteration : 2
+Chi^2 of change 1.15378
+Iteration : 3
+Chi^2 of change 0.600496
+Iteration : 4
+Chi^2 of change 0.26904
+Iteration : 5
+Chi^2 of change 0.0992742
+Iteration : 6
+Chi^2 of change 0.0375021
+Iteration : 7
+Chi^2 of change 0.0163784
+Iteration : 8
+Chi^2 of change 0.00873989
+Iteration : 9
+Chi^2 of change 0.00562284
+Calculating covariances due to number of measured events
+Info in <TCanvas::Print>: pdf file thetaX_measdata.pdf has been created
+Info in <TCanvas::Print>: pdf file thetaY_measdata.pdf has been created
+Info in <TCanvas::Print>: pdf file thetaScatt_measdata.pdf has been created
+Info in <TCanvas::Print>: pdf file thetaScatt_measdata_vp.pdf has been created
+Info in <TCanvas::Print>: pdf file thetaX_reco.pdf has been created
+Info in <TCanvas::Print>: pdf file thetaY_reco.pdf has been created
+Info in <TCanvas::Print>: pdf file thetaScatt_reco.pdf has been created
+Info in <TCanvas::Print>: pdf file thetaX_response.pdf has been created
+Info in <TCanvas::Print>: pdf file thetaY_response.pdf has been created
+Info in <TCanvas::Print>: pdf file thetaScatt_response.pdf has been created
+Info in <TCanvas::Print>: pdf file thetaX_measured.pdf has been created
+Info in <TCanvas::Print>: pdf file thetaY_measured.pdf has been created
+Info in <TCanvas::Print>: pdf file thetaScatt_measured.pdf has been created
+Info in <TCanvas::Print>: pdf file thetaX_truth.pdf has been created
+Info in <TCanvas::Print>: pdf file thetaY_truth.pdf has been created
+Info in <TCanvas::Print>: pdf file thetaScatt_truth.pdf has been created
+Info in <TCanvas::Print>: pdf file scattering_proj_x.pdf has been created
+Info in <TCanvas::Print>: pdf file scattering_proj_y.pdf has been created
+Convolution with thetaX_GEANT from TOFAllscan/LiHMu_3172_tof_lim30.7147513286_u30.9147513286_mod.root
+OBJ: RooUnfoldBayes	response	Unfold Response
+regularisation parameter = 10, ntoys = 50
+OBJ: RooUnfoldBayes	response	Unfold Response
+regularisation parameter = 10, ntoys = 50
+OBJ: RooUnfoldBayes	response	Unfold Response
+regularisation parameter = 10, ntoys = 50
+OBJ: RooUnfoldBayes	response	Unfold Response
+regularisation parameter = 10, ntoys = 50
+Now unfolding...
+Iteration : 0
+Chi^2 of change 30.5626
+Iteration : 1
+Chi^2 of change 3.62944
+Iteration : 2
+Chi^2 of change 1.99067
+Iteration : 3
+Chi^2 of change 1.30255
+Iteration : 4
+Chi^2 of change 0.869435
+Iteration : 5
+Chi^2 of change 0.558699
+Iteration : 6
+Chi^2 of change 0.387937
+Iteration : 7
+Chi^2 of change 0.272474
+Iteration : 8
+Chi^2 of change 0.1899
+Iteration : 9
+Chi^2 of change 0.136264
+Calculating covariances due to number of measured events
+Now unfolding...
+Iteration : 0
+Chi^2 of change 25.4331
+Iteration : 1
+Chi^2 of change 4.52794
+Iteration : 2
+Chi^2 of change 2.3269
+Iteration : 3
+Chi^2 of change 1.27197
+Iteration : 4
+Chi^2 of change 0.740147
+Iteration : 5
+Chi^2 of change 0.456577
+Iteration : 6
+Chi^2 of change 0.281588
+Iteration : 7
+Chi^2 of change 0.179319
+Iteration : 8
+Chi^2 of change 0.125925
+Iteration : 9
+Chi^2 of change 0.0962603
+Calculating covariances due to number of measured events
+Now unfolding...
+Iteration : 0
+Chi^2 of change 30.4539
+Iteration : 1
+Chi^2 of change 5.26599
+Iteration : 2
+Chi^2 of change 3.39554
+Iteration : 3
+Chi^2 of change 2.42141
+Iteration : 4
+Chi^2 of change 1.62376
+Iteration : 5
+Chi^2 of change 1.05691
+Iteration : 6
+Chi^2 of change 0.64603
+Iteration : 7
+Chi^2 of change 0.417453
+Iteration : 8
+Chi^2 of change 0.277942
+Iteration : 9
+Chi^2 of change 0.194168
+Calculating covariances due to number of measured events
+Now unfolding...
+Iteration : 0
+Chi^2 of change 34.1794
+Iteration : 1
+Chi^2 of change 1.13386
+Iteration : 2
+Chi^2 of change 0.375757
+Iteration : 3
+Chi^2 of change 0.110747
+Iteration : 4
+Chi^2 of change 0.0353836
+Iteration : 5
+Chi^2 of change 0.0119503
+Iteration : 6
+Chi^2 of change 0.00437603
+Iteration : 7
+Chi^2 of change 0.00179654
+Iteration : 8
+Chi^2 of change 0.000824475
+Iteration : 9
+Chi^2 of change 0.000410847
+Calculating covariances due to number of measured events
+Info in <TCanvas::Print>: pdf file thetaX_measdata.pdf has been created
+Info in <TCanvas::Print>: pdf file thetaY_measdata.pdf has been created
+Info in <TCanvas::Print>: pdf file thetaScatt_measdata.pdf has been created
+Info in <TCanvas::Print>: pdf file thetaScatt_measdata_vp.pdf has been created
+Info in <TCanvas::Print>: pdf file thetaX_reco.pdf has been created
+Info in <TCanvas::Print>: pdf file thetaY_reco.pdf has been created
+Info in <TCanvas::Print>: pdf file thetaScatt_reco.pdf has been created
+Info in <TCanvas::Print>: pdf file thetaX_response.pdf has been created
+Info in <TCanvas::Print>: pdf file thetaY_response.pdf has been created
+Info in <TCanvas::Print>: pdf file thetaScatt_response.pdf has been created
+Info in <TCanvas::Print>: pdf file thetaX_measured.pdf has been created
+Info in <TCanvas::Print>: pdf file thetaY_measured.pdf has been created
+Info in <TCanvas::Print>: pdf file thetaScatt_measured.pdf has been created
+Info in <TCanvas::Print>: pdf file thetaX_truth.pdf has been created
+Info in <TCanvas::Print>: pdf file thetaY_truth.pdf has been created
+Info in <TCanvas::Print>: pdf file thetaScatt_truth.pdf has been created
+Info in <TCanvas::Print>: pdf file scattering_proj_x.pdf has been created
+Info in <TCanvas::Print>: pdf file scattering_proj_y.pdf has been created

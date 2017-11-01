@@ -1,6 +1,6 @@
 #include "MCSAnalysis.h"
 
-// #include "TVirtualFFT.h"
+#include "TVirtualFFT.h"
 
 MCSAnalysis::MCSAnalysis(std::string tree, std::string mctree, std::string outname, std::map<std::string, double> histlimits)
 //: p_vec(TVectorD(19)), res(TVectorD(30)), pStart_vec(TVectorD(19)),
@@ -34,7 +34,7 @@ MCSAnalysis::MCSAnalysis(std::string tree, std::string mctree, std::string outna
   modelname2 = "Cobb";
   modelname1 = "GEANT";
   modelname3 = "Moliere";
- 
+
   _histlimits["NbinsXY"] = histlimits.count("NbinsXY") != 0 ? histlimits["NbinsXY"]: 200;
   _histlimits["minXY"] = histlimits.count("minXY") != 0 ? histlimits["minXY"]: -0.2;
   _histlimits["maxXY"] = histlimits.count("maxXY") != 0 ? histlimits["maxXY"]:  0.2;
@@ -96,12 +96,34 @@ MCSAnalysis::MCSAnalysis(std::string tree, std::string mctree, std::string outna
   // histograms of selection variables
   
   t_cor = new TH2D("t_cor","t_cor", 1000, 0, 1000,100, 8.05, 9.15);
-  TOFcom = new TH2D("TOF01 vs TOF12","TOF01 vs TOF12", 20, 200, 280,20, 200, 280);
-  TOF01vsMCTruth = new TH2D("TOF01vsMCTruth","TOF01vsMCTruth", 20, 200, 280,20, 200, 280);
-  TOF12vsMCTruth = new TH2D("TOF12vsMCTruth","TOF12vsMCTruth", 37, 150, 300,37, 150, 300);
-  TOF01forupvsMCTruth = new TH2D("TOF01forupvsMCTruth","TOF01forupvsMCTruth", 750, -11500, -9500,25, 200, 300);
-  TOF01fordownvsMCTruth = new TH2D("TOF01fordownvsMCTruth","TOF01fordownvsMCTruth", 50, 200, 400,25, 200, 300);
-  TOF01forupvsTOF01fordown = new TH2D("TOF01forupvsTOF01fordown","TOF01forupvsTOF01fordown", 750, -11500, -9500,50, 200, 400);
+  TOF0Energy = new TH1D("TOF0Energy","TOF0Energy", 200, 150, 350);
+  TOF1Energy = new TH1D("TOF1Energy","TOF1Energy", 200, 150, 350);
+  TOF2Energy = new TH1D("TOF2Energy","TOF2Energy", 200, 150, 350);
+  difEloss = new TH1D("difEloss","difEloss", 10, 0, 10);
+  energylossproj = new TH1D("energylossproj","energylossproj", 40, 5000, 24000);
+  //energylosspro = new TH1D("energylosspro","energylosspro", 40, 5000, 24000);
+  residual01 = new TH1D("residual01","residual01", 36, -50, 100);
+  residual12 = new TH1D("residual12","residual12", 36, -50, 100);
+  residual12p6 = new TH1D("residual12","residual12", 36, -50, 100);
+  residual01j = new TH1D("residual12","residual01", 36, -50, 100);
+  residual12p2 = new TH1D("residual12","residual12", 36, -50, 100);
+  residual01p6 = new TH1D("residual12","residual12", 36, -50, 100);
+  residual01short = new TH1D("residual01short","residual01short", 36, -50, 100);
+  residualcobb = new TH1D("residualcobb","residualcobb", 36, -50, 100);
+  pzdEdx = new TH2D("pzdEdx","pzdEdz", 100, 1, 100,250, -500, 500);
+  TOFcom = new TH2D("TOF01 vs TOF12","TOF01 vs TOF12", 33, 100, 350,33, 100, 350);
+  energyloss = new TH2D("energyloss","energyloss", 40, 5000, 24000,350, 100, 450);
+  TOF01vsMCTruth = new TH2D("TOF01vsMCTruth","TOF01vsMCTruth", 33, 100, 350,33, 100, 350);
+  TOF12vsMCTruth = new TH2D("TOF12vsMCTruth","TOF12vsMCTruth", 33, 100, 350,33, 100, 350);
+  TOF12Paul6thforvsMCTruth = new TH2D("TOF12forupvsMCTruth","TOF12forupvsMCTruth", 33, 100, 350, 33, 100, 350);
+  TOF12longPaul6thforvsMCTruth = new TH2D("TOF12longforupvsMCTruth","TOF12longforupvsMCTruth", 33, 100, 350, 33, 100, 350);
+  TOF12Paul2ndforvsMCTruth = new TH2D("TOF01forupvsMCTruth","TOF01forupvsMCTruth", 33, 100, 350, 33, 100, 350);
+  TOF01Paul6thforvsMCTruth = new TH2D("TOF01forupvsMCTruth","TOF01forupvsMCTruth", 33, 100, 350, 33, 100, 350);
+  TOF01shortPaul6thforvsMCTruth = new TH2D("TOF01shortforupvsMCTruth","TOF01shortforupvsMCTruth", 33, 100, 350, 33, 100, 350);
+  TOF01fordownvsMCTruth = new TH2D("TOF01fordownvsMCTruth","TOF01fordownvsMCTruth", 33, 100, 350,33, 100, 350);
+  TOF12fordownvsMCTruth = new TH2D("TOF12fordownvsMCTruth","TOF12fordownvsMCTruth", 33, 100, 350,33, 100, 350);
+  TOF12cobbvsMCTruth = new TH2D("TOF12cobbvsMCTruth","TOF12cobbvsMCTruth", 33, 100, 350,33, 100, 350);
+  TOF01forupvsTOF01fordown = new TH2D("TOF01forupvsTOF01fordown","TOF01forupvsTOF01fordown", 33, 100, 350,33, 100, 350);
   tof10 = new TH1D("tof10","TOF Between Stations 1 and 0; t_{TOF1} - t_{TOF0} (ns)", 150, 10, 40);
   tof10_sel = new TH1D("tof10_sel","TOF Selection Between Stations 1 and 0; t_{TOF1} - t_{TOF0} (ns)", 150, 10, 40);
   tof21 = new TH1D("tof21","TOF Between Stations 2 and 1; t_{TOF2} - t_{TOF1} (ns)", 150, 0, 50);
@@ -184,7 +206,19 @@ MCSAnalysis::~MCSAnalysis(){
 }
 
 void MCSAnalysis::Write(){
-  
+
+  TText t1 = TText(0.12,0.785,"MICE Preliminary");
+  TText t3 = TText(0.12,0.75,"ISIS cycle 2015/04");
+  TText t2 = TText(0.12,0.715,"LiH, MAUS v2.9.1");
+  t1.SetNDC(1);
+  t1.SetTextSize(0.04);
+  t1.SetTextFont(42);
+  t2.SetNDC(1);
+  t2.SetTextSize(0.03);
+  t2.SetTextFont(42);
+  t3.SetNDC(1);
+  t3.SetTextSize(0.04);
+  t3.SetTextFont(42);
   outfile->cd();
   tof10->Write();
   tof21->Write();
@@ -206,7 +240,7 @@ void MCSAnalysis::Write(){
   TOFcom->GetXaxis()->SetTitle("pz TOF01");
   TOFcom->GetYaxis()->SetTitle("pz TOF12");
   TOFcom->Draw("colz");
-  TLine *line2 = new TLine(200,200,280,280);
+  TLine *line2 = new TLine(100,100,350,350);
   line2->SetLineColor(kRed);
   line2->Draw();
   c1->SaveAs("TOFcom.pdf");
@@ -214,7 +248,7 @@ void MCSAnalysis::Write(){
   TOF01vsMCTruth->GetXaxis()->SetTitle("pz TOF01");
   TOF01vsMCTruth->GetYaxis()->SetTitle("MCTruth");
   TOF01vsMCTruth->Draw("colz");
-  TLine *line3 = new TLine(200,200,280,280);
+  TLine *line3 = new TLine(100,100,350,350);
   line3->SetLineColor(kRed);
   line3->Draw();
   c1->SaveAs("TOF01vsMCTruth.pdf");
@@ -222,34 +256,206 @@ void MCSAnalysis::Write(){
   TOF12vsMCTruth->GetXaxis()->SetTitle("pz TOF12");
   TOF12vsMCTruth->GetYaxis()->SetTitle("MCTruth");
   TOF12vsMCTruth->Draw("colz");
-  TLine *line4 = new TLine(150,150,300,300);
+  TLine *line4 = new TLine(100,100,350,350);
   line4->SetLineColor(kRed);
   line4->Draw();
   c1->SaveAs("TOF12vsMCTruth.pdf");
   c1->Clear();
-  TOF01forupvsMCTruth->GetXaxis()->SetTitle("pz forumla upstream TOF01");
-  TOF01forupvsMCTruth->GetYaxis()->SetTitle("pz MCTruth");
-  TOF01forupvsMCTruth->Draw("colz");
-  TLine *line5 = new TLine(200,200,300,300);
+  energyloss->GetXaxis()->SetTitle("position (mm)");
+  energyloss->GetYaxis()->SetTitle("MCTruth energy (MeV)");
+  energyloss->Draw("colz");
+  c1->SaveAs("energyloss.pdf");
+  c1->Clear();
+  energylossproj=energyloss->ProjectionX();
+  energylossproj->SetTitle("position (mm)");
+  energylossproj->Draw();
+  c1->SaveAs("energylossproj.pdf");
+  c1->Clear();
+  energylosspro=energyloss->ProfileX();
+  //energylosspro->SetTitle("position (mm)");
+  energylosspro->Draw();
+  c1->SaveAs("energylosspro.pdf");
+  c1->Clear();
+  gStyle->SetOptStat(0);
+  TOF12Paul6thforvsMCTruth->SetTitle("Corrected P downstream vs MC Truth");
+  TOF12Paul6thforvsMCTruth->GetXaxis()->SetTitle("pz TOF12");
+  TOF12Paul6thforvsMCTruth->GetYaxis()->SetTitle("pz MCTruth");
+  TOF12Paul6thforvsMCTruth->Draw("colz");
+  t1.Draw();
+  t3.Draw();
+  t2.Draw();
+  TLine *line5 = new TLine(100,100,350,350);
   line5->SetLineColor(kRed);
   line5->Draw();
-  c1->SaveAs("TOF01forupvsMCTruth.pdf");
+  c1->SaveAs("TOF12Paul6thforvsMCTruth.pdf");
   c1->Clear();
-  TOF01fordownvsMCTruth->GetXaxis()->SetTitle("pz formula downstream TOF01");
+  TOF12longPaul6thforvsMCTruth->GetXaxis()->SetTitle("pz TOF12 long Paul 6th for");
+  TOF12longPaul6thforvsMCTruth->GetYaxis()->SetTitle("pz MCTruth");
+  TOF12longPaul6thforvsMCTruth->Draw("colz");
+  TLine *line25 = new TLine(100,100,350,350);
+  line25->SetLineColor(kRed);
+  line25->Draw();
+  c1->SaveAs("TOF12longPaul6thforvsMCTruth.pdf");
+  c1->Clear();
+  TOF12Paul2ndforvsMCTruth->GetXaxis()->SetTitle("pz TOF12 Paul 2nd for");
+  TOF12Paul2ndforvsMCTruth->GetYaxis()->SetTitle("pz MCTruth");
+  TOF12Paul2ndforvsMCTruth->Draw("colz");
+  TLine *line15 = new TLine(100,100,350,350);
+  line15->SetLineColor(kRed);
+  line15->Draw();
+  c1->SaveAs("TOF12Paul2ndforvsMCTruth.pdf");
+  c1->Clear();
+  TOF01Paul6thforvsMCTruth->GetXaxis()->SetTitle("pz TOF01 Paul 6th for");
+  TOF01Paul6thforvsMCTruth->GetYaxis()->SetTitle("pz MCTruth");
+  TOF01Paul6thforvsMCTruth->Draw("colz");
+  TLine *line16 = new TLine(100,100,350,350);
+  line16->SetLineColor(kRed);
+  line16->Draw();
+  c1->SaveAs("TOF01Paul6thforvsMCTruth.pdf");
+  c1->Clear();
+  gStyle->SetOptStat(0);
+  TOF01shortPaul6thforvsMCTruth->SetTitle("Corrected P upstream vs MC Truth");
+  TOF01shortPaul6thforvsMCTruth->GetXaxis()->SetTitle("pz TOF01");
+  TOF01shortPaul6thforvsMCTruth->GetYaxis()->SetTitle("pz MCTruth");
+  TOF01shortPaul6thforvsMCTruth->Draw("colz");
+  t1.Draw();
+  t3.Draw();
+  t2.Draw();
+  TLine *line46 = new TLine(100,100,350,350);
+  line46->SetLineColor(kRed);
+  line46->Draw();
+  c1->SaveAs("TOF01shortPaul6thforvsMCTruth.pdf");
+  c1->Clear();
+  TOF01fordownvsMCTruth->GetXaxis()->SetTitle("pz John's formula TOF01");
   TOF01fordownvsMCTruth->GetYaxis()->SetTitle("pz MCTruth");
   TOF01fordownvsMCTruth->Draw("colz");
-  TLine *line6 = new TLine(200,200,300,300);
+  TLine *line6 = new TLine(100,100,350,350);
   line6->SetLineColor(kRed);
   line6->Draw();
   c1->SaveAs("TOF01fordownvsMCTruth.pdf");
   c1->Clear();
-  TOF01forupvsTOF01fordown->GetXaxis()->SetTitle("pz formula upstream TOF01");
-  TOF01forupvsTOF01fordown->GetYaxis()->SetTitle("pz formula downstream TOF01");
+  TOF12fordownvsMCTruth->GetXaxis()->SetTitle("pz John's formula TOF12");
+  TOF12fordownvsMCTruth->GetYaxis()->SetTitle("pz MCTruth");
+  TOF12fordownvsMCTruth->Draw("colz");
+  TLine *line26 = new TLine(100,100,350,350);
+  line26->SetLineColor(kRed);
+  line26->Draw();
+  c1->SaveAs("TOF12fordownvsMCTruth.pdf");
+  c1->Clear();
+  TOF12cobbvsMCTruth->GetXaxis()->SetTitle("pz cobb's formula TOF12");
+  TOF12cobbvsMCTruth->GetYaxis()->SetTitle("pz MCTruth");
+  TOF12cobbvsMCTruth->Draw("colz");
+  TLine *line36 = new TLine(100,100,350,350);
+  line36->SetLineColor(kRed);
+  line36->Draw();
+  c1->SaveAs("TOF12cobbvsMCTruth.pdf");
+  c1->Clear();
+  TOF01forupvsTOF01fordown->GetXaxis()->SetTitle("pz Ryan's formula downstream TOF12");
+  TOF01forupvsTOF01fordown->GetYaxis()->SetTitle("pz John's formula TOF01");
   TOF01forupvsTOF01fordown->Draw("colz");
-  TLine *line7 = new TLine(200,200,300,300);
+  TLine *line7 = new TLine(100,100,350,350);
   line7->SetLineColor(kRed);
   line7->Draw();
   c1->SaveAs("TOF01forupvsTOF01fordown.pdf");
+  c1->Clear();
+  residual01p6->GetXaxis()->SetTitle("residual01p6");
+  residual01p6->GetYaxis()->SetTitle("No. of events");
+  residual01p6->Draw();
+  c1->SaveAs("residual01p6.pdf");
+  c1->Clear();
+  residual01j->GetXaxis()->SetTitle("residual01j");
+  residual01j->GetYaxis()->SetTitle("No. of events");
+  residual01j->Draw();
+  c1->SaveAs("residual01j.pdf");
+  TText t11 = TText(0.63,0.785,"MICE Preliminary");
+  TText t13 = TText(0.63,0.75,"ISIS cycle 2015/04");
+  TText t12 = TText(0.63,0.715,"LiH, MAUS v2.9.1");
+  t11.SetNDC(1);
+  t11.SetTextSize(0.04);
+  t11.SetTextFont(42);
+  t12.SetNDC(1);
+  t12.SetTextSize(0.03);
+  t12.SetTextFont(42);
+  t13.SetNDC(1);
+  t13.SetTextSize(0.04);
+  t13.SetTextFont(42);
+  c1->Clear();
+  residual12p2->GetXaxis()->SetTitle("residual12p2");
+  residual12p2->GetYaxis()->SetTitle("No. of events");
+  residual12p2->Draw();
+  c1->SaveAs("residual12p2.pdf");
+  c1->Clear();
+  //gStyle->SetOptStat(01);
+  residual12p6->SetTitle("");
+  residual12p6->GetXaxis()->SetTitle("Momentum residual downstream");
+  residual12p6->GetYaxis()->SetTitle("No. of events");
+  residual12p6->GetYaxis()->SetTitleOffset(1.5);
+  residual12p6->Draw();
+  residual12p6->GetYaxis()->SetRangeUser(0,50000);
+  t11.Draw();
+  t13.Draw();  
+  t12.Draw();
+  residual12->Draw("SAMES");
+  residual12->SetLineColor(kRed);
+  gPad->Update();
+  TLegend * legend2 = new TLegend(0.1,0.7,0.34,0.9);
+  legend2->AddEntry(residual12p6,"Corrected momentum","l");
+  legend2->AddEntry(residual12,"Naive momentum","l");
+  legend2->Draw();
+  /*
+  TPaveStats *st = (TPaveStats*)residual12->FindObject("stats");
+  st->SetY1NDC(0.4); 
+  st->SetY2NDC(0.6); 
+  */
+  c1->SaveAs("residual12p6.pdf");
+  c1->Clear();
+  residualcobb->GetXaxis()->SetTitle("residualcobb");
+  residualcobb->GetYaxis()->SetTitle("No. of events");
+  residualcobb->Draw();
+  c1->SaveAs("residualcobb.pdf");
+  c1->Clear();
+  residual01short->SetTitle("");
+  residual01short->GetXaxis()->SetTitle("Momentum residual upstream");
+  residual01short->GetYaxis()->SetTitle("No. of events");
+  residual01short->GetYaxis()->SetTitleOffset(1.5);
+  residual01short->Draw();
+  residual01short->GetYaxis()->SetRangeUser(0,35000);
+  t11.Draw();
+  t13.Draw();
+  t12.Draw();
+  residual01->Draw("SAMES");
+  residual01->SetLineColor(kRed);
+  TLegend * legend = new TLegend(0.1,0.7,0.34,0.9);
+  legend->AddEntry(residual01short,"Corrected momentum","l");
+  legend->AddEntry(residual01,"Naive Momentum","l");
+  legend->Draw();
+  gPad->Update();
+  /*
+  TPaveStats *st2 = (TPaveStats*)residual01->FindObject("stats");
+  st2->SetY1NDC(0.4); 
+  st2->SetY2NDC(0.6); 
+  */
+  c1->SaveAs("residual01short.pdf");
+  c1->Clear();
+  TOF0Energy->GetXaxis()->SetTitle("TOF0Energy");
+  TOF0Energy->GetYaxis()->SetTitle("No. of events");
+  TOF0Energy->Draw();
+  c1->SaveAs("TOF0Energy.pdf");
+  c1->Clear();
+  TOF1Energy->GetXaxis()->SetTitle("TOF1Energy");
+  TOF1Energy->GetYaxis()->SetTitle("No. of events");
+  TOF1Energy->Draw();
+  c1->SaveAs("TOF1Energy.pdf");
+  c1->Clear();
+  TOF2Energy->GetXaxis()->SetTitle("TOF2Energy");
+  TOF2Energy->GetYaxis()->SetTitle("No. of events");
+  TOF2Energy->Draw();
+  c1->SaveAs("TOF2Energy.pdf");
+  c1->Clear();
+  difEloss->GetXaxis()->SetTitle("difEloss");
+  difEloss->GetYaxis()->SetTitle("No. of events");
+  difEloss->Draw();
+  c1->SaveAs("difEloss.pdf");
   mctof10->Write();
   mctof21->Write();
   mctof10_sel->Write();
@@ -351,13 +557,14 @@ void MCSAnalysis::dataSelection(){
     FillCollectionSciFi(DSAllTOF, jDS, kDS, pz, 1);
     if ( !PIDSelection(true) ) continue;
     pz = MomentumFromTOF(true);
+
     cuts_accept->Fill("TOF Selection",1);
     FillCollectionSciFi(USPreRadSel, jUS, kUS, pz, 0);
     FillCollectionSciFi(DSPreRadSel, jDS, kDS, pz, 1);
     if ( !RadialSelection(pz) ) continue;
     cuts_accept->Fill("Fiducial Selection",1);
     if (jDS != -1 && kDS != -1) { 
-        double pz_cor = CorMomFromTOF(pz);
+        pz = CorMomFromTOF(pz);
     }
     if ( _sys["psel_lcut"] > 0 && _sys["psel_ucut"] > 0 ){
       if ( pz < _sys["psel_lcut"] || pz > _sys["psel_ucut"] ) 
@@ -831,229 +1038,156 @@ std::vector<double> MCSAnalysis::rCalculatePathLength(double pz){
 double MCSAnalysis::CorMomFromTOF(double pz){
 
    // Initialise and collect initial TOF and pz
-   double t_path = 0;
-   double pz12 = 0;
-   double p_corrected = 0;
    double t_initial = TimeofFlight();
-   std::cout << "t_initial " << t_initial << std::endl;
+   double pz_cor = 0;
+
    if (t_initial != 100) {
    t_initial = t_initial*0.299792458;
+   /*
    std::vector<double> path_length = CalculatePathLength(pz);
    double s1 = path_length.at(0)/1000;
    if (path_length.size() == 2) {
    double s2 = path_length.at(1)/1000;
-   std::cout << "(s1+s2) " << (s1+s2) << std::endl;
-
-   pz = 105.65*(s1+s2)/sqrt(pow(t_initial,2)-pow((s1+s2),2));
-   pz12 = pz;
-   // delta - from Bethe-Bloch (units are cm)
-   double z = 3.25;
-   double rho = 0.694;
-   double dEdx = BetheBloch(pz);
-   double Eloss = dEdx * z * rho;
-   double E = sqrt(pow(pz,2)+pow(105.65,2));
-   E -= Eloss;
-   double ploss = sqrt(pow(E,2) - pow(105.65,2));
-   E += Eloss;
-   double delta = pz - ploss;
-   /*
-   std::cout << "delta " << delta << std::endl;
-   std::cout << "E " << E << std::endl;
-   */
-
-   // time0
-   double t1 = s1*sqrt(pow(pz+delta,2)+pow(105.65,2))/(pz+delta);
-   double t2 = s2*sqrt(pow(pz-delta,2)+pow(105.65,2))/(pz-delta);
-   double t0 = t1 + t2;
-   /*
-   std::cout << "t2 " << t2 << std::endl;
-   std::cout << "t1 " << t1 << std::endl;
-   std::cout << "t0 " << t0 << std::endl;
-   */
-   
-   // Root finding
-   /*
-   MyFunction1D myf1;
-   myf1.E = E;
-   myf1.delta = delta;
-   myf1.s1 = s1;
-   myf1.s2 = s2;
-   std::cout << "myf1.operator()(pz) " << myf1.operator()(pz) << std::endl;
-   std::cout << "myf1.Derivative(pz) " << myf1.Derivative(pz) << std::endl;
-   ROOT::Math::GradFunctor1D  f1(myf1); 
-   ROOT::Math::RootFinder rfn(ROOT::Math::RootFinder::kGSL_STEFFENSON);
-   rfn.SetFunction(f1, pz);
-   rfn.Solve();
-   cout << rfn.Root() << endl;
-   */
-
-   // delta_t
-   double term3i = 0.5* (s1 + s2)*pow(105.65,2)*pow(delta,2)/(pow(pz,2)*pow(E,2));
-   double term3ii = pz/E + 2*E/pz;
-   double term2 = -(s1 - s2) * delta * pow(105.65,2)/ (pow(pz,2)*E);
-   double dtime = term2 + term3i*term3ii;
-   /*
-   std::cout << "term3i " << term3i << std::endl;
-   std::cout << "term3ii " << term3ii << std::endl;
-   std::cout << "term2 " << term2 << std::endl;
-   std::cout << "dtime " << dtime << std::endl;
-   */
-
-   // Corrected P
-   double time = t0 + dtime; 
-   p_corrected = pz - ((1/(s1-s2))*E*pow(pz,2)*dtime)/pow(105.65,2); 
-   //std::cout << "pz " << pz << std::endl;
-   pz = p_corrected;
-   t_path = t0+dtime;
-   //std::cout << "p_corrected " << p_corrected << std::endl;
-   /*
-   std::cout << "p_corrected " << p_corrected << std::endl;
-   std::cout << "counter " << counter << std::endl;
-   std::cout << "iteration " << i << std::endl;
-   std::cout << "t_path " << t_path << std::endl;
-   */
-   
    }
+   */
 
    std::vector<double> rpath_length = rCalculatePathLength(pz);
    double deltas = rpath_length.at(0)/1000;
+   double s_1 = 12.929-16.952;
+   double s_2 = 21.139-16.952;
    double c = 299792458;
-   //c = 1;
-   pz = 105.65*(deltas)/sqrt(pow(t_initial,2)-pow((deltas),2));
-   double pz01 = pz;
-
-   //deltas = rpath_length.at(0)/10;
-   //double dEdx = BetheBloch(pz);//*1225/10000;
-   double dEdx = 1.815;
-   t_initial = t_initial;
-   //dEdx = 0;
-   std::cout << "dEdx " << dEdx << std::endl;
-   std::cout << "t_initial " << t_initial << std::endl;
-   std::cout << "pz " << pz << std::endl;
-   std::cout << "deltas " << deltas << std::endl;
-   std::cout << "(pow(5.287,2)-pow(12.92,2)+(2*12.92*16.95)-(2*5.287*16.95)) " << (pow(5.287,2)-pow(12.92,2)+(2*12.92*16.95)-(2*5.287*16.95)) << std::endl;
-   
-   double tterm = (105.65*deltas)/sqrt(pow(t_initial,2)-pow(deltas,2));
+   double pz01 = 105.65*(7.64)/sqrt(pow(t_initial,2)-pow((7.64),2));
    t_initial = t_initial/0.299792458;
    t_initial = t_initial/1000000000;
-   double fterm = sqrt(1+((pow(dEdx,2)*pow(deltas,2))/(4*pow(105.65,2)*pow(c,2)*(pow(c*(t_initial)/(deltas),2)-1))));
-   double sterm = (dEdx*c*t_initial)/(2*(pow(c*(t_initial)/(deltas),2)-1));
-   double p01absfor = tterm*(fterm-sterm);
-   
-   std::cout << "fterm " << fterm << std::endl;
-   std::cout << "sterm " << sterm << std::endl;
-   std::cout << "tterm " << tterm << std::endl;
 
-   double a = -1 + ((pow(c,2)*pow(t_initial,2))/pow(deltas,2));
-   double b = -(((t_initial)*dEdx*(pow(5.287,2)-pow(12.92,2)+(2*12.92*16.95)-(2*5.287*16.95)))/pow(deltas,2));
-   double cp = ((pow(pow(5.287,2)-pow(12.92,2)+(2*12.92*16.95)-(2*5.287*16.95),2)*pow(dEdx,2))/(4*pow(deltas,2)*pow(c,2)))-(pow(105.65,2)*pow(c,2));
-   //cp = 0;
+   // Paul 6th short order TOF01 
    
-   std::cout << "a " << a << std::endl;
-   std::cout << "b " << b << std::endl;
-   std::cout << "cp " << cp << std::endl;
-   
-   double holder = pow(b,2)-4*a*cp;
-   std::cout << "holder " << holder << std::endl;
-   double pcr = (-b+sqrt(pow(b,2)-(4*a*cp)))/(2*a);
-   std::cout << "pcr " << pcr << std::endl;
-   
-  /* 
-   std::vector<double> rpath_length = rCalculatePathLength(pz);
-   double deltas = rpath_length.at(0)/1000;
-   double c = 299792458;
-   c = 1;
-   pz = 105.65*(deltas)/sqrt(pow(t_initial,2)-pow((deltas),2));
-   //deltas = rpath_length.at(0)/10;
-   double dEdx = BetheBloch(pz);//*1225/10000;
-   //double dEdx = 79.5;
-   t_initial = t_initial;
-   //dEdx = 0;
-   std::cout << "dEdx " << dEdx << std::endl;
-   std::cout << "t_initial " << t_initial << std::endl;
-   std::cout << "pz " << pz << std::endl;
-   std::cout << "deltas " << deltas << std::endl;
-   std::cout << "(pow(5.287,2)-pow(12.92,2)+(2*12.92*16.95)-(2*5.287*16.95)) " << (pow(5.287,2)-pow(12.92,2)+(2*12.92*16.95)-(2*5.287*16.95)) << std::endl;
-   
-   double fterm = sqrt(1+pow(dEdx,2)*pow(deltas+s1,2)/(4*pow(105.65,2)*pow(c,2)*(pow(c*t_initial/(deltas+s1),2)-1)));
-   double sterm = dEdx*c*t_initial*(deltas+s1)/((deltas+s1)*2*(pow(c*t_initial/(deltas+s1),2)-1));
-   double tterm = (105.65*c)/sqrt(pow(c*t_initial/(deltas+s1),2)-1);
-   double pcr = fterm*tterm-sterm;
-   
-   sumn1 = [0.10,0.05,8e-5,3.71e-3,0.565,3.25e-2,6.8855];
-   sumn2 = [0.05,8e-5,3.71e-3,0.565,3.25e-2,3.3825]; 
-   std::vector<double> dEdx = [36.5e-6,];
-   fsumn1 =
-   for (int i=0; i<sumn1.size(); i++) {
-	   b1 = dEdx[i]*(-pow(sumn1[i],2)+(2*sumno[i]*16.95))
-   double a = -sumn1.size() + sumn2.size() + pow(c,2)*pow(t_initial,2)/pow(deltas,2);
-   double b = -t_initial*dEdx*(pow(52.87,2)-pow(129.2,2)+(2*129.2*169.5)-(2*52.87*169.5))/pow(deltas,2);
-   double cp = (pow(pow(52.87,2)-pow(129.2,2)+(2*129.2*169.5)-(2*52.87*169.5),2)*pow(dEdx,2)/(4*pow(deltas,2)*pow(c,2)))-pow(105.65,2)*pow(c,2);
-   
-   std::cout << "a " << a << std::endl;
-   std::cout << "b " << b << std::endl;
-   std::cout << "cp " << cp << std::endl;
-   
-   double holder = pow(b,2)-4*a*cp;
-   std::cout << "holder " << holder << std::endl;
-   double pcr = (-b+sqrt(pow(b,2)-4*a*cp))/2*a;
-   std::cout << "pcr " << pcr << std::endl;
-   */
-   // Iteration
+   double dEdx = 2.5;
+   s_1 = 5.287-16.95;
+   s_2 = 12.929-16.95;
+   double term1 = pow(dEdx,2)*pow((s_1+s_2),2)/(4*pow(105.65,2));
+   double term2 = -(dEdx*c*t_initial*(s_1+s_2))/((12.929-5.287)*105);
+   double term3 = -1;
+   double term4 = pow(c*t_initial/(12.929-5.287),2)-1;
+
    /*
-   counter += 1;
-   int i = 0;
-   for (i;i<1000;i++) 
-   while (t0_first*1.1-t_path>0.1)
-   t_cor->Fill(i,t_path);
-   if (counter==3) { 
-	   std::cout << "doing graph" << std::endl;
-	   TCanvas *c1 = new TCanvas();
-   t_cor->Draw();
-   c1->SaveAs("t_cor.pdf");
-   c1->Clear();
-   }
+   std::cout << "term1 " << term1 << std::endl;
+   std::cout << "term2 " << term2 << std::endl;
+   std::cout << "term3 " << term3 << std::endl;
+   std::cout << "term4 " << term4 << std::endl;
    */
-   cor_mom->Fill(pcr);
+
+   double x = 105/pz01;
+   My2Function1D myf4;
+   myf4.a = term1;
+   myf4.b = term2;
+   myf4.cp = term3;
+   myf4.d = term4;
+   ROOT::Math::GradFunctor1D  f4(myf4); 
+   ROOT::Math::RootFinder rfn4(ROOT::Math::RootFinder::kGSL_NEWTON);
+   rfn4.SetFunction(f4, x);
+   if (isfinite(myf4.operator()(x)) && isfinite(myf4.Derivative(x))) {
+   rfn4.Solve();
+   }
+   double p01shortPaul6thfor = 105.5/rfn4.Root();
+   
+   pz_cor = p01shortPaul6thfor;
+
+   // Paul 6th order TOF12 
+  
+   double pz12 = 0;
+   double p12Paul6thfor = 0;
+   double t_ds =TimeofFlight12();
+   if (t_ds != 100) {
+   t_ds = t_ds*0.299792458;
+   pz12 = 105.65*(8.209)/sqrt(pow(t_ds,2)-pow((8.209),2));
+   double t_12 = TimeofFlight12()*0.299792458;
+   t_12 = t_12/0.299792458;
+   t_12 = t_12/1000000000;
+   dEdx = 0.5;
+   term1 = pow(dEdx,2)*pow((s_1+s_2),2)/(4*pow(105.65,2));
+   term2 = -(dEdx*c*t_12*(s_1+s_2))/(8.21*105);
+   term3 = -1;
+   term4 = pow(c*t_12/(8.21),2)-1;
+
+   /*
+   std::cout << "term1 " << term1 << std::endl;
+   std::cout << "term2 " << term2 << std::endl;
+   std::cout << "term3 " << term3 << std::endl;
+   std::cout << "term4 " << term4 << std::endl;
+   */
+
+   x = 105/pz12;
+   My2Function1D myf2;
+   myf2.a = term1;
+   myf2.b = term2;
+   myf2.cp = term3;
+   myf2.d = term4;
+   //std::cout << "myf2.operator()(pz) " << myf2.operator()(x) << std::endl;
+   //std::cout << "myf2.Derivative(pz) " << myf2.Derivative(x) << std::endl;
+   ROOT::Math::GradFunctor1D  f2(myf2); 
+   ROOT::Math::RootFinder rfn2(ROOT::Math::RootFinder::kGSL_NEWTON);
+   rfn2.SetFunction(f2, x);
+   if (isfinite(myf2.operator()(x)) && isfinite(myf2.Derivative(x))) {
+   rfn2.Solve();
+   }
+   p12Paul6thfor = 105.5/rfn2.Root();
+  
+   pz_cor = p12Paul6thfor;
+   }
+   
+   double MCTruth_pz_mid = 0;
    double MCTruth_pz_up = 0;
    double MCTruth_pz_down = 0;
+   double TOF0E;
+   double TOF1E;
+   double TOF2E;
    for ( size_t j=0; j < mcevent->GetVirtualHits()->size(); j++){
+	   energyloss->Fill(mcevent->GetVirtualHits()->at(j).GetPosition().z(),sqrt(pow(mcevent->GetVirtualHits()->at(j).GetMomentum().z(),2)+pow(105,2)));
+	   if (mcevent->GetVirtualHits()->at(j).GetPosition().z()-17000<50 && mcevent->GetVirtualHits()->at(j).GetPosition().z()-17000>-50) {
+		   MCTruth_pz_mid = mcevent->GetVirtualHits()->at(j).GetMomentum().z();
+	   }
 	   if (mcevent->GetVirtualHits()->at(j).GetPosition().z()-16803.7<50 && mcevent->GetVirtualHits()->at(j).GetPosition().z()-16803.7>-50) {
 		   MCTruth_pz_up = mcevent->GetVirtualHits()->at(j).GetMomentum().z();
 	   }
 	   if (mcevent->GetVirtualHits()->at(j).GetPosition().z()-17101.3<50 && mcevent->GetVirtualHits()->at(j).GetPosition().z()-17101.3>-50) {
 		   MCTruth_pz_down = mcevent->GetVirtualHits()->at(j).GetMomentum().z();
 	   }
-
+	   if (mcevent->GetVirtualHits()->at(j).GetPosition().z()-5000<50 && mcevent->GetVirtualHits()->at(j).GetPosition().z()-5000>-50) {
+		   TOF0E = sqrt(pow(mcevent->GetVirtualHits()->at(j).GetMomentum().z(),2)+pow(105,2));
 	   }
-   //std::cout << "MCTruth_pz_up " << MCTruth_pz_up << std::endl;
-   //std::cout << "MCTruth_pz_down " << MCTruth_pz_down << std::endl;
+	   if (mcevent->GetVirtualHits()->at(j).GetPosition().z()-12500<50 && mcevent->GetVirtualHits()->at(j).GetPosition().z()-12500>-50) {
+		   TOF1E = sqrt(pow(mcevent->GetVirtualHits()->at(j).GetMomentum().z(),2)+pow(105,2));
+	   }
+	   if (mcevent->GetVirtualHits()->at(j).GetPosition().z()-21039<50 && mcevent->GetVirtualHits()->at(j).GetPosition().z()-21039>-50) {
+		   TOF2E = sqrt(pow(mcevent->GetVirtualHits()->at(j).GetMomentum().z(),2)+pow(105,2));
+	   }
+
+   }
+   TOF0Energy->Fill(TOF0E);
+   TOF1Energy->Fill(TOF1E);
+   TOF2Energy->Fill(TOF2E);
    if (MCTruth_pz_up != 0 && MCTruth_pz_down != 0){
    double true_delta = MCTruth_pz_up - MCTruth_pz_down;	   
    double MCTruth_pz = (MCTruth_pz_up+MCTruth_pz_down)/2;
-   double residual = p_corrected - MCTruth_pz;
-   //std::cout << "true_delta " << true_delta << std::endl;
-   std::cout << "MCTruth_pz " << (MCTruth_pz_up+MCTruth_pz_down)/2 << std::endl;
-   std::cout << "residual " << residual << std::endl;
-   //residual_plot->Fill(MCTruth_pz,pcr);
-   if (pz12 != 0 ){
-	   std::cout << "pz01 " << pz01 << std::endl;
-	   std::cout << "pz12 " << pz12 << std::endl;
-	   //TOF01vsTOF12->Fill(pz01,pz12);
-   }
-	   std::cout << "p01absfor " << p01absfor << std::endl;
-	   std::cout << "pcr " << pcr << std::endl;
-   double t_12 = TimeofFlight12()*0.299792458;
-   double pz12 = 105.65*(8.21)/sqrt(pow(t_12,2)-pow((8.21),2));
-   TOFcom->Fill(pz,pz12);
-   TOF01vsMCTruth->Fill(pz,MCTruth_pz);
-   TOF12vsMCTruth->Fill(pz12,MCTruth_pz);
-   TOF01forupvsMCTruth->Fill(p01absfor,MCTruth_pz);
-   TOF01fordownvsMCTruth->Fill(pcr,MCTruth_pz);
-   TOF01forupvsTOF01fordown->Fill(p01absfor,pcr);
-   }
-   }
+   double res01 = pz01 - MCTruth_pz_mid;
+   double res12 = pz12 - MCTruth_pz_mid;
+   double res12p6 = p12Paul6thfor - MCTruth_pz_mid;
+   double res01short = p01shortPaul6thfor - MCTruth_pz_mid;
+   residual01->Fill(res01);
+   residual12->Fill(res12);
+   residual12p6->Fill(res12p6);
+   residual01short->Fill(res01short);
 
+   TOFcom->Fill(pz,pz12);
+   TOF01vsMCTruth->Fill(pz,MCTruth_pz_mid);
+   TOF12vsMCTruth->Fill(pz12,MCTruth_pz_mid);
+   TOF12Paul6thforvsMCTruth->Fill(p12Paul6thfor,MCTruth_pz_mid);
+   TOF01shortPaul6thforvsMCTruth->Fill(p01shortPaul6thfor,MCTruth_pz_mid);
+   	}
+   
+   }
+   return pz_cor;
 }
 
 double MCSAnalysis::TimeofFlight(){
@@ -1080,18 +1214,18 @@ double MCSAnalysis::TimeofFlight12(){
     rawTOF2HitTime = 
       tofevent->GetTOFEventSpacePoint().GetTOF2SpacePointArray()[0].GetTime();
   double dt  = 100.0; // something rediculously large as a default number
-  if ( rawTOF1HitTime != -1 && rawTOF2HitTime != -1 ){
+  if ( rawTOF1HitTime != -1. && rawTOF2HitTime != -1. ){
     dt  = rawTOF2HitTime - rawTOF1HitTime; 
   }
   return dt;
 }
 
-double MCSAnalysis::BetheBloch(double pz){
+double MCSAnalysis::BetheBloch(double pz, double Imat){
 
    double beta = pow(pz,2)/(pow(105.65,2)+pow(pz,2));
    double gamma = 1/sqrt(1-pow(beta,2));
    double W = 2*0.511*pow(beta,2)*pow(gamma,2)/(1+2*gamma*0.511/105.65+pow(0.511/105.65,2));
-   double I = 36.5e-6;
+   double I = Imat;
    double density = log(18.51e-6/I)+log(beta*gamma)-1/2;
    double dEdxpre = 0.307075*2/(pow(beta,2)*7.94894);   
    double dEdxterm1 = 0.5*log(2*0.511*pow(beta,2)*pow(gamma,2)*W/pow(I,2)) - pow(beta,2) - density;
@@ -1107,6 +1241,61 @@ double MCSAnalysis::BetheBloch(double pz){
 */
 
    return dEdx;
+}
+
+TH1D* MCSAnalysis::trkreffix(TH1D* h1){
+
+	TFile *f=new TFile(trkreffiname.c_str());
+	TGraphAsymmErrors* efficiency_scat_x = (TGraphAsymmErrors*)f->Get("Effx_graph");
+	double x;
+	double y;
+	TCanvas* c1 = new TCanvas();
+	for (int i=1; i<47; i++) {
+		efficiency_scat_x->GetPoint(i,x,y);
+		if  (y!=0){
+			h1->SetBinContent(i,h1->GetBinContent(i)/y);
+		}
+		else {
+			 h1->SetBinContent(i,h1->GetBinContent(i));
+		}
+	}
+	
+        return h1;
+}
+
+TH1D* MCSAnalysis::trkreffiy(TH1D* h1){
+
+	TFile *f=new TFile(trkreffiname.c_str());
+	TGraphAsymmErrors* efficiency_scat_y = (TGraphAsymmErrors*)f->Get("Effy_graph");
+	double x;
+	double y;
+	TCanvas* c1 = new TCanvas();
+	for (int i=1; i<47; i++) {
+		efficiency_scat_y->GetPoint(i,x,y);
+		if  (y!=0){
+			h1->SetBinContent(i,h1->GetBinContent(i)/y);
+		}
+		else {
+			h1->SetBinContent(i,h1->GetBinContent(i));
+		}
+	}
+	
+        return h1;
+}
+
+TH1D* MCSAnalysis::trkreffiscatt(TH1D* h1){
+
+	TFile *f=new TFile(trkreffiname.c_str());
+	TGraphAsymmErrors* efficiency_scat_scatt = (TGraphAsymmErrors*)f->Get("Effscatt_graph");
+	double x;
+	double y;
+	TCanvas* c1 = new TCanvas();
+	for (int i=1; i<47; i++) {
+		efficiency_scat_scatt->GetPoint(i,x,y);
+		h1->SetBinContent(i,h1->GetBinContent(i)/y);
+	}
+	
+        return h1;
 }
 
 double MCSAnalysis::MomentumFromTOF(bool isdata=true){
@@ -1467,7 +1656,7 @@ void MCSAnalysis::DoDeconvolution(std::string model, int n_sel=1){
 
   // int n_base = int(2 * _DSset.N() / (n_sel * (n_sel + 1)));
   // int k=0;
-  // for (int j=0; j<n_sel; j++){
+  // for (int j=0; j<n_sel; j++)
   // define the number of events under the current selection
   int curr_sel = int(_DSset.N());  // n_base * j;
   int curr_k = 0;
@@ -1613,12 +1802,22 @@ void MCSAnalysis::DoDeconvolution(std::string model, int n_sel=1){
   // if(j>0) tmpname += j;
   thetaX_reco->SetName(tmpname.c_str());
   thetaX_reco->SetTitle(";#Delta #theta_{X}");
+  //thetaX_reco = trkreffix(thetaX_reco);
+  TH1D* thetaX_reco_noeffi = (TH1D*)unfold_thetaX.Hreco();
+  tmpname = "thetaX_reco_noeffi";
+  tmpname += model;
+  thetaX_reco_noeffi->SetName(tmpname.c_str());
   TH1D* thetaY_reco = (TH1D*)unfold_thetaY.Hreco();
   tmpname = "thetaY_reco";
   tmpname += model;
   // if(j>0) tmpname += j;
   thetaY_reco->SetName(tmpname.c_str());
   thetaY_reco->SetTitle(";#Delta #theta_{Y}");
+  tmpname = "thetaY_reco_noeffi";
+  TH1D* thetaY_reco_noeffi = (TH1D*)unfold_thetaY.Hreco();
+  tmpname += model;
+  thetaY_reco_noeffi->SetName(tmpname.c_str());
+  //thetaY_reco = trkreffiy(thetaY_reco);
   TH1D* thetaScatt_reco = (TH1D*)unfold_thetaScatt.Hreco();
   tmpname = "thetaScatt_reco";
   tmpname += model;
@@ -1717,6 +1916,8 @@ void MCSAnalysis::DoDeconvolution(std::string model, int n_sel=1){
   thetaScatt_measdata_vp->Write();
   thetaX_reco->Write();
   thetaY_reco->Write();
+  thetaX_reco_noeffi->Write();
+  thetaY_reco_noeffi->Write();
   thetaScatt_reco->Write();
   theta2Scatt_reco->Write();
   thetaX_response->Write();
@@ -1753,6 +1954,12 @@ void MCSAnalysis::DoDeconvolution(std::string model, int n_sel=1){
   c1->Clear();
   thetaY_reco->Draw();
   c1->Print("thetaY_reco.pdf");
+  c1->Clear();
+  thetaX_reco_noeffi->Draw();
+  c1->Print("thetaX_reco_noeffi.pdf");
+  c1->Clear();
+  thetaY_reco_noeffi->Draw();
+  c1->Print("thetaY_reco_noeffi.pdf");
   c1->Clear();
   thetaScatt_reco->Draw();
   c1->Print("thetaScatt_reco.pdf");
@@ -1799,6 +2006,8 @@ void MCSAnalysis::DoDeconvolution(std::string model, int n_sel=1){
   delete thetaScatt_measdata_vp;
   delete thetaX_reco;
   delete thetaY_reco;
+  //delete thetaX_reco_noeffi;
+  //delete thetaY_reco_noeffi;
   delete thetaScatt_reco;
   delete thetaX_response;
   delete thetaY_response;

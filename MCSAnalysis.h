@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string>
 #include <vector>
+#include <typeinfo>
 
 // This is what we are here for
 #include "RooUnfold.h"
@@ -22,6 +23,11 @@
 #include "Math/Functor.h"
 #include "Math/RootFinder.h"
 #include "TLine.h"
+#include "TPaveStats.h"
+#include "TLegend.h"
+#include "TProfile.h"
+#include "TGraphAsymmErrors.h"
+#include "TStyle.h"
 
 // Read directly from the MAUS data structure.
 #include "src/common_cpp/DataStructure/TOFEvent.hh"
@@ -72,6 +78,9 @@ class MCSAnalysis {
   void PlotRunInfo();
   void FitGaussian(std::string outfilename);
   void CalculateChi2(std::string outfilename, std::string distname);
+  TH1D* trkreffix(TH1D* h1);
+  TH1D* trkreffiy(TH1D* h1);
+  TH1D* trkreffiscatt(TH1D* h1);
   double myfunc(double pz, double s1, double s2, double E, double delta);
   double myfunc_deriv(double pz, double s1, double s2, double E, double delta);
   double myfunc1(double x);
@@ -89,6 +98,7 @@ class MCSAnalysis {
   void SetModelName1(std::string a) {modelname1=a; }
   void SetModelName2(std::string a) {modelname2=a; }
   void SetModelName3(std::string a) {modelname3=a; }
+  void SetTrkrEffiName(std::string a) {trkreffiname=a; }
   void SetParentGeometryFile(std::string a) {geometryfile=a; }
   void SetFFTBinLimit(int a) { binlimit=a; }
   void SetFileName(std::string a) {outfilename=a; }
@@ -111,6 +121,7 @@ class MCSAnalysis {
   std::string modelname1;
   std::string modelname2;
   std::string modelname3;
+  std::string trkreffiname;
   std::string geometryfile;
 
   double USrefplaneZ;
@@ -177,14 +188,36 @@ class MCSAnalysis {
   TH1D* tof21_sel;
   TH1D* calc_mom;
   TH2D* t_cor;
+  TH1D* residual01;
+  TH1D* residual12;
+  TH1D* residual12p6;
+  TH1D* residual01j;
+  TH1D* residual01short;
+  TH1D* residual12p2;
+  TH1D* residual01p6;
+  TH1D* residualcobb;
+  TH1D* TOF0Energy;
+  TH1D* difEloss;
+  TH2D* energyloss;
+  TH1D* energylossproj;
+  TProfile* energylosspro;
+  TH1D* TOF1Energy;
+  TH1D* TOF2Energy;
+  TH2D* pzdEdx;
   TH2D* residual_plot;
   TH2D* TOF01vsTOF12;
   TH2D* TOF01forvsTOF01absfor;
   TH2D* TOFcom;
   TH2D* TOF01vsMCTruth;
   TH2D* TOF12vsMCTruth;
-  TH2D* TOF01forupvsMCTruth;
+  TH2D* TOF12Paul6thforvsMCTruth;
+  TH2D* TOF12longPaul6thforvsMCTruth;
+  TH2D* TOF12Paul2ndforvsMCTruth;
+  TH2D* TOF01Paul6thforvsMCTruth;
+  TH2D* TOF01shortPaul6thforvsMCTruth;
   TH2D* TOF01fordownvsMCTruth;
+  TH2D* TOF12fordownvsMCTruth;
+  TH2D* TOF12cobbvsMCTruth;
   TH2D* TOF01forupvsTOF01fordown;
   TH1D* cor_mom;
   TH1D* mctof10;
@@ -229,7 +262,7 @@ class MCSAnalysis {
   bool RadialSelection(double pz);
   std::vector<double> DefineProjectionAngles(Vars US, Vars DS);
   double MomentumFromTOF(bool isdata);
-  double BetheBloch(double pz);
+  double BetheBloch(double pz, double Imat);
   double TimeofFlight();
   double TimeofFlight12();
   std::vector<double> CalculatePathLength(double pz);
@@ -319,11 +352,30 @@ class MCSAnalysis {
     
 class MyFunction1D { 
 	public:
-		double E;
-		double delta;
-		double s1;
-		double s2;
-		double operator()(double pz) const { return s1*sqrt(pow(pz+delta,2)+pow(105.65,2))/(pz+delta)+s2*sqrt(pow(pz-delta,2)+pow(105.65,2))/(pz-delta); } 
-		double Derivative(double pz) const { return -(s1 - s2) * delta * pow(105.65,2)/ (pow(pz,2)*E); }
+		double a;
+		double b;
+		double cp;
+		double d;
+		double operator()(double x) const { return a*pow(x,6)+b*pow(x,3)+cp*pow(x,2)+d; } 
+		double Derivative(double x) const { return 6*a*pow(x,5)+3*b*pow(x,2)+2*cp*x; }
 };
  
+class My2Function1D { 
+	public:
+		double a;
+		double b;
+		double cp;
+		double d;
+		double operator()(double x) const { return a*pow(x,6)+b*pow(x,3)+cp*pow(x,2)+d; } 
+		double Derivative(double x) const { return 6*a*pow(x,5)+3*b*pow(x,2)+2*cp*x; }
+};
+
+class My3Function1D { 
+	public:
+		double a;
+		double b;
+		double cp;
+		double d;
+		double operator()(double x) const { return a*pow(x,6)+b*pow(x,4)+cp*pow(x,3)+d; } 
+		double Derivative(double x) const { return 6*a*pow(x,5)+4*b*pow(x,3)+3*cp*pow(x,2); }
+};

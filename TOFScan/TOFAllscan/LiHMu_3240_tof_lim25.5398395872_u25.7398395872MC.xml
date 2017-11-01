@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="yes"?>
+<spec>
+  <file id="outfile" name="TOFAllscan/LiHMu_3240_tof_lim25.5398395872_u25.7398395872MC.root"/>
+  <file id="datafile" name="/data/neutrino06/jnugent/v2.9.1/allLiH/reduced_tree_.root"/>
+  <file id="trainfile" name="LiHMuon_AllMC/reduced_tree_mct1.root"/>
+  <file id="modelfile" name="Cobb_results/LiH-6p5-240-hists.root"/>
+  <file id="model1" name="Cobb"/>
+  <file id="model2" name="GEANT"/>
+  <cuts name="TOF_ll" value="25.5398395872"/>
+  <cuts name="TOF_ul" value="25.7398395872"/>
+  <cuts name="fid_rad" value="140.0"/>
+  <cuts name="fid_grad" value="0.012"/>
+  <cuts name="mode" value="0"/>
+</spec>

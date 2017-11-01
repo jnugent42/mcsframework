@@ -1,0 +1,28 @@
+// Collect tree from input file
+Tree* Spill = (TTree*)infile.Get("Spill");
+Spill->SetBranchAddress("data", &data);
+
+// Cycle through tree
+for ( int i=0; i<Spill->GetEntries(); i++){
+   Spill->GetEntry(i);
+   MAUS::Spill* spill = data->GetSpill();
+   if (spill != NULL && spill->GetDaqEventType() == "physics_event") {
+  
+    // Pull MC events for each spill 
+    for (size_t ij=0; ij<spill->GetMCEvents()->size(); ij++){
+         for ( size_t j=0; j < (*spill->GetMCEvents())[ij]->GetVirtualHits()->size(); j++){
+
+	   // Pull data from virtual planes at various Z positions  
+	   if ((*spill->GetMCEvents())[ij]->GetVirtualHits()->at(j).GetPosition().z()-17000<50 && (*spill->GetMCEvents())[ij]->GetVirtualHits()->at(j).GetPosition().z()-17000>-50) {
+		   MCTruth_pz_middle_of_abs = (*spill->GetMCEvents())[ij]->GetVirtualHits()->at(j).GetMomentum().z();
+	   }
+	   if ((*spill->GetMCEvents())[ij]->GetVirtualHits()->at(j).GetPosition().z()-16803.7<50 && (*spill->GetMCEvents())[ij]->GetVirtualHits()->at(j).GetPosition().z()-16803.7>-50) {
+		   MCTruth_pz_upstream = (*spill->GetMCEvents())[ij]->GetVirtualHits()->at(j).GetMomentum().z();
+	   }
+	   if ((*spill->GetMCEvents())[ij]->GetVirtualHits()->at(j).GetPosition().z()-17101.3<50 && (*spill->GetMCEvents())[ij]->GetVirtualHits()->at(j).GetPosition().z()-17101.3>-50) {
+		   MCTruth_pz_downstream = (*spill->GetMCEvents())[ij]->GetVirtualHits()->at(j).GetMomentum().z();
+	   }
+           }
+      }
+      }
+}

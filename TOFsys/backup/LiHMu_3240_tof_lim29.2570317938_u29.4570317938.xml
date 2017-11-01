@@ -1,0 +1,19 @@
+<?xml version="1.0" standalone="yes"?>
+<spec>
+  <file id="outfile" name="LiHMu_3240_tof_lim29.2570317938_u29.4570317938.root"/>
+  <file id="datafile" name="/data/neutrino02/jnugent/data_reduced/reduced_tree_LiH_03200.root"/>
+  <file id="trainfile" name="/data/neutrino02/jnugent/data_reduced/reduced_tree_Abs_03200.root"/>
+  <file id="modelfile" name="/home/ppe/j/jnugent/workarea/Unfolding/Cobb_results/LiH-6p5-200-B-hists.root"/>
+  <file id="model2" name="Cobb"/>
+  <file id="model1" name="GEANT"/>
+  <cuts name="TOF_ll" value="29.2570317938"/>
+  <cuts name="TOF_ul" value="29.4570317938"/>
+  <cuts name="fid_rad" value="140.0"/>
+  <cuts name="fid_grad" value="0.012"/>
+  <cuts name="mode" value="2"/>
+  <sys name="niter" value="10"/>
+  <histlimits name="NbinsXY" value="46"/>
+  <histlimits name="NbinsTh" value="200"/>
+  <histlimits name="minXY" value="-0.06"/>
+  <histlimits name="maxXY" value="0.06"/>
+</spec>

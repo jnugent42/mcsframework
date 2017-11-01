@@ -1,0 +1,9 @@
+
+universe       = vanilla
+executable     = TOFAllscan/LiHMu_3240_tof_lim27.3398395872_u27.5398395872.sh
+output         = /home/ppe/j/jnugent/workarea/Unfolding/TOFScan/LiHMu_3240_tof_lim27.3398395872_u27.5398395872.out
+error          = /home/ppe/j/jnugent/workarea/Unfolding/TOFScan/LiHMu_3240_tof_lim27.3398395872_u27.5398395872.err             
+log            = test.log
+requirements   = OpSysAndVer == "CentOS7"
+
+queue

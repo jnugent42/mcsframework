@@ -1,0 +1,35 @@
+INFO: Using third party libraries from /home/ppe/j/jnugent/private/PhD_Year_1/software/MAUS-v2.9.0
+MAUS web front-end directory: /afs/phas.gla.ac.uk/user/j/jnugent/private/PhD_Year_1/software/MAUS-v2.9.0/third_party/install/lib/maus-apps-0.2
+    Database directory: /afs/phas.gla.ac.uk/user/j/jnugent/private/PhD_Year_1/software/MAUS-v2.9.0/third_party/install/lib/maus-apps-0.2/db
+    Media directory: /afs/phas.gla.ac.uk/user/j/jnugent/private/PhD_Year_1/software/MAUS-v2.9.0/third_party/install/lib/maus-apps-0.2/media
+    Media directory (raw images): /afs/phas.gla.ac.uk/user/j/jnugent/private/PhD_Year_1/software/MAUS-v2.9.0/third_party/install/lib/maus-apps-0.2/media/raw
+SUCCESS: MAUS setup
+Algorithm to analyse reduced MAUS root
+trees for multiple scattering measurements
+and to unfold the distribution
+
+Received 2 arguements.
+node type: Element, name: spec, with prop id: (null), prop name: (null), prop value: (null)
+node type: Element, name: file, with prop id: outfile, prop name: TOFAllscan/LiHMu_3172_tof_lim28.9147513286_u29.1147513286MC.root, prop value: (null)
+node type: Element, name: file, with prop id: datafile, prop name: /data/neutrino02/jnugent/data_reduced/all/reduced_tree_LiH_03172.root, prop value: (null)
+node type: Element, name: file, with prop id: trainfile, prop name: LiHMuon_AllMC/reduced_tree_mct1.root, prop value: (null)
+node type: Element, name: file, with prop id: modelfile, prop name: Cobb_results/LiH-6p5-172-B-hists.root, prop value: (null)
+node type: Element, name: file, with prop id: model1, prop name: Cobb, prop value: (null)
+node type: Element, name: file, with prop id: model2, prop name: GEANT, prop value: (null)
+node type: Element, name: cuts, with prop id: (null), prop name: TOF_ll, prop value: 28.9147513286
+node type: Element, name: cuts, with prop id: (null), prop name: TOF_ul, prop value: 29.1147513286
+node type: Element, name: cuts, with prop id: (null), prop name: fid_rad, prop value: 140.0
+node type: Element, name: cuts, with prop id: (null), prop name: fid_grad, prop value: 0.012
+node type: Element, name: cuts, with prop id: (null), prop name: mode, prop value: 0
+Writing outfile to TOFAllscan/LiHMu_3172_tof_lim28.9147513286_u29.1147513286MC.root
+Reading outfilename at 
+Reading data from /data/neutrino02/jnugent/data_reduced/all/reduced_tree_LiH_03172.root
+Reading reference data from LiHMuon_AllMC/reduced_tree_mct1.root
+Reading models from Cobb_results/LiH-6p5-172-B-hists.root
+Reading models from 
+Use  for propagation
+
+TOF selection between 28.9148 and 29.1148
+Fiducial selection contained by radius 140 with scattering 0.012
+
+Training file is a zombie. Aborting.

@@ -1,0 +1,358 @@
+INFO: Using third party libraries from /home/ppe/j/jnugent/private/PhD_Year_1/software/MAUS-v2.9.1
+MAUS web front-end directory: /home/ppe/j/jnugent/private/PhD_Year_1/software/MAUS-v2.9.1/third_party/install/lib/maus-apps-0.2
+    Database directory: /home/ppe/j/jnugent/private/PhD_Year_1/software/MAUS-v2.9.1/third_party/install/lib/maus-apps-0.2/db
+    Media directory: /home/ppe/j/jnugent/private/PhD_Year_1/software/MAUS-v2.9.1/third_party/install/lib/maus-apps-0.2/media
+    Media directory (raw images): /home/ppe/j/jnugent/private/PhD_Year_1/software/MAUS-v2.9.1/third_party/install/lib/maus-apps-0.2/media/raw
+SUCCESS: MAUS setup
+Algorithm to analyse reduced MAUS root
+trees for multiple scattering measurements
+and to unfold the distribution
+
+Received 2 arguements.
+node type: Element, name: spec, with prop id: (null), prop name: (null), prop value: (null)
+node type: Element, name: file, with prop id: outfile, prop name: material_0/LiHMu_3172_res_lim0.9673.root, prop value: (null)
+node type: Element, name: file, with prop id: datafile, prop name: /data/neutrino06/jnugent/v2.9.1/LiH_03172/reduced_tree_.root, prop value: (null)
+node type: Element, name: file, with prop id: trainfile, prop name: /data/neutrino06/jnugent/v2.9.1/ZeroAbs_03172/reduced_tree_.root, prop value: (null)
+node type: Element, name: file, with prop id: trkreffiname, prop name: /home/ppe/j/jnugent/workarea/tracker_efficiency/tracker_resolution_plots_29.1538507523.root, prop value: (null)
+node type: Element, name: file, with prop id: modelfile, prop name: ../Cobb_results/LiH-6p5-172-B-hists.root, prop value: (null)
+node type: Element, name: file, with prop id: model3, prop name: Moliere, prop value: (null)
+node type: Element, name: file, with prop id: model3, prop name: Moliere, prop value: (null)
+node type: Element, name: file, with prop id: model2, prop name: Cobb, prop value: (null)
+node type: Element, name: file, with prop id: model1, prop name: GEANT, prop value: (null)
+node type: Element, name: cuts, with prop id: (null), prop name: TOF_ll, prop value: 29.1538507523
+node type: Element, name: cuts, with prop id: (null), prop name: TOF_ul, prop value: 29.3538507523
+node type: Element, name: cuts, with prop id: (null), prop name: fid_rad, prop value: 150.0
+node type: Element, name: cuts, with prop id: (null), prop name: fid_grad, prop value: 0.012
+node type: Element, name: cuts, with prop id: (null), prop name: mode, prop value: -1
+node type: Element, name: sys, with prop id: (null), prop name: resX, prop value: 0.9673
+node type: Element, name: sys, with prop id: (null), prop name: resY, prop value: 0.9673
+node type: Element, name: sys, with prop id: (null), prop name: niter, prop value: 10
+Writing outfile to material_0/LiHMu_3172_res_lim0.9673.root
+Reading outfilename at 
+Reading data from /data/neutrino06/jnugent/v2.9.1/LiH_03172/reduced_tree_.root
+Reading reference data from /data/neutrino06/jnugent/v2.9.1/ZeroAbs_03172/reduced_tree_.root
+Reading models from ../Cobb_results/LiH-6p5-172-B-hists.root
+Reading models from 
+Use  for propagation
+
+TOF selection between 29.1539 and 29.3539
+Fiducial selection contained by radius 150 with scattering 0.012
+
+Adding systematic effect niter with value 10
+Adding systematic effect resX with value 0.9673
+Adding systematic effect resY with value 0.9673
+Event 0
+Event 100000
+Event 200000
+Event 300000
+Event 400000
+Event 500000
+Event 600000
+Event 700000
+Event 800000
+Event 900000
+Event 1000000
+Event 1100000
+Event 1200000
+Event 1300000
+Event 1400000
+Event 1500000
+Event 1600000
+Event 1700000
+Event 1800000
+Event 0
+Event 100000
+Event 200000
+Event 300000
+Event 400000
+Convolution with thetaX_GEANT from ../Cobb_results/LiH-6p5-172-B-hists.root
+OBJ: RooUnfoldBayes	response	Unfold Response
+regularisation parameter = 10, ntoys = 50
+OBJ: RooUnfoldBayes	response	Unfold Response
+regularisation parameter = 10, ntoys = 50
+OBJ: RooUnfoldBayes	response	Unfold Response
+regularisation parameter = 10, ntoys = 50
+OBJ: RooUnfoldBayes	response	Unfold Response
+regularisation parameter = 10, ntoys = 50
+Now unfolding...
+Iteration : 0
+Chi^2 of change 241.477
+Iteration : 1
+Chi^2 of change 42.018
+Iteration : 2
+Chi^2 of change 10.9818
+Iteration : 3
+Chi^2 of change 4.55219
+Iteration : 4
+Chi^2 of change 2.85143
+Iteration : 5
+Chi^2 of change 2.15896
+Iteration : 6
+Chi^2 of change 1.74969
+Iteration : 7
+Chi^2 of change 1.45308
+Iteration : 8
+Chi^2 of change 1.21736
+Iteration : 9
+Chi^2 of change 1.03943
+Calculating covariances due to number of measured events
+Now unfolding...
+Iteration : 0
+Chi^2 of change 164.819
+Iteration : 1
+Chi^2 of change 37.9442
+Iteration : 2
+Chi^2 of change 11.8436
+Iteration : 3
+Chi^2 of change 4.36617
+Iteration : 4
+Chi^2 of change 2.16178
+Iteration : 5
+Chi^2 of change 1.40788
+Iteration : 6
+Chi^2 of change 1.07849
+Iteration : 7
+Chi^2 of change 0.893113
+Iteration : 8
+Chi^2 of change 0.766488
+Iteration : 9
+Chi^2 of change 0.673914
+Calculating covariances due to number of measured events
+Now unfolding...
+Iteration : 0
+Chi^2 of change 298.929
+Iteration : 1
+Chi^2 of change 73.9898
+Iteration : 2
+Chi^2 of change 18.8067
+Iteration : 3
+Chi^2 of change 6.00172
+Iteration : 4
+Chi^2 of change 2.88507
+Iteration : 5
+Chi^2 of change 1.91694
+Iteration : 6
+Chi^2 of change 1.46607
+Iteration : 7
+Chi^2 of change 1.17962
+Iteration : 8
+Chi^2 of change 0.97166
+Iteration : 9
+Chi^2 of change 0.817829
+Calculating covariances due to number of measured events
+Now unfolding...
+Iteration : 0
+Chi^2 of change 243.707
+Iteration : 1
+Chi^2 of change 74.6462
+Iteration : 2
+Chi^2 of change 32.0211
+Iteration : 3
+Chi^2 of change 17.0926
+Iteration : 4
+Chi^2 of change 11.1707
+Iteration : 5
+Chi^2 of change 8.32386
+Iteration : 6
+Chi^2 of change 6.66612
+Iteration : 7
+Chi^2 of change 5.55788
+Iteration : 8
+Chi^2 of change 4.72668
+Iteration : 9
+Chi^2 of change 4.06724
+Calculating covariances due to number of measured events
+Convolution with thetaX_Cobb from ../Cobb_results/LiH-6p5-172-B-hists.root
+OBJ: RooUnfoldBayes	response	Unfold Response
+regularisation parameter = 10, ntoys = 50
+OBJ: RooUnfoldBayes	response	Unfold Response
+regularisation parameter = 10, ntoys = 50
+OBJ: RooUnfoldBayes	response	Unfold Response
+regularisation parameter = 10, ntoys = 50
+OBJ: RooUnfoldBayes	response	Unfold Response
+regularisation parameter = 10, ntoys = 50
+Now unfolding...
+Iteration : 0
+Chi^2 of change 195.55
+Iteration : 1
+Chi^2 of change 38.3264
+Iteration : 2
+Chi^2 of change 10.2087
+Iteration : 3
+Chi^2 of change 3.60034
+Iteration : 4
+Chi^2 of change 1.94272
+Iteration : 5
+Chi^2 of change 1.39961
+Iteration : 6
+Chi^2 of change 1.1267
+Iteration : 7
+Chi^2 of change 0.966066
+Iteration : 8
+Chi^2 of change 0.854093
+Iteration : 9
+Chi^2 of change 0.770873
+Calculating covariances due to number of measured events
+Now unfolding...
+Iteration : 0
+Chi^2 of change 125.452
+Iteration : 1
+Chi^2 of change 34.5729
+Iteration : 2
+Chi^2 of change 11.647
+Iteration : 3
+Chi^2 of change 4.5094
+Iteration : 4
+Chi^2 of change 2.18993
+Iteration : 5
+Chi^2 of change 1.3871
+Iteration : 6
+Chi^2 of change 1.05066
+Iteration : 7
+Chi^2 of change 0.86746
+Iteration : 8
+Chi^2 of change 0.748721
+Iteration : 9
+Chi^2 of change 0.663062
+Calculating covariances due to number of measured events
+Now unfolding...
+Iteration : 0
+Chi^2 of change 267.767
+Iteration : 1
+Chi^2 of change 80.026
+Iteration : 2
+Chi^2 of change 19.4659
+Iteration : 3
+Chi^2 of change 6.57018
+Iteration : 4
+Chi^2 of change 3.45889
+Iteration : 5
+Chi^2 of change 2.32318
+Iteration : 6
+Chi^2 of change 1.70738
+Iteration : 7
+Chi^2 of change 1.30508
+Iteration : 8
+Chi^2 of change 1.02703
+Iteration : 9
+Chi^2 of change 0.831559
+Calculating covariances due to number of measured events
+Now unfolding...
+Iteration : 0
+Chi^2 of change 204.15
+Iteration : 1
+Chi^2 of change 60.274
+Iteration : 2
+Chi^2 of change 28.0643
+Iteration : 3
+Chi^2 of change 15.8846
+Iteration : 4
+Chi^2 of change 10.8076
+Iteration : 5
+Chi^2 of change 8.26027
+Iteration : 6
+Chi^2 of change 6.72833
+Iteration : 7
+Chi^2 of change 5.68073
+Iteration : 8
+Chi^2 of change 4.89282
+Iteration : 9
+Chi^2 of change 4.26424
+Calculating covariances due to number of measured events
+Convolution with thetaX_Moliere from ../Cobb_results/LiH-6p5-172-B-hists.root
+OBJ: RooUnfoldBayes	response	Unfold Response
+regularisation parameter = 10, ntoys = 50
+OBJ: RooUnfoldBayes	response	Unfold Response
+regularisation parameter = 10, ntoys = 50
+OBJ: RooUnfoldBayes	response	Unfold Response
+regularisation parameter = 10, ntoys = 50
+OBJ: RooUnfoldBayes	response	Unfold Response
+regularisation parameter = 10, ntoys = 50
+Now unfolding...
+Iteration : 0
+Chi^2 of change 227.281
+Iteration : 1
+Chi^2 of change 53.7129
+Iteration : 2
+Chi^2 of change 13.8003
+Iteration : 3
+Chi^2 of change 4.68222
+Iteration : 4
+Chi^2 of change 2.46467
+Iteration : 5
+Chi^2 of change 1.66231
+Iteration : 6
+Chi^2 of change 1.23697
+Iteration : 7
+Chi^2 of change 0.969204
+Iteration : 8
+Chi^2 of change 0.811561
+Iteration : 9
+Chi^2 of change 0.715418
+Calculating covariances due to number of measured events
+Now unfolding...
+Iteration : 0
+Chi^2 of change 147.026
+Iteration : 1
+Chi^2 of change 41.9957
+Iteration : 2
+Chi^2 of change 11.962
+Iteration : 3
+Chi^2 of change 4.30644
+Iteration : 4
+Chi^2 of change 2.13588
+Iteration : 5
+Chi^2 of change 1.40105
+Iteration : 6
+Chi^2 of change 1.06452
+Iteration : 7
+Chi^2 of change 0.874593
+Iteration : 8
+Chi^2 of change 0.744727
+Iteration : 9
+Chi^2 of change 0.645754
+Calculating covariances due to number of measured events
+Now unfolding...
+Iteration : 0
+Chi^2 of change 281.085
+Iteration : 1
+Chi^2 of change 125.583
+Iteration : 2
+Chi^2 of change 36.8232
+Iteration : 3
+Chi^2 of change 9.80318
+Iteration : 4
+Chi^2 of change 4.21004
+Iteration : 5
+Chi^2 of change 2.83693
+Iteration : 6
+Chi^2 of change 2.20434
+Iteration : 7
+Chi^2 of change 1.76655
+Iteration : 8
+Chi^2 of change 1.43145
+Iteration : 9
+Chi^2 of change 1.16598
+Calculating covariances due to number of measured events
+Now unfolding...
+Iteration : 0
+Chi^2 of change 156.283
+Iteration : 1
+Chi^2 of change 67.8443
+Iteration : 2
+Chi^2 of change 33.2919
+Iteration : 3
+Chi^2 of change 18.964
+Iteration : 4
+Chi^2 of change 12.6032
+Iteration : 5
+Chi^2 of change 9.33579
+Iteration : 6
+Chi^2 of change 7.38413
+Iteration : 7
+Chi^2 of change 6.05355
+Iteration : 8
+Chi^2 of change 5.06624
+Iteration : 9
+Chi^2 of change 4.29186
+Calculating covariances due to number of measured events

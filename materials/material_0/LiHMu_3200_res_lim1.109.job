@@ -1,0 +1,9 @@
+
+universe       = vanilla
+executable     = material_0/LiHMu_3200_res_lim1.109.sh
+output         = /home/ppe/j/jnugent/workarea/Unfolding/materials/material_0/LiHMu_3200_res_lim1.109.out
+error          = /home/ppe/j/jnugent/workarea/Unfolding/materials/material_0/LiHMu_3200_res_lim1.109.err             
+log            = test.log
+requirements   = OpSysAndVer == "CentOS7"
+
+queue

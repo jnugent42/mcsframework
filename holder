@@ -231,7 +231,6 @@ int main(int argc, char* argv[]) {
       std::cout<<"Adding "<<argv[ifile]<<" to file list."<<std::endl;
       filelist.push_back(argv[ifile]);
     }
-	
     
     MAUS::Data *data = new MAUS::Data();
     double tof2pos = 20500;
@@ -518,3 +517,4 @@ int main(int argc, char* argv[]) {
     std::cout<<"TOF2 Count:"<<TOF2count<<std::endl;
     outfile->Close();
 }
+

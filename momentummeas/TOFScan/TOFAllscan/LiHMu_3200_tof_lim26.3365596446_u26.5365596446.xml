@@ -1,0 +1,20 @@
+<?xml version="1.0" standalone="yes"?>
+<spec>
+  <file id="outfile" name="TOFAllscan/LiHMu_3200_tof_lim26.3365596446_u26.5365596446.root"/>
+  <file id="datafile" name="/data/neutrino02/jnugent/data_reduced/all/reduced_tree_LiH_03172.root"/>
+  <file id="trainfile" name="/data/neutrino02/jnugent/data_reduced/allempty/reduced_tree_Abs_03172.root"/>
+  <file id="modelfile" name="TOFAllscan/LiHMu_3200_tof_lim26.3365596446_u26.5365596446_mod.root"/>
+  <file id="model3" name="Moliere"/>
+  <file id="model2" name="Cobb"/>
+  <file id="model1" name="GEANT"/>
+  <cuts name="TOF_ll" value="26.3365596446"/>
+  <cuts name="TOF_ul" value="26.5365596446"/>
+  <cuts name="fid_rad" value="140.0"/>
+  <cuts name="fid_grad" value="0.012"/>
+  <cuts name="mode" value="-1"/>
+  <sys name="niter" value="10"/>
+  <histlimits name="NbinsXY" value="46"/>
+  <histlimits name="NbinsTh" value="200"/>
+  <histlimits name="minXY" value="-0.06"/>
+  <histlimits name="maxXY" value="0.06"/>
+</spec>

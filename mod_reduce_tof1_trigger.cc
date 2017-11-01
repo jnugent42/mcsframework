@@ -232,10 +232,10 @@ int main(int argc, char* argv[]) {
       std::cout<<"Adding "<<argv[ifile]<<" to file list."<<std::endl;
       filelist.push_back(argv[ifile]);
     }
-	
     
     MAUS::Data *data = new MAUS::Data();
     double tof2pos = 20500;
+    double tof1pos = 12929;
     // Make histograms; to fill later on
     TH1D tof2_digits_0_hist("tof2 digits_0",
                             "tof2 digits for plane 0;Slab number",
@@ -265,7 +265,8 @@ int main(int argc, char* argv[]) {
     std::string fname = "reduced_tree_";
     //int found = type.find_last_of("/");
     //fname += type.substr(found-9,9);
-    fname += ".root";
+    fname += type;
+    //fname += ".root";
     TFile* outfile = new TFile(fname.c_str(),"RECREATE");
     
     std::cout<<"Make tree; to fill later on"<<std::endl;
@@ -288,7 +289,6 @@ int main(int argc, char* argv[]) {
     tree->Branch("CkovBranch", "MAUS::CkovEvent",&ckovevent, 64000, 10);
     tree->Branch("KLBranch", "MAUS::KLEvent", &klevent, 64000, 10);
     tree->Branch("EMRBranch", "MAUS::EMREvent", &emrevent, 64000, 10);
-    tree->Branch("MCEvent", "MAUS::MCEvent", &mcevent, 64000, 10); 
     // mctree->Branch("Primary", "MAUS::Primary", &primary, 6400, 10);
     // mctree->Branch("SpecialVirtuals", "MAUS::SpecialVirtualHitArray", &sphitarray, 64000, 10); 
     mctree->Branch("MCEvent", "MAUS::MCEvent", &mcevent, 64000, 10); 
@@ -332,18 +332,7 @@ int main(int argc, char* argv[]) {
 	      (*spill->GetReconEvents())[ii]->GetTOFEvent();
 	    MAUS::TOFEventDigit digits;
 	    // Collect MC data
-	      bool tof2trigger=false;
-	    int nverthits = (*spill->GetMCEvents())[ii]->GetVirtualHits()->size();
-	    for(int k=0; k<nverthits; k++){
-		double z = ((*spill->GetMCEvents())[ii]->GetVirtualHits())->at(k).GetPosition().z();
-		double x = ((*spill->GetMCEvents())[ii]->GetVirtualHits())->at(k).GetPosition().x();
-		double y = ((*spill->GetMCEvents())[ii]->GetVirtualHits())->at(k).GetPosition().y();
-		if(fabs(z - tof2pos) < 50.){
-		  if  (fabs(x) < 300. && fabs(y) < 300.) tof2trigger=true;	
-	              mcevent    = (*spill->GetMCEvents())[ii];
-		}
-	      }
-
+	    //mcevent    = (*spill->GetMCEvents())[ii];
 	    if (tof_event != NULL)
 	      digits = tof_event->GetTOFEventDigit();
 	    else
@@ -380,9 +369,10 @@ int main(int argc, char* argv[]) {
 	      ckovevent  = (*spill->GetReconEvents())[ii]->GetCkovEvent();
 	      klevent    = (*spill->GetReconEvents())[ii]->GetKLEvent();
 	      emrevent   = (*spill->GetReconEvents())[ii]->GetEMREvent();
-	      
-	      if(type1.find("data")!=std::string::npos) tree->Fill();
-	      if(type1.find("mc")!=std::string::npos) mctree->Fill();
+	      mcevent = (*spill->GetMCEvents())[ii];
+
+	      mctree->Fill();
+	      //if(type1.find("mc")!=std::string::npos) mctree->Fill();
 	    }
 
 	    plane0digit = false;
@@ -401,10 +391,8 @@ int main(int argc, char* argv[]) {
 	    if( plane0digit && plane1digit ) TOF2count++;
 	  }
 	  
-	  if(type.find("mc")!=std::string::npos){
+	  if(type.find("sim")!=std::string::npos){
 	    for (size_t ij=0; ij<spill->GetMCEvents()->size(); ij++){
-	     mcevent = (*spill->GetMCEvents())[ij];
-	     mctree->Fill();
 	      // find particles that pass through TOF2 regardless of PID
 	      int nverthits = (*spill->GetMCEvents())[ij]->GetVirtualHits()->size();
 	      bool tof2trigger=false;
@@ -458,9 +446,9 @@ int main(int argc, char* argv[]) {
 		  tmp.TOF01 = pz;
 		  USrefSet.append_instance(tmp);
 		}
-		if(fabs(z - tof2pos) < 50.){
-		  if  (fabs(x) < 300. && fabs(y) < 300.) tof2trigger=true;	
-
+		if(fabs(z - tof1pos) < 100.){
+		  if  (fabs(x) < 300. && fabs(y) < 300.) {
+                           }   
 		}
 	      }
 	    }
@@ -477,10 +465,11 @@ int main(int argc, char* argv[]) {
     }
     outfile->cd();
     if(type.find("data")!=std::string::npos){
-      tree->Write();
+    std::cout << "write" << std::endl;  
+    tree->Write();
       tree->Print();
     }
-    if(type.find("mc")!=std::string::npos){
+    if(type.find("sim")!=std::string::npos){
       hrate.Write();
       hr.Write();
       hp.Write();
