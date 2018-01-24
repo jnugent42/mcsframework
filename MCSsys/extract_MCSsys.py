@@ -8,11 +8,11 @@ class plotgen:
         self.fname = filename
         self.desc = self.fname.split("_")
         self.histvarnames = ['thetaX','thetaY','thetaScatt','theta2Scatt']
-        self.histstatenames = ['measdataCobb','refconv_GEANT','refconv_Cobb', 'ref', 'GEANT']
+        self.histstatenames = ['measdataCobb','refconv_GEANT','refconv_Cobb', 'ref', 'GEANT', 'Moliere']
         self.histstatedesc = ['Raw Data',
-                              'GEANT4 Default MCS', 'Carlisle-Cobb']
-        self.histcolors = [1, 4, 2]
-        self.histopts  = ['lp','lp','lp']
+                              'GEANT4 Default MCS', 'Carlisle-Cobb', 'Moliere']
+        self.histcolors = [1, 4, 2, 6]
+        self.histopts  = ['lp','lp','lp','lp']
         self.RMS = {}
         self.RMSErr = {}
         self.Chi2 = {}
@@ -416,11 +416,11 @@ if __name__ == '__main__':
                        ["../materials/material_0/LiHMu_3172_res_lim0.891.root",
                         "../materials/material_0/LiHMu_3172_res_lim1.109.root",
                         sqrt(0.004/0.218),"Material"],
-                       ["../fiducial/LiHMu_3172_R_5_G_1.root",
-                        "../fiducial/LiHMu_3172_R_5_G_3.root",
+                       ["../fiducial/LiHMu_3172_R_5_G_-17.root",
+                        "../fiducial/LiHMu_3172_R_5_G_-15.root",
                         0.5/10,"Fid. Pitch"],
-                       ["../fiducial/LiHMu_3172_R_4_G_2.root",
-                        "../fiducial/LiHMu_3172_R_6_G_2.root",
+                       ["../fiducial/LiHMu_3172_R_4_G_-17.root",
+                        "../fiducial/LiHMu_3172_R_6_G_-17.root",
                        .478/20.,"Fid. Radius"],
                        ["../alignment/LiHMu_3172_13.root",
                         "../alignment/LiHMu_3172_10.root",
@@ -433,11 +433,11 @@ if __name__ == '__main__':
                        ["../materials/material_0/LiHMu_3200_res_lim0.891.root",
                         "../materials/material_0/LiHMu_3200_res_lim1.109.root",
                         sqrt(0.004/0.218),"Material"],
-                       ["../fiducial/LiHMu_3200_R_5_G_0.root",
-                        "../fiducial/LiHMu_3200_R_5_G_2.root",
+                       ["../fiducial/LiHMu_3200_R_5_G_-17.root",
+                        "../fiducial/LiHMu_3200_R_5_G_-15.root",
                         0.5/10,"Fid. Pitch"],
-                       ["../fiducial/LiHMu_3200_R_4_G_1.root",
-                        "../fiducial/LiHMu_3200_R_6_G_1.root",
+                       ["../fiducial/LiHMu_3200_R_4_G_-17.root",
+                        "../fiducial/LiHMu_3200_R_6_G_-17.root",
                         0.478/20.,"Fid. Radius"],
                        ["../alignment/LiHMu_3200_1.root",
                         "../alignment/LiHMu_3200_7.root",
@@ -450,11 +450,11 @@ if __name__ == '__main__':
                        ["../materials/material_0/LiHMu_3240_res_lim0.891.root",
                         "../materials/material_0/LiHMu_3240_res_lim1.109.root",
                         sqrt(0.004/0.218),"Material"],
-                       ["../fiducial/LiHMu_3240_R_5_G_0.root",
-                        "../fiducial/LiHMu_3240_R_5_G_2.root",
+                       ["../fiducial/LiHMu_3240_R_5_G_-17.root",
+                        "../fiducial/LiHMu_3240_R_5_G_-15.root",
                         0.5/10,"Fid. Pitch"],
-                       ["../fiducial/LiHMu_3240_R_4_G_1.root",
-                        "../fiducial/LiHMu_3240_R_6_G_1.root",
+                       ["../fiducial/LiHMu_3240_R_4_G_-17.root",
+                        "../fiducial/LiHMu_3240_R_6_G_-17.root",
                         0.478/20.,"Fid. Radius"],
                        ["../alignment/LiHMu_3240_59.root",
                         "../alignment/LiHMu_3240_19.root",
@@ -570,6 +570,7 @@ if __name__ == '__main__':
     [CCout240, CCsys240] = raw240.MCSPlot("decoCC")
     # [piCCout240, piCCsys240] = piraw240.MCSPlot("decoCC")
 
+    print "Raw deco table" 
     print '\hline'
     print '\hline'
     print out172[0]
@@ -617,6 +618,7 @@ if __name__ == '__main__':
     print '\hline\n'
 
     
+    print "GEANT4 deco table" 
     print '\hline'
     print '\hline'
     print G4out172[0]
@@ -640,7 +642,7 @@ if __name__ == '__main__':
     print '\hline'
     print '\hline\n'
 
-    print "This table" 
+    print "Cobb-Carlisle deco table" 
     print '\hline'
     print '\hline'
     print CCout172[0]
@@ -667,7 +669,8 @@ if __name__ == '__main__':
     
     print '\hline'
     print '\hline'
-    
+   
+    print 'raw sys'
     for i in range(len(raw172.sysFiles)):
         print raw172.sysFiles[i][3]
         print ' \& $\\Delta\\theta_{X}$ & $\\Delta\\theta_{Y}$ & $\\langle\\theta_{Scatt}^{2}\\rangle$ \\\\'
@@ -686,6 +689,7 @@ if __name__ == '__main__':
     # print pisys240[-1]
     print '\hline\n'
     print '\hline'
+    print 'G4 sys'
     for i in range(len(raw172.sysFiles)):
         print raw172.sysFiles[i][3]
         print ' \& $\\Delta\\theta_{X}$ & $\\Delta\\theta_{Y}$ & $\\langle\\theta_{Scatt}^{2}\\rangle$ \\\\'
@@ -702,6 +706,7 @@ if __name__ == '__main__':
     # print pisys240[-1]
     print '\hline\n'
     print '\hline'
+    print 'Moliere sys'
     for i in range(len(raw172.sysFiles)):
         print raw172.sysFiles[i][3]
         print ' \& $\\Delta\\theta_{X}$ & $\\Delta\\theta_{Y}$ & $\\langle\\theta_{Scatt}^{2}\\rangle$ \\\\'
@@ -719,6 +724,7 @@ if __name__ == '__main__':
     # print piG4sys240[-1]
     print '\hline\n'
     print '\hline'
+    print 'CC sys'
     for i in range(len(raw172.sysFiles)):
         print raw172.sysFiles[i][3]
         print ' \& $\\Delta\\theta_{X}$ & $\\Delta\\theta_{Y}$ & $\\langle\\theta_{Scatt}^{2}\\rangle$ \\\\'

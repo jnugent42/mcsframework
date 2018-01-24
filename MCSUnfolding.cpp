@@ -19,6 +19,7 @@ struct specvals {
   std::string model1;			       
   std::string model2;
   std::string model3;
+  std::string material;
   std::string trkreffiname;
   std::map<std::string, double> sys;
   std::map<std::string, double> histlimits;
@@ -59,6 +60,8 @@ static void print_element_names(xmlNode * a_node, specvals& spec)
 	  spec.model2 = (char*)xmlGetProp(cur_node, nm);
 	} else if ( xmlStrEqual(xmlGetProp(cur_node, id), xmlCharStrdup("model3")) ) {
 	  spec.model3 = (char*)xmlGetProp(cur_node, nm);
+	} else if ( xmlStrEqual(xmlGetProp(cur_node, id), xmlCharStrdup("material")) ) {
+	  spec.material = (char*)xmlGetProp(cur_node, nm);
 	} else if ( xmlStrEqual(xmlGetProp(cur_node, id), xmlCharStrdup("geofile")) ) {
 	  spec.geometryname = (char*)xmlGetProp(cur_node, nm);
 	} else if ( xmlStrEqual(xmlGetProp(cur_node, id), xmlCharStrdup("trkreffiname")) ) {
@@ -201,6 +204,7 @@ int main(int argc, char* argv[]) {
   anal.SetModelName1(spec.model1);
   anal.SetModelName2(spec.model2);
   anal.SetModelName3(spec.model3);
+  anal.SetMaterial(spec.material);
   std::ostringstream strs;
   /*
   strs << spec.TOF_ll;

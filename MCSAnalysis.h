@@ -98,6 +98,7 @@ class MCSAnalysis {
   void SetModelName1(std::string a) {modelname1=a; }
   void SetModelName2(std::string a) {modelname2=a; }
   void SetModelName3(std::string a) {modelname3=a; }
+  void SetMaterial(std::string a) {material=a; }
   void SetTrkrEffiName(std::string a) {trkreffiname=a; }
   void SetParentGeometryFile(std::string a) {geometryfile=a; }
   void SetFFTBinLimit(int a) { binlimit=a; }
@@ -121,6 +122,7 @@ class MCSAnalysis {
   std::string modelname1;
   std::string modelname2;
   std::string modelname3;
+  std::string material;
   std::string trkreffiname;
   std::string geometryfile;
 
@@ -182,6 +184,7 @@ class MCSAnalysis {
 
   TFile* outfile;
   std::string outfilename;
+  TH1D* pathlengthabs;
   TH1D* tof10;
   TH1D* tof10_sel;
   TH1D* tof21;
@@ -259,15 +262,19 @@ class MCSAnalysis {
   
   bool MatchUSDS();
   bool PIDSelection(bool isdata);
-  bool RadialSelection(double pz);
+  bool RadialSelection(double pz, double pos, double radius);
   std::vector<double> DefineProjectionAngles(Vars US, Vars DS);
+  std::vector<double> RotDefineProjectionAngles(Vars US, Vars DS, int l);
+  TH1D *defineHist2(const char* name, const char* title, Int_t nbinsx, Double_t xlow, Double_t xup);
   double MomentumFromTOF(bool isdata);
-  double BetheBloch(double pz, double Imat);
+  double BetheBloch(double pz, double Imat, double Z, double A, double hw);
+  double MostProbBB(double pz, double Imat, double Z, double A, double hw, double R, double z);
   double TimeofFlight();
   double TimeofFlight12();
   std::vector<double> CalculatePathLength(double pz);
   std::vector<double> rCalculatePathLength(double pz);
-  double CorMomFromTOF(double pz);
+  double PathLengthInLH2(double pz);
+  double CorMomFromTOF(double pz, double mat, double diff);
   bool findVirtualPlanes();
   void FillMuScattResponse(bool event_ok, Vars& US, Vars& DS, Vars& USMC, Vars& DSMC);
   void FillMCSResponse(bool event_ok, Vars& US, Vars& DS, Vars& USMC, Vars& DSMC);

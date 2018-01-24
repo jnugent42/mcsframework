@@ -27,6 +27,7 @@ MCSAnalysis::MCSAnalysis(std::string tree, std::string mctree, std::string outna
   _sys["TOF2_z"]  = 21138.306769;
   _sys["niter"]   = 10;
   _sys["abspos"]  = 16952.5;
+  _sys["diffpos"]  = 13620;
   _sys["Nevents"]  = -1.;
   _sys["FracEvents"] = 1.;
 
@@ -95,6 +96,7 @@ MCSAnalysis::MCSAnalysis(std::string tree, std::string mctree, std::string outna
   int counter = 0;
   // histograms of selection variables
   
+  pathlengthabs = new TH1D("pathlengthabs","pathlengthabs", 500, 0, 500);
   t_cor = new TH2D("t_cor","t_cor", 1000, 0, 1000,100, 8.05, 9.15);
   TOF0Energy = new TH1D("TOF0Energy","TOF0Energy", 200, 150, 350);
   TOF1Energy = new TH1D("TOF1Energy","TOF1Energy", 200, 150, 350);
@@ -137,7 +139,7 @@ MCSAnalysis::MCSAnalysis(std::string tree, std::string mctree, std::string outna
   mccalc_mom = new TH1D("mccalc_mom","Momentum Calculated from TOF; Momentum (MeV/c)", 400, 0, 400);
   mctrue_mom = new TH1D("mctrue_mom","Momentum from Virtual Planes; Momentum (MeV/c)", 400, 0, 400);
   cuts_accept   = new TH1D("cuts_accept", 
-			   ";Selection Criteria; Surviving Events", 5, 0, 5);
+			   ";Selection Criteria; Surviving Events", 6, 0, 6);
   mccuts_accept = new TH1D("mccuts_accept", 
 			   ";Selection Criteria; Surviving Events", 6, 0, 6);
 
@@ -226,19 +228,20 @@ void MCSAnalysis::Write(){
   tof21_sel->Write();
   calc_mom->Write();
   TCanvas *c1 = new TCanvas();
-  calc_mom->GetXaxis()->SetRangeUser(120,280);
-  calc_mom->Draw();
+  //calc_mom->GetXaxis()->SetRangeUser(120,280);
+  //calc_mom->Draw();
   cor_mom->SetLineColor(2);
-  cor_mom->Draw("SAME");
+  cor_mom->Draw();
   c1->SaveAs("calc_mom.pdf");
+  c1->SaveAs("calc_mom.root");
   cor_mom->Write();
   c1->Clear();
   calc_mom->GetXaxis()->SetRangeUser(120,280);
   cor_mom->Draw();
   c1->SaveAs("cor_mom.pdf");
   c1->Clear();
-  TOFcom->GetXaxis()->SetTitle("pz TOF01");
-  TOFcom->GetYaxis()->SetTitle("pz TOF12");
+  TOFcom->GetXaxis()->SetTitle("pz analytic formula");
+  TOFcom->GetYaxis()->SetTitle("pz Bethe-Bloch");
   TOFcom->Draw("colz");
   TLine *line2 = new TLine(100,100,350,350);
   line2->SetLineColor(kRed);
@@ -314,6 +317,9 @@ void MCSAnalysis::Write(){
   c1->SaveAs("TOF01Paul6thforvsMCTruth.pdf");
   c1->Clear();
   gStyle->SetOptStat(0);
+  gStyle->SetOptFit();
+  //TOF01shortPaul6thforvsMCTruth->Fit("pol1","","",170,270);
+  //TF1 *f3 = TOF01shortPaul6thforvsMCTruth->GetFunction("pol1");
   TOF01shortPaul6thforvsMCTruth->SetTitle("Corrected P upstream vs MC Truth");
   TOF01shortPaul6thforvsMCTruth->GetXaxis()->SetTitle("pz TOF01");
   TOF01shortPaul6thforvsMCTruth->GetYaxis()->SetTitle("pz MCTruth");
@@ -419,7 +425,7 @@ void MCSAnalysis::Write(){
   residual01short->GetYaxis()->SetTitle("No. of events");
   residual01short->GetYaxis()->SetTitleOffset(1.5);
   residual01short->Draw();
-  residual01short->GetYaxis()->SetRangeUser(0,35000);
+  //residual01short->GetYaxis()->SetRangeUser(0,35000);
   t11.Draw();
   t13.Draw();
   t12.Draw();
@@ -456,6 +462,13 @@ void MCSAnalysis::Write(){
   difEloss->GetYaxis()->SetTitle("No. of events");
   difEloss->Draw();
   c1->SaveAs("difEloss.pdf");
+  c1->Clear();
+  gStyle->SetOptStat(1);
+  pathlengthabs->GetXaxis()->SetTitle("Path Length in Absorber (mm)");
+  pathlengthabs->GetYaxis()->SetTitle("No. of events");
+  pathlengthabs->Draw();
+  c1->SaveAs("pathlengthabs.pdf");
+  c1->SaveAs("pathlengthabs.root");
   mctof10->Write();
   mctof21->Write();
   mctof10_sel->Write();
@@ -556,16 +569,22 @@ void MCSAnalysis::dataSelection(){
     FillCollectionSciFi(USAllTOF, jUS, kUS, pz, 0);
     FillCollectionSciFi(DSAllTOF, jDS, kDS, pz, 1);
     if ( !PIDSelection(true) ) continue;
+    /*
+    if (mcevent->GetVirtualHits()->size() >= 49) {
+	    if (mcevent->GetVirtualHits()->at(48).GetParticleId()==13 or mcevent->GetVirtualHits()->at(48).GetParticleId()==-13) continue;
+    }
+    */
     pz = MomentumFromTOF(true);
 
     cuts_accept->Fill("TOF Selection",1);
     FillCollectionSciFi(USPreRadSel, jUS, kUS, pz, 0);
     FillCollectionSciFi(DSPreRadSel, jDS, kDS, pz, 1);
-    if ( !RadialSelection(pz) ) continue;
+    if ( !RadialSelection(pz,_19948.8,meanp) ) continue;
     cuts_accept->Fill("Fiducial Selection",1);
-    if (jDS != -1 && kDS != -1) { 
-        pz = CorMomFromTOF(pz);
-    }
+    double diff = 0;
+    if ( !RadialSelection(pz,_sys["diffpos"],100) ) continue; //diff=1;
+    cuts_accept->Fill("Diffuser Cut",1);
+    pz = CorMomFromTOF(pz, 0, diff);
     if ( _sys["psel_lcut"] > 0 && _sys["psel_ucut"] > 0 ){
       if ( pz < _sys["psel_lcut"] || pz > _sys["psel_ucut"] ) 
 	// Cut out events to evaluate systematic uncertainties.
@@ -584,8 +603,7 @@ void MCSAnalysis::dataSelection(){
   }
   make_beam_histograms(USAllTOF, "Upstream, Data", "dataUS_alltof");
   make_beam_histograms(DSAllTOF, "Downstream, Data", "dataDS_alltof");
-  make_acceptance_histograms(USAllTOF, DSAllTOF, 
-			     "Data Projection", "dataAcc_alltof");
+  //make_acceptance_histograms(USAllTOF, DSAllTOF,"Data Projection", "dataAcc_alltof");
   make_beam_histograms(USPreRadSel, "Upstream, Data", "dataUS_prerad");
   make_beam_histograms(DSPreRadSel, "Downstream, Data", "dataDS_prerad");
   make_beam_histograms(_USset, "Upstream, Data", "dataUS");
@@ -633,21 +651,25 @@ void MCSAnalysis::referenceSelection(){
     // if ( !SelectMomentum() ) continue;
     FillCollectionSciFi(USPreRadSel, jUS, kUS, pz, 0);
     FillCollectionSciFi(DSPreRadSel, jDS, kDS, pz, 1);
-    if ( !RadialSelection(pz) ) continue;
+    if ( !RadialSelection(pz,19948.8,meanp) ) continue;
     cuts_accept->Fill("Fiducial Selection",1);
+    double diff;
+    if ( !RadialSelection(pz,_sys["diffpos"],100) ) diff=1;
+    cuts_accept->Fill("Diffuser Cut",1);
+    pz = CorMomFromTOF(pz, 1, diff);
     
     FillCollectionSciFi(_USMCset, jUS, kUS, pz, 0);
     FillCollectionSciFi(_DSMCset, jDS, kDS, pz, 1);
   }
   make_beam_histograms(USAllTOF, "Upstream, Data Reference", "dataUSref_alltof");
   make_beam_histograms(DSAllTOF, "Downstream, Data Reference", "dataDSref_alltof");
-  make_acceptance_histograms(USAllTOF, DSAllTOF, "Data Reference", "dataProj_alltof");
+  //make_acceptance_histograms(USAllTOF, DSAllTOF, "Data Reference", "dataProj_alltof");
   make_beam_histograms(USPreRadSel, "Upstream, Data Reference", "dataUSref_prerad");
   make_beam_histograms(DSPreRadSel, "Downstream, Data Reference", "dataDSref_prerad");
-  make_acceptance_histograms(USPreRadSel, DSPreRadSel, "Data Reference", "dataProj_prerad");
+  //make_acceptance_histograms(USPreRadSel, DSPreRadSel, "Data Reference", "dataProj_prerad");
   make_beam_histograms(_USMCset, "Upstream, Data Reference", "dataUSref");
   make_beam_histograms(_DSMCset, "Downstream, Data Reference", "dataDSref");
-  make_acceptance_histograms(_USMCset, _DSMCset, "Data Reference", "dataProj");
+  //make_acceptance_histograms(_USMCset, _DSMCset, "Data Reference", "dataProj");
 }
 
  
@@ -712,7 +734,7 @@ void MCSAnalysis::generateMCSResponse(){
     FillCollectionSciFi(DSPreRadSel, jDS, kDS, pz, 1);
     USVPreRadSel.append_instance(USAbsHit);
     DSVPreRadSel.append_instance(DSAbsHit);
-    if ( !RadialSelection(pz) ) event_ok=false;
+    if ( !RadialSelection(pz, _sys["abspos"] + 549.95,meanp) ) event_ok=false;
     if (event_ok) mccuts_accept->Fill("Fiducial Selection",1);
     if (event_ok) mctrue_mom->Fill(mcevent->GetVirtualHits()->at(USrefplaneI).GetMomentum().z());
     if (event_ok) mctrue_mom->Fill(mcevent->GetVirtualHits()->at(USrefplaneI).GetMomentum().z());
@@ -865,7 +887,7 @@ bool MCSAnalysis::PIDSelection(bool isdata=true){
   
 }
 
-bool MCSAnalysis::RadialSelection(double pz){
+bool MCSAnalysis::RadialSelection(double pz, double pos, double radius){
   bool selected = true;
   if (jUS == -1 || kUS == -1) 
     selected = false;
@@ -897,8 +919,8 @@ bool MCSAnalysis::RadialSelection(double pz){
     USplane.py   += sigmap*sin(phi)*USplane.pz;
     // double xabs  = (dXdz + sigmap*cos(phi)) * zdiff + xpos;
     // double yabs  = (dYdz + sigmap*sin(phi)) * zdiff + ypos;
-    Vars DSproj = PropagateVarsMu(USplane, _sys["abspos"] + 549.95);
-    if ( sqrt(DSproj.X*DSproj.X + DSproj.Y*DSproj.Y) > meanp) selected = false;
+    Vars DSproj = PropagateVarsMu(USplane, pos);
+    if ( sqrt(DSproj.X*DSproj.X + DSproj.Y*DSproj.Y) > radius) selected = false;
   }
   return selected;
 }
@@ -929,6 +951,171 @@ std::vector<double> MCSAnalysis::DefineProjectionAngles(Vars US, Vars DS){
 			       sqrt(1 + DS.dXdz*DS.dXdz + DS.dYdz*DS.dYdz))) );
  
   return projTheta;
+}
+
+std::vector<double> MCSAnalysis::RotDefineProjectionAngles(Vars US, Vars DS,int i){
+
+  std::vector<double> projTheta;
+  double USnorm = 1./sqrt(1 + US.dXdz*US.dXdz + US.dYdz*US.dYdz);
+  TVector3 u(US.dXdz*USnorm, US.dYdz*USnorm, USnorm);
+  //double y = -cos(i*3.14/180);
+  double x = sin(i*3.14/180);
+  TVector3 s(0, -1, 0);
+  s.RotateZ(i*TMath::Pi()/180);
+  double snorm = 1./sqrt(s[2]*s[2] + s[1]*s[1] + s[0]*s[0]);
+  TVector3 s_(s[0]*snorm,s[1]*snorm,s[2]*snorm);
+  TVector3 v = s_.Cross(u);
+  double vnorm = 1./sqrt(v[2]*v[2] + v[1]*v[1] + v[0]*v[0]); 
+  TVector3 v_(v[0]*vnorm,v[1]*vnorm,v[2]*vnorm);
+  TVector3 w = v_.Cross(u);
+  double Wnorm  = 1./sqrt(w[0]*w[0] + w[1]*w[1] + w[2]*w[2]);
+  w[0] *= Wnorm;
+  w[1] *= Wnorm;
+  w[2] *= Wnorm;
+  double DSnorm = 1./sqrt(1 + DS.dXdz*DS.dXdz + DS.dYdz*DS.dYdz);
+  TVector3 d(DS.dXdz*DSnorm, DS.dYdz*DSnorm, DSnorm);
+  projTheta.push_back(atan(d.Dot(w)/d.Mag()*w.Mag()));
+  projTheta.push_back(atan(d.Dot(v_)/v_.Mag()*d.Mag()));
+
+  //if (i<60 && i>35){
+	  //std::cout << "i " << i << std::endl;
+	  //std::cout << "y " << y << std::endl;
+	  //std::cout << "x " << x << std::endl;
+  //}
+	  //std::cout << "d.Dot(w) " << d.Dot(w) << std::endl;
+	  //std::cout << "d.Dot(v_) " << d.Dot(v_) << std::endl;
+
+  projTheta.push_back( acos( ( (1 + US.dXdz * DS.dXdz + US.dYdz * DS.dYdz )/
+			       sqrt(1 + US.dXdz*US.dXdz + US.dYdz*US.dYdz)/
+			       sqrt(1 + DS.dXdz*DS.dXdz + DS.dYdz*DS.dYdz))) );
+  projTheta.push_back(d.Dot(w)); 
+  projTheta.push_back(d.Dot(v_)); 
+  TVector3 yvec(0,-1,0);
+  //std::cout << "yvec.Angle(d) " << yvec.Angle(d) << std::endl;
+  //std::cout << "w.Angle(d) " << w.Angle(d) << std::endl;
+  projTheta.push_back(yvec.Angle(d)); 
+  projTheta.push_back(w.Angle(d)); 
+  projTheta.push_back(v_.Angle(d)); 
+  projTheta.push_back(d[0]);
+  projTheta.push_back(d[1]);
+  //std::cout << "d[0] " << d[0] << std::endl;
+  //std::cout << "d[1] " << d[1] << std::endl;
+  return projTheta;
+}
+
+double MCSAnalysis::PathLengthInLH2(double pz){
+    
+    if (jUS != -1 && kUS != -1 && jDS != -1 && kDS != -1){
+    float x_up;
+    float y_up;
+    float z_up;
+    float x_down;
+    float y_down;
+    float z_down;
+    float x_up_it;
+    float y_up_it;
+    float z_up_it;
+    float x_down_it;
+    float y_down_it;
+    float z_down_it;
+    float rad_up = 0;
+    float curvey = 0;
+    float curvey_down = 0;
+    float rad_down = 0;
+    int i = 0;
+    
+    double poly[5];
+    poly[0] = 5.00929921969443e-6;
+    poly[1] = -0.0006657044;
+    poly[2] = 0.0338057657;
+    poly[3] = -0.8148399317;
+    poly[4] = 10.8671889437;
+
+    std::vector<double> path_length;
+    std::vector<double> vpath_length;
+
+    // Path length for muon between TOF1 and absorber
+    Vars USplane;
+    USplane.X = scifievent->scifitracks()[jUS]->scifitrackpoints()[kUS]->pos().x() + _sys["alXUS"];
+    USplane.Y = scifievent->scifitracks()[jUS]->scifitrackpoints()[kUS]->pos().y() + _sys["alYUS"];
+    USplane.Z = scifievent->scifitracks()[jUS]->scifitrackpoints()[kUS]->pos().z();
+    USplane.dXdz = scifievent->scifitracks()[jUS]->scifitrackpoints()[kUS]->gradient().x() +
+      tan(_sys["thXUS"] * atan(1.)/45.0);
+    USplane.dYdz = scifievent->scifitracks()[jUS]->scifitrackpoints()[kUS]->gradient().y() +
+      tan(_sys["thYUS"] * atan(1.)/45.0);
+    USplane.pz   = scifievent->scifitracks()[jUS]->scifitrackpoints()[kUS]->mom().z();
+    USplane.px   = scifievent->scifitracks()[jUS]->scifitrackpoints()[kUS]->mom().x() +
+      tan(_sys["thXUS"] * atan(1.)/45.0) * USplane.pz;
+    USplane.py   = scifievent->scifitracks()[jUS]->scifitrackpoints()[kUS]->mom().y() +
+      tan(_sys["thXUS"] * atan(1.)/45.0) * USplane.pz;
+    Vars USabsoproj = PropagateVarsMu(USplane, _sys["abspos"]);
+    Vars USabsfront = PropagateVarsMu(USplane, 16729.03);
+    
+    //Path length for muon between absorber and TOF2
+    //vpath_length.clear();
+    Vars DSplane;
+    DSplane.X = scifievent->scifitracks()[jDS]->scifitrackpoints()[kDS]->pos().x() + _sys["alXDS"];
+    DSplane.Y = scifievent->scifitracks()[jDS]->scifitrackpoints()[kDS]->pos().y() + _sys["alYDS"];
+    DSplane.Z = scifievent->scifitracks()[jDS]->scifitrackpoints()[kDS]->pos().z();
+    DSplane.dXdz = scifievent->scifitracks()[jDS]->scifitrackpoints()[kDS]->gradient().x() +
+      tan(_sys["thXDS"] * atan(1.)/45.0);
+    DSplane.dYdz = scifievent->scifitracks()[jDS]->scifitrackpoints()[kDS]->gradient().y() +
+      tan(_sys["thYDS"] * atan(1.)/45.0);
+    DSplane.pz   = scifievent->scifitracks()[jDS]->scifitrackpoints()[kDS]->mom().z();
+    DSplane.px   = scifievent->scifitracks()[jDS]->scifitrackpoints()[kDS]->mom().x() +
+      tan(_sys["thXDS"] * atan(1.)/45.0) * DSplane.pz;
+    DSplane.py   = scifievent->scifitracks()[jDS]->scifitrackpoints()[kDS]->mom().y() +
+      tan(_sys["thXDS"] * atan(1.)/45.0) * DSplane.pz;
+    Vars DSabsoproj = PropagateVarsMu(DSplane, _sys["abspos"]);
+    Vars DSabsback = PropagateVarsMu(DSplane, 17179.33);
+   
+                                x_up = USabsfront.X;
+                                y_up = USabsfront.Y;
+                                z_up = 16779.18;
+    rad_up = sqrt(pow(USabsfront.X,2)+pow(USabsfront.Y,2));
+    while (rad_up >= curvey && i < 50) {
+                      curvey = (poly[0] * pow(i,5)) + (poly[1] * pow(i,4)) + (poly[2] * pow(i,3)) + (poly[3] * pow(i,2)) + (poly[4] * i);
+                      x_up_it = USabsfront.X + (USabsfront.dXdz * (i));
+                      y_up_it = USabsfront.Y + (USabsfront.dYdz * (i));
+                      rad_up = sqrt(pow(x_up_it,2) + pow(y_up_it,2));
+		      if (rad_up < curvey) {
+                                x_up = x_up_it;
+                                y_up = y_up_it;
+                                z_up = i+16779.18;
+                      }
+                      i++;
+              }
+             
+                                x_down = DSabsback.X;
+                                y_down = DSabsback.Y;
+                                z_down = 17129.18;
+              i = 0;
+	      rad_down = sqrt(pow(DSabsback.X,2)+pow(DSabsback.Y,2));
+              while (rad_down >= curvey_down && i < 50) {
+                      curvey_down = sqrt(pow(-(poly[0] * pow(i,5)) - (poly[1] * pow(i,4)) - (poly[2] * pow(i,3)) - (poly[3] * pow(i,2)) - (poly[4] * i),2));
+                      x_down_it = DSabsback.X + (DSabsback.dXdz * (-i));
+                      y_down_it = DSabsback.Y + (DSabsback.dYdz * (-i));
+                      rad_down = sqrt(pow(x_down_it,2) + pow(y_down_it,2));
+                      if (rad_down < curvey_down) {
+                                x_down = x_down_it;
+                                y_down = y_down_it;
+                                z_down = 17129.18-i;
+                      }
+                      i++;
+              }
+
+                float dist_absorb = sqrt(pow(x_down-x_up,2)+pow(y_down-y_up,2)+pow(z_down-z_up,2)); 
+		/*
+    std::cout << "x_down " << x_down << std::endl;
+    std::cout << "x_up " << x_up << std::endl;
+    std::cout << "y_down " << y_down << std::endl;
+    std::cout << "y_up " << y_up << std::endl;
+    std::cout << "z_down " << z_down << std::endl;
+    std::cout << "z_up " << z_up << std::endl;
+                std::cout << "dist_absorb " << dist_absorb << std::endl;
+		*/
+    pathlengthabs->Fill(dist_absorb);
+    }
 }
 
 std::vector<double> MCSAnalysis::CalculatePathLength(double pz){
@@ -1035,21 +1222,157 @@ std::vector<double> MCSAnalysis::rCalculatePathLength(double pz){
 
 }
 
-double MCSAnalysis::CorMomFromTOF(double pz){
+double MCSAnalysis::CorMomFromTOF(double pz, double mat, double diff){
 
+   double t_BB = TimeofFlight()*0.299792458;
+   double dt0 = (_sys["TOF1_z"] - _sys["TOF0_z"]) / 0.299792458 / 1000.;
+   //double pzBB = 105.65*(7.64)/sqrt(pow(t_BB,2)-pow((7.64),2));
+   double pzBB = 105.65/sqrt(pow(t_BB,2)/pow(dt0,2)-1);
+   double Eini = sqrt(pzBB*pzBB + 105*105);
+
+   double Iair = 85.7e-6;
+   double Iscin = 64.7e-6;
+   double IAl = 166e-6;
+   double IHe = 41.6e-6;
+   double ILH2 = 21.8e-6;
+   double ILiH = 36.5e-6;
+   double ICu = 322e-6;
+   double IW = 727e-6;
+
+   double zair = 897.16;
+   double zscin = 5.09;
+   double zAl = 16e-4;
+   double zHe = 11.3;
+   double zLH2 = 17.5;
+   double zLiH = 3.25;
+   double zCu = 0.891;
+   double zW = 0.84;
+   
+   double Zair = 0.49919;
+   double Zscin = 0.54141;
+   double ZAl = 13;
+   double ZHe = 2;
+   double ZLH2 = 1;
+   double ZLiH = 0.50321;
+   double ZCu = 29;
+   double ZW = 74;
+   
+   double Aair = 1;
+   double Ascin = 1;
+   double AAl = 26.9815385;
+   double AHe = 4.002602;
+   double ALH2 = 1.008;
+   double ALiH = 1;
+   double ACu = 64;
+   double AW = 184;
+
+   double Rair = 1.205e-3;
+   double Rscin = 1.032;
+   double RAl = 2.699;
+   double RHe = 1.663e-4;
+   double RLH2 = 0.0708;
+   double RLiH = 0.82;
+   double RCu = 8.96;
+   double RW = 19.3;
+   
+   double hwair = 0.71e-6;
+   double hwscin = 21.54e-6;
+   double hwAl = 32.86e-6;
+   double hwHe = 0.26e-6;
+   double hwLH2 = 7.64e-6;
+   double hwLiH = 18.51e-6;
+   double hwCu = 58.27e-6;
+   double hwW = 80.32e-6;
+   
+   double mostprobBBair = MostProbBB(pzBB,Iair,Zair,Aair,hwair,Rair,zair);
+   double mostprobBBscin = MostProbBB(pzBB,Iscin,Zscin,Ascin,hwscin,Rscin,zscin);
+   double mostprobBBAl = MostProbBB(pzBB,IAl,ZAl,AAl,hwAl,RAl,zAl);
+   double mostprobBBHe = MostProbBB(pzBB,IHe,ZHe,AHe,hwHe,RHe,zHe);
+   double mostprobBBLH2 = MostProbBB(pzBB,ILH2,ZLH2,ALH2,hwLH2,RLH2,zLH2);
+   double mostprobBBLiH = MostProbBB(pzBB,ILiH,ZLiH,ALiH,hwLiH,RLiH,zLiH);
+   double mostprobBBCu = MostProbBB(pzBB,ICu,ZCu,ACu,hwCu,RCu,zCu);
+   double mostprobBBW = MostProbBB(pzBB,IW,ZW,AW,hwW,RW,zW);
+   
+   /*
+   std::cout << "mostprobBBair " << mostprobBBair << std::endl;
+   std::cout << "mostprobBBscin " << mostprobBBscin << std::endl;
+   std::cout << "mostprobBBAl " << mostprobBBAl << std::endl;
+   std::cout << "mostprobBBHe " << mostprobBBHe << std::endl;
+   std::cout << "mostprobBBLH2 " << mostprobBBLH2 << std::endl;
+   std::cout << "mostprobBBLiH " << mostprobBBLiH << std::endl;
+   std::cout << "mostprobBBCu " << mostprobBBCu << std::endl;
+   std::cout << "mostprobBBW " << mostprobBBW << std::endl;
+   */
+
+   double BBair = BetheBloch(pzBB,Iair,Zair,Aair,hwair);
+   double BBscin = BetheBloch(pzBB,Iscin,Zscin,Ascin,hwscin);
+   double BBAl = BetheBloch(pzBB,IAl,ZAl,AAl,hwAl);
+   double BBHe = BetheBloch(pzBB,IHe,ZHe,AHe,hwHe);
+   double BBLH2 = BetheBloch(pzBB,ILH2,ZLH2,ALH2,hwLH2);
+   /*
+   std::cout << "BBair " << BBair << std::endl;
+   std::cout << "BBscin " << BBscin << std::endl;
+   std::cout << "BBAl " << BBAl << std::endl;
+   std::cout << "BBHe " << BBHe << std::endl;
+   std::cout << "BBLH2 " << BBLH2 << std::endl;
+   */
+
+   double ELair = BBair*zair*Rair;
+   double ELscin = BBscin*zscin*Rscin;
+   double ELAl = BBAl*zAl*RAl;
+   double ELHe = BBHe*zHe*RHe;
+   double ELLH2 = BBLH2*zLH2*RLH2;
+   /*
+   std::cout << "ELair " << ELair << std::endl;
+   std::cout << "ELscin " << ELscin << std::endl;
+   std::cout << "ELAl " << ELAl << std::endl;
+   std::cout << "ELHe " << ELHe << std::endl;
+   std::cout << "ELLH2 " << ELLH2 << std::endl;
+   */
+  
+   //std::cout << diff << std::endl;
+   double pcor;
+   if (material=="LH2" and mat==0) {
+	   double totEL = mostprobBBair+mostprobBBscin+mostprobBBAl+mostprobBBHe+mostprobBBLH2;
+	   if (diff==1) totEL += mostprobBBCu + mostprobBBW;
+	   double Efin = Eini - totEL;
+	   pcor = sqrt(pow(Efin,2)-pow(105,2));
+           cor_mom->Fill(pcor);
+   }
+   if (material=="LiH" && mat==0) {
+	   double totEL = mostprobBBair+mostprobBBscin+mostprobBBAl+mostprobBBHe+mostprobBBLiH;
+	   //if (diff==1) totEL += mostprobBBCu + mostprobBBW;
+	   double Efin = Eini - totEL;
+	   pcor = sqrt(pow(Efin,2)-pow(105,2));
+           cor_mom->Fill(pcor);
+   }
+   if (mat==1) {
+	   double totEL = mostprobBBair+mostprobBBscin+mostprobBBAl+mostprobBBHe;
+	   //if (diff==1) totEL += mostprobBBCu + mostprobBBW;
+	   double Efin = Eini - totEL;
+	   pcor = sqrt(pow(Efin,2)-pow(105,2));
+   }
+
+   //std::cout << "pzBB " << pzBB << std::endl;
+   //std::cout << "pcor " << pcor << std::endl;
+
+
+   
    // Initialise and collect initial TOF and pz
+   /*
    double t_initial = TimeofFlight();
    double pz_cor = 0;
-
-   if (t_initial != 100) {
+ 
+   
+   //if (t_initial != 100) {
    t_initial = t_initial*0.299792458;
-   /*
-   std::vector<double> path_length = CalculatePathLength(pz);
-   double s1 = path_length.at(0)/1000;
-   if (path_length.size() == 2) {
-   double s2 = path_length.at(1)/1000;
-   }
-   */
+   //
+   //std::vector<double> path_length = CalculatePathLength(pz);
+   //double s1 = path_length.at(0)/1000;
+   //if (path_length.size() == 2) {
+   //double s2 = path_length.at(1)/1000;
+   //}
+   //
 
    std::vector<double> rpath_length = rCalculatePathLength(pz);
    double deltas = rpath_length.at(0)/1000;
@@ -1069,14 +1392,10 @@ double MCSAnalysis::CorMomFromTOF(double pz){
    double term2 = -(dEdx*c*t_initial*(s_1+s_2))/((12.929-5.287)*105);
    double term3 = -1;
    double term4 = pow(c*t_initial/(12.929-5.287),2)-1;
-
-   /*
    std::cout << "term1 " << term1 << std::endl;
    std::cout << "term2 " << term2 << std::endl;
    std::cout << "term3 " << term3 << std::endl;
    std::cout << "term4 " << term4 << std::endl;
-   */
-
    double x = 105/pz01;
    My2Function1D myf4;
    myf4.a = term1;
@@ -1091,8 +1410,9 @@ double MCSAnalysis::CorMomFromTOF(double pz){
    }
    double p01shortPaul6thfor = 105.5/rfn4.Root();
    
-   pz_cor = p01shortPaul6thfor;
-
+   double pz_an = p01shortPaul6thfor;
+   */
+/*
    // Paul 6th order TOF12 
   
    double pz12 = 0;
@@ -1110,12 +1430,10 @@ double MCSAnalysis::CorMomFromTOF(double pz){
    term3 = -1;
    term4 = pow(c*t_12/(8.21),2)-1;
 
-   /*
    std::cout << "term1 " << term1 << std::endl;
    std::cout << "term2 " << term2 << std::endl;
    std::cout << "term3 " << term3 << std::endl;
    std::cout << "term4 " << term4 << std::endl;
-   */
 
    x = 105/pz12;
    My2Function1D myf2;
@@ -1135,7 +1453,7 @@ double MCSAnalysis::CorMomFromTOF(double pz){
   
    pz_cor = p12Paul6thfor;
    }
-   
+   */
    double MCTruth_pz_mid = 0;
    double MCTruth_pz_up = 0;
    double MCTruth_pz_down = 0;
@@ -1170,24 +1488,34 @@ double MCSAnalysis::CorMomFromTOF(double pz){
    if (MCTruth_pz_up != 0 && MCTruth_pz_down != 0){
    double true_delta = MCTruth_pz_up - MCTruth_pz_down;	   
    double MCTruth_pz = (MCTruth_pz_up+MCTruth_pz_down)/2;
-   double res01 = pz01 - MCTruth_pz_mid;
-   double res12 = pz12 - MCTruth_pz_mid;
-   double res12p6 = p12Paul6thfor - MCTruth_pz_mid;
-   double res01short = p01shortPaul6thfor - MCTruth_pz_mid;
+   double res01 = pzBB - MCTruth_pz_mid;
+   //double res12 = pz12 - MCTruth_pz_mid;
+   //double res12p6 = p12Paul6thfor - MCTruth_pz_mid;
+   double res01short = pcor - MCTruth_pz_mid;
    residual01->Fill(res01);
-   residual12->Fill(res12);
-   residual12p6->Fill(res12p6);
+   //residual12->Fill(res12);
+   //residual12p6->Fill(res12p6);
    residual01short->Fill(res01short);
 
-   TOFcom->Fill(pz,pz12);
-   TOF01vsMCTruth->Fill(pz,MCTruth_pz_mid);
-   TOF12vsMCTruth->Fill(pz12,MCTruth_pz_mid);
-   TOF12Paul6thforvsMCTruth->Fill(p12Paul6thfor,MCTruth_pz_mid);
-   TOF01shortPaul6thforvsMCTruth->Fill(p01shortPaul6thfor,MCTruth_pz_mid);
-   	}
+   //TOFcom->Fill(pz_an,pcor);
+   TOF01vsMCTruth->Fill(pzBB,MCTruth_pz_mid);
+   //TOF12vsMCTruth->Fill(pz12,MCTruth_pz_mid);
+   //TOF12Paul6thforvsMCTruth->Fill(p12Paul6thfor,MCTruth_pz_mid);
    
+   TOF01shortPaul6thforvsMCTruth->Fill(pcor,MCTruth_pz_mid);
+   //std::cout << "MCTruth_pz_mid " << MCTruth_pz_mid << std::endl;
+   	}
+
+   //}
+   double t_ds =TimeofFlight12();
+   if (t_ds != 100) {
+   t_ds = t_ds*0.299792458;
+   pcor = 105.65*(8.209)/sqrt(pow(t_ds,2)-pow((8.209),2));
    }
-   return pz_cor;
+
+   //std::cout << "pcor 12 " << pcor << std::endl;
+   PathLengthInLH2(pcor);
+   return pcor;
 }
 
 double MCSAnalysis::TimeofFlight(){
@@ -1220,14 +1548,14 @@ double MCSAnalysis::TimeofFlight12(){
   return dt;
 }
 
-double MCSAnalysis::BetheBloch(double pz, double Imat){
+double MCSAnalysis::BetheBloch(double pz, double Imat, double Z, double A, double hw){
 
    double beta = pow(pz,2)/(pow(105.65,2)+pow(pz,2));
    double gamma = 1/sqrt(1-pow(beta,2));
    double W = 2*0.511*pow(beta,2)*pow(gamma,2)/(1+2*gamma*0.511/105.65+pow(0.511/105.65,2));
    double I = Imat;
-   double density = log(18.51e-6/I)+log(beta*gamma)-1/2;
-   double dEdxpre = 0.307075*2/(pow(beta,2)*7.94894);   
+   double density = log(hw/I)+log(beta*gamma)-1/2;
+   double dEdxpre = 0.307075*Z/(pow(beta,2)*A);   
    double dEdxterm1 = 0.5*log(2*0.511*pow(beta,2)*pow(gamma,2)*W/pow(I,2)) - pow(beta,2) - density;
    double dEdx = dEdxpre * dEdxterm1;
    /*
@@ -1238,9 +1566,20 @@ double MCSAnalysis::BetheBloch(double pz, double Imat){
    std::cout << "dEdxpre " << dEdxpre << std::endl;
    std::cout << "dEdxterm1 " << dEdxterm1 << std::endl;
    std::cout << "dEdx " << dEdx << std::endl;
-*/
-
+   */
    return dEdx;
+}
+
+double MCSAnalysis::MostProbBB(double pz, double Imat, double Z, double A, double hw, double R, double z){
+
+   double beta = pow(pz,2)/(pow(105.65,2)+pow(pz,2));
+   double gamma = 1/sqrt(1-pow(beta,2));
+   double I = Imat;
+   double density = log(hw/I)+log(beta*gamma)-1/2;
+   double E = 0.307075*Z*R*z/(2*pow(beta,2)*A);   
+   double mostprobBB = E*(log(2*0.511*pow(beta,2)*pow(gamma,2)/I)+log(E/I)+0.2-pow(beta,2)-density);
+
+   return mostprobBB;
 }
 
 TH1D* MCSAnalysis::trkreffix(TH1D* h1){
@@ -1701,7 +2040,46 @@ void MCSAnalysis::DoDeconvolution(std::string model, int n_sel=1){
 	     "Difference of US and DS projections at absorber;#Delta x_{DS-US} (mm); #Delta y_{DS-US}",
 	     180, -400, 400, 180, -400, 400);
   
-  
+  //1D Histogram Settings
+  TH1D *defineHist2(const char* name, const char* title, Int_t nbinsx, Double_t xlow, Double_t xup);
+  TH1D *Histo[180];
+  TH1D *Histoy[180];
+  TH1D *Histodotw[180];
+  TH1D *Histodotv[180];
+  TH1D *Histoyd[180];
+  TH1D *Histowd[180];
+  TH1D *Histowx[180];
+  TH1D *Histowy[180];
+
+  for (int l=0;l<180;l++){
+      std::string  tmpname = "thetaX_measdata_";
+      tmpname += l;
+      Histo[l] = defineHist2(tmpname.c_str(),"Change in Projected Angle (X);#Delta#theta_{X}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+      tmpname = "thetaY_measdata_";
+      tmpname += l;
+      Histoy[l] = defineHist2(tmpname.c_str(),"Change in Projected Angle (X);#Delta#theta_{X}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+      tmpname = "dotw_";
+      tmpname += l;
+      Histodotw[l] = defineHist2(tmpname.c_str(),tmpname.c_str(),200, -1, 1);
+      tmpname = "dotv_";
+      tmpname += l;
+      Histodotv[l] = defineHist2(tmpname.c_str(),tmpname.c_str(),200, -1, 1);
+      tmpname = "yd_";
+      tmpname += l;
+      Histoyd[l] = defineHist2(tmpname.c_str(),tmpname.c_str(),100, 1, 3);
+      tmpname = "wd_";
+      tmpname += l;
+      Histowd[l] = defineHist2(tmpname.c_str(),tmpname.c_str(),100, 1, 3);
+      tmpname = "wx_";
+      tmpname += l;
+      Histowx[l] = defineHist2(tmpname.c_str(),tmpname.c_str(),100, -2, 2);
+      tmpname = "wy_";
+      tmpname += l;
+      Histowy[l] = defineHist2(tmpname.c_str(),tmpname.c_str(),100, -2, 2);
+ 
+  }
+
+
   const Int_t NBINS = 19;
   Double_t scat_bin_array[NBINS + 1] = {-0.1151,-0.0938,-0.0754,-0.0597,-0.0463,-0.0347,-0.0248,-0.0162,-0.00895,-0.00269,0.00269,0.00895,0.0162,0.0248,0.0347,0.0463,0.0597,0.0754,0.0938,0.1151};
   TH1D* scattering_proj_x = new TH1D("scattering_proj_x_DC","Change in Projected Angle (X);#Delta#theta_{X}; Events per radian", 
@@ -1739,7 +2117,28 @@ void MCSAnalysis::DoDeconvolution(std::string model, int n_sel=1){
     scattering_proj_x->Fill(thetaX);
     scattering_proj_y->Fill(thetaY);
     // k++;
+    for (int l=0;l<180;l++){
+     if (_DSset.E(i).dXdz<0.2 && _DSset.E(i).dYdz<0.2) {
+	    std::vector<double> RotprojTheta = RotDefineProjectionAngles(_USset.E(i), _DSset.E(i),l);
+            double RotthetaY = RotprojTheta[1];
+            double RotthetaX = RotprojTheta[0];
+	    //std::cout << "RotprojTheta[1] " << RotprojTheta[1] << std::endl;
+	    Histo[l]->Fill(RotthetaX);
+            Histoy[l]->Fill(RotthetaY);
+            if (RotprojTheta[3]>0.2) Histodotw[l]->Fill(RotprojTheta[3]); 
+            if (RotprojTheta[3]<-0.2) Histodotw[l]->Fill(RotprojTheta[3]); 
+            if (RotprojTheta[4]>0.2) Histodotv[l]->Fill(RotprojTheta[4]); 
+            if (RotprojTheta[4]<-0.2) Histodotv[l]->Fill(RotprojTheta[4]); 
+            Histoyd[l]->Fill(RotprojTheta[5]); 
+            Histowd[l]->Fill(RotprojTheta[6]); 
+            Histowx[l]->Fill(RotprojTheta[8]); 
+            Histowy[l]->Fill(RotprojTheta[9]); 
+            //Histov_x[l]->Fill(RotprojTheta[8[0]]); 
+            //Histov_y[l]->Fill(RotprojTheta[8[0]]); 
+	    }
+    }
   }
+
   /*
     for ( int itr=1; itr<25; itr++){    
     RooUnfoldBayes unfold_thetaX(isfirst==1 ? &tresp_thetaX : &resp_thetaX, thetaX_measdata, itr);
@@ -1905,8 +2304,45 @@ void MCSAnalysis::DoDeconvolution(std::string model, int n_sel=1){
   // if(j>0) tmpname += j;
   theta2Scatt_measured->SetName(tmpname.c_str());
   theta2Scatt_measured->SetTitle(";#theta^{2}_{Scatt}");
-  
+ 
+  TH2D* RotDefHis = new TH2D("RotDefHis","RMS with plane definition", 180, 0, 180, 100, 0.0194, 0.020);
+  TH2D* RotDefHisy = new TH2D("RotDefHisy","RMS with plane definition", 180, 0, 180, 100, 0.0194, 0.020);
+  TH2D* dotw = new TH2D("dotw","dotw", 180, 0, 180, 200, -1, 1);
+  TH2D* dotv = new TH2D("dotv","dotv", 180, 0, 180, 200, -1, 1);
+  TH2D* histoyd = new TH2D("histoyd","RMS with plane definition", 180, 0, 180, 100, 1, 3);
+  TH2D* histowd = new TH2D("histowd","RMS with plane definition", 180, 0, 180, 100, 1, 3);
+  TH2D* histowx = new TH2D("histowx","RMS with plane definition", 180, 0, 180, 100, -2, 2);
+  TH2D* histowy = new TH2D("histowy","RMS with plane definition", 180, 0, 180, 100, -2, 2);
+
   outfile->cd();
+  for (int l=0;l<180;l++){
+     //std::cout << "Histo[l]->GetRMS() " << Histo[l]->GetRMS() << std::endl;
+     //std::cout << "Histoy[l]->GetRMS() " << Histoy[l]->GetRMS() << std::endl;
+     RotDefHis->Fill(l,Histo[l]->GetRMS());
+     RotDefHisy->Fill(l,Histoy[l]->GetRMS());
+     dotw->Fill(l,Histodotw[l]->GetMean());
+     dotv->Fill(l,Histodotv[l]->GetMean());
+     histoyd->Fill(l,Histoyd[l]->GetMean());
+     histowd->Fill(l,Histowd[l]->GetMean());
+     //histowx->Fill(l,Histowx[l]->GetMean());
+     //histowy->Fill(l,Histowy[l]->GetMean());
+     //Histo[l]->Write();
+     //Histoy[l]->Write();
+     //Histowx[l]->Write();
+     //Histowy[l]->Write();
+     //Histoyd[l]->Write(); 
+     //Histowd[l]->Write(); 
+     //Histodotw[l]->Write(); 
+     //Histodotv[l]->Write(); 
+  }
+  histowx->Write();
+  histowy->Write();
+  histoyd->Write();
+  histowd->Write();
+  dotw->Write();
+  dotv->Write();
+  RotDefHis->Write();
+  RotDefHisy->Write();
   thetaXUS_thetaXDS->Write();
   thetaYUS_thetaYDS->Write();
   thetaX_measdata->Write();
@@ -1991,13 +2427,27 @@ void MCSAnalysis::DoDeconvolution(std::string model, int n_sel=1){
   thetaScatt_truth->Draw();
   c1->Print("thetaScatt_truth.pdf");
   c1->Clear();
+  RotDefHis->Draw();
+  RotDefHis->SetMarkerStyle(34);
+  RotDefHis->SetTickLength(0.02,"y");
+  RotDefHis->GetXaxis()->SetTitle("Angle around Z axis (#circ)");
+  RotDefHis->GetYaxis()->SetTitle("RMS of scattering distribution");
+  c1->SaveAs("RotDefHis.pdf");
+  c1->Clear();
+  RotDefHisy->Draw();
+  RotDefHisy->SetMarkerStyle(34);
+  RotDefHisy->SetTickLength(0.02,"y");
+  RotDefHisy->GetXaxis()->SetTitle("Angle around Z axis (#circ)");
+  RotDefHisy->GetYaxis()->SetTitle("RMS of scattering distribution");
+  c1->SaveAs("RotDefHisy.pdf");
+  c1->Clear();
   c1->SetLogy();
   scattering_proj_x->Draw();
   c1->Print("scattering_proj_x.pdf");
   c1->Clear();
   scattering_proj_y->Draw();
   c1->Print("scattering_proj_y.pdf");
-  c1->Clear();
+
   
   delete c1;
   delete thetaX_measdata;
@@ -2927,28 +3377,32 @@ void MCSAnalysis::make_acceptance_histograms(Collection USset, Collection DSset,
   tmpname  = suffix + "_posDXDY";
   TH2D* posDXDY = new TH2D(tmpname.c_str(), tmptitle.c_str(), 90, -0.125, 0.125, 90, -0.125, 0.125);
 
-  tmptitle = desc + ";|#vec{r}^{proj#to DS}_{US} - #vec{r}^{meas}_{DS}";
+  tmptitle = desc + ";|#vec{r}^{proj#to DS}_{US} - #vec{r}^{meas}_{DS} (mm)";
   tmpname  = suffix + "_appRef";
   TH1D* appRef = new TH1D(tmpname.c_str(), tmptitle.c_str(), 200, 0, 200);
-  tmptitle = desc + ";X_{US}^{proj#to DS} - X_{DS}^{meas};Y_{US}^{proj#to DS} - Y_{DS}^{meas}";
+  tmptitle = desc + ";X_{US}^{proj#to DS} - X_{DS}^{meas};Y_{US}^{proj#to DS} - Y_{DS}^{meas} (mm)";
   tmpname  = suffix + "_projRefDiff";
   TH2D* projRefDiff = new TH2D(tmpname.c_str(), tmptitle.c_str(), 200, -100, 100, 200, -100, 100);
 
-  double latchZ = 0.0;
+  double latchZ = 16952.5;
+  Vars USproj;
   Vars DSproj;
   for (int i=0; i<USset.N(); i++){
+	  /*
     if (DSset.E(i).Z != 0 && latchZ == 0.0){
       latchZ = DSset.E(i).Z;
     } 
     if (latchZ != 0.0 && fabs(DSset.E(i).Z - latchZ) < 5){
       DSproj = PropagateVarsMu(USset.E(i), DSset.E(i).Z);
-    } else if(latchZ != 0.0){
-      DSproj = PropagateVarsMu(USset.E(i), latchZ);
-    } else {
-      continue;
-    }
+      */
+    //} else if(latchZ != 0.0){
+      USproj = PropagateVarsMu(USset.E(i), latchZ);
+      DSproj = PropagateVarsMu(DSset.E(i), latchZ);
+    //} else {
+    //  continue;
+    //}
     
-    Vars predDiff = DSproj - DSset.E(i);
+    Vars predDiff = USproj - DSproj;
     double approach = sqrt(predDiff.X * predDiff.X + 
 			   predDiff.Y * predDiff.Y +
 			   predDiff.Z * predDiff.Z);
@@ -3040,6 +3494,14 @@ void MCSAnalysis::make_acceptance_histograms(Collection USset, Collection DSset,
   divres2DXDY->GetXaxis()->SetTitleSize(0.05);
   divres2DXDY->GetYaxis()->SetLabelSize(0.05);
   divres2DXDY->GetYaxis()->SetTitleSize(0.05);
+
+  TCanvas *c1 = new TCanvas();
+  appRef->Draw();
+  c1->SaveAs("appRef.pdf");
+  c1->Clear();
+  projRefDiff->Draw();
+  c1->SaveAs("projRefDiff.pdf");
+  delete c1;
 
   outfile->cd();
   posXY->Write();
@@ -3404,5 +3866,17 @@ Vars MCSAnalysis::PropagateVarsMu(Vars event, double z0){
   prop.TOF01 = event.TOF01;
 
   return prop;
+}
+
+TH1D *defineHist2(const char* fname, const char* ftitle, Int_t fnbinsx, Double_t fxlow, Double_t fxup)
+{
+  TH1D *fhis1D = new TH1D(fname, ftitle, fnbinsx, fxlow, fxup);
+  fhis1D->SetMinimum(0.001);
+  fhis1D->GetXaxis()->SetTitle(ftitle);
+  Double_t binning = ( (fhis1D->GetXaxis()->GetXmax()) - (fhis1D->GetXaxis()->GetXmin()) ) / (fhis1D->GetNbinsX());
+  fhis1D->GetYaxis()->SetTitle( Form("Events / (%.2f [Mev/c^{2}])", binning) );
+  fhis1D->GetYaxis()->SetTitleOffset(1.6);
+  fhis1D->GetYaxis()->SetLabelSize(0.035);
+  return fhis1D;
 }
 

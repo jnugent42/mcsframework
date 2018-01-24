@@ -223,7 +223,7 @@ int main(int argc, char* argv[]) {
     }
     std::string type  = argv[1];
     std::string type1 = argv[1];
-    for (int ifile = 2; ifile < argc; ifile++){
+    for (int ifile = 1; ifile < argc; ifile++){
       TFile* file = new TFile(argv[ifile]);
       if(file->IsZombie()) continue;
       TTree* Spill = (TTree*)file->Get("Spill");
