@@ -134,7 +134,7 @@ from ROOT import TRandom3
 
 def MoliereDist(datafile, outfile):
     ofile = TFile(outfile, "UPDATE")
-    sdir = '/afs/phas.gla.ac.uk/user/j/jnugent/workarea/Unfolding/Cobb_results/moliere/'
+    sdir = '/data/neutrino03/jnugent/Unfolding/Cobb_results/moliere/'
     fin = open(os.path.join(sdir, datafile),'r')
     i = 0
     data = []
@@ -205,8 +205,32 @@ def MoliereDist(datafile, outfile):
     ofile.Close()
     fin.close()
 
+def PickUpGEANTModel(datafile, outfile):
+   modfile = TFile(outfile, "UPDATE")
+   MCfile = TFile(datafile, "READ")
+   histx = MCFile.Get("theta_true_x_graph")
+   histy = MCFile.Get("theta_true_y_graph")
+   histscatt = MCFile.Get("theta_true_scatt_graph")
+   histx.SetName("thetaX_GEANT")
+   histy.SetName("thetaY_GEANT")
+   histscatt.SetName("thetaScatt_GEANT")
+   modfile.cd()
+   histx.Write()
+   histy.Write()
+   histscatt.Write()
+   modfile.Close()
+   MCfile.Close()
+
+   '''
+   modfile.cd();
+   gDirectory.Delete("thetaScat_Moliere;1")
+   gDirectory.Delete("thetaX_Moliere;1")
+   gDirectory.Delete("thetaY_Moliere;1")
+   file.Close();
+   '''
+
 if __name__ == '__main__':
     #dataModelComps(sys.argv[1],sys.argv[2],sys.argv[3])
-    MoliereDist('LiH-6p5-172-Mol-raw.dat','LiH-6p5-172-Mol-raw.root')
-    MoliereDist('LiH-6p5-200-Mol-raw.dat','LiH-6p5-200-Mol-raw.root')
-    MoliereDist('LiH-6p5-240-Mol-raw.dat','LiH-6p5-240-Mol-raw.root')
+    MoliereDist('LiH-6p5-172-Mol-fine.dat','LiH-6p5-172-Mol-fine.root')
+    MoliereDist('LiH-6p5-200-Mol-fine.dat','LiH-6p5-200-Mol-fine.root')
+    MoliereDist('LiH-6p5-240-Mol-fine.dat','LiH-6p5-240-Mol-fine.root')

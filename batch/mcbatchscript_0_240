@@ -1,0 +1,9 @@
+universe       = vanilla
+executable     = mcsub_script_0_240.sh
+output         = /data/neutrino03/jnugent/Unfolding/batch/MClih2400.out
+error          = /data/neutrino03/jnugent/Unfolding/batch/MClih2400.err             
+log            = /data/neutrino03/jnugent/Unfolding/batch/MClih2400.log
+requirements   = OpSysAndVer == "CentOS7"
+
+queue
+

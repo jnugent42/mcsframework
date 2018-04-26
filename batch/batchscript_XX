@@ -1,0 +1,9 @@
+universe       = vanilla
+executable     = sub_script_XX.sh
+output         = /data/neutrino03/jnugent/Unfolding/batch/lihXX.out
+error          = /data/neutrino03/jnugent/Unfolding/batch/lihXX.err             
+log            = /data/neutrino03/jnugent/Unfolding/batch/lihXX.log
+requirements   = OpSysAndVer == "CentOS7"
+
+queue
+

@@ -1,0 +1,9 @@
+universe       = vanilla
+executable     = mcsub_script_accept_240.sh
+output         = /data/neutrino03/jnugent/Unfolding/batch/MClih240accept.out
+error          = /data/neutrino03/jnugent/Unfolding/batch/MClih240accept.err             
+log            = /data/neutrino03/jnugent/Unfolding/batch/MClih240accept.log
+requirements   = OpSysAndVer == "CentOS7"
+
+queue
+

@@ -234,6 +234,7 @@ int main(int argc, char* argv[]) {
     }
     
     MAUS::Data *data = new MAUS::Data();
+    double tof1pos = 12929.2608098;
     double tof2pos = 20500;
     // Make histograms; to fill later on
     TH1D tof2_digits_0_hist("tof2 digits_0",
@@ -261,15 +262,15 @@ int main(int argc, char* argv[]) {
 	    ";Position along Z axis (m); Change in Momentum (MeV/c)",	
 	    240,0.5,24.5,500,0,200);
     // Create a new file to store the output
-    std::string fname = "reduced_tree_";
+    std::string fname = "reduced_tree";
     //int found = type.find_last_of("/");
     //fname += type.substr(found-9,9);
     fname += ".root";
     TFile* outfile = new TFile(fname.c_str(),"RECREATE");
     
     std::cout<<"Make tree; to fill later on"<<std::endl;
-    TTree* tree = new TTree("reduced_tree","Reduced MAUS Spill");
-    TTree* mctree = new TTree("reduced_MCtree","Reduced MAUS MCSpill");
+    TTree* tree = new TTree("recon_reduced_tree","Reduced MAUS Spill");
+    TTree* mctree = new TTree("Truth_reduced_tree","Reduced MAUS MCSpill");
     int RunNumber, SpillNumber;
     MAUS::TOFEvent* tofevent = new MAUS::TOFEvent();
     MAUS::SciFiEvent* scifievent = new MAUS::SciFiEvent();
@@ -277,8 +278,8 @@ int main(int argc, char* argv[]) {
     MAUS::KLEvent* klevent = new MAUS::KLEvent();
     MAUS::EMREvent* emrevent = new MAUS::EMREvent();
     MAUS::MCEvent* mcevent = new MAUS::MCEvent();
-    MAUS::Primary* primary = new MAUS::Primary();
-    MAUS::SpecialVirtualHitArray* sphitarray = new MAUS::SpecialVirtualHitArray();
+    //MAUS::Primary* primary = new MAUS::Primary();
+    //MAUS::SpecialVirtualHitArray* sphitarray = new MAUS::SpecialVirtualHitArray();
     // MAUS::TOFHitArray* tofhitarray = new MAUS::TOFHitArray();
     tree->Branch("RunNumber", &RunNumber, "RunNumber/I");
     tree->Branch("SpillNumber", &SpillNumber, "SpillNumber/I");
@@ -287,14 +288,10 @@ int main(int argc, char* argv[]) {
     tree->Branch("CkovBranch", "MAUS::CkovEvent",&ckovevent, 64000, 10);
     tree->Branch("KLBranch", "MAUS::KLEvent", &klevent, 64000, 10);
     tree->Branch("EMRBranch", "MAUS::EMREvent", &emrevent, 64000, 10);
+    tree->Branch("MCEvent", "MAUS::MCEvent", &mcevent, 64000, 10); 
     // mctree->Branch("Primary", "MAUS::Primary", &primary, 6400, 10);
     // mctree->Branch("SpecialVirtuals", "MAUS::SpecialVirtualHitArray", &sphitarray, 64000, 10); 
     mctree->Branch("MCEvent", "MAUS::MCEvent", &mcevent, 64000, 10); 
-    mctree->Branch("TOFBranch", "MAUS::TOFEvent", &tofevent, 64000, 10);
-    mctree->Branch("SciFiBranch", "MAUS::SciFiEvent", &scifievent, 64000, 10);
-    mctree->Branch("CkovBranch", "MAUS::CkovEvent",&ckovevent, 64000, 10);
-    mctree->Branch("KLBranch", "MAUS::KLEvent", &klevent, 64000, 10);
-    mctree->Branch("EMRBranch", "MAUS::EMREvent", &emrevent, 64000, 10);
     // Use MAUS internal routines to generate a ROOT streamer. We are here
     // accessing the Spill tree which contains DAQ output data
     // Other trees are e.g. JobHeader (contains Job information), RunHeader, etc
@@ -320,7 +317,7 @@ int main(int argc, char* argv[]) {
         if (spill != NULL && spill->GetDaqEventType() == "physics_event") {
 	  // Each recon event corresponds to a particle trigger; data in the
 	  // recon event should all have the same trigger
-	  if(type.find("data")!=std::string::npos){
+	  if(type.find("recon")!=std::string::npos){
 	    RunNumber = spill->GetRunNumber();
 	    SpillNumber = spill->GetSpillNumber();
 	  }
@@ -369,11 +366,13 @@ int main(int argc, char* argv[]) {
 	      ckovevent  = (*spill->GetReconEvents())[ii]->GetCkovEvent();
 	      klevent    = (*spill->GetReconEvents())[ii]->GetKLEvent();
 	      emrevent   = (*spill->GetReconEvents())[ii]->GetEMREvent();
-	      //mcevent = (*spill->GetMCEvents())[ii];
-	      mctree->Fill();
+	      if(type.find("sim")!=std::string::npos){
+                 mcevent = (*spill->GetMCEvents())[ii];
+              }
+	      tree->Fill();
 	     
 	      //tree->Fill();
-	      if(type1.find("data")!=std::string::npos) tree->Fill();
+	      //if(type1.find("data")!=std::string::npos) tree->Fill();
 	      //if(type1.find("sim")!=std::string::npos) mctree->Fill();
 	    }
 
@@ -395,8 +394,13 @@ int main(int argc, char* argv[]) {
 	  
 	  if(type.find("sim")!=std::string::npos){
 	    for (size_t ij=0; ij<spill->GetMCEvents()->size(); ij++){
-	     //mcevent = (*spill->GetMCEvents())[ij];
-	     //mctree->Fill();
+               MAUS::TOFHitArray* tofhit = (*spill->GetMCEvents())[ij]->GetTOFHits();
+               for (int i=0;i<tofhit->size();i++) {
+                  if (tofhit->at(i).GetPosition().Z() - 12929 < 20 and tofhit->at(i).GetPosition().Z() - 12929 > -20){        
+			  mcevent = (*spill->GetMCEvents())[ij];
+			  mctree->Fill();
+                  }
+              }
 	      // find particles that pass through TOF2 regardless of PID
 	      int nverthits = (*spill->GetMCEvents())[ij]->GetVirtualHits()->size();
 	      bool tof2trigger=false;
@@ -450,9 +454,10 @@ int main(int argc, char* argv[]) {
 		  tmp.TOF01 = pz;
 		  USrefSet.append_instance(tmp);
 		}
-		if(fabs(z - tof2pos) < 50.){
-		  if  (fabs(x) < 300. && fabs(y) < 300.) tof2trigger=true;	
+		if(fabs(z - tof1pos) < 50.){
+		  if  (fabs(x) < 300. && fabs(y) < 300.) {
 
+		  }
 		}
 	      }
 	    }
@@ -468,7 +473,7 @@ int main(int argc, char* argv[]) {
       }
     }
     outfile->cd();
-    if(type.find("data")!=std::string::npos){
+    if(type.find("recon")!=std::string::npos){
       tree->Write();
       tree->Print();
     }
@@ -479,6 +484,8 @@ int main(int argc, char* argv[]) {
       hdp.Write();
       hx.Write();
       hxy.Write();
+      tree->Write();
+      tree->Print();
       mctree->Write();
       mctree->Print();
       make_beam_histograms(muonSet, "Muons", "muon", outfile); 

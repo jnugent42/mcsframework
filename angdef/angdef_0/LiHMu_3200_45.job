@@ -1,0 +1,9 @@
+
+universe       = vanilla
+executable     = angdef_0/LiHMu_3200_45.sh
+output         = /data/neutrino03/jnugent/Unfolding/angdef/angdef_0/LiHMu_3200_45.out
+error          = /data/neutrino03/jnugent/Unfolding/angdef/angdef_0/LiHMu_3200_45.err             
+log            = test.log
+requirements   = OpSysAndVer == "CentOS7"
+
+queue

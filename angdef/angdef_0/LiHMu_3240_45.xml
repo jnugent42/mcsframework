@@ -1,0 +1,22 @@
+<?xml version="1.0" standalone="yes"?>
+<spec>
+  <file id="outfile" name="angdef_0/LiHMu_3240_45.root"/>
+  <file id="datafile" name="/data/neutrino06/jnugent/v3.1.2/allLiH/"/>
+  <file id="trainfile" name="/data/neutrino06/jnugent/v3.1.2/allZeroAbs/"/>
+  <file id="trkreffiname" name="/home/ppe/j/jnugent/workarea/tracker_efficiency/tracker_resolution_plots_27.4456328413.root"/>
+  <file id="trkreffiemptyname" name="/home/ppe/j/jnugent/workarea/emptyeffi/tracker_resolution_plots_27.4456328413.root"/>
+  <file id="modelfile" name="/data/neutrino03/jnugent/Unfolding/Cobb_results/LiH-6p5-240-hists.root"/>
+  <file id="material" name="LiH"/>
+  <file id="model3" name="Moliere"/>
+  <file id="model2" name="Cobb"/>
+  <file id="model1" name="GEANT"/>
+  <cuts name="TOF_ll" value="27.3975634301"/>
+  <cuts name="TOF_ul" value="27.5975634301"/>
+  <cuts name="fid_rad" value="140.0"/>
+  <cuts name="fid_grad" value="0.012"/>
+  <sys name="angdef" value="45"/>
+  <cuts name="mode" value="-1"/>
+  <sys name="resX" value="1"/>
+  <sys name="resY" value="1"/>
+  <sys name="niter" value="4"/>
+</spec>

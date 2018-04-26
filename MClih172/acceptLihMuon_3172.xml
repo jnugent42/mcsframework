@@ -1,0 +1,24 @@
+<?xml version="1.0" standalone="yes"?>
+<spec>
+  <file id="outfile" name="acceptLihMuon_03172.root"/>
+  <file id="outfilename" name="LihMuon_03172.root"/>
+  <file id="datafile" name="/data/neutrino/jnugent/LiHMC/coectedoutput/"/>
+  <file id="trainfile" name="/data/neutrino06/jnugent/LiHMC/coectedoutput/"/>
+  <file id="modelfile" name="/data/neutrino03/jnugent/Unfolding/Cobb_results/LiH-6p5-172-B-hists.root"/>
+  <file id="trkreffiname" name="/home/ppe/j/jnugent/workarea/tracker_efficiency/tracker_resolution_plots_29.1147513286.root"/>
+  <file id="trkreffiemptyname" name="/home/ppe/j/jnugent/workarea/emptyeffi/tracker_resolution_plots_29.1147513286.root"/>
+  <file id="material" name="LiH"/>
+  <file id="model3" name="Moliere"/>
+  <file id="model2" name="Cobb"/>
+  <file id="model1" name="GEANT"/>
+  <cuts name="TOF_ll" value="28.750290925"/>
+  <cuts name="TOF_ul" value="28.950290925"/>
+  <cuts name="fid_rad" value="140.0"/>
+  <cuts name="fid_grad" value="0.012"/>
+  <cuts name="mode" value="5"/>
+  <sys name="niter" value="4"/>
+  <histlimits name="NbinsXY" value="46"/>
+  <histlimits name="NbinsTh" value="46"/>
+  <histlimits name="minXY" value="-0.06"/>
+  <histlimits name="maxXY" value="0.06"/>
+</spec>

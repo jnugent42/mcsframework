@@ -1,0 +1,9 @@
+universe       = vanilla
+executable     = mcsub_script_nopion_172.sh
+output         = /data/neutrino03/jnugent/Unfolding/batch/MClih172nopion.out
+error          = /data/neutrino03/jnugent/Unfolding/batch/MClih172nopion.err             
+log            = /data/neutrino03/jnugent/Unfolding/batch/MClih172nopion.log
+requirements   = OpSysAndVer == "CentOS7"
+
+queue
+

@@ -12,6 +12,7 @@ struct specvals {
   std::string outfile;
   std::string outfilename;
   std::string dataname;
+  std::string emptydataname;
   std::string trainname;
   std::string modelname;
   std::string modelname2;
@@ -21,8 +22,10 @@ struct specvals {
   std::string model3;
   std::string material;
   std::string trkreffiname;
+  std::string trkreffiemptyname;
   std::map<std::string, double> sys;
   std::map<std::string, double> histlimits;
+  double angdef;
   double TOF_ll;
   double TOF_ul;
   double fid_grad;
@@ -66,6 +69,8 @@ static void print_element_names(xmlNode * a_node, specvals& spec)
 	  spec.geometryname = (char*)xmlGetProp(cur_node, nm);
 	} else if ( xmlStrEqual(xmlGetProp(cur_node, id), xmlCharStrdup("trkreffiname")) ) {
 	  spec.trkreffiname = (char*)xmlGetProp(cur_node, nm);
+	} else if ( xmlStrEqual(xmlGetProp(cur_node, id), xmlCharStrdup("trkreffiemptyname")) ) {
+	  spec.trkreffiemptyname = (char*)xmlGetProp(cur_node, nm);
 	}else {
 	  std::cout<<"File designation not recognized. Will ignore "
 		   << xmlGetProp(cur_node, id) 
@@ -74,7 +79,7 @@ static void print_element_names(xmlNode * a_node, specvals& spec)
       }
 
       if (xmlStrEqual(cur_node->name, xmlCharStrdup("cuts")) ) {
-	if ( xmlStrEqual(xmlGetProp(cur_node, nm), xmlCharStrdup("TOF_ll")) ){
+        if ( xmlStrEqual(xmlGetProp(cur_node, nm), xmlCharStrdup("TOF_ll")) ){
 	  spec.TOF_ll = std::atof((char*)xmlGetProp(cur_node, vl));
 	} else if ( xmlStrEqual(xmlGetProp(cur_node, nm), xmlCharStrdup("TOF_ul")) ){
 	  spec.TOF_ul = std::atof((char*)xmlGetProp(cur_node, vl));
@@ -91,7 +96,9 @@ static void print_element_names(xmlNode * a_node, specvals& spec)
 	}
       }
       if (xmlStrEqual(cur_node->name, xmlCharStrdup("sys")) ){
-	spec.sys[(char*)xmlGetProp(cur_node, nm)] = 
+	if ( xmlStrEqual(xmlGetProp(cur_node, nm), xmlCharStrdup("angdef")) ){
+	  spec.angdef = std::atof((char*)xmlGetProp(cur_node, vl));
+	} else spec.sys[(char*)xmlGetProp(cur_node, nm)] = 
 	  std::atof((char*)xmlGetProp(cur_node, vl));
       }
       if (xmlStrEqual(cur_node->name, xmlCharStrdup("histlimits")) ){
@@ -128,6 +135,8 @@ int main(int argc, char* argv[]) {
   spec.modelname2 = "";
   spec.geometryname = "";
   spec.trkreffiname = "";
+  spec.trkreffiemptyname = "";
+  spec.angdef = 0;
   spec.TOF_ll = 27.0;
   spec.TOF_ul = 42.0;
   spec.fid_grad = 0.01;
@@ -162,12 +171,13 @@ int main(int argc, char* argv[]) {
     spec.modelname = argv[7];
     spec.modelname2 = argv[7];
     spec.mode      = std::atoi(argv[8]);
+    spec.angdef    = std::atof(argv[9]);
   }
     
   if (spec.mode > 0){
-    mode_tree = "reduced_MCtree";
+    mode_tree = "recon_reduced_tree";
   } else {
-    mode_tree = "reduced_MCtree";
+    mode_tree = "recon_reduced_tree";
   }
   
   std::cout<<"Writing outfile to "<<spec.outfile<<std::endl; 
@@ -178,14 +188,16 @@ int main(int argc, char* argv[]) {
   std::cout<<"Reading models from "<<spec.modelname2<<std::endl; 
   std::cout<<"Use "<<spec.geometryname<<" for propagation\n";
   std::cout<<"\n";
+  std::cout<<"angdef " <<spec.angdef<<std::endl;
   std::cout<<"TOF selection between "
 	   <<spec.TOF_ll<<" and "<<spec.TOF_ul<<std::endl;
   std::cout<<"Fiducial selection contained by radius "
 	   <<spec.fid_rad<<" with scattering "<<spec.fid_grad<<std::endl;
   std::cout<<"\n";
 
-  MCSAnalysis anal("reduced_MCtree", mode_tree, spec.outfile, spec.histlimits);
+  MCSAnalysis anal("recon_reduced_tree", "Truth_reduced_tree", mode_tree, spec.outfile, spec.histlimits);
 
+  /*
   TFile* data = new TFile(spec.dataname.c_str());
   if(data->IsZombie()){
     std::cout<<"Data file is a zombie. Aborting."<<std::endl;
@@ -196,6 +208,8 @@ int main(int argc, char* argv[]) {
     std::cout<<"Training file is a zombie. Aborting."<<std::endl;
     return -1;
   }
+  */
+  anal.Setangdef(spec.angdef);
   anal.SetTOFLowerLimit(spec.TOF_ll);
   anal.SetTOFUpperLimit(spec.TOF_ul);
   anal.SetRadialLimit(spec.fid_rad);
@@ -212,12 +226,65 @@ int main(int argc, char* argv[]) {
   string TEN = spec.trkreffiname.c_str()+str+".root";
   */
   anal.SetTrkrEffiName(spec.trkreffiname.c_str());
+  anal.SetTrkrEffiEmptyName(spec.trkreffiemptyname.c_str());
   anal.SetParentGeometryFile(spec.geometryname.c_str());
   anal.SetFileName(spec.outfilename.c_str());
 
-  anal.GetMCTree()->Add(spec.trainname.c_str());
+  void* dir = gSystem->OpenDirectory(spec.trainname.c_str());
+  const char *ent;
+  TString fn = spec.trainname.c_str();
+  while (ent = gSystem->GetDirEntry(dir)) {
+      fn = fn.Append(ent);
+          if (fn.Contains("ZeroAbs")) {
+          if (fn.Contains(".root")) {
+	          anal.GetRefTree()->Add(fn);
+	  }
+      }
+      fn = spec.trainname.c_str();
+  }
+  gSystem->FreeDirectory(dir);
 
-  anal.GetTree()->Add(spec.dataname.c_str());
+  dir = gSystem->OpenDirectory(spec.dataname.c_str());
+  fn = spec.dataname.c_str();
+  while (ent = gSystem->GetDirEntry(dir)) {
+      fn = fn.Append(ent);
+          if (fn.Contains("LiH2") || fn.Contains("LiH1")) {
+          if (fn.Contains(".root")) {
+	          anal.GetTree()->Add(fn);
+	  }
+      }
+      fn = spec.dataname.c_str();
+  }
+  gSystem->FreeDirectory(dir);
+
+  dir = gSystem->OpenDirectory(spec.dataname.c_str());
+  fn = spec.dataname.c_str();
+  while (ent = gSystem->GetDirEntry(dir)) {
+      fn = fn.Append(ent);
+          if (fn.Contains("LiH2") || fn.Contains("LiH1")) {
+          if (fn.Contains(".root")) {
+
+	          anal.GetMCTree()->Add(fn);
+	  }
+      }
+      fn = spec.dataname.c_str();
+  }
+  gSystem->FreeDirectory(dir);
+  
+  dir = gSystem->OpenDirectory(spec.trainname.c_str());
+  fn = spec.trainname.c_str();
+  while (ent = gSystem->GetDirEntry(dir)) {
+      fn = fn.Append(ent);
+          if (fn.Contains("ZeroAbs")) {
+          if (fn.Contains(".root")) {
+	          anal.GetMCEmptyTree()->Add(fn);
+	  }
+      }
+      fn = spec.trainname.c_str();
+  }
+  gSystem->FreeDirectory(dir);
+  //anal.GetTree()->AddFileInfoList(anal.GetFileInfo()->CreateListMatching(spec.dataname.c_str()));
+  //anal.GetTree()->Add(spec.dataname.c_str());
   
   for(std::map<std::string, double>::iterator it=spec.sys.begin();
       it != spec.sys.end(); ++it){
