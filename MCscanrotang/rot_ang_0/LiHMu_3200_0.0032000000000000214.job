@@ -1,0 +1,9 @@
+
+universe       = vanilla
+executable     = rot_ang_0/LiHMu_3200_0.0032000000000000214.sh
+output         = /data/neutrino03/jnugent/Unfolding/MCscanrotang/rot_ang_0/LiHMu_3200_0.0032000000000000214.out
+error          = /data/neutrino03/jnugent/Unfolding/MCscanrotang/rot_ang_0/LiHMu_3200_0.0032000000000000214.err             
+log            = /data/neutrino03/jnugent/Unfolding/MCscanrotang/rot_ang_0/LiHMu_3200_0.0032000000000000214.log
+requirements   = OpSysAndVer == "CentOS7"
+
+queue

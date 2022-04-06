@@ -1,0 +1,9 @@
+
+universe       = vanilla
+executable     = LiHMu_3200_tof_lim29.0059285384_u29.2059285384.sh
+output         = /home/ppe/j/jnugent/workarea/Unfolding/TOFsys/LiHMu_3200_tof_lim29.0059285384_u29.2059285384.out
+error          = /home/ppe/j/jnugent/workarea/Unfolding/TOFsys/LiHMu_3200_tof_lim29.0059285384_u29.2059285384.err             
+log            = test.log
+requirements   = OpSysAndVer == "CentOS7"
+
+queue

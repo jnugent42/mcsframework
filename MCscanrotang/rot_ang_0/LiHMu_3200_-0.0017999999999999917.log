@@ -1,0 +1,3414 @@
+000 (60086.000.000) 07/31 10:18:20 Job submitted from host: <172.20.203.50:9618?addrs=172.20.203.50-9618+[--1]-9618&noUDP&sock=7405_cae4_4>
+...
+001 (60086.000.000) 07/31 10:18:41 Job executing on host: <10.194.1.8:9618?addrs=10.194.1.8-9618+[--1]-9618&noUDP&sock=2118_59ad_3>
+...
+006 (60086.000.000) 07/31 10:18:49 Image size of job updated: 52344
+	52  -  MemoryUsage of job (MB)
+	52344  -  ResidentSetSize of job (KB)
+...
+006 (60086.000.000) 07/31 10:23:49 Image size of job updated: 399232
+	390  -  MemoryUsage of job (MB)
+	399232  -  ResidentSetSize of job (KB)
+...
+006 (60086.000.000) 07/31 10:29:19 Image size of job updated: 577668
+	565  -  MemoryUsage of job (MB)
+	577668  -  ResidentSetSize of job (KB)
+...
+004 (60086.000.000) 07/31 10:29:19 Job was evicted.
+	(0) Job was not checkpointed.
+		Usr 0 00:09:57, Sys 0 00:00:21  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+	0  -  Run Bytes Sent By Job
+	238  -  Run Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated
+	   Cpus                 :                 1         1
+	   Disk (KB)            :       15        1    246255
+	   Memory (MB)          :      565     1024      1024
+...
+009 (60086.000.000) 07/31 10:29:19 Job was aborted by the user.
+	via condor_rm (by user jnugent)
+...
+000 (60186.000.000) 07/31 10:30:00 Job submitted from host: <172.20.203.50:9618?addrs=172.20.203.50-9618+[--1]-9618&noUDP&sock=7405_cae4_4>
+...
+022 (60186.000.000) 07/31 10:30:19 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60186.000.000) 07/31 10:30:19 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node034.ppe.gla.ac.uk, rescheduling job
+...
+001 (60186.000.000) 07/31 10:30:21 Job executing on host: <10.194.1.4:9618?addrs=10.194.1.4-9618+[--1]-9618&noUDP&sock=22685_9a03_3>
+...
+006 (60186.000.000) 07/31 10:30:29 Image size of job updated: 356868
+	349  -  MemoryUsage of job (MB)
+	356868  -  ResidentSetSize of job (KB)
+...
+006 (60186.000.000) 07/31 10:35:29 Image size of job updated: 497552
+	486  -  MemoryUsage of job (MB)
+	497552  -  ResidentSetSize of job (KB)
+...
+006 (60186.000.000) 07/31 10:40:29 Image size of job updated: 556504
+	541  -  MemoryUsage of job (MB)
+	553672  -  ResidentSetSize of job (KB)
+...
+006 (60186.000.000) 07/31 10:45:30 Image size of job updated: 962420
+	929  -  MemoryUsage of job (MB)
+	950392  -  ResidentSetSize of job (KB)
+...
+006 (60186.000.000) 07/31 10:55:31 Image size of job updated: 997172
+	961  -  MemoryUsage of job (MB)
+	983448  -  ResidentSetSize of job (KB)
+...
+006 (60186.000.000) 07/31 11:00:31 Image size of job updated: 1318996
+	1275  -  MemoryUsage of job (MB)
+	1304856  -  ResidentSetSize of job (KB)
+...
+006 (60186.000.000) 07/31 13:10:19 Image size of job updated: 4434460
+	1275  -  MemoryUsage of job (MB)
+	1304856  -  ResidentSetSize of job (KB)
+...
+004 (60186.000.000) 07/31 13:10:19 Job was evicted.
+	(0) Job was not checkpointed.
+		Usr 0 00:49:57, Sys 0 00:02:22  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+	0  -  Run Bytes Sent By Job
+	238  -  Run Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated
+	   Cpus                 :                 2         2
+	   Disk (KB)            :       15        1    232397
+	   Memory (MB)          :     1275     4096      4096
+...
+009 (60186.000.000) 07/31 13:10:19 Job was aborted by the user.
+	via condor_rm (by user jnugent)
+...
+000 (60294.000.000) 07/31 13:11:10 Job submitted from host: <172.20.203.50:9618?addrs=172.20.203.50-9618+[--1]-9618&noUDP&sock=7405_cae4_4>
+...
+009 (60294.000.000) 07/31 20:07:18 Job was aborted by the user.
+	via condor_rm (by user jnugent)
+...
+000 (62089.000.000) 07/31 20:08:37 Job submitted from host: <172.20.203.50:9618?addrs=172.20.203.50-9618+[--1]-9618&noUDP&sock=7405_cae4_4>
+...
+001 (62089.000.000) 07/31 21:13:44 Job executing on host: <10.194.1.4:9618?addrs=10.194.1.4-9618+[--1]-9618&noUDP&sock=22685_9a03_3>
+...
+006 (62089.000.000) 07/31 21:13:53 Image size of job updated: 78392
+	77  -  MemoryUsage of job (MB)
+	78392  -  ResidentSetSize of job (KB)
+...
+006 (62089.000.000) 07/31 21:18:53 Image size of job updated: 270248
+	264  -  MemoryUsage of job (MB)
+	270248  -  ResidentSetSize of job (KB)
+...
+006 (62089.000.000) 07/31 21:23:53 Image size of job updated: 319744
+	313  -  MemoryUsage of job (MB)
+	319744  -  ResidentSetSize of job (KB)
+...
+006 (62089.000.000) 07/31 21:28:54 Image size of job updated: 482448
+	472  -  MemoryUsage of job (MB)
+	482448  -  ResidentSetSize of job (KB)
+...
+022 (62089.000.000) 07/31 21:37:22 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_19@node004.ppe.gla.ac.uk <10.194.1.4:9618?addrs=10.194.1.4-9618+[--1]-9618&noUDP&sock=22685_9a03_3>
+...
+024 (62089.000.000) 07/31 22:17:22 Job reconnection failed
+    Job disconnected too long: JobLeaseDuration (2400 seconds) expired
+    Can not reconnect to slot1_19@node004.ppe.gla.ac.uk, rescheduling job
+...
+001 (62089.000.000) 08/01 04:22:28 Job executing on host: <10.194.1.8:9618?addrs=10.194.1.8-9618+[--1]-9618&noUDP&sock=2118_59ad_3>
+...
+006 (62089.000.000) 08/01 04:27:38 Image size of job updated: 600244
+	587  -  MemoryUsage of job (MB)
+	600244  -  ResidentSetSize of job (KB)
+...
+006 (62089.000.000) 08/01 04:42:38 Image size of job updated: 621684
+	608  -  MemoryUsage of job (MB)
+	621684  -  ResidentSetSize of job (KB)
+...
+006 (62089.000.000) 08/01 04:47:39 Image size of job updated: 688908
+	673  -  MemoryUsage of job (MB)
+	688908  -  ResidentSetSize of job (KB)
+...
+006 (62089.000.000) 08/01 04:52:40 Image size of job updated: 727668
+	711  -  MemoryUsage of job (MB)
+	727668  -  ResidentSetSize of job (KB)
+...
+006 (62089.000.000) 08/01 04:57:40 Image size of job updated: 768804
+	751  -  MemoryUsage of job (MB)
+	768804  -  ResidentSetSize of job (KB)
+...
+006 (62089.000.000) 08/01 05:02:40 Image size of job updated: 811136
+	793  -  MemoryUsage of job (MB)
+	811136  -  ResidentSetSize of job (KB)
+...
+006 (62089.000.000) 08/01 05:22:42 Image size of job updated: 830432
+	800  -  MemoryUsage of job (MB)
+	818992  -  ResidentSetSize of job (KB)
+...
+006 (62089.000.000) 08/01 05:32:44 Image size of job updated: 872840
+	800  -  MemoryUsage of job (MB)
+	818992  -  ResidentSetSize of job (KB)
+...
+006 (62089.000.000) 08/01 05:37:45 Image size of job updated: 1668116
+	1570  -  MemoryUsage of job (MB)
+	1607448  -  ResidentSetSize of job (KB)
+...
+006 (62089.000.000) 08/01 05:47:45 Image size of job updated: 1756800
+	1570  -  MemoryUsage of job (MB)
+	1607448  -  ResidentSetSize of job (KB)
+...
+006 (62089.000.000) 08/01 05:57:47 Image size of job updated: 1818452
+	1627  -  MemoryUsage of job (MB)
+	1665328  -  ResidentSetSize of job (KB)
+...
+006 (62089.000.000) 08/01 06:02:47 Image size of job updated: 1820660
+	1627  -  MemoryUsage of job (MB)
+	1665328  -  ResidentSetSize of job (KB)
+...
+006 (62089.000.000) 08/01 06:17:49 Image size of job updated: 2067932
+	1627  -  MemoryUsage of job (MB)
+	1665328  -  ResidentSetSize of job (KB)
+...
+006 (62089.000.000) 08/01 06:37:51 Image size of job updated: 2232440
+	1627  -  MemoryUsage of job (MB)
+	1665328  -  ResidentSetSize of job (KB)
+...
+006 (62089.000.000) 08/01 07:07:53 Image size of job updated: 2250004
+	1627  -  MemoryUsage of job (MB)
+	1665328  -  ResidentSetSize of job (KB)
+...
+006 (62089.000.000) 08/01 07:17:54 Image size of job updated: 2443540
+	1627  -  MemoryUsage of job (MB)
+	1665328  -  ResidentSetSize of job (KB)
+...
+006 (62089.000.000) 08/01 07:27:55 Image size of job updated: 2597396
+	2143  -  MemoryUsage of job (MB)
+	2194384  -  ResidentSetSize of job (KB)
+...
+006 (62089.000.000) 08/01 07:32:55 Image size of job updated: 2712064
+	2143  -  MemoryUsage of job (MB)
+	2194384  -  ResidentSetSize of job (KB)
+...
+006 (62089.000.000) 08/01 07:37:55 Image size of job updated: 2779576
+	2143  -  MemoryUsage of job (MB)
+	2194384  -  ResidentSetSize of job (KB)
+...
+006 (62089.000.000) 08/01 08:18:00 Image size of job updated: 2861812
+	2143  -  MemoryUsage of job (MB)
+	2194384  -  ResidentSetSize of job (KB)
+...
+006 (62089.000.000) 08/01 08:53:04 Image size of job updated: 2960612
+	2143  -  MemoryUsage of job (MB)
+	2194384  -  ResidentSetSize of job (KB)
+...
+006 (62089.000.000) 08/01 09:03:05 Image size of job updated: 3024448
+	2143  -  MemoryUsage of job (MB)
+	2194384  -  ResidentSetSize of job (KB)
+...
+006 (62089.000.000) 08/01 09:13:06 Image size of job updated: 3222736
+	2143  -  MemoryUsage of job (MB)
+	2194384  -  ResidentSetSize of job (KB)
+...
+006 (62089.000.000) 08/01 09:18:06 Image size of job updated: 3273060
+	2143  -  MemoryUsage of job (MB)
+	2194384  -  ResidentSetSize of job (KB)
+...
+006 (62089.000.000) 08/01 09:23:07 Image size of job updated: 3298984
+	2143  -  MemoryUsage of job (MB)
+	2194384  -  ResidentSetSize of job (KB)
+...
+006 (62089.000.000) 08/01 09:53:11 Image size of job updated: 3333224
+	2143  -  MemoryUsage of job (MB)
+	2194384  -  ResidentSetSize of job (KB)
+...
+006 (62089.000.000) 08/01 09:58:11 Image size of job updated: 3384844
+	2143  -  MemoryUsage of job (MB)
+	2194384  -  ResidentSetSize of job (KB)
+...
+006 (62089.000.000) 08/01 10:03:12 Image size of job updated: 3421412
+	2143  -  MemoryUsage of job (MB)
+	2194384  -  ResidentSetSize of job (KB)
+...
+004 (62089.000.000) 08/01 10:14:38 Job was evicted.
+	(0) Job was not checkpointed.
+		Usr 0 05:16:12, Sys 0 00:15:32  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+	0  -  Run Bytes Sent By Job
+	238  -  Run Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated
+	   Cpus                 :                 1         1
+	   Disk (KB)            :       16       15    246255
+	   Memory (MB)          :     2143     1024      1024
+...
+009 (62089.000.000) 08/01 10:14:38 Job was aborted by the user.
+	via condor_rm (by user jnugent)
+...
+000 (63711.000.000) 08/02 10:44:26 Job submitted from host: <172.20.203.50:9618?addrs=172.20.203.50-9618+[--1]-9618&noUDP&sock=7405_cae4_4>
+...
+001 (63711.000.000) 08/02 10:44:47 Job executing on host: <10.194.1.4:9618?addrs=10.194.1.4-9618+[--1]-9618&noUDP&sock=21589_d637_4>
+...
+006 (63711.000.000) 08/02 10:44:55 Image size of job updated: 48128
+	47  -  MemoryUsage of job (MB)
+	48128  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/02 10:49:55 Image size of job updated: 568616
+	556  -  MemoryUsage of job (MB)
+	568616  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/02 11:09:57 Image size of job updated: 600276
+	556  -  MemoryUsage of job (MB)
+	568616  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/02 11:14:58 Image size of job updated: 742724
+	572  -  MemoryUsage of job (MB)
+	585072  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/02 11:19:58 Image size of job updated: 847124
+	686  -  MemoryUsage of job (MB)
+	701956  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/02 11:40:00 Image size of job updated: 849508
+	686  -  MemoryUsage of job (MB)
+	701956  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/02 11:50:01 Image size of job updated: 868888
+	686  -  MemoryUsage of job (MB)
+	701956  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/02 11:55:02 Image size of job updated: 969276
+	686  -  MemoryUsage of job (MB)
+	701956  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/02 12:00:02 Image size of job updated: 1061016
+	686  -  MemoryUsage of job (MB)
+	701956  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/02 12:55:11 Image size of job updated: 1284552
+	686  -  MemoryUsage of job (MB)
+	701956  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/02 13:00:09 Image size of job updated: 1301128
+	686  -  MemoryUsage of job (MB)
+	701956  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/02 13:05:09 Image size of job updated: 1514208
+	785  -  MemoryUsage of job (MB)
+	803340  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/02 13:10:09 Image size of job updated: 1650440
+	785  -  MemoryUsage of job (MB)
+	803340  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/02 13:35:12 Image size of job updated: 1699484
+	901  -  MemoryUsage of job (MB)
+	922040  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/02 14:25:18 Image size of job updated: 1764636
+	901  -  MemoryUsage of job (MB)
+	922040  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/02 14:30:18 Image size of job updated: 1828640
+	901  -  MemoryUsage of job (MB)
+	922040  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/02 14:45:20 Image size of job updated: 1828640
+	913  -  MemoryUsage of job (MB)
+	934348  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/02 15:10:22 Image size of job updated: 1828640
+	988  -  MemoryUsage of job (MB)
+	1010872  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/02 15:20:22 Image size of job updated: 1828640
+	1097  -  MemoryUsage of job (MB)
+	1122504  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/02 16:10:28 Image size of job updated: 1851680
+	1097  -  MemoryUsage of job (MB)
+	1122504  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/02 16:15:28 Image size of job updated: 1859208
+	1097  -  MemoryUsage of job (MB)
+	1122504  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/02 16:30:31 Image size of job updated: 1879088
+	1097  -  MemoryUsage of job (MB)
+	1122504  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/02 16:35:31 Image size of job updated: 1879168
+	1097  -  MemoryUsage of job (MB)
+	1122504  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/02 16:45:31 Image size of job updated: 1910764
+	1097  -  MemoryUsage of job (MB)
+	1122504  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/02 17:15:36 Image size of job updated: 1917716
+	1097  -  MemoryUsage of job (MB)
+	1122504  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/02 17:40:38 Image size of job updated: 1950004
+	1097  -  MemoryUsage of job (MB)
+	1122504  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/02 17:45:38 Image size of job updated: 1977664
+	1097  -  MemoryUsage of job (MB)
+	1122504  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/02 17:55:40 Image size of job updated: 2006372
+	1097  -  MemoryUsage of job (MB)
+	1122504  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/02 18:00:40 Image size of job updated: 2016396
+	1097  -  MemoryUsage of job (MB)
+	1122504  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/02 20:45:16 Image size of job updated: 2030096
+	1097  -  MemoryUsage of job (MB)
+	1122504  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/02 20:50:25 Image size of job updated: 2030152
+	1097  -  MemoryUsage of job (MB)
+	1122504  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/02 20:55:18 Image size of job updated: 2058684
+	1097  -  MemoryUsage of job (MB)
+	1122504  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/02 22:09:13 Image size of job updated: 2114616
+	1097  -  MemoryUsage of job (MB)
+	1122504  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/02 23:36:51 Image size of job updated: 2122948
+	1097  -  MemoryUsage of job (MB)
+	1122504  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/02 23:41:53 Image size of job updated: 2135876
+	1097  -  MemoryUsage of job (MB)
+	1122504  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/03 00:50:12 Image size of job updated: 2139652
+	1097  -  MemoryUsage of job (MB)
+	1122504  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/03 02:40:23 Image size of job updated: 2190208
+	1097  -  MemoryUsage of job (MB)
+	1122504  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/03 04:02:48 Image size of job updated: 2279616
+	1097  -  MemoryUsage of job (MB)
+	1122504  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/03 04:07:49 Image size of job updated: 2284748
+	1097  -  MemoryUsage of job (MB)
+	1122504  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/03 07:33:10 Image size of job updated: 2331052
+	1097  -  MemoryUsage of job (MB)
+	1122504  -  ResidentSetSize of job (KB)
+...
+006 (63711.000.000) 08/03 08:33:16 Image size of job updated: 2365464
+	1097  -  MemoryUsage of job (MB)
+	1122504  -  ResidentSetSize of job (KB)
+...
+004 (63711.000.000) 08/03 09:55:21 Job was evicted.
+	(0) Job was not checkpointed.
+		Usr 0 02:31:28, Sys 0 00:14:51  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+	0  -  Run Bytes Sent By Job
+	238  -  Run Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated
+	   Cpus                 :                 1         1
+	   Disk (KB)            :       15        1    255527
+	   Memory (MB)          :     1097     1024      1024
+...
+009 (63711.000.000) 08/03 10:40:41 Job was aborted by the user.
+	via condor_rm (by user jnugent)
+...
+000 (66115.000.000) 08/10 13:31:29 Job submitted from host: <172.20.203.50:9618?addrs=172.20.203.50-9618+[--1]-9618&noUDP&sock=7405_cae4_4>
+...
+001 (66115.000.000) 08/10 13:31:40 Job executing on host: <10.194.1.4:9618?addrs=10.194.1.4-9618+[--1]-9618&noUDP&sock=21589_d637_3>
+...
+006 (66115.000.000) 08/10 13:31:49 Image size of job updated: 48120
+	47  -  MemoryUsage of job (MB)
+	48120  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/10 13:36:49 Image size of job updated: 815140
+	795  -  MemoryUsage of job (MB)
+	813660  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/10 13:56:51 Image size of job updated: 986420
+	795  -  MemoryUsage of job (MB)
+	813660  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/10 14:16:53 Image size of job updated: 1131764
+	795  -  MemoryUsage of job (MB)
+	813660  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/10 15:26:59 Image size of job updated: 1141940
+	795  -  MemoryUsage of job (MB)
+	813660  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/10 15:52:01 Image size of job updated: 1190200
+	795  -  MemoryUsage of job (MB)
+	813660  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/10 16:17:03 Image size of job updated: 1191224
+	795  -  MemoryUsage of job (MB)
+	813660  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/10 17:07:08 Image size of job updated: 1209904
+	795  -  MemoryUsage of job (MB)
+	813660  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/10 17:52:14 Image size of job updated: 1488980
+	795  -  MemoryUsage of job (MB)
+	813660  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/10 18:22:17 Image size of job updated: 1490028
+	795  -  MemoryUsage of job (MB)
+	813660  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/10 19:37:25 Image size of job updated: 1490028
+	927  -  MemoryUsage of job (MB)
+	948784  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/10 20:02:27 Image size of job updated: 1490028
+	1006  -  MemoryUsage of job (MB)
+	1029992  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/10 20:12:29 Image size of job updated: 1582220
+	1006  -  MemoryUsage of job (MB)
+	1029992  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/10 20:42:31 Image size of job updated: 1583420
+	1006  -  MemoryUsage of job (MB)
+	1029992  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/10 21:07:34 Image size of job updated: 1813876
+	1006  -  MemoryUsage of job (MB)
+	1029992  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/10 21:12:35 Image size of job updated: 1814192
+	1006  -  MemoryUsage of job (MB)
+	1029992  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/10 21:52:39 Image size of job updated: 2129992
+	1006  -  MemoryUsage of job (MB)
+	1029992  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/10 22:17:42 Image size of job updated: 2198752
+	1006  -  MemoryUsage of job (MB)
+	1029992  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/10 22:42:45 Image size of job updated: 2515552
+	1006  -  MemoryUsage of job (MB)
+	1029992  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/10 22:47:53 Image size of job updated: 2544216
+	1006  -  MemoryUsage of job (MB)
+	1029992  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/10 22:53:56 Image size of job updated: 2577564
+	1006  -  MemoryUsage of job (MB)
+	1029992  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/10 22:57:50 Image size of job updated: 2615084
+	1022  -  MemoryUsage of job (MB)
+	1046512  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/10 23:02:50 Image size of job updated: 2641792
+	1070  -  MemoryUsage of job (MB)
+	1095284  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/10 23:07:51 Image size of job updated: 2671444
+	1128  -  MemoryUsage of job (MB)
+	1154484  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/10 23:12:52 Image size of job updated: 2684648
+	1153  -  MemoryUsage of job (MB)
+	1180672  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/10 23:17:52 Image size of job updated: 2706284
+	1153  -  MemoryUsage of job (MB)
+	1180672  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/10 23:22:52 Image size of job updated: 2726892
+	1153  -  MemoryUsage of job (MB)
+	1180672  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/10 23:37:49 Image size of job updated: 2752544
+	1153  -  MemoryUsage of job (MB)
+	1180672  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 00:17:48 Image size of job updated: 3075812
+	1153  -  MemoryUsage of job (MB)
+	1180672  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 13:59:16 Image size of job updated: 3094568
+	1153  -  MemoryUsage of job (MB)
+	1180672  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 14:19:17 Image size of job updated: 3182968
+	1153  -  MemoryUsage of job (MB)
+	1180672  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 14:29:18 Image size of job updated: 3391084
+	1333  -  MemoryUsage of job (MB)
+	1364284  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 14:39:18 Image size of job updated: 3468100
+	1408  -  MemoryUsage of job (MB)
+	1441544  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 14:49:20 Image size of job updated: 3592308
+	1521  -  MemoryUsage of job (MB)
+	1556644  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 15:19:24 Image size of job updated: 3601784
+	1521  -  MemoryUsage of job (MB)
+	1556644  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 16:26:47 Image size of job updated: 3792636
+	1521  -  MemoryUsage of job (MB)
+	1556644  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 16:31:44 Image size of job updated: 3817852
+	1521  -  MemoryUsage of job (MB)
+	1556644  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 16:36:39 Image size of job updated: 3840960
+	1521  -  MemoryUsage of job (MB)
+	1556644  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 16:41:51 Image size of job updated: 3876576
+	1521  -  MemoryUsage of job (MB)
+	1556644  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 16:46:41 Image size of job updated: 3901992
+	1521  -  MemoryUsage of job (MB)
+	1556644  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 16:56:10 Image size of job updated: 3919988
+	1521  -  MemoryUsage of job (MB)
+	1556644  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 17:09:54 Image size of job updated: 4026776
+	1521  -  MemoryUsage of job (MB)
+	1556644  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 17:20:50 Image size of job updated: 4098992
+	1521  -  MemoryUsage of job (MB)
+	1556644  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 17:27:43 Image size of job updated: 4171204
+	1653  -  MemoryUsage of job (MB)
+	1692216  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 17:35:52 Image size of job updated: 4246484
+	1785  -  MemoryUsage of job (MB)
+	1827620  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 17:48:40 Image size of job updated: 4309796
+	1869  -  MemoryUsage of job (MB)
+	1913836  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 17:58:18 Image size of job updated: 4382048
+	1966  -  MemoryUsage of job (MB)
+	2012456  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 18:04:06 Image size of job updated: 4408132
+	2002  -  MemoryUsage of job (MB)
+	2049964  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 18:09:06 Image size of job updated: 4435772
+	2050  -  MemoryUsage of job (MB)
+	2098292  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 18:14:06 Image size of job updated: 4459564
+	2085  -  MemoryUsage of job (MB)
+	2134220  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 18:19:07 Image size of job updated: 4492180
+	2132  -  MemoryUsage of job (MB)
+	2182996  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 18:24:08 Image size of job updated: 4507652
+	2155  -  MemoryUsage of job (MB)
+	2206312  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 18:29:08 Image size of job updated: 4521476
+	2180  -  MemoryUsage of job (MB)
+	2232076  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 18:34:08 Image size of job updated: 4528664
+	2191  -  MemoryUsage of job (MB)
+	2243264  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 18:39:08 Image size of job updated: 4542728
+	2216  -  MemoryUsage of job (MB)
+	2269152  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 18:44:08 Image size of job updated: 4555956
+	2242  -  MemoryUsage of job (MB)
+	2295228  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 18:49:10 Image size of job updated: 4565664
+	2259  -  MemoryUsage of job (MB)
+	2312856  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 18:54:10 Image size of job updated: 4576136
+	2277  -  MemoryUsage of job (MB)
+	2331504  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 18:59:10 Image size of job updated: 4579264
+	2283  -  MemoryUsage of job (MB)
+	2337756  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 19:04:11 Image size of job updated: 4598068
+	2283  -  MemoryUsage of job (MB)
+	2337756  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 19:09:20 Image size of job updated: 4611564
+	2283  -  MemoryUsage of job (MB)
+	2337756  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 19:14:12 Image size of job updated: 4622056
+	2283  -  MemoryUsage of job (MB)
+	2337756  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 19:19:12 Image size of job updated: 4629676
+	2283  -  MemoryUsage of job (MB)
+	2337756  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 19:24:13 Image size of job updated: 4638808
+	2283  -  MemoryUsage of job (MB)
+	2337756  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 19:29:14 Image size of job updated: 4651028
+	2283  -  MemoryUsage of job (MB)
+	2337756  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 19:34:14 Image size of job updated: 4657052
+	2283  -  MemoryUsage of job (MB)
+	2337756  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 19:39:15 Image size of job updated: 4665444
+	2283  -  MemoryUsage of job (MB)
+	2337756  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 19:44:16 Image size of job updated: 4674404
+	2295  -  MemoryUsage of job (MB)
+	2349212  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 19:49:16 Image size of job updated: 4680276
+	2306  -  MemoryUsage of job (MB)
+	2360804  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 19:54:16 Image size of job updated: 4689968
+	2312  -  MemoryUsage of job (MB)
+	2366812  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 19:59:17 Image size of job updated: 4699332
+	2325  -  MemoryUsage of job (MB)
+	2380464  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 20:04:18 Image size of job updated: 4707140
+	2339  -  MemoryUsage of job (MB)
+	2394312  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 20:09:18 Image size of job updated: 4715524
+	2349  -  MemoryUsage of job (MB)
+	2404892  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 20:14:23 Image size of job updated: 4724988
+	2363  -  MemoryUsage of job (MB)
+	2419708  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 20:19:25 Image size of job updated: 4732656
+	2373  -  MemoryUsage of job (MB)
+	2429312  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 20:24:19 Image size of job updated: 4739148
+	2380  -  MemoryUsage of job (MB)
+	2436720  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 20:29:19 Image size of job updated: 4746396
+	2394  -  MemoryUsage of job (MB)
+	2450444  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 20:38:13 Image size of job updated: 4762904
+	2394  -  MemoryUsage of job (MB)
+	2450444  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 20:50:32 Image size of job updated: 4779324
+	2394  -  MemoryUsage of job (MB)
+	2450444  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 21:01:23 Image size of job updated: 4797420
+	2394  -  MemoryUsage of job (MB)
+	2450444  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 21:08:10 Image size of job updated: 4813352
+	2394  -  MemoryUsage of job (MB)
+	2450444  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 21:13:11 Image size of job updated: 4814076
+	2394  -  MemoryUsage of job (MB)
+	2450444  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 21:18:11 Image size of job updated: 4839444
+	2394  -  MemoryUsage of job (MB)
+	2450444  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 21:23:12 Image size of job updated: 4852928
+	2394  -  MemoryUsage of job (MB)
+	2450444  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 21:28:13 Image size of job updated: 4869032
+	2394  -  MemoryUsage of job (MB)
+	2450444  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 21:33:13 Image size of job updated: 4882032
+	2394  -  MemoryUsage of job (MB)
+	2450444  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 21:38:26 Image size of job updated: 4893568
+	2394  -  MemoryUsage of job (MB)
+	2450444  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 21:43:27 Image size of job updated: 4905308
+	2394  -  MemoryUsage of job (MB)
+	2450444  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 21:48:27 Image size of job updated: 4911052
+	2394  -  MemoryUsage of job (MB)
+	2450444  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 21:53:28 Image size of job updated: 4922824
+	2394  -  MemoryUsage of job (MB)
+	2450444  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 21:58:29 Image size of job updated: 4933416
+	2394  -  MemoryUsage of job (MB)
+	2450444  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 22:03:29 Image size of job updated: 4944800
+	2394  -  MemoryUsage of job (MB)
+	2450444  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 22:08:38 Image size of job updated: 4957160
+	2394  -  MemoryUsage of job (MB)
+	2450444  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 22:13:31 Image size of job updated: 4964988
+	2394  -  MemoryUsage of job (MB)
+	2450444  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 22:18:32 Image size of job updated: 4981280
+	2394  -  MemoryUsage of job (MB)
+	2450444  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 22:23:32 Image size of job updated: 5003992
+	2394  -  MemoryUsage of job (MB)
+	2450444  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 22:28:33 Image size of job updated: 5013712
+	2394  -  MemoryUsage of job (MB)
+	2450444  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 22:33:34 Image size of job updated: 5024828
+	2394  -  MemoryUsage of job (MB)
+	2450444  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 22:38:34 Image size of job updated: 5036804
+	2394  -  MemoryUsage of job (MB)
+	2450444  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 22:43:34 Image size of job updated: 5047120
+	2394  -  MemoryUsage of job (MB)
+	2450444  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 22:48:35 Image size of job updated: 5062644
+	2394  -  MemoryUsage of job (MB)
+	2450444  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 22:53:36 Image size of job updated: 5080636
+	2394  -  MemoryUsage of job (MB)
+	2450444  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/11 22:58:36 Image size of job updated: 5087260
+	2394  -  MemoryUsage of job (MB)
+	2450444  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/12 03:20:25 Image size of job updated: 5087396
+	2394  -  MemoryUsage of job (MB)
+	2450444  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/12 03:25:26 Image size of job updated: 5087436
+	2394  -  MemoryUsage of job (MB)
+	2450444  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/12 03:30:26 Image size of job updated: 5087932
+	2394  -  MemoryUsage of job (MB)
+	2450444  -  ResidentSetSize of job (KB)
+...
+006 (66115.000.000) 08/12 03:35:26 Image size of job updated: 5088640
+	2394  -  MemoryUsage of job (MB)
+	2450444  -  ResidentSetSize of job (KB)
+...
+005 (66115.000.000) 08/18 00:49:13 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 09:57:10, Sys 0 01:21:21  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 09:57:10, Sys 0 01:21:21  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	4265537  -  Run Bytes Sent By Job
+	238  -  Run Bytes Received By Job
+	4265537  -  Total Bytes Sent By Job
+	238  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated
+	   Cpus                 :                 1         1
+	   Disk (KB)            :     4176        1   4187667
+	   Memory (MB)          :     2394     1024      1024
+...
+000 (451.000.000) 08/27 11:47:40 Job submitted from host: <194.36.1.211:9618?addrs=194.36.1.211-9618+[--1]-9618&noUDP&sock=1189_2232_3>
+...
+009 (451.000.000) 08/27 11:48:15 Job was aborted by the user.
+	via condor_rm (by user jnugent)
+...
+000 (66272.000.000) 08/27 11:48:34 Job submitted from host: <172.20.203.50:9618?addrs=172.20.203.50-9618+[--1]-9618&noUDP&sock=7405_cae4_4>
+...
+001 (66272.000.000) 08/27 11:48:55 Job executing on host: <10.194.1.8:9618?addrs=10.194.1.8-9618+[--1]-9618&noUDP&sock=16892_15e0_12>
+...
+006 (66272.000.000) 08/27 11:49:04 Image size of job updated: 237756
+	233  -  MemoryUsage of job (MB)
+	237756  -  ResidentSetSize of job (KB)
+...
+006 (66272.000.000) 08/27 11:54:05 Image size of job updated: 294748
+	288  -  MemoryUsage of job (MB)
+	294748  -  ResidentSetSize of job (KB)
+...
+006 (66272.000.000) 08/27 11:59:05 Image size of job updated: 313304
+	306  -  MemoryUsage of job (MB)
+	313304  -  ResidentSetSize of job (KB)
+...
+006 (66272.000.000) 08/27 12:04:06 Image size of job updated: 833716
+	815  -  MemoryUsage of job (MB)
+	833716  -  ResidentSetSize of job (KB)
+...
+006 (66272.000.000) 08/27 12:09:07 Image size of job updated: 1092660
+	1068  -  MemoryUsage of job (MB)
+	1092660  -  ResidentSetSize of job (KB)
+...
+006 (66272.000.000) 08/27 12:24:08 Image size of job updated: 1164196
+	1137  -  MemoryUsage of job (MB)
+	1164196  -  ResidentSetSize of job (KB)
+...
+006 (66272.000.000) 08/27 12:39:09 Image size of job updated: 1305704
+	1276  -  MemoryUsage of job (MB)
+	1305704  -  ResidentSetSize of job (KB)
+...
+006 (66272.000.000) 08/27 12:59:12 Image size of job updated: 1378084
+	1346  -  MemoryUsage of job (MB)
+	1378084  -  ResidentSetSize of job (KB)
+...
+006 (66272.000.000) 08/27 13:29:15 Image size of job updated: 1630224
+	1593  -  MemoryUsage of job (MB)
+	1630224  -  ResidentSetSize of job (KB)
+...
+006 (66272.000.000) 08/27 13:54:18 Image size of job updated: 1697568
+	1623  -  MemoryUsage of job (MB)
+	1661192  -  ResidentSetSize of job (KB)
+...
+006 (66272.000.000) 08/27 14:19:20 Image size of job updated: 1734872
+	1623  -  MemoryUsage of job (MB)
+	1661192  -  ResidentSetSize of job (KB)
+...
+006 (66272.000.000) 08/27 14:59:23 Image size of job updated: 1804160
+	1623  -  MemoryUsage of job (MB)
+	1661192  -  ResidentSetSize of job (KB)
+...
+006 (66272.000.000) 08/27 15:09:25 Image size of job updated: 1877100
+	1623  -  MemoryUsage of job (MB)
+	1661192  -  ResidentSetSize of job (KB)
+...
+006 (66272.000.000) 08/27 15:19:26 Image size of job updated: 2304788
+	1623  -  MemoryUsage of job (MB)
+	1661192  -  ResidentSetSize of job (KB)
+...
+006 (66272.000.000) 08/27 15:59:30 Image size of job updated: 2321020
+	1623  -  MemoryUsage of job (MB)
+	1661192  -  ResidentSetSize of job (KB)
+...
+006 (66272.000.000) 08/27 16:04:31 Image size of job updated: 2365564
+	1623  -  MemoryUsage of job (MB)
+	1661192  -  ResidentSetSize of job (KB)
+...
+006 (66272.000.000) 08/27 16:38:13 Image size of job updated: 2669660
+	1623  -  MemoryUsage of job (MB)
+	1661192  -  ResidentSetSize of job (KB)
+...
+022 (66272.000.000) 08/27 17:41:51 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_17@node008.ppe.gla.ac.uk <10.194.1.8:9618?addrs=10.194.1.8-9618+[--1]-9618&noUDP&sock=16892_15e0_12>
+...
+024 (66272.000.000) 08/27 17:41:51 Job reconnection failed
+    Job disconnected too long: JobLeaseDuration (2400 seconds) expired
+    Can not reconnect to slot1_17@node008.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 17:42:23 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_21@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 17:42:31 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_21@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 17:43:23 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_21@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 17:43:31 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_21@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 17:43:43 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_21@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 17:43:51 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_21@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 17:44:41 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_11@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 17:44:49 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_11@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 17:45:41 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_8@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 17:45:49 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_8@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 17:46:41 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 17:46:50 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 17:47:41 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 17:47:49 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 17:48:23 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 17:48:31 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 17:49:22 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 17:49:30 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 17:50:22 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 17:50:31 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 17:51:22 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 17:51:30 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 17:52:22 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 17:52:30 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 17:53:22 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 17:53:30 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 17:53:42 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 17:53:50 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 17:54:42 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 17:54:50 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 17:55:42 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 17:55:50 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 17:56:42 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 17:56:50 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 17:57:42 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 17:57:50 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 17:58:23 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 17:58:31 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 17:59:24 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 17:59:32 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:00:23 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:00:31 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:01:23 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:01:32 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:02:23 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:02:31 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:03:23 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:03:31 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:04:23 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:04:31 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:05:23 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:05:31 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:06:23 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:06:31 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:07:23 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:07:31 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:08:24 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:08:32 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:08:45 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:08:53 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:09:45 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:09:53 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:10:45 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:10:54 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:11:45 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:11:53 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:12:45 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:12:54 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:13:25 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:13:33 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:14:25 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:14:33 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:15:25 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:15:33 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:16:25 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:16:33 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:17:25 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:17:33 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:18:25 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:18:33 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:19:26 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:19:34 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:20:25 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:20:33 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:21:25 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:21:34 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:22:25 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:22:26 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:22:27 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:22:35 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:23:25 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:23:33 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:24:25 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:24:33 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:25:25 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:25:33 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:26:25 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:26:33 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:27:25 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:27:33 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:28:26 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:28:34 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:28:46 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:28:55 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:29:46 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:29:54 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:30:46 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:30:55 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:31:46 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:31:54 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:32:46 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:32:54 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:33:27 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:33:35 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:34:27 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:34:35 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:35:27 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:35:35 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:36:27 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:36:35 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:37:28 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:37:36 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:38:27 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:38:35 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:39:28 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:39:36 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:40:27 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:40:35 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:41:27 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:41:36 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:42:27 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:42:35 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:43:27 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:43:35 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:44:27 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:44:35 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:45:27 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:45:35 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:46:27 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:46:35 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:47:27 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:47:35 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:48:28 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:48:36 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:48:49 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:48:57 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:49:48 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:49:56 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:50:48 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:50:57 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:51:48 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:51:56 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:52:48 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:52:56 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:53:29 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:53:37 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:54:29 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:54:37 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:55:29 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:55:37 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:56:29 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:56:37 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:57:29 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:57:37 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:58:29 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:58:37 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:58:49 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:58:57 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 18:59:49 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 18:59:57 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:00:49 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:00:57 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:01:49 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:01:57 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:02:49 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:02:57 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:03:30 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:03:38 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:04:29 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:04:37 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:05:29 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:05:37 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:06:29 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:06:37 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:07:29 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:07:37 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:08:30 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:08:38 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:08:51 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:08:59 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:09:50 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:09:58 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:10:51 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:10:59 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:11:50 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:11:58 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:12:50 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:12:58 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:13:31 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:13:39 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:14:31 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:14:39 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:15:31 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:15:39 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:16:31 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:16:39 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:17:31 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:17:39 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:18:31 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:18:39 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:18:51 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:18:59 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:19:51 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:19:59 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:20:51 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:20:59 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:21:51 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:21:59 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:22:51 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:22:59 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:23:31 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:23:39 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:24:31 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:24:39 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:25:31 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:25:39 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:26:31 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:26:39 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:27:31 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:27:39 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:28:32 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:28:40 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:28:53 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:29:01 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:29:53 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:30:01 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:30:53 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:31:01 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:31:53 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:32:01 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:32:53 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:33:01 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:33:33 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:33:41 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:34:33 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:34:41 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:35:33 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:35:41 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:36:33 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:36:41 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:37:33 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:37:42 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:38:33 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:38:41 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:38:53 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:39:01 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:39:53 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:40:01 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:40:53 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:41:01 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:41:53 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:42:01 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:42:53 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:43:01 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:43:33 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:43:41 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:44:33 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:44:41 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:45:33 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:45:41 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:46:34 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:46:42 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:47:33 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:47:41 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:48:33 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:48:42 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:48:54 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:49:03 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:49:54 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:50:02 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:50:54 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:51:02 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:51:54 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:52:02 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:52:54 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:53:02 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:53:35 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:53:43 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:54:35 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:54:43 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:55:36 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:55:44 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:56:35 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:56:43 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:57:35 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:57:44 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:58:35 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:58:43 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:58:55 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 19:59:03 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 19:59:55 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:00:03 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:00:55 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:01:03 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:01:56 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:02:04 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:02:56 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:03:04 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:03:35 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:03:43 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:04:35 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:04:44 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:05:35 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:05:43 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:06:35 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:06:43 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:07:35 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:07:43 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:08:35 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:08:43 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:08:55 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:09:03 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:09:55 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:10:03 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:10:55 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:11:03 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:11:55 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:12:04 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:12:55 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:13:03 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:13:37 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:13:45 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:14:37 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:14:45 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:15:37 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:15:45 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:16:37 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:16:45 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:17:37 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:17:45 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:18:37 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:18:45 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:19:37 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:19:45 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:20:38 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:20:46 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:21:38 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:21:46 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:22:38 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:22:46 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:23:37 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:23:45 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:24:38 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:24:46 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:25:37 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:25:45 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:26:37 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:26:45 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:27:37 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:27:45 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:28:37 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:28:45 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:28:58 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:29:06 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:29:58 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:30:06 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:30:58 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:31:06 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:31:58 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:32:06 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:32:58 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:33:06 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:33:39 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:33:47 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:34:39 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:34:47 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:35:39 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:35:48 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:36:39 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:36:47 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:37:39 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:37:47 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:38:39 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:38:47 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:38:59 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:39:07 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:39:59 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:40:07 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:40:59 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:41:07 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:41:59 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:42:07 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:42:59 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:43:07 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:43:39 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:43:47 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:44:40 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:44:48 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:45:39 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:45:47 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:46:39 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:46:48 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:47:39 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:47:47 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:48:39 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:48:47 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:49:00 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:49:08 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:50:00 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:50:08 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:51:00 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:51:08 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:52:00 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:52:08 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:53:00 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:53:08 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:53:42 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:53:50 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:54:42 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:54:50 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:55:42 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:55:51 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:56:42 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:56:50 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:57:42 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:57:50 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:58:42 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:58:50 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 20:59:02 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 20:59:10 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:00:02 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:00:10 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:01:03 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:01:11 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:02:03 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:02:11 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:03:02 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:03:10 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:03:42 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:03:50 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:04:43 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:04:51 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:05:42 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:05:50 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:06:42 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:06:51 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:07:43 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:07:51 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:08:42 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:08:50 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:09:04 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:09:12 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:10:03 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:10:03 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:10:03 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:10:11 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:11:04 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:11:12 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:12:03 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:12:03 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:12:04 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_10@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:12:12 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_10@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:13:04 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:13:12 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:13:45 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:13:53 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:14:45 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:14:53 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:15:45 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:15:54 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:16:45 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:16:53 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:17:45 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:17:53 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:18:45 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:18:53 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:19:05 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:19:13 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:20:06 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:20:14 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:21:06 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:21:14 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:22:07 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:22:15 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:23:06 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:23:14 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:23:45 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:23:53 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:24:46 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:24:54 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:25:45 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:25:53 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:26:45 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:26:53 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:27:45 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:27:53 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:28:45 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:28:53 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:29:06 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:29:14 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:30:06 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:30:14 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:31:07 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:31:15 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:32:06 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:32:14 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:33:06 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:33:15 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:33:47 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:33:55 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:34:46 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:34:54 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:35:46 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:35:55 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:36:46 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:36:54 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:37:46 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:37:54 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:38:46 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:38:54 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:39:06 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:39:14 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:40:06 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:40:14 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:41:06 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_7@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:41:14 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_7@node006.ppe.gla.ac.uk, rescheduling job
+...
+022 (66272.000.000) 08/27 21:42:06 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_4@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66272.000.000) 08/27 21:42:14 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_4@node006.ppe.gla.ac.uk, rescheduling job
+...
+001 (66272.000.000) 08/27 21:43:06 Job executing on host: <10.194.1.4:9618?addrs=10.194.1.4-9618+[--1]-9618&noUDP&sock=21589_d637_3>
+...
+006 (66272.000.000) 08/28 00:58:34 Image size of job updated: 2799356
+	1709  -  MemoryUsage of job (MB)
+	1750000  -  ResidentSetSize of job (KB)
+...
+006 (66272.000.000) 08/28 01:03:35 Image size of job updated: 2888288
+	1709  -  MemoryUsage of job (MB)
+	1750000  -  ResidentSetSize of job (KB)
+...
+006 (66272.000.000) 08/28 01:08:35 Image size of job updated: 3037804
+	1709  -  MemoryUsage of job (MB)
+	1750000  -  ResidentSetSize of job (KB)
+...
+006 (66272.000.000) 08/28 01:23:37 Image size of job updated: 3110204
+	1709  -  MemoryUsage of job (MB)
+	1750000  -  ResidentSetSize of job (KB)
+...
+006 (66272.000.000) 08/28 01:28:37 Image size of job updated: 3263412
+	1709  -  MemoryUsage of job (MB)
+	1750000  -  ResidentSetSize of job (KB)
+...
+006 (66272.000.000) 08/28 03:08:54 Image size of job updated: 3324072
+	1709  -  MemoryUsage of job (MB)
+	1750000  -  ResidentSetSize of job (KB)
+...
+006 (66272.000.000) 08/28 03:13:47 Image size of job updated: 3324112
+	1709  -  MemoryUsage of job (MB)
+	1750000  -  ResidentSetSize of job (KB)
+...
+006 (66272.000.000) 08/28 04:50:21 Image size of job updated: 3396328
+	1709  -  MemoryUsage of job (MB)
+	1750000  -  ResidentSetSize of job (KB)
+...
+006 (66272.000.000) 08/28 07:42:35 Image size of job updated: 3409232
+	1709  -  MemoryUsage of job (MB)
+	1750000  -  ResidentSetSize of job (KB)
+...
+006 (66272.000.000) 08/28 07:47:35 Image size of job updated: 3434196
+	1709  -  MemoryUsage of job (MB)
+	1750000  -  ResidentSetSize of job (KB)
+...
+006 (66272.000.000) 08/28 07:52:36 Image size of job updated: 3460776
+	1709  -  MemoryUsage of job (MB)
+	1750000  -  ResidentSetSize of job (KB)
+...
+006 (66272.000.000) 08/28 11:41:39 Image size of job updated: 3560360
+	1709  -  MemoryUsage of job (MB)
+	1750000  -  ResidentSetSize of job (KB)
+...
+006 (66272.000.000) 08/28 17:30:43 Image size of job updated: 4140436
+	1709  -  MemoryUsage of job (MB)
+	1750000  -  ResidentSetSize of job (KB)
+...
+005 (66272.000.000) 08/28 17:30:44 Job terminated.
+	(1) Normal termination (return value 135)
+		Usr 0 04:05:17, Sys 0 00:16:39  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 04:05:17, Sys 0 00:16:39  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	5232  -  Run Bytes Sent By Job
+	238  -  Run Bytes Received By Job
+	5232  -  Total Bytes Sent By Job
+	476  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated
+	   Cpus                 :                 1         1
+	   Disk (KB)            :       16       15   4187667
+	   Memory (MB)          :     1709     1024      1024
+...
+000 (572.000.000) 08/28 17:54:00 Job submitted from host: <194.36.1.211:9618?addrs=194.36.1.211-9618+[--1]-9618&noUDP&sock=1189_2232_3>
+...
+009 (572.000.000) 08/28 17:54:57 Job was aborted by the user.
+	via condor_rm (by user jnugent)
+...
+000 (66395.000.000) 08/28 17:55:40 Job submitted from host: <172.20.203.50:9618?addrs=172.20.203.50-9618+[--1]-9618&noUDP&sock=7405_cae4_4>
+...
+022 (66395.000.000) 08/28 17:55:53 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_22@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66395.000.000) 08/28 17:56:02 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_22@node006.ppe.gla.ac.uk, rescheduling job
+...
+001 (66395.000.000) 08/28 17:56:53 Job executing on host: <10.194.1.4:9618?addrs=10.194.1.4-9618+[--1]-9618&noUDP&sock=21589_d637_3>
+...
+006 (66395.000.000) 08/28 17:56:54 Image size of job updated: 494364
+	0  -  MemoryUsage of job (MB)
+	0  -  ResidentSetSize of job (KB)
+...
+004 (66395.000.000) 08/28 17:56:54 Job was evicted.
+	(0) Job was not checkpointed.
+		Usr 0 00:00:01, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+	0  -  Run Bytes Sent By Job
+	238  -  Run Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated
+	   Cpus                 :                 1         1
+	   Disk (KB)            :       16        1   4187667
+	   Memory (MB)          :        0     1024      1024
+...
+009 (66395.000.000) 08/28 17:56:54 Job was aborted by the user.
+	via condor_rm (by user jnugent)
+...
+000 (66495.000.000) 08/28 17:59:37 Job submitted from host: <172.20.203.50:9618?addrs=172.20.203.50-9618+[--1]-9618&noUDP&sock=7405_cae4_4>
+...
+022 (66495.000.000) 08/28 17:59:55 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_10@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66495.000.000) 08/28 18:00:03 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_10@node006.ppe.gla.ac.uk, rescheduling job
+...
+001 (66495.000.000) 08/28 18:00:16 Job executing on host: <10.194.1.8:9618?addrs=10.194.1.8-9618+[--1]-9618&noUDP&sock=18553_64af_6>
+...
+006 (66495.000.000) 08/28 18:00:24 Image size of job updated: 310876
+	304  -  MemoryUsage of job (MB)
+	310876  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/28 18:05:24 Image size of job updated: 479560
+	469  -  MemoryUsage of job (MB)
+	479560  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/28 18:10:25 Image size of job updated: 540820
+	529  -  MemoryUsage of job (MB)
+	540820  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/28 18:20:25 Image size of job updated: 583840
+	571  -  MemoryUsage of job (MB)
+	583840  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/28 18:25:26 Image size of job updated: 689060
+	673  -  MemoryUsage of job (MB)
+	689060  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/28 18:30:27 Image size of job updated: 752484
+	735  -  MemoryUsage of job (MB)
+	752484  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/28 18:45:29 Image size of job updated: 844328
+	825  -  MemoryUsage of job (MB)
+	844328  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/28 19:05:30 Image size of job updated: 883868
+	864  -  MemoryUsage of job (MB)
+	883868  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/28 19:20:32 Image size of job updated: 958776
+	937  -  MemoryUsage of job (MB)
+	958776  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/28 19:25:32 Image size of job updated: 965432
+	943  -  MemoryUsage of job (MB)
+	965432  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/28 19:30:33 Image size of job updated: 1190956
+	1164  -  MemoryUsage of job (MB)
+	1190956  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/28 20:10:37 Image size of job updated: 1214304
+	1186  -  MemoryUsage of job (MB)
+	1214304  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/28 20:25:39 Image size of job updated: 1324676
+	1294  -  MemoryUsage of job (MB)
+	1324676  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/28 20:30:39 Image size of job updated: 1453548
+	1395  -  MemoryUsage of job (MB)
+	1427584  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/28 20:35:40 Image size of job updated: 1584796
+	1395  -  MemoryUsage of job (MB)
+	1427584  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/28 21:00:42 Image size of job updated: 1596300
+	1395  -  MemoryUsage of job (MB)
+	1427584  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/28 21:05:42 Image size of job updated: 1790140
+	1395  -  MemoryUsage of job (MB)
+	1427584  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/28 21:10:44 Image size of job updated: 1790160
+	1395  -  MemoryUsage of job (MB)
+	1427584  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/28 21:25:45 Image size of job updated: 1868832
+	1395  -  MemoryUsage of job (MB)
+	1427584  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/28 21:45:48 Image size of job updated: 2039796
+	1515  -  MemoryUsage of job (MB)
+	1550968  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/28 22:10:50 Image size of job updated: 2309928
+	1773  -  MemoryUsage of job (MB)
+	1814592  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/28 22:15:51 Image size of job updated: 2425864
+	1773  -  MemoryUsage of job (MB)
+	1814624  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/28 22:28:29 Image size of job updated: 2495272
+	1773  -  MemoryUsage of job (MB)
+	1814624  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/28 23:20:38 Image size of job updated: 2600076
+	1822  -  MemoryUsage of job (MB)
+	1865272  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/28 23:32:10 Image size of job updated: 2715424
+	1894  -  MemoryUsage of job (MB)
+	1939148  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/29 00:48:52 Image size of job updated: 2731992
+	1894  -  MemoryUsage of job (MB)
+	1939148  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/29 00:53:52 Image size of job updated: 2887804
+	1894  -  MemoryUsage of job (MB)
+	1939148  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/29 01:18:54 Image size of job updated: 2950760
+	1894  -  MemoryUsage of job (MB)
+	1939148  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/29 01:38:56 Image size of job updated: 2969100
+	1894  -  MemoryUsage of job (MB)
+	1939148  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/29 01:43:57 Image size of job updated: 2974632
+	1894  -  MemoryUsage of job (MB)
+	1939148  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/29 01:48:57 Image size of job updated: 2977992
+	1894  -  MemoryUsage of job (MB)
+	1939148  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/29 01:53:58 Image size of job updated: 3007752
+	1894  -  MemoryUsage of job (MB)
+	1939148  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/29 01:59:00 Image size of job updated: 3038176
+	1894  -  MemoryUsage of job (MB)
+	1939148  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/29 02:04:00 Image size of job updated: 3048420
+	1894  -  MemoryUsage of job (MB)
+	1939148  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/29 02:09:00 Image size of job updated: 3206652
+	1894  -  MemoryUsage of job (MB)
+	1939148  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/29 02:19:02 Image size of job updated: 3515696
+	1894  -  MemoryUsage of job (MB)
+	1939148  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/29 02:59:06 Image size of job updated: 3700424
+	1894  -  MemoryUsage of job (MB)
+	1939148  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/29 03:04:06 Image size of job updated: 3974840
+	2076  -  MemoryUsage of job (MB)
+	2125556  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/29 03:34:09 Image size of job updated: 4017064
+	2117  -  MemoryUsage of job (MB)
+	2167708  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/29 03:54:11 Image size of job updated: 4243452
+	2338  -  MemoryUsage of job (MB)
+	2394088  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/29 04:54:18 Image size of job updated: 4292500
+	2386  -  MemoryUsage of job (MB)
+	2443140  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/29 05:09:20 Image size of job updated: 4416320
+	2507  -  MemoryUsage of job (MB)
+	2566404  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/29 05:34:23 Image size of job updated: 4462968
+	2552  -  MemoryUsage of job (MB)
+	2613020  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/29 05:39:23 Image size of job updated: 4836088
+	2917  -  MemoryUsage of job (MB)
+	2986104  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/29 05:44:23 Image size of job updated: 4928000
+	2958  -  MemoryUsage of job (MB)
+	3028928  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/29 06:19:26 Image size of job updated: 4977184
+	3001  -  MemoryUsage of job (MB)
+	3072256  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/29 06:24:26 Image size of job updated: 5102848
+	3123  -  MemoryUsage of job (MB)
+	3197948  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/29 06:39:28 Image size of job updated: 5107732
+	3128  -  MemoryUsage of job (MB)
+	3202840  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/29 06:59:31 Image size of job updated: 5349420
+	3347  -  MemoryUsage of job (MB)
+	3426980  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/29 07:14:33 Image size of job updated: 5425156
+	3420  -  MemoryUsage of job (MB)
+	3501544  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/29 07:19:33 Image size of job updated: 5425156
+	3420  -  MemoryUsage of job (MB)
+	3501552  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/29 08:24:41 Image size of job updated: 5457860
+	3420  -  MemoryUsage of job (MB)
+	3501552  -  ResidentSetSize of job (KB)
+...
+006 (66495.000.000) 08/29 08:28:02 Image size of job updated: 5850956
+	3420  -  MemoryUsage of job (MB)
+	3501552  -  ResidentSetSize of job (KB)
+...
+005 (66495.000.000) 08/29 08:28:03 Job terminated.
+	(1) Normal termination (return value 137)
+		Usr 0 12:05:02, Sys 0 00:25:17  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 12:05:02, Sys 0 00:25:17  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	195134  -  Run Bytes Sent By Job
+	238  -  Run Bytes Received By Job
+	195134  -  Total Bytes Sent By Job
+	238  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated
+	   Cpus                 :                 1         1
+	   Disk (KB)            :      201        1  10479086
+	   Memory (MB)          :     3420     1024      1024
+...

@@ -1,0 +1,108 @@
+000 (40916.000.000) 2021-07-26 16:55:12 Job submitted from host: <194.36.1.200:9618?addrs=194.36.1.200-9618&alias=hex.ppe.gla.ac.uk&noUDP&sock=schedd_1401_8c46>
+...
+040 (40916.000.000) 2021-07-28 03:08:12 Started transferring input files
+	Transferring to host: <192.168.16.113:9618?addrs=192.168.16.113-9618&alias=condor-d19-03.ppe.cluster&noUDP&sock=slot1_1_26289_ba86_1167>
+...
+040 (40916.000.000) 2021-07-28 03:08:13 Finished transferring input files
+...
+001 (40916.000.000) 2021-07-28 03:08:14 Job executing on host: <192.168.16.113:9618?addrs=192.168.16.113-9618&alias=condor-d19-03.ppe.cluster&noUDP&sock=startd_2634_488c>
+...
+006 (40916.000.000) 2021-07-28 03:08:22 Image size of job updated: 48524
+	48  -  MemoryUsage of job (MB)
+	48520  -  ResidentSetSize of job (KB)
+...
+006 (40916.000.000) 2021-07-28 03:13:22 Image size of job updated: 1403908
+	665  -  MemoryUsage of job (MB)
+	680124  -  ResidentSetSize of job (KB)
+...
+006 (40916.000.000) 2021-07-28 03:18:22 Image size of job updated: 1405908
+	665  -  MemoryUsage of job (MB)
+	680124  -  ResidentSetSize of job (KB)
+...
+006 (40916.000.000) 2021-07-28 03:23:23 Image size of job updated: 1405908
+	669  -  MemoryUsage of job (MB)
+	684404  -  ResidentSetSize of job (KB)
+...
+006 (40916.000.000) 2021-07-28 03:28:23 Image size of job updated: 1409588
+	669  -  MemoryUsage of job (MB)
+	684404  -  ResidentSetSize of job (KB)
+...
+006 (40916.000.000) 2021-07-28 03:33:23 Image size of job updated: 1409684
+	669  -  MemoryUsage of job (MB)
+	684404  -  ResidentSetSize of job (KB)
+...
+006 (40916.000.000) 2021-07-28 03:38:24 Image size of job updated: 1412328
+	675  -  MemoryUsage of job (MB)
+	690664  -  ResidentSetSize of job (KB)
+...
+006 (40916.000.000) 2021-07-28 03:43:25 Image size of job updated: 1416692
+	675  -  MemoryUsage of job (MB)
+	690664  -  ResidentSetSize of job (KB)
+...
+006 (40916.000.000) 2021-07-28 03:53:26 Image size of job updated: 1416692
+	679  -  MemoryUsage of job (MB)
+	694896  -  ResidentSetSize of job (KB)
+...
+006 (40916.000.000) 2021-07-28 04:03:27 Image size of job updated: 1416692
+	681  -  MemoryUsage of job (MB)
+	696696  -  ResidentSetSize of job (KB)
+...
+006 (40916.000.000) 2021-07-28 04:18:28 Image size of job updated: 1420424
+	776  -  MemoryUsage of job (MB)
+	794504  -  ResidentSetSize of job (KB)
+...
+006 (40916.000.000) 2021-07-28 04:38:30 Image size of job updated: 1420424
+	785  -  MemoryUsage of job (MB)
+	803140  -  ResidentSetSize of job (KB)
+...
+006 (40916.000.000) 2021-07-28 05:13:33 Image size of job updated: 1427588
+	785  -  MemoryUsage of job (MB)
+	803140  -  ResidentSetSize of job (KB)
+...
+006 (40916.000.000) 2021-07-28 05:18:34 Image size of job updated: 1439640
+	785  -  MemoryUsage of job (MB)
+	803140  -  ResidentSetSize of job (KB)
+...
+004 (40916.000.000) 2021-07-28 05:25:52 Job was evicted.
+	(0) CPU times
+		Usr 0 02:01:24, Sys 0 00:15:13  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+	0  -  Run Bytes Sent By Job
+	319  -  Run Bytes Received By Job
+	Partitionable Resources :      Usage  Request Allocated 
+	   Cpus                 :       0.99        1         1 
+	   Disk (KB)            : 2105075           1   3637421 
+	   Memory (MB)          :     785       10240     10240 
+...
+040 (40916.000.000) 2021-07-28 05:28:13 Started transferring input files
+	Transferring to host: <192.168.16.113:9618?addrs=192.168.16.113-9618&alias=condor-d19-03.ppe.cluster&noUDP&sock=slot1_4_27242_340d_7>
+...
+040 (40916.000.000) 2021-07-28 05:28:13 Finished transferring input files
+...
+001 (40916.000.000) 2021-07-28 05:28:14 Job executing on host: <192.168.16.113:9618?addrs=192.168.16.113-9618&alias=condor-d19-03.ppe.cluster&noUDP&sock=startd_2634_488c>
+...
+022 (40916.000.000) 2021-07-28 09:08:57 Job disconnected, attempting to reconnect
+    Local schedd and job shadow died, schedd now running again
+    Trying to reconnect to slot1_4@condor-d19-03.ppe.cluster <192.168.16.113:9618?addrs=192.168.16.113-9618&alias=condor-d19-03.ppe.cluster&noUDP&sock=startd_2634_488c>
+...
+023 (40916.000.000) 2021-07-28 09:08:58 Job reconnected to slot1_4@condor-d19-03.ppe.cluster
+    startd address: <192.168.16.113:9618?addrs=192.168.16.113-9618&alias=condor-d19-03.ppe.cluster&noUDP&sock=startd_2634_488c>
+    starter address: <192.168.16.113:9618?addrs=192.168.16.113-9618&alias=condor-d19-03.ppe.cluster&noUDP&sock=slot1_4_27242_340d_7>
+...
+005 (40916.000.000) 2021-07-28 09:23:37 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 03:27:27, Sys 0 00:26:05  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 08:30:07, Sys 0 01:04:05  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	3758169856  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+	3758169856  -  Total Bytes Sent By Job
+	638  -  Total Bytes Received By Job
+	Partitionable Resources :      Usage  Request Allocated 
+	   Cpus                 :       0.98        1         1 
+	   Disk (KB)            : 3670104     3670104   7274841 
+	   Memory (MB)          :     977       10240     10240 
+
+	Job terminated of its own accord at 2021-07-28T08:23:25Z.
+...

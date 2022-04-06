@@ -1,0 +1,9 @@
+
+universe       = vanilla
+executable     = offset/LiHMu_3200_2.sh
+output         = /data/neutrino03/jnugent/Unfolding/scanoffset/offset/LiHMu_3200_2.out
+error          = /data/neutrino03/jnugent/Unfolding/scanoffset/offset/LiHMu_3200_2.err
+log            = test.log
+requirements   = OpSysAndVer == "CentOS7"
+
+queue

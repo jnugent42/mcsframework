@@ -1,21 +1,28 @@
-from ROOT import TCanvas, TFile, TH1D, TLegend, TText, TLatex
+from ROOT import TCanvas, TFile, TH1D, TLegend, TText, TLatex, TMath, TROOT, TMatrix, TMatrixDSym, TMatrixD
+from ROOT import TH1D, TCanvas, TFile, TGraphErrors, TMarker, TF1, TLegend, TText, TLine, TROOT, TGraph, TPad
 import sys, math
 from math import sqrt
+import pprint
+import scipy.special as sc
+
+TROOT.gROOT.SetBatch(1)
 
 class plotgen:
-    
+
     def __init__(self, filename):
         self.fname = filename
         self.desc = self.fname.split("_")
         self.histvarnames = ['thetaX','thetaY','thetaScatt','theta2Scatt']
-        self.histstatenames = ['measdataCobb','refconv_GEANT','refconv_Cobb', 'refconv_Moliere', 'ref', 'GEANT']
-        self.histstatedesc = ['Raw Data',
-                              'GEANT4 Default MCS', 'Carlisle-Cobb', 'Moliere']
+        # self.histstatenames = ['measdataCobb','refconv_GEANT','refconv_Cobb', 'refconv_Moliere', 'ref', 'GEANT']
+        self.histstatenames = ['measdataCobb','refconv_GEANT','refconv_Cobb', 'refconv_Moliere']
+        self.normnames = ['measdata', 'GEANT', 'recoGold','conv', 'ref', 'graph']
+        self.histstatedesc = ['Raw Data','GEANT4 Default MCS', 'Carlisle-Cobb', 'Moliere']
         self.histcolors = [1, 4, 2, 6]
         self.histopts  = ['lp','lp','lp','lp']
         self.RMS = {}
         self.RMSErr = {}
         self.Chi2 = {}
+        self.pvalue = {}
         self.RMSsysdiff = {}
         self.RMSsyserr  = {}
         self.sysFiles   = []
@@ -23,9 +30,8 @@ class plotgen:
         self.h0integral = {}
         self.useeventnorm = True
 
-        
+
     def formatHists(self, hist, i):
-        # hist.Sumw2()
         hist.SetMarkerColor(self.histcolors[i])
         hist.GetXaxis().SetLabelSize(0.05)
         hist.GetXaxis().SetTitleSize(0.05)
@@ -39,67 +45,78 @@ class plotgen:
         hist.SetStats(0)
 
 
-    def addToSysErr(self, i, histl, histh, base, scale, histvar, sysname):
-        norm = 0
-        if i == 0:
-            norm = self.eventnorm[histvar]
-        else:
-            norm = histl.Integral() * self.eventnorm[histvar] / self.h0integral[histvar]
-            # if histvar == 'thetaScatt' or histvar == 'theta2Scatt':
-            #     norm /= base.GetXaxis().GetBinWidth(10)/histl.GetXaxis().GetBinWidth(10)
-        histl.Scale(1./norm)
-        norm = 0
-        if i == 0:
-            norm = self.eventnorm[histvar]
-        else:
-            norm = histh.Integral() * self.eventnorm[histvar] / self.h0integral[histvar]
-            # if histvar == 'thetaScatt' or histvar == 'theta2Scatt':
-            #     norm /= base.GetXaxis().GetBinWidth(10)/histh.GetXaxis().GetBinWidth(10)
-        histh.Scale(1./norm)
+    def addToSysErr(self, i, histl, histh, base, scale, histvar, sysname, norms):
+        # print sysname
+        # print norms
+        # if i == 0:
+        #     norm = self.eventnorm[histvar]
+        # else:
+        #     norm = histl.Integral() * self.eventnorm[histvar] / self.h0integral[histvar]
+        # if norm>0:
+        #     histl.Scale(1./norm)
+        # if i == 0:
+        #     norm = self.eventnorm[histvar]
+        # else:
+        #     norm = histh.Integral() * self.eventnorm[histvar] / self.h0integral[histvar]
+        # if norm>0:
+        #     histh.Scale(1./norm)
+
+
+        if sysname != "decon":
+            norm = 0
+            if norms[0]>0:
+                histl.Scale(1./norms[0])
+            norm = 0
+            if norms[0]>0:
+                histh.Scale(1./norms[0])
+
+
         if histvar == 'thetaScatt':
             self.RMSsysdiff[histvar][self.histstatenames[i]][sysname] \
-                = 1000*(histh.GetMean() - histl.GetMean())
+                    = 1000*(histh.GetMean() - histl.GetMean())
             self.RMSsyserr[histvar][self.histstatenames[i]][sysname] \
-                = 1000*math.fabs(histh.GetMean() - histl.GetMean()) * scale
+                    = 1000*math.fabs(histh.GetMean() - histl.GetMean()) * scale
             histl.GetXaxis().SetRangeUser(-0.0,0.06)
             histh.GetXaxis().SetRangeUser(-0.0,0.06)
         elif histvar == 'theta2Scatt':
             self.RMSsysdiff[histvar][self.histstatenames[i]][sysname] \
-                = 1000*(sqrt(histh.GetMean()) - \
-                        sqrt(histl.GetMean()))
+                    = 1000*(sqrt(histh.GetMean()) - \
+                    sqrt(histl.GetMean()))
             self.RMSsyserr[histvar][self.histstatenames[i]][sysname] \
-                = 1000*math.fabs(sqrt(histh.GetMean()) - \
-                        sqrt(histl.GetMean())) * scale
+                            = 1000*math.fabs(sqrt(histh.GetMean()) - \
+                            sqrt(histl.GetMean())) * scale
             histl.GetXaxis().SetRangeUser(-0.0,0.0036)
             histh.GetXaxis().SetRangeUser(-0.0,0.0036)
         else:
-            histl.GetXaxis().SetRangeUser(-0.06,0.06)
-            histh.GetXaxis().SetRangeUser(-0.06,0.06)
+            # histl.GetXaxis().SetRangeUser(-0.06,0.06)
+            # histh.GetXaxis().SetRangeUser(-0.06,0.06)
+            histl.GetXaxis().SetRangeUser(-0.0465,0.045)
+            histh.GetXaxis().SetRangeUser(-0.0465,0.045)
             histl.Fit("gaus","Q0","same",-0.045,0.045)
             histh.Fit("gaus","Q0","same",-0.045,0.045)
-            #print sysname
-	    #print histvar
-	    #print histh
-	    #print histl
-	    self.RMSsysdiff[histvar][self.histstatenames[i]][sysname] \
+            self.RMSsysdiff[histvar][self.histstatenames[i]][sysname] \
                 = 1000*(histh.GetFunction('gaus').GetParameter('Sigma') - \
-                        histl.GetFunction('gaus').GetParameter('Sigma'))
+                histl.GetFunction('gaus').GetParameter('Sigma'))
             self.RMSsyserr[histvar][self.histstatenames[i]][sysname] \
-                = math.fabs(self.RMSsysdiff[histvar][self.histstatenames[i]][sysname]) * scale 
-            
-    def addToRMS(self, i, hist, base, resplot, histvar):
+                = math.fabs(self.RMSsysdiff[histvar][self.histstatenames[i]][sysname]) * scale
+
+
+    def addToRMS(self, i, hist, base, resplot, histvar, norms, pname):
         norm = 0
-        if i == 0:
-            if self.useeventnorm:
-                self.eventnorm[histvar]  = hist.GetEntries()
-            self.h0integral[histvar] = hist.Integral()
-            norm = self.eventnorm[histvar]
-            #print histvar, i, norm, hist.Integral(), hist.Integral()/norm
-        else:
-            norm = hist.Integral() * self.eventnorm[histvar] / self.h0integral[histvar]
-            # if histvar == 'thetaScatt' or histvar == 'theta2Scatt':
-            #     norm /= base.GetXaxis().GetBinWidth(10)/hist.GetXaxis().GetBinWidth(10)
-	hist.Scale(1./norm)
+        # if i == 0:
+        #     if self.useeventnorm:
+        #         self.eventnorm[histvar]  = hist.GetEntries()
+        #     self.h0integral[histvar] = hist.Integral()
+        #     norm = self.eventnorm[histvar]
+        # else:
+        #     norm = hist.Integral() * self.eventnorm[histvar] / self.h0integral[histvar]
+        # hist.Scale(1./norm)
+        # print hist
+        # print norms[i]
+        # if (i==2):
+        #     norms[i]=1e6
+        if norms[i]:
+            hist.Scale(1./norms[i])
         if histvar == 'thetaScatt':
             self.RMS[histvar][self.histstatenames[i]]    = (1000*hist.GetMean())
             self.RMSErr[histvar][self.histstatenames[i]] = (1000*hist.GetMeanError())
@@ -109,33 +126,117 @@ class plotgen:
             hist.Fit("expo","Q0","same",-0.0,0.002)
             self.RMS[histvar][self.histstatenames[i]]    = (1000/sqrt(-hist.GetFunction('expo').GetParameter('Slope')))
             self.RMSErr[histvar][self.histstatenames[i]] = (1000*hist.GetFunction('expo').GetParError(1)
-                                                            /(-hist.GetFunction('expo').GetParameter('Slope'))**(3./2.))
+                    /(-hist.GetFunction('expo').GetParameter('Slope'))**(3./2.))
             hist.GetXaxis().SetRangeUser(-0.0,0.0036)
             resplot.GetXaxis().SetRangeUser(-0.0,0.0036)
         else:
-            hist.GetXaxis().SetRangeUser(-0.06,0.06)
-            resplot.GetXaxis().SetRangeUser(-0.06,0.06)
+            # hist.GetXaxis().SetRangeUser(-0.06,0.06)
+            # resplot.GetXaxis().SetRangeUser(-0.06,0.06)
+            hist.GetXaxis().SetRangeUser(-0.0465,0.045)
+            resplot.GetXaxis().SetRangeUser(-0.0465,0.045)
             hist.Fit("gaus","Q0","same",-0.045,0.045)
             self.RMS[histvar][self.histstatenames[i]]    = (1000*hist.GetFunction('gaus').GetParameter('Sigma'))
             self.RMSErr[histvar][self.histstatenames[i]] = (1000*hist.GetFunction('gaus').GetParError(2))
+            if (i == 2 and pname == "Result"):
+                # self.RMSErr[histvar][self.histstatenames[i]] = (self.RMS[histvar][self.histstatenames[i]]/sqrt(norms[i]))
+                self.RMSErr[histvar][self.histstatenames[i]] = 0
 
-    def calculateChi2(self, i, hist, base, resplot, histvar, pname):
-        
+    def calculateChi2(self, i, hist, base, resplot, histvar, pname, norms):
+
         chi2 = 0
+        cv = 0
         ndf = 0
-        # if i%2 == 0 and i > 0:
-        sysLowF  = [TFile(x[0]) for x in self.sysFiles]
-        sysLowH  = [f.Get(histvar + '_' + self.histstatenames[i]) for f in sysLowF]
+        sysLowF = []
+        sysLowH = []
+        sysHighF = []
+        sysHighH = []
+        Icovar = TFile(self.fname).Get("cov_matrix")
+        print self.fname
+        Ucovar = TFile(self.fname).Get("cov_matrix")
+        epsilon = TFile(self.fname).Get("epsilon")
+        A = TFile(self.fname).Get("A")
+        # A = TFile(self.fname).Get("rogersA")
+        # TMatrixD(A)
+        # epsilon = TFile(self.fname).Get("epsilon")
+        # epsilon = TMatrixD(29,29)
+        # epsilon = TMatrixD(A.Zero())
+        # for lll in range(0,29):
+        #     print epsilon
+        #     print epsilon(lll,lll)
+        #     # epsilon[lll][lll] = 0.01/1.1
+            # epsilon[lll][lll] = 1
+        # TMatrixD h(5,5);
+        # TArrayD data(25);
+        # for lll in range(0, 25):
+        #      data[i] = 1./(ir+ic);
+        # h.SetMatrixArray(data.GetArray());
+        B = A
 
-        sysHighF = [TFile(x[1]) for x in self.sysFiles]
-        sysHighH = [f.Get(histvar + '_' + self.histstatenames[i]) for f in sysHighF]
+        # covar = TMatrix.UnitMatrix(A)
+
+        # covar = Ucovar
+        # Ucovar = Ucovar*0.03448275862
+
+        Atran = TMatrixD(29,29)
+        # Atran = A.Invert()
+        Atran.Transpose(A)
+        covar = A*epsilon*Atran
+        # covar = A*epsilon
+        Icovar = covar
+        Icovar = A.Invert()
+        # Icovar = epsilon.Invert()
+        # if pname == "Result" and i == 2:
+            # print Icovar.Determinant()
+            # print "A"
+            # A.Print()
+            # print A.GetNrows()
+            # print A.GetNcols()
+            # print "epsilon"
+            # epsilon.Print()
+            # print "Atran"
+            # Atran.Print()
+            # Icovar.Print()
+        # sysLowF  = [TFile(x[0]) for x in self.sysFiles]
+        # sysLowH  = [f.Get(histvar + '_' + self.histstatenames[0]) for f in sysLowF]
+        # owH  = [f.Get(histvar + '_' + self.histstatenames[i])
+        for x in self.sysFiles:
+            sysLowF.append(TFile(x[0]))
+            f = TFile(x[0])
+            if x[3]=="TOF" and histvar=="thetaX":
+               plot = sysLowF[-1].Get("thetaY" + '_' + self.histstatenames[0])
+               sysLowH.append(sysLowF[-1].Get("thetaY" + '_' + self.histstatenames[0]))
+            else:
+               plot = sysLowF[-1].Get(histvar + '_' + self.histstatenames[0])
+               sysLowH.append(sysLowF[-1].Get(histvar + '_' + self.histstatenames[0]))
+
+        # sysHighF = [TFile(x[1]) for x in self.sysFiles]
+        # sysHighH = [f.Get(histvar + '_' + self.histstatenames[0]) for f in sysHighF]
+        # sysHighH = [f.Get(histvar + '_' + self.histstatenames[i]) for f in sysHighF]
+        for x in self.sysFiles:
+            sysHighF.append(TFile(x[1]))
+            f = TFile(x[1])
+            if x[3]=="TOF" and histvar=="thetaX":
+               plot = sysHighF[-1].Get("thetaY" + '_' + self.histstatenames[0])
+               sysHighH.append(sysHighF[-1].Get("thetaY" + '_' + self.histstatenames[0]))
+            else:
+               plot = sysHighF[-1].Get(histvar + '_' + self.histstatenames[0])
+               sysHighH.append(sysHighF[-1].Get(histvar + '_' + self.histstatenames[0]))
         sysScale = [x[2] for x in self.sysFiles]
+        sysName = [x[3] for x in self.sysFiles]
+        if (len(sysName)==6):
+            if (sysName[5] == "decon"):
+                sysLowH[5]  = sysLowF[5].Get(histvar + '_' + "graph")
+                sysLowH[5].Scale(1./float(sysLowH[5].GetEntries()))
+                sysHighH[5]  = sysHighF[5].Get(histvar + '_' + "recoGoldhold3")
+                nsysHighH  = sysHighF[5].Get(histvar + '_' + "data").GetEntries()
+                sysHighH[5].Scale(1./float(nsysHighH))
         syshists = []
         for q in range(len(self.sysFiles)):
             syshists.append(resplot.Clone())
             syshists[-1].SetName(resplot.GetName()+"_"+self.sysFiles[q][3])
-            syshists[-1].GetYaxis().SetTitle("Upper - Lower Systematic")
-            
+            syshists[-1].GetYaxis().SetTitle("Upper - Lower Systematic Squared")
+
+
         self.RMSsysdiff[histvar][self.histstatenames[i]] = {}
         self.RMSsyserr[histvar][self.histstatenames[i]]  = {}
         self.RMSsysdiff[histvar][self.histstatenames[i]]["Sum2"] = 0
@@ -143,102 +244,280 @@ class plotgen:
         self.RMSsysdiff[histvar][self.histstatenames[i]]["Sum"] = 0
         self.RMSsyserr[histvar][self.histstatenames[i]]["Sum"] = 0
         binmax = 0.045
+        cloneb = TH1D("","",29,-binmax,binmax)
+        cloneh = TH1D("","",29,-binmax,binmax)
+        mcloneb = TH1D("","",47,-0.0705,0.0705)
+        mcloneh = TH1D("","",47,-0.0705,0.0705)
+        z = 1
+        cv = 0
+        firstbin = 99
         if histvar == 'theta2Scatt':
             binmax = 0.0036
         for k in range(len(self.sysFiles)):
-	    if pname=="Truth" and i==0:
-		    continue
-            if histvar == 'theta2Scatt':
-                sysLowH[k].Rebin(8)
-                sysHighH[k].Rebin(8)
-            elif histvar == 'thetaScatt':
-                sysLowH[k].Rebin(1)
-                sysHighH[k].Rebin(1)
-            elif self.sysFiles[k][-1] != "TOF":
-		#print self.sysFiles[k] 
-		#print sysLowH[k] 
-		sysLowH[k].Rebin(4)
-                sysHighH[k].Rebin(4)
-            #print sysLowH[k]
+            if pname=="Gold" and i==1:
+                continue
 
-	    self.formatHists(sysLowH[k], i)
+            print sysLowF[k]
+            self.formatHists(sysLowH[k], i)
             self.formatHists(sysHighH[k], i)
-            self.addToSysErr(i, sysHighH[k], sysLowH[k], base, sysScale[k], histvar, self.sysFiles[k][3])
+            # print self.sysFiles[k][0]
+            self.addToSysErr(i, sysHighH[k], sysLowH[k], base, sysScale[k], histvar, self.sysFiles[k][3], norms)
+
             self.RMSsysdiff[histvar][self.histstatenames[i]]["Sum2"] \
-                += self.RMSsysdiff[histvar][self.histstatenames[i]][self.sysFiles[k][3]] *\
-                self.RMSsysdiff[histvar][self.histstatenames[i]][self.sysFiles[k][3]] 
+                        += self.RMSsysdiff[histvar][self.histstatenames[i]][self.sysFiles[k][3]] *\
+                        self.RMSsysdiff[histvar][self.histstatenames[i]][self.sysFiles[k][3]]
             self.RMSsyserr[histvar][self.histstatenames[i]]["Sum2"] \
-                += self.RMSsyserr[histvar][self.histstatenames[i]][self.sysFiles[k][3]]  *\
-                self.RMSsyserr[histvar][self.histstatenames[i]][self.sysFiles[k][3]]
+                        += self.RMSsyserr[histvar][self.histstatenames[i]][self.sysFiles[k][3]]  *\
+                        self.RMSsyserr[histvar][self.histstatenames[i]][self.sysFiles[k][3]]
             self.RMSsysdiff[histvar][self.histstatenames[i]]["Sum"] \
-                = sqrt( self.RMSsysdiff[histvar][self.histstatenames[i]]["Sum2"] )
+                        = sqrt( self.RMSsysdiff[histvar][self.histstatenames[i]]["Sum2"] )
             self.RMSsyserr[histvar][self.histstatenames[i]]["Sum"] \
-                = sqrt( self.RMSsyserr[histvar][self.histstatenames[i]]["Sum2"] )
-        for j in range(0, hist.GetNbinsX()+1):
-	    if pname=="Truth" and i==0:
-		    continue
-            res = hist.GetBinContent(j) - base.GetBinContent(j)                
-            #sys = hsysup[i].GetBinContent(j) - hsysdn[i].GetBinContent(j)
-            #sys *= 0.06/0.8
+                        = sqrt( self.RMSsyserr[histvar][self.histstatenames[i]]["Sum2"] )
+            # print self.sysFiles[k][3]
+            # print "Sum",self.RMSsyserr[histvar][self.histstatenames[i]]["Sum"]
+
+        for j in range(0, base.GetNbinsX()+1):
+            res = hist.GetBinContent(j) - base.GetBinContent(j)
+            # resplot.SetBinContent(j, res/math.sqrt(err2hist))
+            # resplot.SetBinError(j, 1)
+            if pname == "Result" and i == 2:
+                res = hist.GetBinContent(hist.GetMaximumBin()-24+j) - base.GetBinContent(j)
+                # resplot.SetBinContent(hist.GetMaximumBin()-24+j, res/math.sqrt(err2hist))
+            if math.fabs(hist.GetXaxis().GetBinCenter(j)) < binmax :
+                cloneh.SetBinContent(z,hist.GetBinContent(j))
+                cloneb.SetBinContent(z,base.GetBinContent(j))
+                if hist.GetBinContent(j) > 0:
+                    cv += res*res/hist.GetBinContent(j)
+                z += 1
+            if pname == "Result" and i == 2:
+                if math.fabs(hist.GetXaxis().GetBinCenter(hist.GetMaximumBin()-23+j)) < binmax-0.003 :
+                    mcloneh.SetBinContent(z,hist.GetBinContent(hist.GetMaximumBin()-23+j))
+                    mcloneb.SetBinContent(z,base.GetBinContent(j))
+                    if hist.GetBinContent(hist.GetMaximumBin()-23+j) > 0:
+                        cv += res*res/hist.GetBinContent(hist.GetMaximumBin()-23+j)
+                    z += 1
+            err2hist = 0
+            err2hist = base.GetBinError(j)**2
+            # if pname == "Result" and i == 2:
+            #     j = hist.GetMaximumBin()-24+j
+
             err2 = 0
-	    err2hist = 0
-	    if math.fabs(res) > 0:
-                err2 = hist.GetBinError(j)**2  # + base.GetBinError(j)**2
-		err2hist = base.GetBinError(j)**2
-	    err2hist = base.GetBinError(j)**2
-            if math.fabs(hist.GetXaxis().GetBinCenter(j)) < 0.6:
+            err2 = hist.GetBinError(j)**2
+
+            if math.fabs(hist.GetXaxis().GetBinCenter(j)) < 0.7:
                 for k in range(len(self.sysFiles)):
-                    sys = sysHighH[k].GetBinContent(j) - sysLowH[k].GetBinContent(j)
-		    sys *= sysScale[k]
-		    if err2 > 0:
-			    syshists[k].SetBinContent(j, sys*sys/err2)
-			    syshists[k].SetBinError(j, 0.)
-                    err2 += sys*sys
-		    err2hist += sys*sys
-                if math.fabs(hist.GetXaxis().GetBinCenter(j)) < binmax and err2 > 0:
-		    chi2 += res*res/err2
-		if i==0:
-			base.SetBinError(j, sqrt(err2hist))
-		hist.SetBinError(j, sqrt(err2))
-	        #if pname=="Truth" and i==1:
-		#	hist.SetBinError(j, sqrt(err2hist))
-	        '''
-	        if sys != 0:
-		   chi2 += pow(res/sqrt(err2),2)
-		   #chi2 += res*sqrt(base.GetBinContent(j))/sqrt(res*res/base.GetBinContent(j))
-		else:
-                '''
-		if err2 > 0:
-			resplot.SetBinContent(j, res/math.sqrt(err2))
-			resplot.SetBinError(j, 1)
-                else:
-			resplot.SetBinContent(j, res/1)
-			resplot.SetBinError(j, 0)
-                
+
+                        sys = sysHighH[k].GetBinContent(j) - sysLowH[k].GetBinContent(j)
+                        # print "sys",sys
+                        sys *= sysScale[k]
+
+                        # if (sys*sys>1e-8):
+                        syshists[k].SetBinContent(j, sys*sys)
+                        # if pname == "Result" and k == 5 and i == 0 :
+                        #      print j," & ",sys," \\"
+                        #      if j == 1:
+                        #         print "error from decon"
+                        # syshists[k].SetBinContent(j, sysLowH[k].GetBinContent(j))
+                        syshists[k].SetBinError(j, syshists[k].GetBinContent(j)*1e-3)
+                        # err2 += sys*sys
+                        if pname == "Result" and k == 5 :
+                            err2hist += 0
+                        else:
+                            err2hist += sys*sys
+
+            if math.fabs(hist.GetXaxis().GetBinCenter(j)) < binmax and err2hist > 0 and firstbin > j:
+                 firstbin = j
+            if i == 0:
+                self.total = base.GetEntries()
+            flag = 0
+            if pname == "Result" and i == 2:
+                flag = 1
+            if math.fabs(hist.GetXaxis().GetBinCenter(j)) < binmax and err2hist > 0 and pname != "Result" :
+                chi2 += res*res/err2hist
+                flag = 0
+                if i == 0:
+                    self.central += base.GetBinContent(j)
+
+                # for z in range(1,29):
+                #     chi2 += res*covar(j,z)*(hist.GetBinContent(firstbin+z-1) - base.GetBinContent(firstbin+z-1))/err2hist
+                # chi2 += res*res
+                # print "chi2",chi2
+                # print "res*res",res*res
+                # print "err2hist",err2hist
+            hist.SetBinError(j, sqrt(err2hist))
+
+            if pname == "Gold" and i == 1:
+                hist.SetBinError(j, sqrt(err2))
+            if pname == "Result" and i == 1:
+                if math.fabs(hist.GetXaxis().GetBinCenter(j)) < binmax - 0.001 and err2hist > 0 :
+                    chi2 += res*res/err2hist
+                    # for z in range(0,29):
+                        # z = j-10
+                        # chi2 += res*Icovar(j-10,z)*(hist.GetBinContent(z+10) - base.GetBinContent(z+10))/err2hist
+            if pname == "Result" and i == 2:
+                # chi2 = 0
+                if math.fabs(hist.GetXaxis().GetBinCenter(hist.GetMaximumBin()-24+j)) < binmax - 0.001 and err2hist > 0 :
+                    chi2 += res*res/err2hist
+                        # print j
+                    # for z in range(0,29):
+                        # chi2 += res*Icovar(j-10,z)*res/err2hist
+                        # chi2 += res*Icovar(j-10,z)*(hist.GetBinContent(hist.GetMaximumBin()-14+z) - base.GetBinContent(z+10))/err2hist
+
+                        # chi2 += res*covar(j-10,z)*(hist.GetBinContent(hist.GetMaximumBin()-24+firstbin+z-1) - base.GetBinContent(firstbin+z-1))/err2hist
+                        # z = j-10
+
+                        # chi2 += res*covar(j-10,z)*res/err2hist
+                    # chi2 += res*res
+                    # print "chi2",chi2
+                    # print "res",res
+                    # print "err2hist",err2hist
+
+                hist.SetBinError(j, sqrt(err2))
+
+            if err2hist > 0:
+                resplot.SetBinContent(j, res/sqrt(err2hist))
+                # resplot.SetBinContent(j, 1e3*res/sqrt(err2hist))
+                # resplot.SetBinContent(j, math.sqrt(err2hist))
+                # resplot.SetBinContent(j, sqrt(err2hist))
+            resplot.SetBinError(j, 1)
+
+            if pname == "Gold" and i == 1:
+                resplot.SetBinContent(j, res/(base.GetBinError(j)))
+                resplot.SetBinError(j, 1)
+
+            if pname == "Result" and i == 2:
+                res = hist.GetBinContent(hist.GetMaximumBin()-24+j) - base.GetBinContent(j)
+                if err2hist > 0:
+                    resplot.SetBinContent(hist.GetMaximumBin()-24+j, res/math.sqrt(err2hist))
+                    # resplot.SetBinContent(hist.GetMaximumBin()-24+j, math.sqrt(err2hist))
+                if base.GetBinError(j) > 0:
+                    resplot.SetBinError(hist.GetMaximumBin()-24+j, err2/base.GetBinError(j))
+            # if pname == "Result" and i == 2:
+            #     res = hist.GetBinContent(j) - base.GetBinContent(j)
+            #     if err2hist > 0:
+            #         resplot.SetBinContent(j, res/math.sqrt(err2hist))
+                # if base.GetBinError(i) > 0:
+                #     resplot.SetBinError(j, err2hist/base.GetBinError(i))
+            if i != 0 and base.GetBinError(j) > 0:
+                resplot.SetBinError(j, sqrt(err2)/base.GetBinError(j))
+            if pname == "con" and i == 2:
+                # if base.GetBinError(j) > 0:
+                    resplot.SetBinError(j, err2)
             if math.fabs(hist.GetXaxis().GetBinCenter(j)) < binmax:
                 ndf += 1
+            if pname == "Result" and i == 2:
+                if math.fabs(hist.GetXaxis().GetBinCenter(hist.GetMaximumBin()-24+j)) < binmax - 0.001:
+                    # print "here",hist.GetXaxis().GetBinCenter(hist.GetMaximumBin()-24+j)
+                    ndf += 1
             #print i, resplot.GetXaxis().GetBinCenter(j), res, chi2, err2, ndf
-        c = TCanvas(self.fname[:-5]+'_'+histvar+'_c1')
+            #print i, resplot.GetXaxis().GetBinCenter(j), res, chi2, err2, ndf
+
+        c = TCanvas(self.fname[:-5]+'s_'+histvar+'_c1')
         c.SetBottomMargin(0.15)
         c.SetTopMargin(0.075)
-        
-	if pname == 'rawG4' or pname == 'decoG4' or pname == 'refG4':
-            for k in range(len(self.sysFiles)):
-                syshists[k].Draw("p")
-                c.SaveAs(pname+'_'+self.fname[:-5]+'_'+histvar+'_'+self.sysFiles[k][3]+'_res.eps')
-        #print "Chi-square from residuals is ",chi2, " for " ,ndf," from ", self.histstatedesc[i], binmax
+
+        if pname == "Result" and i == 0:
+            # syshists[5].GetYaxis().SetRangeUser(1e-9,1e-4)
+            syshists[5].Rebin(6)
+            syshists[5].Draw()
+            f1 = TF1("f1", "gaus")
+            # def fline(x, par):
+            #     if (x < 2.5):
+            #         TF1::RejectPoint()
+            #         return 0
+            #     return par[0] + par[1]*x[0];
+            # fline = TF1("fline", fline);
+            # f1.SetParLimits(0,1e-5,1e-5)
+            # f1.SetParLimits(1,1e-14,1e-12)
+            # f1.SetParLimits(2,-4e-3,-2e-3)
+            # f1.SetParameter(0,1e-5)
+            # f1.FixParameter(1,0)
+            # f1.FixParameter(2,-3e-3)
+            syshists[5].Fit(f1,"M")
+            # syshists[5].Fit(fline)
+            xaxis = syshists[5].GetXaxis()
+            for j in range(0, base.GetNbinsX()+1):
+                binCenter = xaxis.GetBinCenter(j)
+                fup = syshists[5].GetFunction("f1").Eval(binCenter)/6
+                # print base.GetBinError(j)
+                # print fup
+                hist.SetBinError(j, sqrt(hist.GetBinError(j)**2+sqrt(fup**2)))
+        for k in range(len(self.sysFiles)):
+            c.SetLogy()
+            syshists[k].Draw("p")
+            c.SaveAs(pname+'_'+self.fname[:-5]+'_'+histvar+'_'+self.histstatenames[i]+'_'+self.sysFiles[k][3]+'_res.pdf')
+        #print "Chi-square from residuals is ",chi2, " for " ,ndf," from ", self.histstatedesc[i], binmaxa
+        # PValue_root = TMath.Prob(ndf/2,chi2/2)
+
+        # my own p-value calculation
+        # ndf = 100
+        # chi2 = 100
+        # K = ndf * 0.5
+        # X = cv * 0.5
+        # PValue = sc.gammainc(0, 29)
+        # if(isnan(PValue) or isinf(PValue) or PValue <= 1e-8):
+        #     return 1e-14
+        # PValue = PValue1/math.gamma(K)
+        # PValue = (1.0 - PValue)
+
+        histclone = hist.Clone()
+        baseclone = base.Clone()
+        histclone.GetXaxis().SetRangeUser(-binmax,binmax)
+        baseclone.GetXaxis().SetRangeUser(-binmax,binmax)
+        histclone2 = histclone.Clone()
+        histclone2.Scale(1/norms[i])
+        baseclone2 = baseclone.Clone()
+        baseclone2.Scale(1/norms[0])
+        # pvalue_root =  baseclone.Chi2Test(histclone,"WW")
+        # kol =  baseclone.KolmogorovTest(histclone)
+        # chi2_root =  baseclone.Chi2Test(histclone,"CHI2 WW")
+        # print pname
+        # print i
+        # print "final cv",cv
+        # pvalue_root =  baseclone2.Chi2Test(histclone2,"WW")
+        # kol =  baseclone2.KolmogorovTest(histclone2)
+        # chi2_root =  baseclone2.Chi2Test(histclone2,"CHI2 WW")
+
+        pvalue_root =  cloneb.Chi2Test(cloneh,"")
+        kol =  hist.KolmogorovTest(base, "M")
+        # mcloneh.Scale(norms[i])
+        # mcloneb.Scale(norms[0])
+        if pname == "Result" and i == 2:
+            kol =  mcloneh.KolmogorovTest(mcloneb, "M")
+            # print kol
+        chi2_root =  cloneb.Chi2Test(cloneh,"CHI2 ")
+        # pvalue_root =  histclone.Chi2Test(histclone, "WW")
+        # chi2_root =  histclone.Chi2Test(histclone,"CHI2 WW")
+        # kol =  histclone.KolmogorovTest(histclone)
+        ndfr = 1
+        # if (histclone.Chi2Test(baseclone,"WW CHI2/NDF")!=0 ):
+        #     ndfr = 1/histclone.Chi2Test(baseclone,"WW CHI2/NDF")
+        # PValue1 = sc.gammainc(chi2_root/2, ndfr*chi2_root/2)
+        # PValue = PValue1/math.gamma(29)
+
+
+        PValue1 = sc.gammainc(chi2/2, ndf/2)
+        # PValue2 = sc.gammaincc(chi2/2, ndf/2)
+
+        PValue = sc.gammaincc(ndf/2, chi2/2)
+
+        # PValue = PValue1/math.gamma(ndf)
+        # PValue = (1.0 - PValue2)
         self.Chi2[histvar][self.histstatenames[i]] = [chi2, ndf]
-        
+        # self.Chi2[histvar][self.histstatenames[i]] = [chi2_root, ndf]
+        # self.pvalue[histvar][self.histstatenames[i]] = [kol]
+        # self.pvalue[histvar][self.histstatenames[i]] = [pvalue_root]
+        self.pvalue[histvar][self.histstatenames[i]] = [PValue, kol]
+
     def MCSPlot(self, pname):
 
-        #print self.fname
-	f = TFile(self.fname)
+        f = TFile(self.fname)
         self.RMS = {}
         self.RMSErr = {}
         self.Chi2 = {}
         self.RMSsysdiff = {}
         self.RMSsyserr  = {}
-        
+
         # create a plot for each histvarname
         for histvar in self.histvarnames:
             self.RMS[histvar]     = {}
@@ -246,81 +525,160 @@ class plotgen:
             self.RMSsysdiff[histvar] = {}
             self.RMSsyserr[histvar]  = {}
             self.Chi2[histvar]    = {}
+            self.pvalue[histvar]    = {}
             names = [histvar + '_' + x for x in self.histstatenames]
-            # print names
-            hists = [f.Get(histvar+'_'+x) for x in self.histstatenames]
-            
-            print hists[0]
-	    hists[0].SetTitle("")
-            # hists[3].Scale(norm)
-            # self.formatHist(hist[0], 0)
+            # hists = [f.Get(histvar+'_'+x) for x in self.histstatenames]
+            hists = []
+            kkk = 0
+            for x in self.histstatenames:
+               # print self.histstatedesc
+               # print self.histstatenames
+               # print kkk
+               if self.histstatedesc[kkk]=="LiH MC":
+                  fMC = TFile("MC"+self.fname)
+                  x = 'measdataGEANT'
+                  hists.append(fMC.Get(histvar+'_'+x))
+                  # print "MC"
+                  # print hists
+               else:
+                  hists.append(f.Get(histvar+'_'+x))
+                  # print "data"
+                  # print hists
+               kkk += 1
+            # print hists
+            count = 0
+            norms = []
+            jjj = 0
+            for n in self.histstatenames:
+                for x in self.normnames:
+                 # print 'n',n
+                 # print 'x',x
+                 if self.histstatedesc[jjj]=="LiH MC":
+                        fMCnorm = TFile("MC"+self.fname)
+                        norms.append(fMCnorm.Get(x)[0])
+                        jjj += 1
+                        # print "sdgbsfgbsfgbsfbgs"
+                        break
+
+                 if ("conv" in n):
+                        norms.append(1e6)
+                        break
+                 if (n in "Moliere" and len(norms)>1):
+                        # print hists[2].Integral()
+                        # norms.append((norms[0]*3e-3))
+                        norms.append(hists[2].Integral())
+                        # norms.append(10000)
+                        # break
+                 if (x in n):
+                    # print f.Get(x)[0]
+                    # print 'n',n
+                    # print 'x',x
+                    jjj += 1
+
+                    if (f.Get(x)[0]>0):
+                        norms.append(f.Get(x)[0])
+                    else:
+                        norms.append(1)
+                    if (x=="conv"):
+                        norms.append(f.Get("refconv")[0])
+                    break
+
+
+            # print hists[0]
+            # print norms
+            hists[0].SetTitle("")
+            # print hists
             resplots = [x.Clone() for x in hists]
             resplots[0].SetTitle('')
             resplots[0].GetYaxis().SetTitle("Normalized Residuals")
-        
-            # if histvar == 'thetaScatt':
-            leg = TLegend(0.55,0.73,0.89,0.92)
+
+            leg = TLegend(0.5,0.5,0.9,0.9)
             leg.SetLineColor(10)
-            # else:
-            #    leg = TLegend(0.35,0.2,0.65,0.5)
+            self.central = 0
+            self.total = 0
             for i in range(len(self.histstatedesc)):
                 hists[i].Sumw2()
-                if histvar=='theta2Scatt':
-                    hists[i].Rebin(8)
-                    resplots[i].Rebin(8)
-                elif histvar=='thetaScatt':
-                    hists[i].Rebin(1)
-                    resplots[i].Rebin(1)
-                else:
-                    hists[i].Rebin(1)
-                    resplots[i].Rebin(1)
+                hists[i]*3
+                print hists[i]
                 self.formatHists(hists[i], i)
                 self.formatHists(resplots[i], i)
-                self.addToRMS(i, hists[i], hists[0], resplots[i], histvar)
+                # print norms
+                self.addToRMS(i, hists[i], hists[0], resplots[i], histvar, norms, pname)
                 if histvar=='theta2Scatt':
-                    hists[i].GetYaxis().SetTitle('Probability per '+str(round(1000*1000*hists[i].GetXaxis().GetBinWidth(4),2))+' mrad^{2}')
+                    # hists[i].GetYaxis().SetTitle('Probability per '+str("%.2f" % round(1000*1000*hists[i].GetXaxis().GetBinWidth(4),2))+' mrad^{2}')
+                    hists[i].GetYaxis().SetTitle('Probability per mrad')
                 else:
-                    hists[i].GetYaxis().SetTitle('Probability per '+str(round(1000*hists[i].GetXaxis().GetBinWidth(4),2))+' mrad')
+                    # hists[i].GetYaxis().SetTitle('Probability per '+str("%.2f" % round(1000*hists[i].GetXaxis().GetBinWidth(4),2))+' mrad')
+                    hists[i].GetYaxis().SetTitle('Probability per mrad')
                 leg.AddEntry(hists[i], self.histstatedesc[i], self.histopts[i])
-		#print hists[0]
-                self.calculateChi2(i, hists[i], hists[0], resplots[i], histvar, pname)
+                # print hists[i]
+                # print hists[0]
+                self.calculateChi2(i, hists[i], hists[0], resplots[i], histvar, pname, norms)
 
-            
+
             c = TCanvas(self.fname[:-5]+'_'+histvar+'_c1')
             if self.desc[0] == 'XePion':
                 t1 = TText(0.18,0.885,"MICE ISIS cycle 2015/03")
                 t2 = TText(0.18,0.85,"Xe, "+self.desc[1][2:5]+", MAUS v3.1.2")
             else:
                 t1 = TText(0.18,0.885,"MICE ISIS cycle 2015/04")
-                t2 = TText(0.18,0.85,"LiH, "+self.desc[1][2:5]+", MAUS v3.1.2")
+                t2 = TText(0.18,0.85,"LiH, "+self.desc[1][2:5]+", MAUS v3.3.2")
+                t3 = TText(0.18,0.84,"Central, "+str((self.central/self.total)*100)+",%")
             t1.SetNDC(1)
             t1.SetTextSize(0.04)
             t1.SetTextFont(42)
             t2.SetNDC(1)
             t2.SetTextSize(0.03)
             t2.SetTextFont(42)
-            
-            hists[0].GetYaxis().SetRangeUser(4e-4,2.0)
+            hists[0].GetYaxis().SetRangeUser(4e-5,0.2)
             hists[0].SetTitle(";"+hists[0].GetXaxis().GetTitle()+" (radians);"+hists[0].GetYaxis().GetTitle())
+
+            histsminus0 = TH1D("",";;asymmetry",47,-0.06,0.06)
+            for j in range(0, hists[0].GetNbinsX()+1):
+                histsminus0.SetBinContent(j,hists[0].GetBinContent(47-j))
+            Truthasymm = hists[0].GetAsymmetry(histsminus0);
+            Truthasymm.Draw('hist p')
+            c.SaveAs('Truthasymm.pdf')
+            c.Clear()
+            histsminus1 = TH1D("",";;asymmetry",47,-0.06,0.06)
+            for j in range(0, hists[1].GetNbinsX()+1):
+                histsminus1.SetBinContent(j,hists[1].GetBinContent(47-j))
+            Truthasymm1 = hists[1].GetAsymmetry(histsminus1);
+            Truthasymm1.Draw('hist p')
+            c.SaveAs('Truthasymm1.pdf')
+            c.Clear()
+
             hists[0].Draw('ep')
-            
+            leg.SetTextSize(0.03)
+            leg.Draw('same')
             c.SetBottomMargin(0.15)
             c.SetTopMargin(0.075)
-
-            for h in hists[1:len(self.histstatedesc)]:
-		h.Draw('epsame')
-            leg.SetTextSize(0.04)
-            leg.Draw('same')
-            t1.Draw()
-            t2.Draw()
-            c.SetLogy()
-            c.SaveAs(pname+'_'+self.fname[:-5]+'_'+histvar+'_sys.eps')
-            c.SaveAs(pname+'_'+self.fname[:-5]+'_'+histvar+'_sys.root')
-            c.SaveAs(pname+'_'+self.fname[:-5]+'_'+histvar+'_sys_pq.jpg')
+            # for h in hists[1:len(self.histstatedesc)]:
+            for h in hists:
+                h.Draw('same')
+                t1.Draw()
+                t2.Draw()
+                integral = hists[0].Integral()
+                t4 = TText(0.18,0.8,"Integral "+str(integral))
+                t4.SetNDC(1)
+                t4.SetTextSize(0.03)
+                t4.SetTextFont(42)
+                t4.Draw()
+                if histvar == 'theta2Scatt':
+                   c.SetLogy()
+                   h.GetYaxis().SetRangeUser(1e-4,1)
+                c.SaveAs(pname+'_'+self.fname[:-5]+'_'+histvar+'_sys.pdf')
+                # c.SaveAs(pname+'_'+self.fname[:-5]+'_'+histvar+'_sys.root')
+                # c.SaveAs(pname+'_'+self.fname[:-5]+'_'+histvar+'_sys_pq.jpg')
+                # leg.SetX1NDC(0.5)
+                # leg.SetX2NDC(0.89)
+                # leg.SetY1NDC(0.2)
+                # leg.SetY2NDC(0.4)
+                # leg.SetTextSize(0.04)
+                # leg.Draw('same')
             c.Clear()
-            
-            c.SetLogy(0)
-            resplots[0].GetYaxis().SetRangeUser(-2,2)
+            # c.SetLogy(0)
+            # resplots[0].GetYaxis().SetRangeUser(-2,2)
             resplots[0].SetTitle(";"+resplots[0].GetXaxis().GetTitle()+" (radians);"+resplots[0].GetYaxis().GetTitle())
             leg.SetX1NDC(0.5)
             leg.SetX2NDC(0.89)
@@ -328,23 +686,47 @@ class plotgen:
             leg.SetY2NDC(0.4)
             resplots[0].Draw("p")
             for r in resplots:
+                r.GetYaxis().SetRangeUser(-10,10)
+                # r.GetYaxis().SetRangeUser(-1e-2,1e-2)
                 r.Draw('psame')
-            leg.SetTextSize(0.04)
+            leg.SetTextSize(0.03)
             leg.Draw('same')
             t1.Draw()
             t2.Draw()
-            # pblock.Draw()
-            c.SaveAs(pname+'_'+self.fname[:-5]+'_'+histvar+'_sys_res_T.eps')
+            c.SaveAs(pname+'_'+self.fname[:-5]+'_'+histvar+'_sys_res_T.pdf')
             c.SaveAs(pname+'_'+self.fname[:-5]+'_'+histvar+'_sys_res_pq.jpg')
 
-        momhist = f.Get("cor_mom")    
-        #mom = [momhist.GetMean() + 19.468, momhist.GetMeanError()]
-        #if self.fname.find("LiHMuon_03172")  >= 0:
-        #    mom = [momhist.GetMean()*1.107 + 1.05, momhist.GetMeanError()]
-        #elif self.fname.find("LiHMuon_03200")  >= 0:
-        #    mom = [momhist.GetMean()*1.104 + 1.139, momhist.GetMeanError()]
-        #elif self.fname.find("LiHMuon_03240")  >= 0:
-        #    mom = [momhist.GetMean()*1.17 - 9.41, momhist.GetMeanError()]
+        # if pname=='Result':
+        #     self.RMSsysdiff['thetaX']['recoGold_effi_only_gold']['TOF'] \
+        #         = self.RMSsysdiff['thetaY']['recoGold_effi_only_gold']['TOF']
+        #     self.RMSsyserr["thetaX"]['recoGold_effi_only_gold']['TOF'] \
+        #         = self.RMSsyserr['thetaY'][self.histstatenames[i]]['TOF']
+        #     self.RMSsysdiff['thetaX']['recoGold_effi_only_gold']["Sum2"] \
+        #                 += self.RMSsysdiff['thetaY']['recoGold_effi_only_gold']['TOF'] *\
+        #                 self.RMSsysdiff['thetaY']['recoGold_effi_only_gold']['TOF']
+        #     self.RMSsyserr['thetaX']['recoGold_effi_only_gold']["Sum2"] \
+        #                 += self.RMSsyserr['thetaY']['recoGold_effi_only_gold']['TOF']  *\
+        #                 self.RMSsyserr['thetaY']['recoGold_effi_only_gold']['TOF']
+        #     self.RMSsysdiff['thetaX']['recoGold_effi_only_gold']["Sum"] \
+        #                 = sqrt( self.RMSsysdiff['thetaX']['recoGold_effi_only_gold']["Sum2"] )
+        #     self.RMSsyserr['thetaX']['recoGold_effi_only_gold']["Sum"] \
+        #                 = sqrt( self.RMSsyserr['thetaX']['recoGold_effi_only_gold']["Sum2"] )
+        # if pname=='raw':
+        #     self.RMSsysdiff['thetaX']['measdataCobb']['TOF'] \
+        #         = self.RMSsysdiff['thetaY']['measdataCobb']['TOF']
+        #     self.RMSsyserr["thetaX"]['measdataCobb']['TOF'] \
+        #         = self.RMSsyserr['thetaY'][self.histstatenames[i]]['TOF']
+        #     self.RMSsysdiff['thetaX']['measdataCobb']["Sum2"] \
+        #                 += self.RMSsysdiff['thetaY']['measdataCobb']['TOF'] *\
+        #                 self.RMSsysdiff['thetaY']['measdataCobb']['TOF']
+        #     self.RMSsyserr['thetaX']['measdataCobb']["Sum2"] \
+        #                 += self.RMSsyserr['thetaY']['measdataCobb']['TOF']  *\
+        #                 self.RMSsyserr['thetaY']['measdataCobb']['TOF']
+        #     self.RMSsysdiff['thetaX']['measdataCobb']["Sum"] \
+        #                 = sqrt( self.RMSsysdiff['thetaX']['measdataCobb']["Sum2"] )
+        #     self.RMSsyserr['thetaX']['measdataCobb']["Sum"] \
+        #                 = sqrt( self.RMSsyserr['thetaX']['measdataCobb']["Sum2"] )
+        momhist = f.Get("LiH_mom")
         if self.fname.find("LihMuon_03172")  >= 0:
             mom = [momhist.GetMean(), momhist.GetMeanError()]
         elif self.fname.find("LihMuon_03200")  >= 0:
@@ -359,275 +741,266 @@ class plotgen:
                 return int(math.ceil(math.fabs(math.log(math.fabs(x),10))))
             else:
                 return 1
-        
-        # syssummary.append("p (MeV/c) & "+self.histvarnames[0]+"&"+self.histvarnames[1]+"&"+self.histvarnames[3]+"\\\\")
 
-	if pname!="Truth":
-        
+
+        if pname!="Gold":
+
          for sys in self.sysFiles:
-            # if sys[3] == 'Material': stindx = 1
-            # else:
             stindx = 0
-            # print sys[3], self.histstatenames[stindx]
-            
-	    difference0 = self.RMSsysdiff[self.histvarnames[0]][self.histstatenames[stindx]][sys[3]]
+
+            difference0 = self.RMSsysdiff[self.histvarnames[0]][self.histstatenames[stindx]][sys[3]]
             difference1 = self.RMSsysdiff[self.histvarnames[1]][self.histstatenames[stindx]][sys[3]]
-            difference3 = self.RMSsysdiff[self.histvarnames[3]][self.histstatenames[stindx]][sys[3]]
+            # difference3 = self.RMSsysdiff[self.histvarnames[3]][self.histstatenames[stindx]][sys[3]]
 
             syserr0 = self.RMSsyserr[self.histvarnames[0]][self.histstatenames[stindx]][sys[3]]
             syserr1 = self.RMSsyserr[self.histvarnames[1]][self.histstatenames[stindx]][sys[3]]
-            syserr3 = self.RMSsyserr[self.histvarnames[3]][self.histstatenames[stindx]][sys[3]]
+            # syserr3 = self.RMSsyserr[self.histvarnames[3]][self.histstatenames[stindx]][sys[3]]
 
             relerr0 = syserr0/self.RMS[self.histvarnames[0]][self.histstatenames[0]]
             relerr1 = syserr1/self.RMS[self.histvarnames[1]][self.histstatenames[0]]
-            relerr3 = syserr3/self.RMS[self.histvarnames[3]][self.histstatenames[0]]
-            
-            syssummary.append(str(round(mom[0],sigfig(mom[1])))+"$\pm$"+str(round(mom[1],sigfig(mom[1])))+\
-                              " & "+str(round(difference0,sigfig(difference0)))+\
-                              " & "+str(round(syserr0,sigfig(syserr0)))+\
-                              " & "+str(round(relerr0,sigfig(relerr0)))+\
-                              " & "+str(round(difference1,sigfig(difference1)))+\
-                              " & "+str(round(syserr1,sigfig(syserr1)))+\
-                              " & "+str(round(relerr1,sigfig(relerr1)))+\
-                              " & "+str(round(difference3,sigfig(difference3)))+\
-                              " & "+str(round(syserr3,sigfig(syserr3)))+\
-                              " & "+str(round(relerr3,sigfig(relerr3)))+"\\\\")
-            # print syssummary[-1]
-            
-         syssummary.append(str(round(mom[0],2))+"$\pm$"+str(round(mom[1],2))+\
-                          " & "+ str(round(rms[0],2))+"$\pm$"+str(round(rms[1],2))+\
-                          " & "+str(round(self.RMSsysdiff[self.histvarnames[0]][self.histstatenames[0]]['Sum'],2))+\
-                          " & "+str(round(self.RMSsyserr[self.histvarnames[0]][self.histstatenames[0]]['Sum'],2))+\
-                          " & "+str(round(self.RMSsyserr[self.histvarnames[0]][self.histstatenames[0]]['Sum']/self.RMS[self.histvarnames[0]][self.histstatenames[0]],2))+\
-                          " & "+str(round(self.RMSsysdiff[self.histvarnames[1]][self.histstatenames[0]]['Sum'],2))+\
-                          " & "+str(round(self.RMSsyserr[self.histvarnames[1]][self.histstatenames[0]]['Sum'],2))+\
-                          " & "+str(round(self.RMSsyserr[self.histvarnames[1]][self.histstatenames[0]]['Sum']/self.RMS[self.histvarnames[1]][self.histstatenames[0]],2))+\
-                          " & "+str(round(self.RMSsysdiff[self.histvarnames[3]][self.histstatenames[0]]['Sum'],2))+
-                          " & "+str(round(self.RMSsyserr[self.histvarnames[3]][self.histstatenames[0]]['Sum'],2))+
-                          " & "+str(round(self.RMSsyserr[self.histvarnames[3]][self.histstatenames[0]]['Sum']/self.RMS[self.histvarnames[2]][self.histstatenames[0]],2))+"\\\\")
-            
-        # summary.append("p (MeV/c) &  &"+str(self.histstatenames[0])+" & "+str(self.histstatenames[1])+" & $\chi^{2}$/ndf & "+
-        #                +str(self.histstatenames[2])+" & $\chi^{2}$/ndf \\\\")
-        # print mom, self.RMS, self.RMSErr, self.Chi2
+            # relerr3 = syserr3/self.RMS[self.histvarnames[3]][self.histstatenames[0]]
 
+            # syssummary.append("LiH & "+str("%.2f" % round(mom[0],sigfig(mom[1])))+"$\pm$"+str("%.2f" % round(mom[1],sigfig(mom[1])))+\
+            syssummary.append("LiH & "+str("%.2f" % mom[0])+\
+                    " & "+str("%.2f" % difference0)+\
+                    " & "+str("%.2f" % syserr0)+\
+                    " & "+str("%.2f" % relerr0)+\
+                    " & "+str("%.2f" % difference1)+\
+                    " & "+str("%.2f" % syserr1)+\
+                    " & "+str("%.2f" % relerr1)+\
+                    # " & "+str("%.2f" % round(difference3,sigfig(difference3)))+\
+                    # " & "+str("%.2f" % round(syserr3,sigfig(syserr3)))+\
+                    # " & "+str("%.2f" % round(relerr3,sigfig(relerr3)))
+                    "\\\\")
+
+         # syssummary.append(str("%.2f" % round(mom[0],2))+"$\pm$"+str("%.2f" % round(mom[1],2))+\
+         syssummary.append(str("%.2f" % mom[0])+\
+                " & "+ str("%.2f" % rms[0])+"$\pm$"+str("%.2f" % rms[1])+\
+                " & "+str("%.2f" % self.RMSsysdiff[self.histvarnames[0]][self.histstatenames[0]]['Sum'])+\
+                " & "+str("%.2f" % self.RMSsyserr[self.histvarnames[0]][self.histstatenames[0]]['Sum'])+\
+                " & "+str("%.2f" % (self.RMSsyserr[self.histvarnames[0]][self.histstatenames[0]]['Sum']/self.RMS[self.histvarnames[0]][self.histstatenames[0]]))+\
+                " & "+str("%.2f" % self.RMSsysdiff[self.histvarnames[1]][self.histstatenames[0]]['Sum'])+\
+                " & "+str("%.2f" % self.RMSsyserr[self.histvarnames[1]][self.histstatenames[0]]['Sum'])+\
+                " & "+str("%.2f" % (self.RMSsyserr[self.histvarnames[1]][self.histstatenames[0]]['Sum']/self.RMS[self.histvarnames[1]][self.histstatenames[0]]))+\
+                # " & "+str("%.2f" % round(self.RMSsysdiff[self.histvarnames[3]][self.histstatenames[0]]['Sum'],2))+
+                # " & "+str("%.2f" % round(self.RMSsyserr[self.histvarnames[3]][self.histstatenames[0]]['Sum'],2))+
+                # " & "+str("%.2f" % round(self.RMSsyserr[self.histvarnames[3]][self.histstatenames[0]]['Sum']/self.RMS[self.histvarnames[2]][self.histstatenames[0]],2))
+                "\\\\")
+
+
+        # if pname == 'Result' or pname == 'con' or pname == 'Gold':
+        # if pname == 'Gold':
+        #  for histvar in self.histvarnames:
+        #      summary.append(str("%.2f" % round(mom[0],2))+"$\pm$"+str("%.2f" % round(mom[1],2))+\
+        #              "& $\ "+histvar+"$ & "+str("%.2f" % round(self.RMS[histvar][self.histstatenames[0]],2))+ \
+        #              "$\pm$"+str("%.2f" % round(self.RMSErr[histvar][self.histstatenames[0]],2))+ \
+        #              "$\pm$"+str("%.2f" % round(self.RMSsyserr[histvar][self.histstatenames[0]]["Sum"],2))+ \
+        #              " & "+str("%.2f" % round(self.RMS[histvar][self.histstatenames[1]],2))+ \
+        #              "$\pm$"+str("%.2f" % round(self.RMSErr[histvar][self.histstatenames[1]],2))+ \
+        #              " & "+str("%.2f" % round(self.Chi2[histvar][self.histstatenames[1]][0],1))+ \
+        #              " / "+ str(self.Chi2[histvar][self.histstatenames[1]][1]) \
+        #              +"\\\\")
+        # else:
+        #      for histvar in self.histvarnames:
+        #          summary.append(str("%.2f" % round(mom[0],2))+"$\pm$"+str("%.2f" % round(mom[1],2))+\
+        #                  "& $\\"+histvar+"$ & "+str("%.2f" % round(self.RMS[histvar][self.histstatenames[0]],2))+ \
+        #                   "$\pm$"+str("%.2f" % round(self.RMSErr[histvar][self.histstatenames[0]],2))+ \
+        #                   "$\pm$"+str("%.2f" % round(self.RMSsyserr[histvar][self.histstatenames[0]]["Sum"],2))+ \
+        #                   " & "+str("%.2f" % round(self.RMS[histvar][self.histstatenames[1]],2))+ \
+        #                   "$\pm$"+str("%.2f" % round(self.RMSErr[histvar][self.histstatenames[1]],2))+ \
+        #                   # " & "+str("%.2f" % round(self.Chi2[histvar][self.histstatenames[1]][0],1))+ \
+        #                   " & "+str(self.Chi2[histvar][self.histstatenames[1]][0])+ \
+        #                   " / "+ str(self.Chi2[histvar][self.histstatenames[1]][1])+ \
+        #                   # " & "+str("%.2f" % round(self.pvalue[histvar][self.histstatenames[1]][0],1))+ \
+        #                   " & "+str(self.pvalue[histvar][self.histstatenames[1]][0])+ \
+        #                   " & "+str(self.pvalue[histvar][self.histstatenames[1]][1])+ \
+        #                   " & "+str("%.2f" % round(self.RMS[histvar][self.histstatenames[2]],2))+ \
+        #                  "$\pm$"+str("%.2f" % round(self.RMSErr[histvar][self.histstatenames[2]],2))+ \
+        #                  # " & "+str("%.2f" % round(self.Chi2[histvar][self.histstatenames[2]][0],1))+ \
+        #                  " & "+str(self.Chi2[histvar][self.histstatenames[2]][0])+ \
+        #                  " / "+ str(self.Chi2[histvar][self.histstatenames[2]][1])+ \
+        #                  # " & "+str("{:e}".format(round(self.pvalue[histvar][self.histstatenames[2]][0],1)))+ \
+        #                  " & "+str(self.pvalue[histvar][self.histstatenames[2]][0])+ \
+        #                  " & "+str(self.pvalue[histvar][self.histstatenames[2]][1])+ \
+        #                  "\\\\")
+        if pname == 'Gold' or pname == "MCdata" :
          for histvar in self.histvarnames:
-            summary.append(str(round(mom[0],2))+"$\pm$"+str(round(mom[1],2))+\
-                           "& $\ "+histvar+"$ & "+str(round(self.RMS[histvar][self.histstatenames[0]],2))+ \
-                           "$\pm$"+str(round(self.RMSErr[histvar][self.histstatenames[0]],2))+ \
-                           "$\pm$"+str(round(self.RMSsyserr[histvar][self.histstatenames[0]]["Sum"],2))+ \
-                           " & "+str(round(self.RMS[histvar][self.histstatenames[1]],2))+ \
-                           "$\pm$"+str(round(self.RMSErr[histvar][self.histstatenames[1]],2))+ \
-                           # "$\pm$"+str(round(self.RMSsyserr[histvar][self.histstatenames[1]]["Sum"],2))+\
-                           " & "+str(round(self.Chi2[histvar][self.histstatenames[1]][0],1))+ \
-                           " / "+ str(self.Chi2[histvar][self.histstatenames[1]][1])+ \
-                           " & "+str(round(self.RMS[histvar][self.histstatenames[2]],2))+ \
-                           "$\pm$"+str(round(self.RMSErr[histvar][self.histstatenames[2]],2))+ \
-                           #"$\pm$"+str(round(self.RMSsyserr[histvar][self.histstatenames[2]]["Sum"],2))+\
-                           " & "+str(round(self.Chi2[histvar][self.histstatenames[2]][0],1))+ \
-                           " / "+ str(self.Chi2[histvar][self.histstatenames[2]][1])
-                           +"\\\\")
-            # print summary[-1]
-            
-         f.Close()
-         return [summary, syssummary]
-    #  print "+++++++++++++++ systematics +++++++++++++++++++++++"
-    # for i in range(len(RMS)):
-    #     print " & ", histvarnames[i]," & ",round(RMSsysdiff[i][0],2)," & ",round(RMSsyserr[i][0],3)," & ",round(RMSsysdiff[i][1],2)," & ",round(RMSsyserr[i][1],3)," & ",round(RMSsysdiff[i][2],2)," & ",round(RMSsyserr[i][2],3),"\\\\"
-        
+             # summary.append(str("%.2f" % mom[0])+"$\pm$"+str("%.2f" % mom[1])+\
+             summary.append(str("%.2f" % mom[0])+\
+                         "& $\\"+histvar+"$ & "+str("%.2f" % self.RMS[histvar][self.histstatenames[0]])+ \
+                          "$\pm$"+str("%.2f" % self.RMSErr[histvar][self.histstatenames[0]])+ \
+                          "$\pm$"+str("%.2f" % self.RMSsyserr[histvar][self.histstatenames[0]]["Sum"])+ \
+                          " & "+str("%.2f" % self.RMS[histvar][self.histstatenames[1]])+ \
+                          "$\pm$"+str("%.2f" % self.RMSErr[histvar][self.histstatenames[1]])+ \
+                          " & "+str("%.2f" % self.Chi2[histvar][self.histstatenames[1]][0])+ \
+                          " / "+ str(self.Chi2[histvar][self.histstatenames[1]][1])+ \
+                          # " & "+str("%.2f" % self.pvalue[histvar][self.histstatenames[1]][0],1))+ \
+                          " & "+str("{:.2f}".format(self.pvalue[histvar][self.histstatenames[1]][0]))+ \
+                     # "& $\ "+histvar+"$ & "+str("%.2f" % self.RMS[histvar][self.histstatenames[0]])+ \
+                     # "$\pm$"+str("%.2f" % self.RMSErr[histvar][self.histstatenames[0]])+ \
+                     # "$\pm$"+str("%.2f" % self.RMSsyserr[histvar][self.histstatenames[0]]["Sum"])+ \
+                     # " & "+str("%.2f" % self.RMS[histvar][self.histstatenames[1]])+ \
+                     # "$\pm$"+str("%.2f" % self.RMSErr[histvar][self.histstatenames[1]])+ \
+                     # " & "+str("%.2f" % self.Chi2[histvar][self.histstatenames[1]][0],1)+ \
+                     # # " / "+ str(self.Chi2[histvar][self.histstatenames[1]][1])+ \
+                     "\\\\")
+        else:
+             for histvar in self.histvarnames:
+                 # summary.append(str("%.2f" % mom[0])+"$\pm$"+str("%.2f" % mom[1])+\
+                 summary.append(str("%.2f" % mom[0])+\
+                         "& $\\"+histvar+"$ & "+str("%.2f" % self.RMS[histvar][self.histstatenames[0]])+ \
+                          "$\pm$"+str("%.2f" % self.RMSErr[histvar][self.histstatenames[0]])+ \
+                          "$\pm$"+str("%.2f" % self.RMSsyserr[histvar][self.histstatenames[0]]["Sum"])+ \
+                          " & "+str("%.2f" % self.RMS[histvar][self.histstatenames[1]])+ \
+                          "$\pm$"+str("%.2f" % self.RMSErr[histvar][self.histstatenames[1]])+ \
+                          " & "+str("%.2f" % self.Chi2[histvar][self.histstatenames[1]][0])+ \
+                          " / "+ str(self.Chi2[histvar][self.histstatenames[1]][1])+ \
+                          # " & "+str("%.2f" % self.pvalue[histvar][self.histstatenames[1]][0],1))+ \
+                          " & "+str("{:.2f}".format(self.pvalue[histvar][self.histstatenames[1]][0]))+ \
+                          # " & "+str("%.2f" % self.pvalue[histvar][self.histstatenames[1]][1])+ \
+                          " & "+str("%.2f" % self.RMS[histvar][self.histstatenames[2]])+ \
+                         "$\pm$"+str("%.2f" % self.RMSErr[histvar][self.histstatenames[2]])+ \
+                         " & "+str("%.2f" % self.Chi2[histvar][self.histstatenames[2]][0])+ \
+                         " / "+ str(self.Chi2[histvar][self.histstatenames[2]][1])+ \
+                         # " & "+str("{:e}".format(self.pvalue[histvar][self.histstatenames[2]][0],1)))+ \
+                         " & "+str("{:.2f}".format(self.pvalue[histvar][self.histstatenames[2]][0]))+ \
+                         # " & "+str("%.2f" % self.pvalue[histvar][self.histstatenames[2]][1])+ \
+                         "\\\\")
+
+        f.Close()
+        return [summary, syssummary]
+
 if __name__ == '__main__':
-    # baseSet = sys.argv[1]
+
     raw172 = plotgen("LihMuon_03172.root")
-    raw172.sysFiles = [["../TOFsys/LiHMu_3172_tof_lim28.7374090796_u28.9374090796.root",
-                        "../TOFsys/LiHMu_3172_tof_lim29.5374090796_u29.7374090796.root",
-                        129./800.,"TOF"],
-                       ["../materials/material_0/LiHMu_3172_res_lim0.891.root",
-                        "../materials/material_0/LiHMu_3172_res_lim1.109.root",
-                        sqrt(0.004/0.218),"Material"],
-                       ["../angdef/angdef_0/LiHMu_3172_45.root",
-                        "../angdef/angdef_0/LiHMu_3172_135.root",
-                        1,"angdef"],
-                       ["../MClih172/LihMuon_03172.root",
-                        "../MClih172/nopionLihMuon_03172.root",
-                        1,"picon"],
-                       ["../MClih172/LihMuon_03172.root",
-                        "../MClih172/acceptLihMuon_03172.root",
-                        1,"accept"],
-                       ["../fiducial/LiHMu_3172_R_5_G_-17.root",
-                        "../fiducial/LiHMu_3172_R_5_G_-15.root",
-                        0.5/10,"Fid. Pitch"],
-                       ["../fiducial/LiHMu_3172_R_4_G_-17.root",
-                        "../fiducial/LiHMu_3172_R_6_G_-17.root",
-                       .478/20.,"Fid. Radius"],
-                       ["../alignment/LiHMu_3172_13.root",
-                        "../alignment/LiHMu_3172_10.root",
-                        8.9e-5/8.1e-4,"Alignment"]]
-    
+    raw172.sysFiles = [
+                      ["../TOFsys/LiHMu_3200_tof_lim28.4918072213_u28.6918072213.root",
+                        "../TOFsys/LiHMu_3200_tof_lim28.6918072213_u28.8918072213.root",
+                        70./200.,"TOF"],
+                      ["../angdef/angdef_0/LiHMu_3172_15.root",
+                       "../angdef/angdef_0/LiHMu_3172_100.root",
+                       1/1483,"angdef"],
+                      ["MCLihMuon_03172.root",
+                       "../MClih172/nopionLihMuon_03172.root",
+                       1,"picon"],
+                      ["../fiducial/LiHMu_3172_R_-1_G_1.root",
+                       "../fiducial/LiHMu_3172_R_1_G_1.root",
+                      .478/20.,"Fid. Radius"],
+                      ["../alignment/LiHMu_3172_-1.root",
+                       "../alignment/LiHMu_3172_1.root",
+                       8.9e-5/8.1e-4,"Alignment"]
+                      ]
+
     raw200 = plotgen("LihMuon_03200.root")
-    raw200.sysFiles = [["../TOFsys/LiHMu_3200_tof_lim27.8059285384_u28.0059285384.root",
-                        "../TOFsys/LiHMu_3200_tof_lim28.6059285384_u28.8059285384.root",
-                        129./800.,"TOF"],
-                       ["../materials/material_0/LiHMu_3200_res_lim0.891.root",
-                        "../materials/material_0/LiHMu_3200_res_lim1.109.root",
-                        sqrt(0.004/0.218),"Material"],
-                       ["../angdef/angdef_0/LiHMu_3200_45.root",
-                        "../angdef/angdef_0/LiHMu_3200_135.root",
-                        1,"angdef"],
-                       ["../MClih200/LihMuon_03200.root",
+    raw200.sysFiles = [
+                       ["../TOFsys/LiHMu_3200_tof_lim27.6918072213_u27.8918072213.root",
+                        "../TOFsys/LiHMu_3200_tof_lim28.0918072213_u28.2918072213.root",
+                        70./400.,"TOF"],
+                       ["../angdef/angdef_0/LiHMu_3200_15.root",
+                        "../angdef/angdef_0/LiHMu_3200_100.root",
+                        1/1483,"angdef"],
+                        ["MCLihMuon_03200.root",
                         "../MClih200/nopionLihMuon_03200.root",
                         1,"picon"],
-                       ["../MClih200/LihMuon_03200.root",
-                        "../MClih200/acceptLihMuon_03200.root",
-                        1,"accept"],
-                       ["../fiducial/LiHMu_3200_R_5_G_-17.root",
-                        "../fiducial/LiHMu_3200_R_5_G_-15.root",
-                        0.5/10,"Fid. Pitch"],
-                       ["../fiducial/LiHMu_3200_R_4_G_-17.root",
-                        "../fiducial/LiHMu_3200_R_6_G_-17.root",
+                       ["../fiducial/LiHMu_3200_R_-1_G_1.root",
+                        "../fiducial/LiHMu_3200_R_1_G_1.root",
                         0.478/20.,"Fid. Radius"],
-                       ["../alignment/LiHMu_3200_1.root",
-                        "../alignment/LiHMu_3200_7.root",
-                        2.1e-5/9.1e-5,"Alignment"]]
-    
+                       ["../alignment/LiHMu_3200_-1.root",
+                        "../alignment/LiHMu_3200_1.root",
+                        2.1e-5/9.1e-5,"Alignment"]
+                       ]
+
     raw240 = plotgen("LihMuon_03240.root")
-    raw240.sysFiles = [["../TOFsys/LiHMu_3240_tof_lim27.0570317938_u27.2570317938.root",
-                        "../TOFsys/LiHMu_3240_tof_lim27.8570317938_u28.0570317938.root",
-                        129./800.,"TOF"],
-                       ["../materials/material_0/LiHMu_3240_res_lim0.891.root",
-                        "../materials/material_0/LiHMu_3240_res_lim1.109.root",
-                        sqrt(0.004/0.218),"Material"],
-                       ["../angdef/angdef_0/LiHMu_3240_45.root",
-                        "../angdef/angdef_0/LiHMu_3240_135.root",
-                        1,"angdef"],
-                       ["../MClih240/LihMuon_03240.root",
+    raw240.sysFiles = [
+                       ["../TOFsys/LiHMu_3200_tof_lim27.0918072213_u27.2918072213.root",
+                        "../TOFsys/LiHMu_3200_tof_lim27.2918072213_u27.4918072213.root",
+                        70./200.,"TOF"],
+                       ["../angdef/angdef_0/LiHMu_3240_15.root",
+                        "../angdef/angdef_0/LiHMu_3240_100.root",
+                        1/1483,"angdef"],
+                       ["MCLihMuon_03240.root",
                         "../MClih240/nopionLihMuon_03240.root",
                         1,"picon"],
-                       ["../MClih240/LihMuon_03240.root",
-                        "../MClih240/acceptLihMuon_03240.root",
-                        1,"accept"],
-                       ["../fiducial/LiHMu_3240_R_5_G_-17.root",
-                        "../fiducial/LiHMu_3240_R_5_G_-15.root",
-                        0.5/10,"Fid. Pitch"],
-                       ["../fiducial/LiHMu_3240_R_4_G_-17.root",
-                        "../fiducial/LiHMu_3240_R_6_G_-17.root",
+                       ["../fiducial/LiHMu_3240_R_-1_G_1.root",
+                        "../fiducial/LiHMu_3240_R_1_G_1.root",
                         0.478/20.,"Fid. Radius"],
-                       ["../alignment/LiHMu_3240_59.root",
-                        "../alignment/LiHMu_3240_19.root",
-                        1.2e-5/6.5e-5,"Alignment"]]
-    
+                       ["../alignment/LiHMu_3240_-1.root",
+                        "../alignment/LiHMu_3240_1.root",
+                        1.2e-5/6.5e-5,"Alignment"]
+                       ]
+
     [out172, sys172] = raw172.MCSPlot("raw")
     [out200, sys200] = raw200.MCSPlot("raw")
     [out240, sys240] = raw240.MCSPlot("raw")
-    ''' 
-    piraw240 = plotgen("XePion_3240_0.root")
-    piraw240.sysFiles = [["TOFsys/XePion_3240_tof_lim26.6_u28.0.root",
-                          "TOFsys/XePion_3240_tof_lim27.4_u28.8.root",
-                          128./800.,"TOF"],
-                         ["material_0/XePion_3240_res_lim0.891.root",
-                          "material_0/XePion_3240_res_lim1.109.root",
-                          sqrt(0.010/0.218),"Material"],
-                       ["../angdef/angdef_0/LiHMu_3172_45.root",
-                        "../angdef/angdef_0/LiHMu_3172_135.root",
-                        1,"angdef"],
-                         ["fiducial_0/XePion_3240_R_5_G_0.root",
-                          "fiducial_0/XePion_3240_R_5_G_2.root",
-                          0.5/10,"Fid. Pitch"],
-                         ["fiducial_0/XePion_3240_R_4_G_1.root",
-                          "fiducial_0/XePion_3240_R_6_G_1.root",
-                          0.478/20.,"Fid. Radius"]]
 
-    piraw240.histstatenames = ['measdataCobb','refconv_truthsim','refconv_Cobb', 'ref', 'truthsim']
-    [piout240, pisys240] = piraw240.MCSPlot("raw")
-    '''
-    
     print "\n"
-    raw172.histstatenames = ['measdataGEANT','recoGEANT','GEANT']
-    raw172.histstatedesc = ['Raw Data','Deconvolved, GEANT', 'GEANT Model']
-    raw200.histstatenames = ['measdataGEANT','recoGEANT','GEANT']
-    raw200.histstatedesc = ['Raw Data','Deconvolved, GEANT', 'GEANT Model']
-    raw240.histstatenames = ['measdataGEANT','recoGEANT','GEANT']
-    raw240.histstatedesc = ['Raw Data','Deconvolved, GEANT', 'GEANT Model']
-    raw172.useeventnorm = True
-    raw200.useeventnorm = True
-    raw240.useeventnorm = True
-    raw172.MCSPlot("rawG4")
-    raw200.MCSPlot("rawG4")
-    raw240.MCSPlot("rawG4")
-    
-    print "\n"
-    raw172.histstatenames = ['measdataCobb','recoCobb','Cobb']
-    raw172.histstatedesc = ['Raw Data','Deconv., Carlisle-Cobb', 'Carlisle-Cobb Model']
-    raw200.histstatenames = ['measdataCobb','recoCobb','Cobb']
-    raw200.histstatedesc = ['Raw Data','Deconv., Carlisle-Cobb', 'Carlisle-Cobb Model']
-    raw240.histstatenames = ['measdataCobb','recoCobb','Cobb']
-    raw240.histstatedesc = ['Raw Data','Deconv., Carlisle-Cobb', 'Carlisle-Cobb Model']
-    raw172.MCSPlot("rawCC")
-    raw200.MCSPlot("rawCC")
-    raw240.MCSPlot("rawCC")
-    
-    print "\n"
-    raw172.histstatenames = ['measdataGEANT','ref','GEANT']
-    raw172.histstatedesc = ['Raw LiH Data','Empty AFC', 'GEANT Model conv. Empty']
-    raw200.histstatenames = ['measdataGEANT','ref','GEANT']
-    raw200.histstatedesc = ['Raw LiH Data','Empty AFC', 'GEANT Model conv Empty']
-    raw240.histstatenames = ['measdataGEANT','ref','GEANT']
-    raw240.histstatedesc = ['Raw LiH Data','Empty AFC', 'GEANT Model conv Empty']
-    # piraw240.histstatenames = ['measdatatruthsim','ref','truthsim']
-    # piraw240.histstatedesc = ['Raw Data','Empty AFC', 'GEANT Model']
+    raw172.normnames = ['measdata', 'ref', 'conv']
+    raw200.normnames = ['measdata', 'ref', 'conv']
+    raw240.normnames = ['measdata', 'ref', 'conv']
+    raw172.histstatenames = ['measdataGEANT','ref','refconv_GEANT']
+    raw172.histstatedesc = ['LiH Data','Empty Data', 'GEANT conv. with Empty Data']
+    raw200.histstatenames = ['measdataGEANT','ref','refconv_GEANT']
+    raw200.histstatedesc = ['LiH Data','Empty Data', 'GEANT conv. with Empty Data']
+    raw240.histstatenames = ['measdataGEANT','ref','refconv_GEANT']
+    raw240.histstatedesc = ['LiH Data','Empty Data', 'GEANT conv. with Empty Data']
     [ref172, refsys172] = raw172.MCSPlot("refG4")
     [ref200, refsys200] = raw200.MCSPlot("refG4")
     [ref240, refsys240] = raw240.MCSPlot("refG4")
-    # [piref240, pirefsys240] = piraw240.MCSPlot("refG4")
-    # piraw240.histstatenames = ['measdatatruthsim','ref','Cobb']
-    # piraw240.histstatedesc = ['Raw Data','Empty AFC', 'Carlisle-Cobb Model']
-    # piraw240.MCSPlot("refCC")
-    
-    print "\n"
-    raw172.histstatenames = ['recoGEANT','GEANT','Cobb']
-    raw172.histstatedesc = ['Deconvolved, GEANT', 'GEANT Model', 'Carlisle-Cobb Model']
-    raw200.histstatenames = ['recoGEANT','GEANT','Cobb']
-    raw200.histstatedesc = ['Deconvolved, GEANT', 'GEANT Model', 'Carlisle-Cobb Model']
-    raw240.histstatenames = ['recoGEANT','GEANT','Cobb']
-    raw240.histstatedesc = ['Deconvolved, GEANT', 'GEANT Model', 'Carlisle-Cobb Model']
-    # piraw240.histstatenames = ['recotruthsim','truthsim','Cobb']
-    # piraw240.histstatedesc = ['Deconvolved, GEANT', 'GEANT Model', 'Carlisle-Cobb Model']
-    raw172.useeventnorm = False
-    raw200.useeventnorm = False
-    raw240.useeventnorm = False
-    # piraw240.useeventnorm = False
-    [G4out172, G4sys172] = raw172.MCSPlot("decoG4")
-    [G4out200, G4sys200] = raw200.MCSPlot("decoG4")
-    [G4out240, G4sys240] = raw240.MCSPlot("decoG4")
-    # [piG4out240, piG4sys240] = piraw240.MCSPlot("decoG4")
-    raw172.histstatenames = ['recoMoliere','Moliere','Cobb']
-    raw172.histstatedesc = ['Deconvolved, Moliere', 'Moliere Model', 'Carlisle-Cobb Model']
-    raw200.histstatenames = ['recoMoliere','Moliere','Cobb']
-    raw200.histstatedesc = ['Deconvolved, Moliere', 'Moliere Model', 'Carlisle-Cobb Model']
-    raw240.histstatenames = ['recoMoliere','Moliere','Cobb']
-    raw240.histstatedesc = ['Deconvolved, Moliere', 'Moliere Model', 'Carlisle-Cobb Model']
-    # piraw240.histstatenames = ['recotruthsim','truthsim','Cobb']
-    # piraw240.histstatedesc = ['Deconvolved, Moliere', 'Moliere Model', 'Carlisle-Cobb Model']
-    raw172.useeventnorm = False
-    raw200.useeventnorm = False
-    raw240.useeventnorm = False
-    # piraw240.useeventnorm = False
-    [Moliereout172, Molieresys172] = raw172.MCSPlot("decoG4")
-    [Moliereout200, Molieresys200] = raw200.MCSPlot("decoG4")
-    [Moliereout240, Molieresys240] = raw240.MCSPlot("decoG4")
-    print "\n"
-    raw172.histstatenames = ['recoCobb','GEANT','Cobb']
-    raw172.histstatedesc = ['Deconv., Carlisle-Cobb','GEANT Model', 'Carlisle-Cobb Model']
-    raw200.histstatenames = ['recoCobb','GEANT','Cobb']
-    raw200.histstatedesc = ['Deconv., Carlisle-Cobb','GEANT Model', 'Carlisle-Cobb Model']
-    raw240.histstatenames = ['recoCobb','GEANT','Cobb']
-    raw240.histstatedesc = ['Deconv., Carlisle-Cobb','GEANT Model', 'Carlisle-Cobb Model']
-    # piraw240.histstatenames = ['recoCobb','truthsim','Cobb']
-    # piraw240.histstatedesc = ['Deconv., Carlisle-Cobb','GEANT Model', 'Carlisle-Cobb Model']
-    [CCout172, CCsys172] = raw172.MCSPlot("decoCC")
-    [CCout200, CCsys200] = raw200.MCSPlot("decoCC")
-    [CCout240, CCsys240] = raw240.MCSPlot("decoCC")
-    # [piCCout240, piCCsys240] = piraw240.MCSPlot("decoCC")
 
-    print "Raw deco table" 
+    print "\n"
+    raw172.normnames = ['measdata', 'measdata']
+    raw200.normnames = ['measdata', 'measdata']
+    raw240.normnames = ['measdata', 'measdata']
+    raw172.histstatenames = ['measdataGEANT','measdataMC']
+    raw172.histstatedesc = ['LiH Data','LiH MC']
+    raw200.histstatenames = ['measdataGEANT','measdataMC']
+    raw200.histstatedesc = ['LiH Data','LiH MC']
+    raw240.histstatenames = ['measdataGEANT','measdataMC']
+    raw240.histstatedesc = ['LiH Data','LiH MC']
+    [MCdata172, MCdatasys172] = raw172.MCSPlot("MCdata")
+    [MCdata200, MCdatasys200] = raw200.MCSPlot("MCdata")
+    [MCdata240, MCdatasys240] = raw240.MCSPlot("MCdata")
+
+    rawnoerror172 = plotgen("LihMuon_03172.root")
+    rawnoerror172.sysFiles = []
+
+    rawnoerror200 = plotgen("LihMuon_03200.root")
+    rawnoerror200.sysFiles = []
+
+    rawnoerror240 = plotgen("LihMuon_03240.root")
+    rawnoerror240.sysFiles = []
+
+    print "\n"
+    rawnoerror172.normnames = ['measdata', 'measdata', 'conv']
+    rawnoerror200.normnames = ['measdata', 'measdata', 'conv']
+    rawnoerror240.normnames = ['measdata', 'measdata', 'conv']
+    rawnoerror172.histstatenames = ['measdataGEANT','measdataMC','refconv_GEANT']
+    rawnoerror172.histstatedesc = ['LiH Data','LiH MC', 'GEANT conv. with Empty Data']
+    rawnoerror200.histstatenames = ['measdataGEANT','measdataMC','refconv_GEANT']
+    rawnoerror200.histstatedesc = ['LiH Data','LiH MC', 'GEANT conv. with Empty Data']
+    rawnoerror240.histstatenames = ['measdataGEANT','measdataMC','refconv_GEANT']
+    rawnoerror240.histstatedesc = ['LiH Data','LiH MC', 'GEANT conv. with Empty Data']
+    [MCdatanoerror172, MCdatanoerrorsys172] = rawnoerror172.MCSPlot("MCdatanoerror")
+    [MCdatanoerror200, MCdatanoerrorsys200] = rawnoerror200.MCSPlot("MCdatanoerror")
+    [MCdatanoerror240, MCdatanoerrorsys240] = rawnoerror240.MCSPlot("MCdatanoerror")
+
+    print "\n"
+    raw172.normnames = ['measdata', 'conv', 'conv']
+    raw200.normnames = ['measdata', 'conv', 'conv']
+    raw240.normnames = ['measdata', 'conv', 'conv']
+    raw172.histstatenames = ['measdataGEANT','refconv_GEANT','refconv_Moliere']
+    raw172.histstatedesc = ['LiH Data', 'GEANT conv. with Empty Data','Moliere conv. with Empty Data']
+    raw200.histstatenames = ['measdataGEANT','refconv_GEANT','refconv_Moliere']
+    raw200.histstatedesc = ['LiH Data', 'GEANT conv. with Empty Data','Moliere conv. with Empty Data']
+    raw240.histstatenames = ['measdataGEANT','refconv_GEANT','refconv_Moliere']
+    raw240.histstatedesc = ['LiH Data', 'GEANT conv. with Empty Data','Moliere conv. with Empty Data']
+    [con172, consys172] = raw172.MCSPlot("con")
+    [con200, consys200] = raw200.MCSPlot("con")
+    [con240, consys240] = raw240.MCSPlot("con")
+
+    print '\hline'
+    print '\hline\n'
+    print "Raw deco table"
     print '\hline'
     print '\hline'
     print out172[0]
@@ -638,119 +1011,89 @@ if __name__ == '__main__':
     print '\hline'
     print out240[0]
     print out240[1]
-    # print '\hline'
-    # print piout240[0]
-    # print piout240[1]
 
     print '\hline'
     print '\hline'
     print out172[3]
     print out200[3]
     print out240[3]
-    # print piout240[3]
     print '\hline'
     print '\hline\n'
 
+    print 'con'
     print '\hline'
     print '\hline'
-    print ref172[0]
-    print ref172[1]
+    print con172[0]
+    print con172[1]
     print '\hline'
-    print ref200[0]
-    print ref200[1]
+    print con200[0]
+    print con200[1]
     print '\hline'
-    print ref240[0]
-    print ref240[1]
-    # print '\hline'
-    # print piref240[0]
-    # print piref240[1]
+    print con240[0]
+    print con240[1]
 
     print '\hline'
     print '\hline'
-    print ref172[3]
-    print ref200[3]
-    print ref240[3]
-    # print piref240[3]
+    print con172[3]
+    print con200[3]
+    print con240[3]
     print '\hline'
     print '\hline\n'
 
-    
-    print "GEANT4 deco table" 
+
+    print 'MCData'
     print '\hline'
     print '\hline'
-    print G4out172[0]
-    print G4out172[1]
+    print MCdata172[0]
+    print MCdata172[1]
     print '\hline'
-    print G4out200[0]
-    print G4out200[1]
+    print MCdata200[0]
+    print MCdata200[1]
     print '\hline'
-    print G4out240[0]
-    print G4out240[1]
-    # print '\hline'
-    # print piG4out240[0]
-    # print piG4out240[1]
+    print MCdata240[0]
+    print MCdata240[1]
 
     print '\hline'
     print '\hline'
-    print G4out172[3]
-    print G4out200[3]
-    print G4out240[3]
-    # print piG4out240[3]
+    print MCdata172[3]
+    print MCdata200[3]
+    print MCdata240[3]
     print '\hline'
     print '\hline\n'
 
-    print "Moliere deco table" 
+    print 'MCData no error'
     print '\hline'
     print '\hline'
-    print Moliereout172[0]
-    print Moliereout172[1]
+    print MCdatanoerror172[0]
+    print MCdatanoerror172[1]
     print '\hline'
-    print Moliereout200[0]
-    print Moliereout200[1]
+    print MCdatanoerror200[0]
+    print MCdatanoerror200[1]
     print '\hline'
-    print Moliereout240[0]
-    print Moliereout240[1]
-    # print '\hline'
-    # print piMoliereout240[0]
-    # print piMoliereout240[1]
+    print MCdatanoerror240[0]
+    print MCdatanoerror240[1]
 
     print '\hline'
     print '\hline'
-    print Moliereout172[3]
-    print Moliereout200[3]
-    print Moliereout240[3]
-    # print piG4out240[3]
+    print MCdatanoerror172[3]
+    print MCdatanoerror200[3]
+    print MCdatanoerror240[3]
     print '\hline'
     print '\hline\n'
-    
-    print "Cobb-Carlisle deco table" 
-    print '\hline'
-    print '\hline'
-    print CCout172[0]
-    print CCout172[1]
-    print '\hline'
-    print CCout200[0]
-    print CCout200[1]
-    print '\hline'
-    print CCout240[0]
-    print CCout240[1]
-    # print '\hline'
-    # print piCCout240[0]
-    # print piCCout240[1]
 
+    print 'Raw sys summary'
+    print '\hline\n'
     print '\hline'
-    print '\hline'
-    print CCout172[3]
-    print CCout200[3]
-    print CCout240[3]
-    # print piCCout240[3]
-    print '\hline'
+    print ' \& $\\Delta\\theta_{X}$ & $\\Delta\\theta_{Y}$ & $\\langle\\theta_{Scatt}^{2}\\rangle$ \\\\'
+    for i in range(len(raw172.sysFiles)):
+        print raw172.sysFiles[i][3], sys200[i]
+    print '\hline\n'
+    print 'Sum'
+    print ' \& $\\Delta\\theta_{X}$ & $\\Delta\\theta_{Y}$ & $\\langle\\theta_{Scatt}^{2}\\rangle$ \\\\'
+    print sys200[-1]
+    print '\hline\n'
     print '\hline'
 
-    
-    print '\hline'
-    print '\hline'
-   
     print 'raw sys'
     for i in range(len(raw172.sysFiles)):
         print raw172.sysFiles[i][3]
@@ -758,92 +1101,164 @@ if __name__ == '__main__':
         print sys172[i]
         print sys200[i]
         print sys240[i]
-        # print pisys240[i]
         print '\hline\n'
     print '\hline'
-    
+
     print 'Sum'
     print ' \& $\\Delta\\theta_{X}$ & $\\Delta\\theta_{Y}$ & $\\langle\\theta_{Scatt}^{2}\\rangle$ \\\\'
     print sys172[-1]
     print sys200[-1]
     print sys240[-1]
-    # print pisys240[-1]
     print '\hline\n'
     print '\hline'
-    print 'G4 sys'
+
+    raw172.sysFiles.append(
+                      ["MCLihMuon_03172.root",
+                       "MCLihMuon_03172.root",
+                       1,"decon"]
+                      )
+    raw200.sysFiles.append(
+                      ["MCLihMuon_03200.root",
+                       "MCLihMuon_03200.root",
+                       1,"decon"]
+                      )
+    raw240.sysFiles.append(
+                      ["MCLihMuon_03240.root",
+                       "MCLihMuon_03240.root",
+                       1,"decon"]
+                      )
+    raw172.histvarnames = ['thetaX','thetaY']
+    raw200.histvarnames = ['thetaX','thetaY']
+    raw240.histvarnames = ['thetaX','thetaY']
+    raw172.normnames = ['recoGold', 'GEANT', 'Moliere']
+    raw200.normnames = ['recoGold', 'GEANT', 'Moliere']
+    raw240.normnames = ['recoGold', 'GEANT', 'Moliere']
+    raw172.histstatenames = ['recoGold', 'GEANT', 'Moliere']
+    raw172.histstatedesc = ['Deconvolved Gold', 'GEANT', 'Moliere Model']
+    raw200.histstatenames = ['recoGold', 'GEANT', 'Moliere']
+    raw200.histstatedesc = ['Deconvolved Gold', 'GEANT', 'Moliere Model']
+    raw240.histstatenames = ['recoGold', 'GEANT', 'Moliere']
+    raw240.histstatedesc = ['Deconvolved Gold', 'GEANT', 'Moliere Model']
+
+    [Gold172, Goldsys172] = raw172.MCSPlot("Result")
+    [Gold200, Goldsys200] = raw200.MCSPlot("Result")
+    [Gold240, Goldsys240] = raw240.MCSPlot("Result")
+
+    print 'Gold sys'
     for i in range(len(raw172.sysFiles)):
         print raw172.sysFiles[i][3]
         print ' \& $\\Delta\\theta_{X}$ & $\\Delta\\theta_{Y}$ & $\\langle\\theta_{Scatt}^{2}\\rangle$ \\\\'
-        print G4sys172[i]
-        print G4sys200[i]
-        print G4sys240[i]
-        # print piG4sys240[i]
-        print '\hline\n'
+        print Goldsys172[i]
+        print Goldsys200[i]
+        print Goldsys240[i]
+
+    print 'Gold sys summary'
+    print '\hline\n'
+    print '\hline'
+    print ' \& $\\Delta\\theta_{X}$ & $\\Delta\\theta_{Y}$ & $\\langle\\theta_{Scatt}^{2}\\rangle$ \\\\'
+    for i in range(len(raw172.sysFiles)):
+        print raw172.sysFiles[i][3], Goldsys200[i]
+    print '\hline\n'
     print 'Sum'
     print ' \& $\\Delta\\theta_{X}$ & $\\Delta\\theta_{Y}$ & $\\langle\\theta_{Scatt}^{2}\\rangle$ \\\\'
-    print sys172[-1]
-    print sys200[-1]
-    print sys240[-1]
-    # print pisys240[-1]
+    print Goldsys200[-1]
     print '\hline\n'
     print '\hline'
-    print 'Moliere sys'
-    for i in range(len(raw172.sysFiles)):
-        print raw172.sysFiles[i][3]
-        print ' \& $\\Delta\\theta_{X}$ & $\\Delta\\theta_{Y}$ & $\\langle\\theta_{Scatt}^{2}\\rangle$ \\\\'
-        print Molieresys172[i]
-        print Molieresys200[i]
-        print Molieresys240[i]
-        # print piG4sys240[i]
-        print '\hline\n'
+
     print '\hline'
-    print 'Sum'
-    print ' \& $\\Delta\\theta_{X}$ & $\\Delta\\theta_{Y}$ & $\\langle\\theta_{Scatt}^{2}\\rangle$ \\\\'
-    print G4sys172[-1]
-    print G4sys200[-1]
-    print G4sys240[-1]
-    # print piG4sys240[-1]
-    print '\hline\n'
+    print "Gold deco table"
     print '\hline'
-    print 'CC sys'
-    for i in range(len(raw172.sysFiles)):
-        print raw172.sysFiles[i][3]
-        print ' \& $\\Delta\\theta_{X}$ & $\\Delta\\theta_{Y}$ & $\\langle\\theta_{Scatt}^{2}\\rangle$ \\\\'
-        print CCsys172[i]
-        print CCsys200[i]
-        print CCsys240[i]
-        print '\hline\n'
-    #print raw172.RMSsyserr
-    #print raw200.RMSsyserr
-    #print raw240.RMSsyserr
-     
-    MC200 = plotgen("MCLihMuon_03200.root")
-    MC200.sysFiles = [["../TOFsys/LiHMu_3200_tof_lim27.8059285384_u28.0059285384.root",
-                        "../TOFsys/LiHMu_3200_tof_lim28.6059285384_u28.8059285384.root",
-                        129./800.,"TOF"],
-                       ["../materials/material_0/LiHMu_3200_res_lim0.891.root",
-                        "../materials/material_0/LiHMu_3200_res_lim1.109.root",
-                        sqrt(0.004/0.218),"Material"],
-                       ["../angdef/angdef_0/LiHMu_3200_45.root",
-                        "../angdef/angdef_0/LiHMu_3200_135.root",
-                        1,"angdef"],
-                       ["../MClih200/LihMuon_03200.root",
+    print '\hline'
+    print Gold172[0]
+    print Gold172[1]
+    print '\hline'
+    print Gold200[0]
+    print Gold200[1]
+    print '\hline'
+    print Gold240[0]
+    print Gold240[1]
+
+    print '\hline'
+    print '\hline'
+    # print Gold172[3]
+    # print Gold200[3]
+    # print Gold240[3]
+
+
+
+
+
+    Goldfile172 = plotgen("MCLihMuon_03172.root")
+    Goldfile172.sysFiles = [
+                      ["../TOFsys/LiHMu_3200_tof_lim28.4918072213_u28.691807221.root",
+                        "../TOFsys/LiHMu_3200_tof_lim28.6918072213_u28.8918072213.root",
+                        70./200.,"TOF"],
+                        ["../angdef/angdef_0/LiHMu_3172_15.root",
+                        "../angdef/angdef_0/LiHMu_3172_100.root",
+                        1/1483,"angdef"],
+                        ["../MClih172/LihMuon_03172.root",
+                        "../MClih172/nopionLihMuon_03172.root",
+                        1,"picon"],
+                        ["../fiducial/LiHMu_3172_R_-1_G_1.root",
+                        "../fiducial/LiHMu_3172_R_1_G_1.root",
+                        .478/20.,"Fid. Radius"],
+                        ["../alignment/LiHMu_3172_-1.root",
+                         "../alignment/LiHMu_3172_1.root",
+                         8.9e-5/8.1e-4,"Alignment"]
+                        ]
+
+    Goldfile200 = plotgen("MCLihMuon_03200.root")
+    Goldfile200.sysFiles = [
+                       ["../TOFsys/LiHMu_3200_tof_lim27.6918072213_u27.8918072213.root",
+                        "../TOFsys/LiHMu_3200_tof_lim28.0918072213_u28.2918072213.root",
+                        70./400.,"TOF"],
+                        ["../angdef/angdef_0/LiHMu_3200_15.root",
+                        "../angdef/angdef_0/LiHMu_3200_100.root",
+                        1/1483,"angdef"],
+                        ["../MClih200/LihMuon_03200.root",
                         "../MClih200/nopionLihMuon_03200.root",
                         1,"picon"],
-                       ["../MClih200/LihMuon_03200.root",
-                        "../MClih200/acceptLihMuon_03200.root",
-                        1,"accept"],
-                       ["../fiducial/LiHMu_3200_R_5_G_-17.root",
-                        "../fiducial/LiHMu_3200_R_5_G_-15.root",
-                        0.5/10,"Fid. Pitch"],
-                       ["../fiducial/LiHMu_3200_R_4_G_-17.root",
-                        "../fiducial/LiHMu_3200_R_6_G_-17.root",
+                        ["../fiducial/LiHMu_3200_R_-1_G_1.root",
+                        "../fiducial/LiHMu_3200_R_1_G_1.root",
                         0.478/20.,"Fid. Radius"],
-                       ["../alignment/LiHMu_3200_1.root",
-                        "../alignment/LiHMu_3200_7.root",
-                        2.1e-5/9.1e-5,"Alignment"]]
-    MC200.histvarnames = ['thetaX']
-    MC200.histstatenames = ['graph', 'recoGEANT']
-    MC200.histstatedesc = ['Truth Data', 'Deconvolved, GEANT']
-    MC200.MCSPlot("Truth")
-    
+                        ["../alignment/LiHMu_3200_-1.root",
+                        "../alignment/LiHMu_3200_1.root",
+                        2.1e-5/9.1e-5,"Alignment"]
+                        ]
+
+    Goldfile240 = plotgen("MCLihMuon_03240.root")
+    Goldfile240.sysFiles = [
+                       ["../TOFsys/LiHMu_3200_tof_lim27.0918072213_u27.2918072213.root",
+                        "../TOFsys/LiHMu_3200_tof_lim27.2918072213_u27.4918072213.root",
+                        70./200.,"TOF"],
+                        ["../angdef/angdef_0/LiHMu_3240_15.root",
+                        "../angdef/angdef_0/LiHMu_3240_100.root",
+                        1/1483,"angdef"],
+                        ["../MClih240/LihMuon_03240.root",
+                        "../MClih240/nopionLihMuon_03240.root",
+                        1,"picon"],
+                        ["../fiducial/LiHMu_3240_R_-1_G_1.root",
+                        "../fiducial/LiHMu_3240_R_1_G_1.root",
+                        0.478/20.,"Fid. Radius"],
+                        ["../alignment/LiHMu_3240_-1.root",
+                        "../alignment/LiHMu_3240_1.root",
+                        1.2e-5/6.5e-5,"Alignment"]]
+
+    # [Goldout172, Goldoutsys172] = Goldfile172.MCSPlot("raw")
+    # [Goldout200, Goldoutsys200] = Goldfile200.MCSPlot("raw")
+    # [Goldout240, Goldoutsys240] = Goldfile240.MCSPlot("raw")
+
+    # Goldfile172.useeventnorm = False
+    # Goldfile200.useeventnorm = False
+    # Goldfile240.useeventnorm = False
+    # Goldfile200.normnames = ['recoGold', 'graph']
+    # Goldfile200.normnames = ['recoGold', 'graph']
+    Goldfile200.normnames = ['graph','recoGold']
+    Goldfile200.histvarnames = ['thetaX','thetaY']
+    # Goldfile200.histstatenames = ['recoGoldhold3_sym', 'graph']
+    Goldfile200.histstatenames = ['recoGold', 'graph']
+    Goldfile200.histstatedesc = ['Deconvolved Gold', 'Truth']
+    [Goldout200, Goldoutsys200] = Goldfile200.MCSPlot("Gold")
+
+
+

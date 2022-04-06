@@ -1,0 +1,9 @@
+universe       = vanilla
+executable     = sub_script_gold100.sh
+output         = /data/neutrino03/jnugent/Unfolding/tests/lihgold100.out
+error          = /data/neutrino03/jnugent/Unfolding/tests/lihgold100.err             
+log            = /data/neutrino03/jnugent/Unfolding/tests/lihgold100.log
+requirements   = OpSysAndVer == "CentOS7"
+
+queue
+

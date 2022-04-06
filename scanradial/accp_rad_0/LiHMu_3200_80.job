@@ -1,0 +1,10 @@
+
+universe       = vanilla
+executable     = accp_rad_0/LiHMu_3200_80.sh
+output         = /data/neutrino03/jnugent/Unfolding/scanradial/accp_rad_0/LiHMu_3200_80.out
+error          = /data/neutrino03/jnugent/Unfolding/scanradial/accp_rad_0/LiHMu_3200_80.err
+log            = /data/neutrino03/jnugent/Unfolding/scanradial/accp_rad_0/LiHMu_3200_80.log
+requirements   = OpSysAndVer == "CentOS7"
+request_memory = 12 GB
+
+queue

@@ -7,6 +7,7 @@
 
 class Vars {
  public:
+
   double X;
   double Y;
   double Z;
@@ -19,6 +20,31 @@ class Vars {
   double TOF01;
   bool   isgood;
   int    pid;
+  double projX;
+  double projY;
+  double projdifX;
+  double projdifY;
+  double chi2nUS;
+  double chi2nDS;
+  double beamtype;
+  double jUS;
+  double kUS;
+  double lUS;
+  double jDS;
+  double kDS;
+  double lDS;
+  bool   difcut;
+  bool   fidcut;
+  bool   chicut;
+  bool   TOFcut;
+  double ptruth;
+  double mcX;
+  double mcY;
+  double mcZ;
+  double mcdXdz;
+  double mcdYdz;
+  double mcpx;
+  double mcpy;
 
   Vars operator+(const Vars& right);
   Vars operator-(const Vars& right);

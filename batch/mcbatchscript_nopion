@@ -4,6 +4,7 @@ output         = /data/neutrino03/jnugent/Unfolding/batch/MClihXXnopion.out
 error          = /data/neutrino03/jnugent/Unfolding/batch/MClihXXnopion.err             
 log            = /data/neutrino03/jnugent/Unfolding/batch/MClihXXnopion.log
 requirements   = OpSysAndVer == "CentOS7"
+request_memory = 50 GB
 
 queue
 

@@ -17,6 +17,7 @@
 #include "TGraph.h"
 #include "TFileInfo.h"
 #include "TSystem.h"
+#include "TString.h" 
 
 // Read directly from the MAUS data structure.
 #include "src/common_cpp/DataStructure/TOFEvent.hh"
@@ -58,8 +59,8 @@ class MCSAnalysis {
   
   int jUS, jDS, kUS, kDS;
   
-  double TOF_lower_limit;
-  double TOF_upper_limit;
+  long double TOF_lower_limit;
+  long double TOF_upper_limit;
 
   double meanp;
   double sigmap;
@@ -99,6 +100,7 @@ class MCSAnalysis {
   TH1D* tof10;
   TH1D* tof10_sel;
   TH1D* tof21;
+  t
   TH1D* tof21_sel;
   TH1D* calc_mom;
   

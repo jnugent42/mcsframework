@@ -1,0 +1,66 @@
+000 (40644.000.000) 2021-07-26 16:54:53 Job submitted from host: <194.36.1.200:9618?addrs=194.36.1.200-9618&alias=hex.ppe.gla.ac.uk&noUDP&sock=schedd_1401_8c46>
+...
+040 (40644.000.000) 2021-07-27 14:45:08 Started transferring input files
+	Transferring to host: <192.168.16.114:9618?addrs=192.168.16.114-9618&alias=condor-d19-04.ppe.cluster&noUDP&sock=slot1_1_3775_9433_1349>
+...
+040 (40644.000.000) 2021-07-27 14:45:08 Finished transferring input files
+...
+001 (40644.000.000) 2021-07-27 14:45:09 Job executing on host: <192.168.16.114:9618?addrs=192.168.16.114-9618&alias=condor-d19-04.ppe.cluster&noUDP&sock=startd_2633_98f3>
+...
+006 (40644.000.000) 2021-07-27 14:45:18 Image size of job updated: 1001836
+	564  -  MemoryUsage of job (MB)
+	577508  -  ResidentSetSize of job (KB)
+...
+006 (40644.000.000) 2021-07-27 14:50:19 Image size of job updated: 1408412
+	678  -  MemoryUsage of job (MB)
+	693924  -  ResidentSetSize of job (KB)
+...
+006 (40644.000.000) 2021-07-27 14:55:19 Image size of job updated: 1519168
+	678  -  MemoryUsage of job (MB)
+	693924  -  ResidentSetSize of job (KB)
+...
+006 (40644.000.000) 2021-07-27 15:50:24 Image size of job updated: 1539564
+	871  -  MemoryUsage of job (MB)
+	891116  -  ResidentSetSize of job (KB)
+...
+006 (40644.000.000) 2021-07-27 15:55:25 Image size of job updated: 1539812
+	871  -  MemoryUsage of job (MB)
+	891116  -  ResidentSetSize of job (KB)
+...
+006 (40644.000.000) 2021-07-27 16:00:25 Image size of job updated: 1545156
+	871  -  MemoryUsage of job (MB)
+	891116  -  ResidentSetSize of job (KB)
+...
+006 (40644.000.000) 2021-07-27 16:10:26 Image size of job updated: 1545624
+	871  -  MemoryUsage of job (MB)
+	891116  -  ResidentSetSize of job (KB)
+...
+006 (40644.000.000) 2021-07-27 16:45:31 Image size of job updated: 1551040
+	871  -  MemoryUsage of job (MB)
+	891116  -  ResidentSetSize of job (KB)
+...
+006 (40644.000.000) 2021-07-27 17:45:36 Image size of job updated: 1552860
+	871  -  MemoryUsage of job (MB)
+	891116  -  ResidentSetSize of job (KB)
+...
+040 (40644.000.000) 2021-07-27 18:42:53 Started transferring output files
+...
+040 (40644.000.000) 2021-07-27 18:43:07 Finished transferring output files
+...
+005 (40644.000.000) 2021-07-27 18:43:07 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 03:31:13, Sys 0 00:25:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 03:31:13, Sys 0 00:25:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	3718108416  -  Run Bytes Sent By Job
+	319  -  Run Bytes Received By Job
+	3718108416  -  Total Bytes Sent By Job
+	319  -  Total Bytes Received By Job
+	Partitionable Resources :      Usage  Request Allocated 
+	   Cpus                 :       1.00        1         1 
+	   Disk (KB)            : 3630981           1   3637421 
+	   Memory (MB)          :     871       10240     10240 
+
+	Job terminated of its own accord at 2021-07-27T17:42:53Z.
+...

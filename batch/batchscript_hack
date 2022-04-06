@@ -1,0 +1,10 @@
+universe       = vanilla
+executable     = sub_script_hack.sh
+output         = /data/neutrino03/jnugent/Unfolding/batch/lihhack.out
+error          = /data/neutrino03/jnugent/Unfolding/batch/lihhack.err             
+log            = /data/neutrino03/jnugent/Unfolding/batch/lihhack.log
+requirements   = OpSysAndVer == "CentOS7"
+request_memory = 40 GB
+
+queue
+

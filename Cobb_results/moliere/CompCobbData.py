@@ -80,7 +80,7 @@ def dataModelComps(fname, tname, outfile):
             # norm = hists[i].Integral()
             hists[i].Scale(1./norm)
             leg.AddEntry(hists[i], histstatedesc[i], histopts[i])
-            
+
             chi2 = 0
             for j in range(0, x.GetNbinsX()+1):
                 res = hists[i].GetBinContent(j) - hists[0].GetBinContent(j)
@@ -96,14 +96,14 @@ def dataModelComps(fname, tname, outfile):
                     resplots[i].SetBinError(j, 0)
             print "Chi-square from residuals is ",chi2, " for " , histstatedesc[i]
 
-            
+
         # hists[0].GetXaxis().SetRangeUser(-0.06,0.06)
         #hists[0].GetYaxis().SetRangeUser(5e-4,2)
         # hists[0].Draw()
         # print "++++++++++++++ Reco Fit ++++++++++++++++++++++"
         # f0 = hists[0].Fit("gaus","","same",-0.035,0.035)
         # print "++++++++++++++++++++++++++++++++++++++++++++++"
-        
+
         # print "+++++++++++++++ MC Fit +++++++++++++++++++++++"
         # f1 = hists[1].Fit("gaus","","same",-0.035,0.035)
         # print "++++++++++++++++++++++++++++++++++++++++++++++"
@@ -111,7 +111,7 @@ def dataModelComps(fname, tname, outfile):
         # print "+++++++++++++++ MC Fit +++++++++++++++++++++++"
         # f2 = hists[2].Fit("gaus","","same",-0.035,0.035)
         # print "++++++++++++++++++++++++++++++++++++++++++++++"
-        
+
         for h in hists[1:]:
             #    h.Draw('same')
             fout.cd()
@@ -135,10 +135,12 @@ from ROOT import TRandom3
 def MoliereDist(datafile, outfile):
     ofile = TFile(outfile, "UPDATE")
     sdir = '/data/neutrino03/jnugent/Unfolding/Cobb_results/moliere/'
+    # Open Scatt text file and read
     fin = open(os.path.join(sdir, datafile),'r')
     i = 0
     data = []
     last = 0
+    # Append i, bin edge, prob, bin edge - last bin edge
     for l in fin:
         ln = l.split()
         data.append([i, float(ln[0]), float(ln[1]), float(ln[0]) - last])
@@ -150,15 +152,17 @@ def MoliereDist(datafile, outfile):
     xbins = array('d')
     x2bins = array('d')
     data[0][3] = data[1][3]
+    #build thetaScatt and xbin centres
     for d in data:
         g.SetPoint(d[0], d[1], d[2])
         xbins.append(d[1] - d[3]/2.)
         x2bins.append(d[1] + d[3]/2.)
         x2bins.insert(0,-d[1] - d[3]/2.)
     #    print d[1] - d[3]/2., d[1], d[3]
-    
+
     h = TH1D("thetaScatt_Moliere",";#theta_{Scatt};Events (arbitrary normalization)",len(data)-1,xbins)
 
+    # thetaScatt is just reading in text file
     for d in data:
         h.SetBinContent(d[0] + 1, d[2])
 
@@ -170,11 +174,12 @@ def MoliereDist(datafile, outfile):
     g.Draw("ap")
     h.Draw("lsame")
     c.Print("Moliere_200_1.eps")
-    
-    
+
+
     hthetaX = TH1D("thetaX_Moliere",";#theta_{X}; Events per 2 mrad",len(x2bins)-1,x2bins)
     hthetaY = TH1D("thetaY_Moliere",";#theta_{Y}; Events per 2 mrad",len(x2bins)-1,x2bins)
     rand = TRandom3()
+    # thetaX & Y is sampling from thetaScatt
     for i in range(1000000):
         theta = h.GetRandom()
         # phi   = (rand.Rndm()) * math.atan(1) * 8.0
@@ -190,13 +195,13 @@ def MoliereDist(datafile, outfile):
 	thetaY = math.atan2(X* math.sin(theta), Z)
         hthetaX.Fill(thetaX)
         hthetaY.Fill(thetaY)
-        
+
     hthetaX.Draw()
     c.Print("Moliere_200_thetaX.eps")
 
     hthetaY.Draw()
     c.Print("Moliere_200_thetaY.eps")
-    
+
     ofile.cd()
     hthetaX.Write()
     hthetaY.Write()
@@ -231,6 +236,9 @@ def PickUpGEANTModel(datafile, outfile):
 
 if __name__ == '__main__':
     #dataModelComps(sys.argv[1],sys.argv[2],sys.argv[3])
-    MoliereDist('LiH-6p5-172-Mol-fine.dat','LiH-6p5-172-Mol-fine.root')
-    MoliereDist('LiH-6p5-200-Mol-fine.dat','LiH-6p5-200-Mol-fine.root')
-    MoliereDist('LiH-6p5-240-Mol-fine.dat','LiH-6p5-240-Mol-fine.root')
+    #MoliereDist('LiH-6p5-172-Mol-fine.dat','LiH-6p5-172-Mol-fine.root')
+    #MoliereDist('LiH-6p5-200-Mol-fine.dat','LiH-6p5-200-Mol-fine.root')
+    #MoliereDist('LiH-6p5-240-Mol-fine.dat','LiH-6p5-240-Mol-fine.root')
+    PickUpGEANTModel('LiH-172-MCTruth.root','LiH-6p5-172-Mol-fine.root')
+    PickUpGEANTModel('LiH-200-MCTruth.root','LiH-6p5-200-Mol-fine.root')
+    PickUpGEANTModel('LiH-240-MCTruth.root','LiH-6p5-172-Mol-fine.root')

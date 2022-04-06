@@ -1,0 +1,54 @@
+000 (40505.000.000) 2021-07-26 16:54:44 Job submitted from host: <194.36.1.200:9618?addrs=194.36.1.200-9618&alias=hex.ppe.gla.ac.uk&noUDP&sock=schedd_1401_8c46>
+...
+040 (40505.000.000) 2021-07-27 08:26:43 Started transferring input files
+	Transferring to host: <192.168.16.113:9618?addrs=192.168.16.113-9618&alias=condor-d19-03.ppe.cluster&noUDP&sock=slot1_5_26289_ba86_914>
+...
+040 (40505.000.000) 2021-07-27 08:26:43 Finished transferring input files
+...
+001 (40505.000.000) 2021-07-27 08:26:44 Job executing on host: <192.168.16.113:9618?addrs=192.168.16.113-9618&alias=condor-d19-03.ppe.cluster&noUDP&sock=startd_2634_488c>
+...
+006 (40505.000.000) 2021-07-27 08:26:53 Image size of job updated: 991392
+	372  -  MemoryUsage of job (MB)
+	380708  -  ResidentSetSize of job (KB)
+...
+006 (40505.000.000) 2021-07-27 08:31:54 Image size of job updated: 1433436
+	619  -  MemoryUsage of job (MB)
+	633840  -  ResidentSetSize of job (KB)
+...
+006 (40505.000.000) 2021-07-27 08:36:55 Image size of job updated: 1513996
+	771  -  MemoryUsage of job (MB)
+	788804  -  ResidentSetSize of job (KB)
+...
+006 (40505.000.000) 2021-07-27 08:56:57 Image size of job updated: 1513996
+	787  -  MemoryUsage of job (MB)
+	805244  -  ResidentSetSize of job (KB)
+...
+006 (40505.000.000) 2021-07-27 09:01:57 Image size of job updated: 1513996
+	822  -  MemoryUsage of job (MB)
+	841424  -  ResidentSetSize of job (KB)
+...
+006 (40505.000.000) 2021-07-27 09:06:58 Image size of job updated: 1513996
+	831  -  MemoryUsage of job (MB)
+	850028  -  ResidentSetSize of job (KB)
+...
+040 (40505.000.000) 2021-07-27 11:54:23 Started transferring output files
+...
+040 (40505.000.000) 2021-07-27 11:54:36 Finished transferring output files
+...
+005 (40505.000.000) 2021-07-27 11:54:36 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 03:03:21, Sys 0 00:22:46  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 03:03:21, Sys 0 00:22:46  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	3358208256  -  Run Bytes Sent By Job
+	323  -  Run Bytes Received By Job
+	3358208256  -  Total Bytes Sent By Job
+	323  -  Total Bytes Received By Job
+	Partitionable Resources :      Usage  Request Allocated 
+	   Cpus                 :       0.99        1         1 
+	   Disk (KB)            : 3279516           1   3637421 
+	   Memory (MB)          :     831       10240     10240 
+
+	Job terminated of its own accord at 2021-07-27T10:54:23Z.
+...

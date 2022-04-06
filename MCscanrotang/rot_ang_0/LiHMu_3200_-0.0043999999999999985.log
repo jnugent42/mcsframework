@@ -1,0 +1,1979 @@
+000 (60060.000.000) 07/31 10:18:18 Job submitted from host: <172.20.203.50:9618?addrs=172.20.203.50-9618+[--1]-9618&noUDP&sock=7405_cae4_4>
+...
+022 (60060.000.000) 07/31 10:18:39 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60060.000.000) 07/31 10:18:47 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+001 (60060.000.000) 07/31 10:19:14 Job executing on host: <10.194.1.4:9618?addrs=10.194.1.4-9618+[--1]-9618&noUDP&sock=22685_9a03_3>
+...
+006 (60060.000.000) 07/31 10:19:22 Image size of job updated: 48144
+	48  -  MemoryUsage of job (MB)
+	48144  -  ResidentSetSize of job (KB)
+...
+006 (60060.000.000) 07/31 10:24:22 Image size of job updated: 930032
+	844  -  MemoryUsage of job (MB)
+	863984  -  ResidentSetSize of job (KB)
+...
+004 (60060.000.000) 07/31 10:29:18 Job was evicted.
+	(0) Job was not checkpointed.
+		Usr 0 00:05:17, Sys 0 00:00:16  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+	0  -  Run Bytes Sent By Job
+	238  -  Run Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated
+	   Cpus                 :                 1         1
+	   Disk (KB)            :       15        1    232397
+	   Memory (MB)          :      844     1024      1024
+...
+009 (60060.000.000) 07/31 10:29:18 Job was aborted by the user.
+	via condor_rm (by user jnugent)
+...
+000 (60160.000.000) 07/31 10:29:58 Job submitted from host: <172.20.203.50:9618?addrs=172.20.203.50-9618+[--1]-9618&noUDP&sock=7405_cae4_4>
+...
+022 (60160.000.000) 07/31 10:30:18 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 10:30:26 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 10:31:18 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 10:31:26 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 10:32:17 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 10:32:25 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 10:33:18 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 10:33:26 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 10:34:14 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 10:34:22 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 10:34:37 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 10:34:45 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 10:35:36 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 10:35:44 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 10:36:37 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 10:36:45 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 10:37:37 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 10:37:45 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 10:38:36 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 10:38:44 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 10:39:14 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 10:39:22 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 10:39:37 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 10:39:45 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 10:40:38 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 10:40:46 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 10:41:38 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 10:41:46 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 10:42:37 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 10:42:45 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 10:43:38 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 10:43:46 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 10:44:15 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 10:44:23 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 10:44:37 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 10:44:46 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 10:45:38 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 10:45:46 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 10:46:37 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 10:46:45 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 10:47:38 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 10:47:46 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 10:48:38 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 10:48:46 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 10:49:16 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 10:49:24 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 10:49:38 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 10:49:46 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 10:50:37 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 10:50:45 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 10:51:38 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 10:51:46 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 10:52:38 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 10:52:46 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 10:53:37 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 10:53:45 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 10:54:16 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 10:54:24 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 10:54:38 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 10:54:46 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 10:55:39 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 10:55:47 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 10:56:39 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 10:56:47 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 10:57:38 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 10:57:46 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 10:58:39 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 10:58:47 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 10:59:16 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 10:59:25 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 10:59:39 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 10:59:47 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:00:39 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:00:47 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:01:38 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:01:46 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:02:39 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:02:47 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:03:39 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:03:47 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:04:17 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:04:25 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:04:39 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:04:47 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:05:38 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:05:46 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:06:39 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:06:47 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:07:39 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:07:47 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:08:38 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:08:46 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:09:18 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:09:26 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:09:39 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:09:47 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:10:40 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:10:48 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:11:40 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:11:48 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:12:39 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:12:47 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:13:40 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:13:48 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:14:18 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:14:26 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:14:40 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:14:48 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:15:40 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:15:48 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:16:39 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:16:47 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:17:40 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:17:48 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:18:40 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:18:48 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:19:19 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:19:27 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:19:41 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:19:49 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:20:40 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:20:48 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:21:41 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:21:49 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:22:41 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:22:49 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:23:40 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:23:48 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:24:19 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:24:27 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:24:41 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:24:49 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:25:42 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:25:50 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:26:42 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:26:50 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:27:41 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:27:49 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:28:42 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:28:50 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:29:20 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:29:28 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:29:42 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:29:50 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:30:42 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:30:50 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:31:41 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:31:49 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:32:42 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:32:50 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:33:42 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:33:50 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:34:20 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:34:28 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:34:43 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:34:51 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:35:42 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:35:50 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:36:43 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:36:51 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:37:43 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:37:51 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:38:42 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:38:51 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:39:20 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:39:29 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:39:43 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:39:51 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:40:44 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:40:52 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:41:44 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 11:41:52 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+022 (60160.000.000) 07/31 11:42:43 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@node034.ppe.gla.ac.uk <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=70646_dbbf_3>
+...
+024 (60160.000.000) 07/31 12:22:43 Job reconnection failed
+    Job disconnected too long: JobLeaseDuration (2400 seconds) expired
+    Can not reconnect to slot1_1@node034.ppe.gla.ac.uk, rescheduling job
+...
+009 (60160.000.000) 07/31 13:10:16 Job was aborted by the user.
+	via condor_rm (by user jnugent)
+...
+000 (60268.000.000) 07/31 13:11:08 Job submitted from host: <172.20.203.50:9618?addrs=172.20.203.50-9618+[--1]-9618&noUDP&sock=7405_cae4_4>
+...
+001 (60268.000.000) 07/31 13:11:14 Job executing on host: <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=1628_4045_3>
+...
+006 (60268.000.000) 07/31 13:11:22 Image size of job updated: 51544
+	50  -  MemoryUsage of job (MB)
+	50812  -  ResidentSetSize of job (KB)
+...
+006 (60268.000.000) 07/31 13:16:22 Image size of job updated: 196620
+	192  -  MemoryUsage of job (MB)
+	195888  -  ResidentSetSize of job (KB)
+...
+006 (60268.000.000) 07/31 13:21:23 Image size of job updated: 415768
+	406  -  MemoryUsage of job (MB)
+	415036  -  ResidentSetSize of job (KB)
+...
+006 (60268.000.000) 07/31 13:26:24 Image size of job updated: 569916
+	556  -  MemoryUsage of job (MB)
+	569184  -  ResidentSetSize of job (KB)
+...
+006 (60268.000.000) 07/31 13:31:24 Image size of job updated: 762980
+	745  -  MemoryUsage of job (MB)
+	762248  -  ResidentSetSize of job (KB)
+...
+006 (60268.000.000) 07/31 13:36:24 Image size of job updated: 854320
+	831  -  MemoryUsage of job (MB)
+	850688  -  ResidentSetSize of job (KB)
+...
+006 (60268.000.000) 07/31 13:41:25 Image size of job updated: 952540
+	918  -  MemoryUsage of job (MB)
+	939516  -  ResidentSetSize of job (KB)
+...
+006 (60268.000.000) 07/31 13:46:26 Image size of job updated: 1238160
+	1190  -  MemoryUsage of job (MB)
+	1217860  -  ResidentSetSize of job (KB)
+...
+006 (60268.000.000) 07/31 14:11:28 Image size of job updated: 1415204
+	1338  -  MemoryUsage of job (MB)
+	1369916  -  ResidentSetSize of job (KB)
+...
+006 (60268.000.000) 07/31 14:16:29 Image size of job updated: 1500984
+	1418  -  MemoryUsage of job (MB)
+	1451096  -  ResidentSetSize of job (KB)
+...
+006 (60268.000.000) 07/31 14:31:30 Image size of job updated: 1514944
+	1423  -  MemoryUsage of job (MB)
+	1456236  -  ResidentSetSize of job (KB)
+...
+006 (60268.000.000) 07/31 14:36:30 Image size of job updated: 1941300
+	1838  -  MemoryUsage of job (MB)
+	1881184  -  ResidentSetSize of job (KB)
+...
+006 (60268.000.000) 07/31 14:41:30 Image size of job updated: 2167268
+	2056  -  MemoryUsage of job (MB)
+	2104476  -  ResidentSetSize of job (KB)
+...
+006 (60268.000.000) 07/31 14:56:32 Image size of job updated: 2299804
+	2178  -  MemoryUsage of job (MB)
+	2229448  -  ResidentSetSize of job (KB)
+...
+006 (60268.000.000) 07/31 15:16:34 Image size of job updated: 2646268
+	2536  -  MemoryUsage of job (MB)
+	2596244  -  ResidentSetSize of job (KB)
+...
+006 (60268.000.000) 07/31 15:21:35 Image size of job updated: 2646268
+	2536  -  MemoryUsage of job (MB)
+	2596252  -  ResidentSetSize of job (KB)
+...
+006 (60268.000.000) 07/31 15:41:37 Image size of job updated: 2900380
+	2767  -  MemoryUsage of job (MB)
+	2833232  -  ResidentSetSize of job (KB)
+...
+006 (60268.000.000) 07/31 16:06:39 Image size of job updated: 3125148
+	2958  -  MemoryUsage of job (MB)
+	3028228  -  ResidentSetSize of job (KB)
+...
+006 (60268.000.000) 07/31 16:21:40 Image size of job updated: 3167904
+	2992  -  MemoryUsage of job (MB)
+	3062948  -  ResidentSetSize of job (KB)
+...
+006 (60268.000.000) 07/31 16:31:42 Image size of job updated: 3470356
+	3276  -  MemoryUsage of job (MB)
+	3354368  -  ResidentSetSize of job (KB)
+...
+006 (60268.000.000) 07/31 16:56:44 Image size of job updated: 3503944
+	3294  -  MemoryUsage of job (MB)
+	3372264  -  ResidentSetSize of job (KB)
+...
+006 (60268.000.000) 07/31 17:01:45 Image size of job updated: 5270384
+	5098  -  MemoryUsage of job (MB)
+	5219648  -  ResidentSetSize of job (KB)
+...
+004 (60268.000.000) 07/31 20:07:17 Job was evicted.
+	(0) Job was not checkpointed.
+		Usr 0 06:15:45, Sys 0 00:22:08  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+	0  -  Run Bytes Sent By Job
+	238  -  Run Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated
+	   Cpus                 :                 2         2
+	   Disk (KB)            :      988        1    246565
+	   Memory (MB)          :     5098    40960     40960
+...
+009 (60268.000.000) 07/31 20:07:17 Job was aborted by the user.
+	via condor_rm (by user jnugent)
+...
+000 (62063.000.000) 07/31 20:08:35 Job submitted from host: <172.20.203.50:9618?addrs=172.20.203.50-9618+[--1]-9618&noUDP&sock=7405_cae4_4>
+...
+001 (62063.000.000) 07/31 20:25:42 Job executing on host: <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=1628_4045_3>
+...
+006 (62063.000.000) 07/31 20:25:51 Image size of job updated: 75856
+	74  -  MemoryUsage of job (MB)
+	74976  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 07/31 20:30:52 Image size of job updated: 415728
+	406  -  MemoryUsage of job (MB)
+	414848  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 07/31 20:40:52 Image size of job updated: 437784
+	406  -  MemoryUsage of job (MB)
+	414848  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 07/31 20:45:53 Image size of job updated: 515136
+	453  -  MemoryUsage of job (MB)
+	463216  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 07/31 20:55:53 Image size of job updated: 705472
+	523  -  MemoryUsage of job (MB)
+	534992  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 07/31 21:00:54 Image size of job updated: 705472
+	585  -  MemoryUsage of job (MB)
+	598316  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 07/31 21:15:56 Image size of job updated: 728888
+	585  -  MemoryUsage of job (MB)
+	598316  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 07/31 21:20:57 Image size of job updated: 763252
+	585  -  MemoryUsage of job (MB)
+	598316  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 07/31 21:30:57 Image size of job updated: 903600
+	692  -  MemoryUsage of job (MB)
+	708084  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 07/31 21:45:59 Image size of job updated: 933968
+	759  -  MemoryUsage of job (MB)
+	776840  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 07/31 21:56:00 Image size of job updated: 1020516
+	844  -  MemoryUsage of job (MB)
+	863652  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 07/31 22:01:01 Image size of job updated: 1054796
+	878  -  MemoryUsage of job (MB)
+	898496  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 07/31 22:06:01 Image size of job updated: 1054796
+	881  -  MemoryUsage of job (MB)
+	901688  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 07/31 22:11:02 Image size of job updated: 1326280
+	881  -  MemoryUsage of job (MB)
+	901688  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 07/31 22:16:03 Image size of job updated: 1581732
+	881  -  MemoryUsage of job (MB)
+	901688  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 07/31 22:26:03 Image size of job updated: 1630204
+	943  -  MemoryUsage of job (MB)
+	964916  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 07/31 22:51:05 Image size of job updated: 1641928
+	943  -  MemoryUsage of job (MB)
+	964916  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 07/31 23:01:06 Image size of job updated: 1791408
+	943  -  MemoryUsage of job (MB)
+	964916  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 07/31 23:21:08 Image size of job updated: 1791408
+	1407  -  MemoryUsage of job (MB)
+	1440388  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 07/31 23:51:11 Image size of job updated: 1912100
+	1407  -  MemoryUsage of job (MB)
+	1440388  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 00:06:12 Image size of job updated: 2049220
+	1407  -  MemoryUsage of job (MB)
+	1440388  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 00:31:15 Image size of job updated: 2147924
+	1407  -  MemoryUsage of job (MB)
+	1440388  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 01:01:18 Image size of job updated: 2388724
+	1407  -  MemoryUsage of job (MB)
+	1440388  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 01:16:20 Image size of job updated: 2423584
+	1407  -  MemoryUsage of job (MB)
+	1440388  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 01:51:24 Image size of job updated: 2423584
+	1672  -  MemoryUsage of job (MB)
+	1711436  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 01:56:24 Image size of job updated: 2423584
+	1892  -  MemoryUsage of job (MB)
+	1936496  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 02:01:24 Image size of job updated: 2507908
+	1892  -  MemoryUsage of job (MB)
+	1936496  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 02:21:26 Image size of job updated: 2597476
+	1892  -  MemoryUsage of job (MB)
+	1936496  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 03:16:32 Image size of job updated: 2677312
+	1892  -  MemoryUsage of job (MB)
+	1936496  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 03:36:34 Image size of job updated: 2785424
+	1892  -  MemoryUsage of job (MB)
+	1936496  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 03:51:35 Image size of job updated: 2803456
+	1892  -  MemoryUsage of job (MB)
+	1936496  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 04:01:36 Image size of job updated: 2884240
+	1892  -  MemoryUsage of job (MB)
+	1936496  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 04:16:38 Image size of job updated: 2911480
+	1892  -  MemoryUsage of job (MB)
+	1936496  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 04:26:39 Image size of job updated: 2995516
+	1892  -  MemoryUsage of job (MB)
+	1936496  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 04:31:39 Image size of job updated: 3035348
+	1892  -  MemoryUsage of job (MB)
+	1936496  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 04:46:41 Image size of job updated: 3112876
+	1892  -  MemoryUsage of job (MB)
+	1936496  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 04:51:41 Image size of job updated: 3267176
+	1892  -  MemoryUsage of job (MB)
+	1936496  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 05:21:45 Image size of job updated: 3381776
+	1892  -  MemoryUsage of job (MB)
+	1936496  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 05:46:46 Image size of job updated: 3718892
+	1892  -  MemoryUsage of job (MB)
+	1936496  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 05:51:47 Image size of job updated: 3818348
+	1892  -  MemoryUsage of job (MB)
+	1936496  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 05:56:48 Image size of job updated: 3862648
+	1892  -  MemoryUsage of job (MB)
+	1936496  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 06:01:48 Image size of job updated: 3960920
+	1892  -  MemoryUsage of job (MB)
+	1936496  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 06:06:48 Image size of job updated: 4040240
+	1892  -  MemoryUsage of job (MB)
+	1936496  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 06:11:49 Image size of job updated: 4174176
+	1892  -  MemoryUsage of job (MB)
+	1936496  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 06:16:50 Image size of job updated: 4227808
+	1892  -  MemoryUsage of job (MB)
+	1936496  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 06:21:50 Image size of job updated: 4310148
+	1892  -  MemoryUsage of job (MB)
+	1936496  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 06:26:50 Image size of job updated: 4413580
+	1892  -  MemoryUsage of job (MB)
+	1936496  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 06:31:51 Image size of job updated: 4484728
+	1892  -  MemoryUsage of job (MB)
+	1936496  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 06:36:52 Image size of job updated: 4617392
+	1892  -  MemoryUsage of job (MB)
+	1936496  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 06:41:52 Image size of job updated: 4683048
+	1971  -  MemoryUsage of job (MB)
+	2018204  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 06:49:06 Image size of job updated: 4722492
+	2037  -  MemoryUsage of job (MB)
+	2085528  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 06:55:48 Image size of job updated: 4804600
+	2128  -  MemoryUsage of job (MB)
+	2178728  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 07:01:11 Image size of job updated: 4866088
+	2128  -  MemoryUsage of job (MB)
+	2178728  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 07:06:10 Image size of job updated: 4895320
+	2131  -  MemoryUsage of job (MB)
+	2181224  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 07:11:10 Image size of job updated: 4900736
+	2180  -  MemoryUsage of job (MB)
+	2232052  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 07:16:10 Image size of job updated: 4900736
+	2190  -  MemoryUsage of job (MB)
+	2241984  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 07:21:11 Image size of job updated: 4900736
+	2192  -  MemoryUsage of job (MB)
+	2244560  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 07:26:12 Image size of job updated: 4900736
+	2223  -  MemoryUsage of job (MB)
+	2276172  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 07:31:12 Image size of job updated: 4900736
+	2245  -  MemoryUsage of job (MB)
+	2298808  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 07:36:13 Image size of job updated: 4900736
+	2277  -  MemoryUsage of job (MB)
+	2331488  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 07:41:14 Image size of job updated: 4900736
+	2283  -  MemoryUsage of job (MB)
+	2337540  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 07:50:36 Image size of job updated: 4900736
+	2325  -  MemoryUsage of job (MB)
+	2380416  -  ResidentSetSize of job (KB)
+...
+006 (62063.000.000) 08/01 08:03:44 Image size of job updated: 4900736
+	2325  -  MemoryUsage of job (MB)
+	2380420  -  ResidentSetSize of job (KB)
+...
+004 (62063.000.000) 08/01 10:14:40 Job was evicted.
+	(0) Job was not checkpointed.
+		Usr 0 06:56:39, Sys 0 00:17:13  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+	0  -  Run Bytes Sent By Job
+	238  -  Run Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated
+	   Cpus                 :                 1         1
+	   Disk (KB)            :       17        1    246565
+	   Memory (MB)          :     2325     1024      1024
+...
+009 (62063.000.000) 08/01 10:14:40 Job was aborted by the user.
+	via condor_rm (by user jnugent)
+...
+000 (63685.000.000) 08/02 10:44:24 Job submitted from host: <172.20.203.50:9618?addrs=172.20.203.50-9618+[--1]-9618&noUDP&sock=7405_cae4_4>
+...
+001 (63685.000.000) 08/02 10:44:46 Job executing on host: <10.194.1.4:9618?addrs=10.194.1.4-9618+[--1]-9618&noUDP&sock=21589_d637_4>
+...
+006 (63685.000.000) 08/02 10:44:54 Image size of job updated: 48540
+	48  -  MemoryUsage of job (MB)
+	48188  -  ResidentSetSize of job (KB)
+...
+006 (63685.000.000) 08/02 10:49:54 Image size of job updated: 594140
+	539  -  MemoryUsage of job (MB)
+	551120  -  ResidentSetSize of job (KB)
+...
+006 (63685.000.000) 08/02 11:14:57 Image size of job updated: 751900
+	563  -  MemoryUsage of job (MB)
+	576292  -  ResidentSetSize of job (KB)
+...
+006 (63685.000.000) 08/02 11:19:57 Image size of job updated: 751900
+	607  -  MemoryUsage of job (MB)
+	620916  -  ResidentSetSize of job (KB)
+...
+006 (63685.000.000) 08/02 11:34:59 Image size of job updated: 751900
+	626  -  MemoryUsage of job (MB)
+	640452  -  ResidentSetSize of job (KB)
+...
+006 (63685.000.000) 08/02 11:39:59 Image size of job updated: 761676
+	626  -  MemoryUsage of job (MB)
+	640452  -  ResidentSetSize of job (KB)
+...
+006 (63685.000.000) 08/02 11:45:00 Image size of job updated: 781740
+	626  -  MemoryUsage of job (MB)
+	640452  -  ResidentSetSize of job (KB)
+...
+006 (63685.000.000) 08/02 11:55:01 Image size of job updated: 981992
+	626  -  MemoryUsage of job (MB)
+	640452  -  ResidentSetSize of job (KB)
+...
+006 (63685.000.000) 08/02 12:00:01 Image size of job updated: 1067532
+	649  -  MemoryUsage of job (MB)
+	664088  -  ResidentSetSize of job (KB)
+...
+006 (63685.000.000) 08/02 12:10:02 Image size of job updated: 1076092
+	809  -  MemoryUsage of job (MB)
+	827732  -  ResidentSetSize of job (KB)
+...
+006 (63685.000.000) 08/02 12:55:06 Image size of job updated: 1498256
+	809  -  MemoryUsage of job (MB)
+	827732  -  ResidentSetSize of job (KB)
+...
+006 (63685.000.000) 08/02 13:00:07 Image size of job updated: 1627552
+	809  -  MemoryUsage of job (MB)
+	827732  -  ResidentSetSize of job (KB)
+...
+006 (63685.000.000) 08/02 13:05:07 Image size of job updated: 1656248
+	809  -  MemoryUsage of job (MB)
+	827732  -  ResidentSetSize of job (KB)
+...
+006 (63685.000.000) 08/02 14:00:13 Image size of job updated: 1736816
+	809  -  MemoryUsage of job (MB)
+	827732  -  ResidentSetSize of job (KB)
+...
+006 (63685.000.000) 08/02 14:05:13 Image size of job updated: 1765180
+	809  -  MemoryUsage of job (MB)
+	827732  -  ResidentSetSize of job (KB)
+...
+006 (63685.000.000) 08/02 16:50:30 Image size of job updated: 1765180
+	809  -  MemoryUsage of job (MB)
+	827792  -  ResidentSetSize of job (KB)
+...
+006 (63685.000.000) 08/02 16:55:30 Image size of job updated: 1781916
+	809  -  MemoryUsage of job (MB)
+	827792  -  ResidentSetSize of job (KB)
+...
+006 (63685.000.000) 08/02 17:00:31 Image size of job updated: 1838332
+	883  -  MemoryUsage of job (MB)
+	903696  -  ResidentSetSize of job (KB)
+...
+006 (63685.000.000) 08/02 20:44:56 Image size of job updated: 1844280
+	883  -  MemoryUsage of job (MB)
+	903696  -  ResidentSetSize of job (KB)
+...
+006 (63685.000.000) 08/02 20:50:25 Image size of job updated: 1860900
+	883  -  MemoryUsage of job (MB)
+	903696  -  ResidentSetSize of job (KB)
+...
+006 (63685.000.000) 08/02 22:26:26 Image size of job updated: 1873260
+	883  -  MemoryUsage of job (MB)
+	903696  -  ResidentSetSize of job (KB)
+...
+006 (63685.000.000) 08/02 22:31:28 Image size of job updated: 1882472
+	883  -  MemoryUsage of job (MB)
+	903696  -  ResidentSetSize of job (KB)
+...
+006 (63685.000.000) 08/02 22:46:29 Image size of job updated: 1887256
+	883  -  MemoryUsage of job (MB)
+	903696  -  ResidentSetSize of job (KB)
+...
+006 (63685.000.000) 08/02 23:01:30 Image size of job updated: 1898576
+	883  -  MemoryUsage of job (MB)
+	903696  -  ResidentSetSize of job (KB)
+...
+006 (63685.000.000) 08/03 00:47:15 Image size of job updated: 1966044
+	883  -  MemoryUsage of job (MB)
+	903696  -  ResidentSetSize of job (KB)
+...
+006 (63685.000.000) 08/03 00:52:16 Image size of job updated: 1966124
+	883  -  MemoryUsage of job (MB)
+	903696  -  ResidentSetSize of job (KB)
+...
+006 (63685.000.000) 08/03 02:14:55 Image size of job updated: 1969592
+	883  -  MemoryUsage of job (MB)
+	903696  -  ResidentSetSize of job (KB)
+...
+006 (63685.000.000) 08/03 02:19:09 Image size of job updated: 1969656
+	883  -  MemoryUsage of job (MB)
+	903696  -  ResidentSetSize of job (KB)
+...
+006 (63685.000.000) 08/03 03:04:14 Image size of job updated: 1981876
+	883  -  MemoryUsage of job (MB)
+	903696  -  ResidentSetSize of job (KB)
+...
+006 (63685.000.000) 08/03 03:29:16 Image size of job updated: 2022876
+	883  -  MemoryUsage of job (MB)
+	903696  -  ResidentSetSize of job (KB)
+...
+006 (63685.000.000) 08/03 03:50:04 Image size of job updated: 2068804
+	883  -  MemoryUsage of job (MB)
+	903696  -  ResidentSetSize of job (KB)
+...
+006 (63685.000.000) 08/03 03:59:44 Image size of job updated: 2068852
+	883  -  MemoryUsage of job (MB)
+	903696  -  ResidentSetSize of job (KB)
+...
+006 (63685.000.000) 08/03 05:27:37 Image size of job updated: 2068852
+	926  -  MemoryUsage of job (MB)
+	947276  -  ResidentSetSize of job (KB)
+...
+006 (63685.000.000) 08/03 07:37:51 Image size of job updated: 2109516
+	926  -  MemoryUsage of job (MB)
+	947276  -  ResidentSetSize of job (KB)
+...
+006 (63685.000.000) 08/03 09:50:01 Image size of job updated: 2113932
+	926  -  MemoryUsage of job (MB)
+	947276  -  ResidentSetSize of job (KB)
+...
+006 (63685.000.000) 08/03 09:55:21 Image size of job updated: 2957596
+	926  -  MemoryUsage of job (MB)
+	947276  -  ResidentSetSize of job (KB)
+...
+004 (63685.000.000) 08/03 09:55:21 Job was evicted.
+	(0) Job was not checkpointed.
+		Usr 0 02:12:22, Sys 0 00:13:42  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+	0  -  Run Bytes Sent By Job
+	238  -  Run Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated
+	   Cpus                 :                 1         1
+	   Disk (KB)            :       15        1    255527
+	   Memory (MB)          :      926     1024      1024
+...
+001 (63685.000.000) 08/03 09:58:42 Job executing on host: <10.194.1.4:9618?addrs=10.194.1.4-9618+[--1]-9618&noUDP&sock=21589_d637_3>
+...
+004 (63685.000.000) 08/03 10:40:38 Job was evicted.
+	(0) Job was not checkpointed.
+		Usr 0 00:27:42, Sys 0 00:00:48  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+	0  -  Run Bytes Sent By Job
+	238  -  Run Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated
+	   Cpus                 :                 1         1
+	   Disk (KB)            :       16       15   4187667
+	   Memory (MB)          :      977     1024      1024
+...
+009 (63685.000.000) 08/03 10:40:39 Job was aborted by the user.
+	via condor_rm (by user jnugent)
+...
+000 (66089.000.000) 08/10 13:31:28 Job submitted from host: <172.20.203.50:9618?addrs=172.20.203.50-9618+[--1]-9618&noUDP&sock=7405_cae4_4>
+...
+001 (66089.000.000) 08/10 13:31:40 Job executing on host: <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+006 (66089.000.000) 08/10 13:31:48 Image size of job updated: 48272
+	47  -  MemoryUsage of job (MB)
+	48112  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/10 13:36:48 Image size of job updated: 443588
+	419  -  MemoryUsage of job (MB)
+	428228  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/10 13:41:48 Image size of job updated: 1094652
+	874  -  MemoryUsage of job (MB)
+	894356  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/10 14:01:51 Image size of job updated: 1172588
+	874  -  MemoryUsage of job (MB)
+	894356  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/10 14:11:52 Image size of job updated: 1226180
+	979  -  MemoryUsage of job (MB)
+	1002456  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/10 14:36:54 Image size of job updated: 1306612
+	980  -  MemoryUsage of job (MB)
+	1003288  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/10 15:16:58 Image size of job updated: 1306612
+	991  -  MemoryUsage of job (MB)
+	1014552  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/10 15:27:00 Image size of job updated: 1306612
+	999  -  MemoryUsage of job (MB)
+	1022076  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/10 15:37:00 Image size of job updated: 1355956
+	999  -  MemoryUsage of job (MB)
+	1022076  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/10 15:47:02 Image size of job updated: 1533320
+	999  -  MemoryUsage of job (MB)
+	1022076  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/10 15:57:03 Image size of job updated: 1624268
+	999  -  MemoryUsage of job (MB)
+	1022076  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/10 17:02:09 Image size of job updated: 1675988
+	999  -  MemoryUsage of job (MB)
+	1022076  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/10 17:22:12 Image size of job updated: 1856372
+	1064  -  MemoryUsage of job (MB)
+	1089088  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/10 18:02:17 Image size of job updated: 1884320
+	1064  -  MemoryUsage of job (MB)
+	1089088  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/10 18:17:18 Image size of job updated: 1909704
+	1064  -  MemoryUsage of job (MB)
+	1089088  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/10 18:27:19 Image size of job updated: 2158404
+	1064  -  MemoryUsage of job (MB)
+	1089088  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/10 18:52:21 Image size of job updated: 2202068
+	1064  -  MemoryUsage of job (MB)
+	1089088  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/10 19:07:22 Image size of job updated: 2429740
+	1064  -  MemoryUsage of job (MB)
+	1089088  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/10 19:57:26 Image size of job updated: 2532028
+	1064  -  MemoryUsage of job (MB)
+	1089088  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/10 20:02:27 Image size of job updated: 2557728
+	1064  -  MemoryUsage of job (MB)
+	1089088  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/10 20:10:25 Image size of job updated: 2594888
+	1064  -  MemoryUsage of job (MB)
+	1089088  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/10 20:19:55 Image size of job updated: 2650096
+	1159  -  MemoryUsage of job (MB)
+	1186020  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/10 20:28:49 Image size of job updated: 2689656
+	1236  -  MemoryUsage of job (MB)
+	1265096  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/10 20:40:41 Image size of job updated: 2701304
+	1236  -  MemoryUsage of job (MB)
+	1265096  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/10 20:46:12 Image size of job updated: 2726976
+	1241  -  MemoryUsage of job (MB)
+	1270460  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/10 20:51:12 Image size of job updated: 2739424
+	1265  -  MemoryUsage of job (MB)
+	1295360  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/10 20:56:12 Image size of job updated: 2752360
+	1291  -  MemoryUsage of job (MB)
+	1321228  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/10 21:01:13 Image size of job updated: 2769976
+	1312  -  MemoryUsage of job (MB)
+	1343020  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/10 21:06:14 Image size of job updated: 2835588
+	1440  -  MemoryUsage of job (MB)
+	1474240  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/10 21:11:14 Image size of job updated: 2848280
+	1464  -  MemoryUsage of job (MB)
+	1498944  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/10 21:16:15 Image size of job updated: 2946928
+	1657  -  MemoryUsage of job (MB)
+	1696236  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/10 21:21:17 Image size of job updated: 3055096
+	1868  -  MemoryUsage of job (MB)
+	1912572  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/10 21:26:17 Image size of job updated: 3132464
+	1868  -  MemoryUsage of job (MB)
+	1912572  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/10 21:31:17 Image size of job updated: 3201180
+	1868  -  MemoryUsage of job (MB)
+	1912572  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/10 22:16:22 Image size of job updated: 3201180
+	1969  -  MemoryUsage of job (MB)
+	2015844  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/11 01:41:42 Image size of job updated: 3210320
+	1969  -  MemoryUsage of job (MB)
+	2015844  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/11 01:51:43 Image size of job updated: 3411424
+	1969  -  MemoryUsage of job (MB)
+	2015844  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/11 02:21:47 Image size of job updated: 3561708
+	1982  -  MemoryUsage of job (MB)
+	2029164  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/11 02:31:48 Image size of job updated: 3934360
+	2388  -  MemoryUsage of job (MB)
+	2444552  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/11 02:36:49 Image size of job updated: 3945012
+	2409  -  MemoryUsage of job (MB)
+	2466324  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/11 02:41:49 Image size of job updated: 3985904
+	2484  -  MemoryUsage of job (MB)
+	2543488  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/11 02:46:49 Image size of job updated: 4026436
+	2532  -  MemoryUsage of job (MB)
+	2592304  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/11 02:51:50 Image size of job updated: 4101500
+	2660  -  MemoryUsage of job (MB)
+	2723492  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/11 02:56:51 Image size of job updated: 4191896
+	2785  -  MemoryUsage of job (MB)
+	2851196  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/11 03:01:51 Image size of job updated: 4211092
+	2786  -  MemoryUsage of job (MB)
+	2852596  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/11 03:06:51 Image size of job updated: 4254840
+	2848  -  MemoryUsage of job (MB)
+	2915536  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/11 03:11:52 Image size of job updated: 4315040
+	2848  -  MemoryUsage of job (MB)
+	2915536  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/11 03:16:52 Image size of job updated: 4321972
+	2848  -  MemoryUsage of job (MB)
+	2915536  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/11 03:21:52 Image size of job updated: 4378292
+	2848  -  MemoryUsage of job (MB)
+	2915536  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/11 03:29:55 Image size of job updated: 4478776
+	2848  -  MemoryUsage of job (MB)
+	2915536  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/11 03:39:00 Image size of job updated: 4527088
+	2848  -  MemoryUsage of job (MB)
+	2915536  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/11 03:48:06 Image size of job updated: 4610624
+	2848  -  MemoryUsage of job (MB)
+	2915536  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/11 03:58:00 Image size of job updated: 4649288
+	2853  -  MemoryUsage of job (MB)
+	2920800  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/11 04:05:02 Image size of job updated: 4676600
+	2883  -  MemoryUsage of job (MB)
+	2952136  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/11 04:11:09 Image size of job updated: 4693284
+	2887  -  MemoryUsage of job (MB)
+	2955960  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/11 04:17:02 Image size of job updated: 4717776
+	2895  -  MemoryUsage of job (MB)
+	2963496  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/11 04:22:00 Image size of job updated: 4758756
+	2931  -  MemoryUsage of job (MB)
+	3000980  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/11 04:27:20 Image size of job updated: 4792996
+	2947  -  MemoryUsage of job (MB)
+	3017108  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/11 04:32:02 Image size of job updated: 4811252
+	2953  -  MemoryUsage of job (MB)
+	3022892  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/11 04:38:02 Image size of job updated: 4874120
+	3006  -  MemoryUsage of job (MB)
+	3077240  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/11 04:42:59 Image size of job updated: 4914056
+	3032  -  MemoryUsage of job (MB)
+	3104636  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/11 04:49:29 Image size of job updated: 4970920
+	3063  -  MemoryUsage of job (MB)
+	3136396  -  ResidentSetSize of job (KB)
+...
+006 (66089.000.000) 08/11 04:59:20 Image size of job updated: 4979184
+	3064  -  MemoryUsage of job (MB)
+	3136628  -  ResidentSetSize of job (KB)
+...
+005 (66089.000.000) 08/11 04:59:28 Job terminated.
+	(1) Normal termination (return value 137)
+		Usr 0 06:56:49, Sys 0 00:18:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 06:56:49, Sys 0 00:18:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	5232  -  Run Bytes Sent By Job
+	238  -  Run Bytes Received By Job
+	5232  -  Total Bytes Sent By Job
+	238  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated
+	   Cpus                 :                 1         1
+	   Disk (KB)            :       15        1  10478997
+	   Memory (MB)          :     3064     1024      1024
+...
+000 (425.000.000) 08/27 11:47:40 Job submitted from host: <194.36.1.211:9618?addrs=194.36.1.211-9618+[--1]-9618&noUDP&sock=1189_2232_3>
+...
+009 (425.000.000) 08/27 11:48:15 Job was aborted by the user.
+	via condor_rm (by user jnugent)
+...
+000 (66246.000.000) 08/27 11:48:32 Job submitted from host: <172.20.203.50:9618?addrs=172.20.203.50-9618+[--1]-9618&noUDP&sock=7405_cae4_4>
+...
+022 (66246.000.000) 08/27 11:48:53 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_2@node006.ppe.gla.ac.uk <10.194.1.6:9618?addrs=10.194.1.6-9618+[--1]-9618&noUDP&sock=26470_cbfa_3>
+...
+024 (66246.000.000) 08/27 11:49:01 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_2@node006.ppe.gla.ac.uk, rescheduling job
+...
+001 (66246.000.000) 08/27 11:50:00 Job executing on host: <10.194.1.81:9618?addrs=10.194.1.81-9618+[--1]-9618&noUDP&sock=1755_5ccc_3>
+...
+006 (66246.000.000) 08/27 11:50:08 Image size of job updated: 100912
+	99  -  MemoryUsage of job (MB)
+	100912  -  ResidentSetSize of job (KB)
+...
+006 (66246.000.000) 08/27 11:55:09 Image size of job updated: 939500
+	628  -  MemoryUsage of job (MB)
+	643024  -  ResidentSetSize of job (KB)
+...
+006 (66246.000.000) 08/27 12:20:11 Image size of job updated: 939500
+	764  -  MemoryUsage of job (MB)
+	782120  -  ResidentSetSize of job (KB)
+...
+006 (66246.000.000) 08/27 12:35:13 Image size of job updated: 985120
+	764  -  MemoryUsage of job (MB)
+	782120  -  ResidentSetSize of job (KB)
+...
+006 (66246.000.000) 08/27 13:15:19 Image size of job updated: 1005480
+	764  -  MemoryUsage of job (MB)
+	782120  -  ResidentSetSize of job (KB)
+...
+006 (66246.000.000) 08/27 13:20:19 Image size of job updated: 1108576
+	764  -  MemoryUsage of job (MB)
+	782120  -  ResidentSetSize of job (KB)
+...
+006 (66246.000.000) 08/27 14:15:24 Image size of job updated: 1134076
+	768  -  MemoryUsage of job (MB)
+	785668  -  ResidentSetSize of job (KB)
+...
+006 (66246.000.000) 08/27 14:20:24 Image size of job updated: 1134076
+	768  -  MemoryUsage of job (MB)
+	785676  -  ResidentSetSize of job (KB)
+...
+006 (66246.000.000) 08/27 14:55:28 Image size of job updated: 1202060
+	795  -  MemoryUsage of job (MB)
+	813880  -  ResidentSetSize of job (KB)
+...
+006 (66246.000.000) 08/27 15:00:28 Image size of job updated: 1210576
+	795  -  MemoryUsage of job (MB)
+	813880  -  ResidentSetSize of job (KB)
+...
+006 (66246.000.000) 08/27 17:00:40 Image size of job updated: 1216720
+	795  -  MemoryUsage of job (MB)
+	813880  -  ResidentSetSize of job (KB)
+...
+006 (66246.000.000) 08/27 17:25:43 Image size of job updated: 1378672
+	795  -  MemoryUsage of job (MB)
+	813880  -  ResidentSetSize of job (KB)
+...
+006 (66246.000.000) 08/27 17:35:44 Image size of job updated: 1445736
+	795  -  MemoryUsage of job (MB)
+	813880  -  ResidentSetSize of job (KB)
+...
+006 (66246.000.000) 08/27 19:50:59 Image size of job updated: 1508696
+	795  -  MemoryUsage of job (MB)
+	813880  -  ResidentSetSize of job (KB)
+...
+006 (66246.000.000) 08/27 21:26:07 Image size of job updated: 1543220
+	795  -  MemoryUsage of job (MB)
+	813880  -  ResidentSetSize of job (KB)
+...
+006 (66246.000.000) 08/27 22:21:12 Image size of job updated: 1597248
+	795  -  MemoryUsage of job (MB)
+	813880  -  ResidentSetSize of job (KB)
+...
+005 (66246.000.000) 08/27 22:36:00 Job terminated.
+	(1) Normal termination (return value 135)
+		Usr 0 01:11:43, Sys 0 00:08:15  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 01:11:43, Sys 0 00:08:15  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	5234  -  Run Bytes Sent By Job
+	238  -  Run Bytes Received By Job
+	5234  -  Total Bytes Sent By Job
+	238  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated
+	   Cpus                 :                 1         1
+	   Disk (KB)            :       16        1   2614828
+	   Memory (MB)          :      795     1024      1024
+...
+000 (546.000.000) 08/28 17:53:59 Job submitted from host: <194.36.1.211:9618?addrs=194.36.1.211-9618+[--1]-9618&noUDP&sock=1189_2232_3>
+...
+009 (546.000.000) 08/28 17:54:56 Job was aborted by the user.
+	via condor_rm (by user jnugent)
+...
+000 (66369.000.000) 08/28 17:55:38 Job submitted from host: <172.20.203.50:9618?addrs=172.20.203.50-9618+[--1]-9618&noUDP&sock=7405_cae4_4>
+...
+001 (66369.000.000) 08/28 17:55:53 Job executing on host: <10.194.1.4:9618?addrs=10.194.1.4-9618+[--1]-9618&noUDP&sock=21589_d637_3>
+...
+006 (66369.000.000) 08/28 17:56:01 Image size of job updated: 322816
+	316  -  MemoryUsage of job (MB)
+	322816  -  ResidentSetSize of job (KB)
+...
+006 (66369.000.000) 08/28 17:56:51 Image size of job updated: 499852
+	489  -  MemoryUsage of job (MB)
+	499852  -  ResidentSetSize of job (KB)
+...
+004 (66369.000.000) 08/28 17:56:51 Job was evicted.
+	(0) Job was not checkpointed.
+		Usr 0 00:00:56, Sys 0 00:00:01  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+	0  -  Run Bytes Sent By Job
+	238  -  Run Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated
+	   Cpus                 :                 1         1
+	   Disk (KB)            :       15        1   4187667
+	   Memory (MB)          :      489     1024      1024
+...
+009 (66369.000.000) 08/28 17:56:51 Job was aborted by the user.
+	via condor_rm (by user jnugent)
+...
+000 (66469.000.000) 08/28 17:59:34 Job submitted from host: <172.20.203.50:9618?addrs=172.20.203.50-9618+[--1]-9618&noUDP&sock=7405_cae4_4>
+...
+001 (66469.000.000) 08/28 17:59:55 Job executing on host: <10.194.1.4:9618?addrs=10.194.1.4-9618+[--1]-9618&noUDP&sock=21589_d637_3>
+...
+006 (66469.000.000) 08/28 18:00:03 Image size of job updated: 360636
+	353  -  MemoryUsage of job (MB)
+	360636  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 18:05:03 Image size of job updated: 377876
+	370  -  MemoryUsage of job (MB)
+	377876  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 18:15:05 Image size of job updated: 525508
+	514  -  MemoryUsage of job (MB)
+	525508  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 18:20:05 Image size of job updated: 614520
+	601  -  MemoryUsage of job (MB)
+	614520  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 18:25:06 Image size of job updated: 748200
+	731  -  MemoryUsage of job (MB)
+	748200  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 18:40:07 Image size of job updated: 875144
+	855  -  MemoryUsage of job (MB)
+	875144  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 19:10:10 Image size of job updated: 1066944
+	1024  -  MemoryUsage of job (MB)
+	1047868  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 19:25:12 Image size of job updated: 1100704
+	1024  -  MemoryUsage of job (MB)
+	1047868  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 19:35:13 Image size of job updated: 1273316
+	1024  -  MemoryUsage of job (MB)
+	1047868  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 19:45:13 Image size of job updated: 1322592
+	1024  -  MemoryUsage of job (MB)
+	1047868  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 19:50:14 Image size of job updated: 1411972
+	1024  -  MemoryUsage of job (MB)
+	1047868  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 20:10:16 Image size of job updated: 1443852
+	1024  -  MemoryUsage of job (MB)
+	1047868  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 20:35:18 Image size of job updated: 1471960
+	1024  -  MemoryUsage of job (MB)
+	1047868  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 20:40:18 Image size of job updated: 1546156
+	1024  -  MemoryUsage of job (MB)
+	1047868  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 21:00:20 Image size of job updated: 1646036
+	1024  -  MemoryUsage of job (MB)
+	1047868  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 21:15:21 Image size of job updated: 1662744
+	1024  -  MemoryUsage of job (MB)
+	1047868  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 21:25:23 Image size of job updated: 1826496
+	1024  -  MemoryUsage of job (MB)
+	1047868  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 21:30:23 Image size of job updated: 1850540
+	1024  -  MemoryUsage of job (MB)
+	1047868  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 21:40:25 Image size of job updated: 1861696
+	1024  -  MemoryUsage of job (MB)
+	1047868  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 21:50:26 Image size of job updated: 1936688
+	1024  -  MemoryUsage of job (MB)
+	1047868  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 21:55:27 Image size of job updated: 1994648
+	1024  -  MemoryUsage of job (MB)
+	1047868  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 22:00:27 Image size of job updated: 2032780
+	1024  -  MemoryUsage of job (MB)
+	1047868  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 22:05:27 Image size of job updated: 2088156
+	1024  -  MemoryUsage of job (MB)
+	1047868  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 22:15:29 Image size of job updated: 2114500
+	1024  -  MemoryUsage of job (MB)
+	1047868  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 22:20:29 Image size of job updated: 2154408
+	1024  -  MemoryUsage of job (MB)
+	1047868  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 22:25:29 Image size of job updated: 2173060
+	1024  -  MemoryUsage of job (MB)
+	1047868  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 22:30:29 Image size of job updated: 2227232
+	1024  -  MemoryUsage of job (MB)
+	1047868  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 22:35:30 Image size of job updated: 2265600
+	1024  -  MemoryUsage of job (MB)
+	1047868  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 22:40:31 Image size of job updated: 2277536
+	1024  -  MemoryUsage of job (MB)
+	1047868  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 22:45:31 Image size of job updated: 2301608
+	1024  -  MemoryUsage of job (MB)
+	1047868  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 22:50:31 Image size of job updated: 2336672
+	1024  -  MemoryUsage of job (MB)
+	1047868  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 22:55:31 Image size of job updated: 2348604
+	1024  -  MemoryUsage of job (MB)
+	1047868  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 23:00:32 Image size of job updated: 2387916
+	1024  -  MemoryUsage of job (MB)
+	1047868  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 23:05:33 Image size of job updated: 2455452
+	1131  -  MemoryUsage of job (MB)
+	1157192  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 23:10:34 Image size of job updated: 2563060
+	1328  -  MemoryUsage of job (MB)
+	1359544  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 23:20:34 Image size of job updated: 2563060
+	1432  -  MemoryUsage of job (MB)
+	1465736  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 23:25:35 Image size of job updated: 2563060
+	1432  -  MemoryUsage of job (MB)
+	1465808  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 23:30:36 Image size of job updated: 2569288
+	1432  -  MemoryUsage of job (MB)
+	1465808  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 23:35:37 Image size of job updated: 2614164
+	1432  -  MemoryUsage of job (MB)
+	1465808  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 23:40:37 Image size of job updated: 2718728
+	1432  -  MemoryUsage of job (MB)
+	1465808  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/28 23:45:37 Image size of job updated: 2764968
+	1432  -  MemoryUsage of job (MB)
+	1465808  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/29 02:10:53 Image size of job updated: 3003564
+	1432  -  MemoryUsage of job (MB)
+	1465808  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/29 02:15:53 Image size of job updated: 3066112
+	1432  -  MemoryUsage of job (MB)
+	1465808  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/29 02:25:54 Image size of job updated: 3136696
+	1432  -  MemoryUsage of job (MB)
+	1465808  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/29 02:40:56 Image size of job updated: 3414088
+	1432  -  MemoryUsage of job (MB)
+	1465808  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/29 02:55:57 Image size of job updated: 3571396
+	1472  -  MemoryUsage of job (MB)
+	1506920  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/29 03:46:02 Image size of job updated: 3720732
+	1617  -  MemoryUsage of job (MB)
+	1655184  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/29 04:26:07 Image size of job updated: 4078964
+	1922  -  MemoryUsage of job (MB)
+	1967136  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/29 05:16:12 Image size of job updated: 4113336
+	1922  -  MemoryUsage of job (MB)
+	1967136  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/29 05:41:15 Image size of job updated: 4572604
+	1922  -  MemoryUsage of job (MB)
+	1967136  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/29 06:01:16 Image size of job updated: 4709220
+	1922  -  MemoryUsage of job (MB)
+	1967436  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/29 06:06:17 Image size of job updated: 4770220
+	1989  -  MemoryUsage of job (MB)
+	2036380  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/29 06:11:18 Image size of job updated: 4860928
+	2073  -  MemoryUsage of job (MB)
+	2121772  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/29 06:16:18 Image size of job updated: 4884464
+	2111  -  MemoryUsage of job (MB)
+	2160948  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/29 06:21:17 Image size of job updated: 4926140
+	2165  -  MemoryUsage of job (MB)
+	2216016  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/29 06:26:18 Image size of job updated: 4987052
+	2223  -  MemoryUsage of job (MB)
+	2276032  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/29 06:31:32 Image size of job updated: 5141180
+	2384  -  MemoryUsage of job (MB)
+	2440532  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/29 06:36:19 Image size of job updated: 5179752
+	2428  -  MemoryUsage of job (MB)
+	2485308  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/29 06:41:20 Image size of job updated: 5230264
+	2503  -  MemoryUsage of job (MB)
+	2562064  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/29 06:46:20 Image size of job updated: 5286724
+	2561  -  MemoryUsage of job (MB)
+	2621768  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/29 06:51:21 Image size of job updated: 5312124
+	2588  -  MemoryUsage of job (MB)
+	2649172  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/29 07:36:26 Image size of job updated: 5312124
+	2618  -  MemoryUsage of job (MB)
+	2680592  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/29 07:41:26 Image size of job updated: 5312124
+	2629  -  MemoryUsage of job (MB)
+	2691868  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/29 07:51:28 Image size of job updated: 5346780
+	2629  -  MemoryUsage of job (MB)
+	2691868  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/29 14:26:02 Image size of job updated: 5441344
+	2629  -  MemoryUsage of job (MB)
+	2691868  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/29 15:46:11 Image size of job updated: 5463896
+	2629  -  MemoryUsage of job (MB)
+	2691868  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/29 16:21:15 Image size of job updated: 5509692
+	2629  -  MemoryUsage of job (MB)
+	2691868  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/29 16:41:18 Image size of job updated: 5535560
+	2629  -  MemoryUsage of job (MB)
+	2691868  -  ResidentSetSize of job (KB)
+...
+006 (66469.000.000) 08/29 16:51:17 Image size of job updated: 5639780
+	2629  -  MemoryUsage of job (MB)
+	2691868  -  ResidentSetSize of job (KB)
+...
+005 (66469.000.000) 08/29 18:53:07 Job terminated.
+	(1) Normal termination (return value 137)
+		Usr 0 10:23:22, Sys 0 00:38:34  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 10:23:22, Sys 0 00:38:34  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	196133  -  Run Bytes Sent By Job
+	238  -  Run Bytes Received By Job
+	196133  -  Total Bytes Sent By Job
+	238  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated
+	   Cpus                 :                 1         1
+	   Disk (KB)            :      202        1   4187667
+	   Memory (MB)          :     2629     1024      1024
+...

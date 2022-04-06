@@ -1,0 +1,10 @@
+universe       = vanilla
+executable     = sub_script_XX.sh
+output         = /data/neutrino03/jnugent/Unfolding/tests/lihXX.out
+error          = /data/neutrino03/jnugent/Unfolding/tests/lihXX.err             
+log            = /data/neutrino03/jnugent/Unfolding/tests/lihXX.log
+requirements   = OpSysAndVer == "SL6"
+request_memory = 10 GB
+
+queue
+

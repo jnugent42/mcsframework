@@ -1,0 +1,88 @@
+000 (40861.000.000) 2021-07-26 16:55:09 Job submitted from host: <194.36.1.200:9618?addrs=194.36.1.200-9618&alias=hex.ppe.gla.ac.uk&noUDP&sock=schedd_1401_8c46>
+...
+040 (40861.000.000) 2021-07-28 00:34:10 Started transferring input files
+	Transferring to host: <192.168.16.121:9618?addrs=192.168.16.121-9618&alias=condor-d20-01.ppe.cluster&noUDP&sock=slot1_11_40472_ef67_1227>
+...
+040 (40861.000.000) 2021-07-28 00:34:10 Finished transferring input files
+...
+001 (40861.000.000) 2021-07-28 00:34:11 Job executing on host: <192.168.16.121:9618?addrs=192.168.16.121-9618&alias=condor-d20-01.ppe.cluster&noUDP&sock=startd_40545_137a>
+...
+006 (40861.000.000) 2021-07-28 00:34:20 Image size of job updated: 556804
+	544  -  MemoryUsage of job (MB)
+	556800  -  ResidentSetSize of job (KB)
+...
+006 (40861.000.000) 2021-07-28 00:39:21 Image size of job updated: 1403932
+	651  -  MemoryUsage of job (MB)
+	666008  -  ResidentSetSize of job (KB)
+...
+006 (40861.000.000) 2021-07-28 00:44:21 Image size of job updated: 1405840
+	651  -  MemoryUsage of job (MB)
+	666008  -  ResidentSetSize of job (KB)
+...
+006 (40861.000.000) 2021-07-28 00:54:23 Image size of job updated: 1409584
+	651  -  MemoryUsage of job (MB)
+	666008  -  ResidentSetSize of job (KB)
+...
+006 (40861.000.000) 2021-07-28 00:59:23 Image size of job updated: 1409660
+	778  -  MemoryUsage of job (MB)
+	796656  -  ResidentSetSize of job (KB)
+...
+006 (40861.000.000) 2021-07-28 01:04:23 Image size of job updated: 1412344
+	778  -  MemoryUsage of job (MB)
+	796656  -  ResidentSetSize of job (KB)
+...
+006 (40861.000.000) 2021-07-28 01:09:24 Image size of job updated: 1416668
+	778  -  MemoryUsage of job (MB)
+	796656  -  ResidentSetSize of job (KB)
+...
+006 (40861.000.000) 2021-07-28 01:39:27 Image size of job updated: 1420416
+	786  -  MemoryUsage of job (MB)
+	804760  -  ResidentSetSize of job (KB)
+...
+006 (40861.000.000) 2021-07-28 02:39:34 Image size of job updated: 1427484
+	786  -  MemoryUsage of job (MB)
+	804760  -  ResidentSetSize of job (KB)
+...
+006 (40861.000.000) 2021-07-28 02:44:34 Image size of job updated: 1439652
+	786  -  MemoryUsage of job (MB)
+	804760  -  ResidentSetSize of job (KB)
+...
+004 (40861.000.000) 2021-07-28 03:41:26 Job was evicted.
+	(0) CPU times
+		Usr 0 02:45:08, Sys 0 00:20:45  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+	0  -  Run Bytes Sent By Job
+	319  -  Run Bytes Received By Job
+	Partitionable Resources :      Usage  Request Allocated 
+	   Cpus                 :       0.98        1         1 
+	   Disk (KB)            : 2916131           1   3637421 
+	   Memory (MB)          :     786       10240     10240 
+...
+040 (40861.000.000) 2021-07-28 03:44:12 Started transferring input files
+	Transferring to host: <192.168.16.121:9618?addrs=192.168.16.121-9618&alias=condor-d20-01.ppe.cluster&noUDP&sock=slot1_4_25694_7f4e_7>
+...
+040 (40861.000.000) 2021-07-28 03:44:12 Finished transferring input files
+...
+001 (40861.000.000) 2021-07-28 03:44:13 Job executing on host: <192.168.16.121:9618?addrs=192.168.16.121-9618&alias=condor-d20-01.ppe.cluster&noUDP&sock=startd_40545_137a>
+...
+040 (40861.000.000) 2021-07-28 07:50:50 Started transferring output files
+...
+040 (40861.000.000) 2021-07-28 07:51:01 Finished transferring output files
+...
+005 (40861.000.000) 2021-07-28 07:51:01 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 03:37:20, Sys 0 00:27:40  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 06:22:28, Sys 0 00:48:25  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	3758284288  -  Run Bytes Sent By Job
+	319  -  Run Bytes Received By Job
+	3758284288  -  Total Bytes Sent By Job
+	638  -  Total Bytes Received By Job
+	Partitionable Resources :      Usage  Request Allocated 
+	   Cpus                 :       0.99        1         1 
+	   Disk (KB)            : 3670216     3000000   7274841 
+	   Memory (MB)          :     977       10240     10240 
+
+	Job terminated of its own accord at 2021-07-28T06:50:50Z.
+...

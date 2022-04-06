@@ -1,0 +1,12 @@
+
+#PBS -N TOFAllscan/LiHMu_3240_tof_lim28.7398395872_u28.9398395872
+#PBS -q long6
+#PBS -l walltime=23:59:00,mem=3000Mb
+#PBS -e /data/neutrino02/rbayes/MICE/MCS_selection/Unfolding/v2.6.1/logs/TOFAllscan/LiHMu_3240_tof_lim28.7398395872_u28.9398395872.err
+#PBS -o /data/neutrino02/rbayes/MICE/MCS_selection/Unfolding/v2.6.1/logs/TOFAllscan/LiHMu_3240_tof_lim28.7398395872_u28.9398395872.out
+
+cd /data/neutrino02/rbayes/MICE/MCS_selection/Unfolding/v2.6.1
+. /data/neutrino02/rbayes/MICE/MCS_selection/Unfolding/v2.6.1/local_env.sh
+# /data/neutrino02/rbayes/MICE/MCS_selection/Unfolding/MCSUnfolding TOFAllscan/LiHMu_3240_tof_lim28.7398395872_u28.9398395872MC.xml
+# python CompCobbData400.py TOFAllscan/LiHMu_3240_tof_lim28.7398395872_u28.9398395872MC.root %(modelfile)
+/data/neutrino02/rbayes/MICE/MCS_selection/Unfolding/MCSUnfolding TOFAllscan/LiHMu_3240_tof_lim28.7398395872_u28.9398395872.xml

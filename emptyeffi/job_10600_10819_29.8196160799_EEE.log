@@ -1,0 +1,88 @@
+000 (40934.000.000) 2021-07-26 16:55:16 Job submitted from host: <194.36.1.200:9618?addrs=194.36.1.200-9618&alias=hex.ppe.gla.ac.uk&noUDP&sock=schedd_1401_8c46>
+...
+040 (40934.000.000) 2021-07-28 04:05:12 Started transferring input files
+	Transferring to host: <192.168.16.113:9618?addrs=192.168.16.113-9618&alias=condor-d19-03.ppe.cluster&noUDP&sock=slot1_12_26289_ba86_1172>
+...
+040 (40934.000.000) 2021-07-28 04:05:12 Finished transferring input files
+...
+001 (40934.000.000) 2021-07-28 04:05:13 Job executing on host: <192.168.16.113:9618?addrs=192.168.16.113-9618&alias=condor-d19-03.ppe.cluster&noUDP&sock=startd_2634_488c>
+...
+006 (40934.000.000) 2021-07-28 04:05:22 Image size of job updated: 43364
+	43  -  MemoryUsage of job (MB)
+	43360  -  ResidentSetSize of job (KB)
+...
+006 (40934.000.000) 2021-07-28 04:10:23 Image size of job updated: 1458640
+	658  -  MemoryUsage of job (MB)
+	672956  -  ResidentSetSize of job (KB)
+...
+006 (40934.000.000) 2021-07-28 04:15:23 Image size of job updated: 1485076
+	658  -  MemoryUsage of job (MB)
+	672956  -  ResidentSetSize of job (KB)
+...
+006 (40934.000.000) 2021-07-28 04:25:24 Image size of job updated: 1492476
+	658  -  MemoryUsage of job (MB)
+	672956  -  ResidentSetSize of job (KB)
+...
+006 (40934.000.000) 2021-07-28 04:30:24 Image size of job updated: 1492476
+	803  -  MemoryUsage of job (MB)
+	821352  -  ResidentSetSize of job (KB)
+...
+006 (40934.000.000) 2021-07-28 04:45:26 Image size of job updated: 1492476
+	812  -  MemoryUsage of job (MB)
+	831376  -  ResidentSetSize of job (KB)
+...
+006 (40934.000.000) 2021-07-28 05:05:28 Image size of job updated: 1492476
+	842  -  MemoryUsage of job (MB)
+	862200  -  ResidentSetSize of job (KB)
+...
+006 (40934.000.000) 2021-07-28 05:25:29 Image size of job updated: 1498340
+	842  -  MemoryUsage of job (MB)
+	862200  -  ResidentSetSize of job (KB)
+...
+004 (40934.000.000) 2021-07-28 05:25:52 Job was evicted.
+	(0) CPU times
+		Usr 0 01:11:10, Sys 0 00:08:46  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+	0  -  Run Bytes Sent By Job
+	323  -  Run Bytes Received By Job
+	Partitionable Resources :      Usage  Request Allocated 
+	   Cpus                 :       0.99        1         1 
+	   Disk (KB)            : 1265632           1   3637421 
+	   Memory (MB)          :     842       10240     10240 
+...
+040 (40934.000.000) 2021-07-28 05:28:13 Started transferring input files
+	Transferring to host: <192.168.16.113:9618?addrs=192.168.16.113-9618&alias=condor-d19-03.ppe.cluster&noUDP&sock=slot1_9_27242_340d_12>
+...
+040 (40934.000.000) 2021-07-28 05:28:13 Finished transferring input files
+...
+001 (40934.000.000) 2021-07-28 05:28:14 Job executing on host: <192.168.16.113:9618?addrs=192.168.16.113-9618&alias=condor-d19-03.ppe.cluster&noUDP&sock=startd_2634_488c>
+...
+006 (40934.000.000) 2021-07-28 08:13:39 Image size of job updated: 1504992
+	977  -  MemoryUsage of job (MB)
+	1000000  -  ResidentSetSize of job (KB)
+...
+022 (40934.000.000) 2021-07-28 09:08:57 Job disconnected, attempting to reconnect
+    Local schedd and job shadow died, schedd now running again
+    Trying to reconnect to slot1_9@condor-d19-03.ppe.cluster <192.168.16.113:9618?addrs=192.168.16.113-9618&alias=condor-d19-03.ppe.cluster&noUDP&sock=startd_2634_488c>
+...
+023 (40934.000.000) 2021-07-28 09:08:57 Job reconnected to slot1_9@condor-d19-03.ppe.cluster
+    startd address: <192.168.16.113:9618?addrs=192.168.16.113-9618&alias=condor-d19-03.ppe.cluster&noUDP&sock=startd_2634_488c>
+    starter address: <192.168.16.113:9618?addrs=192.168.16.113-9618&alias=condor-d19-03.ppe.cluster&noUDP&sock=slot1_9_27242_340d_12>
+...
+005 (40934.000.000) 2021-07-28 09:27:16 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 03:30:43, Sys 0 00:26:24  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 07:43:12, Sys 0 00:57:52  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	3865001728  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+	3865001728  -  Total Bytes Sent By Job
+	646  -  Total Bytes Received By Job
+	Partitionable Resources :      Usage  Request Allocated 
+	   Cpus                 :       0.99        1         1 
+	   Disk (KB)            : 3774432     3774432   3637421 
+	   Memory (MB)          :     977       10240     10240 
+
+	Job terminated of its own accord at 2021-07-28T08:27:03Z.
+...

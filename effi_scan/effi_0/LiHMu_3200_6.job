@@ -1,0 +1,10 @@
+
+universe       = vanilla
+executable     = effi_0/LiHMu_3200_6.sh
+output         = /data/neutrino03/jnugent/Unfolding/effi_scan/effi_0/LiHMu_3200_6.out
+error          = /data/neutrino03/jnugent/Unfolding/effi_scan/effi_0/LiHMu_3200_6.err
+log            = /data/neutrino03/jnugent/Unfolding/effi_scan/effi_0/LiHMu_3200_6.log
+requirements   = OpSysAndVer == "CentOS7"
+request_memory = 50 GB
+
+queue

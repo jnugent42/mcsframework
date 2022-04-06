@@ -64,8 +64,8 @@ def updatemodelfilename(infile, outfile, newname):
     doc.freeDoc()
 
 def submitUnfolding(xmlfile):
-    execdir = "/afs/phas.gla.ac.uk/user/j/jnugent/workarea/Unfolding/fiducial"
-    cmd = [os.path.join(execdir,"../MCSUnfolding"), xmlfile] 
+    execdir = "/data/neutrino03/jnugent/Unfolding/fiducial"
+    cmd = [os.path.join(execdir,"../MCSUnfolding"), xmlfile]
     proc = subprocess.Popen(cmd)
     proc.wait()
 
@@ -75,7 +75,7 @@ cd %(working_dir)s
 . %(maus_root_dir)s/local_env.sh
 %(execcmd)s %(xmlfile)s
 '''% settings
-    
+
     outfilename = '''%(shellscript)s'''% settings
     outfile0 = open(outfilename, 'w+')
     outfile0.write(testscript)
@@ -85,9 +85,10 @@ cd %(working_dir)s
 universe       = vanilla
 executable     = %(shellscript)s
 output         = %(working_dir)s/%(name)s.out
-error          = %(working_dir)s/%(name)s.err             
+error          = %(working_dir)s/%(name)s.err
 log            = test.log
 requirements   = OpSysAndVer == "CentOS7"
+request_memory = 6 GB
 
 queue
 '''% settings
@@ -97,9 +98,9 @@ queue
     outfile.close()
 
 def submit_to_batch(xmlfile):
-    execdir = "/home/ppe/j/jnugent/workarea/Unfolding/fiducial"
+    execdir = "/data/neutrino03/jnugent/Unfolding/fiducial"
     execcmd = os.path.join(execdir,"../MCSUnfolding")
-    maus_root_dir = "/home/ppe/j/jnugent/workarea/Unfolding/fiducial"
+    maus_root_dir = "/data/neutrino03/jnugent/Unfolding/fiducial"
     working_dir = os.getcwd()
     name = xmlfile[:-4]
     settings = {"shellscript":xmlfile[:-4]+".sh", "xmlfile":xmlfile, "name":name, "working_dir":working_dir, "maus_root_dir":maus_root_dir, "execcmd":execcmd}
@@ -110,24 +111,28 @@ def submit_to_batch(xmlfile):
     q = subprocess.Popen(cmd)
     q.wait()
 
-for i in range(8):
-    for j in range(-20,5):
-        
+j=1
+for i in range(-1,2,2):
+#    for j in range(-17,-14):
+    #for j in range(0,1):
+
         updatefilename("LiHMu_3172_0.xml", "LiHMu_3172_R_"+str(i)+"_G_"+str(j)+".xml", "LiHMu_3172_R_"+str(i)+"_G_"+str(j)+".root")
-        updatecutval("LiHMu_3172_R_"+str(i)+"_G_"+str(j)+".xml", "LiHMu_3172_R_"+str(i)+"_G_"+str(j)+".xml", "fid_rad", 100 + i*10)
-        updatecutval("LiHMu_3172_R_"+str(i)+"_G_"+str(j)+".xml", "LiHMu_3172_R_"+str(i)+"_G_"+str(j)+".xml", "fid_grad", (100 + i*10)*0.0003 + 0.002*j)
+        updatecutval("LiHMu_3172_R_"+str(i)+"_G_"+str(j)+".xml", "LiHMu_3172_R_"+str(i)+"_G_"+str(j)+".xml", "fid_rad", 90 + i*10)
+ #       updatecutval("LiHMu_3172_R_"+str(i)+"_G_"+str(j)+".xml", "LiHMu_3172_R_"+str(i)+"_G_"+str(j)+".xml", "fid_grad", (100 + i*10)*0.0003 + 0.002*j)
         submit_to_batch("LiHMu_3172_R_"+str(i)+"_G_"+str(j)+".xml")
-        
+
         updatefilename("LiHMu_3200_0.xml", "LiHMu_3200_R_"+str(i)+"_G_"+str(j)+".xml", "LiHMu_3200_R_"+str(i)+"_G_"+str(j)+".root")
-        updatecutval("LiHMu_3200_R_"+str(i)+"_G_"+str(j)+".xml", "LiHMu_3200_R_"+str(i)+"_G_"+str(j)+".xml", "fid_rad", 100 + i*10)
-        updatecutval("LiHMu_3200_R_"+str(i)+"_G_"+str(j)+".xml", "LiHMu_3200_R_"+str(i)+"_G_"+str(j)+".xml", "fid_grad", (100 + i*10)*0.0003 + 0.002*j)
+        updatecutval("LiHMu_3200_R_"+str(i)+"_G_"+str(j)+".xml", "LiHMu_3200_R_"+str(i)+"_G_"+str(j)+".xml", "fid_rad", 90 + i*10)
+        #updatecutval("LiHMu_3200_R_"+str(i)+"_G_"+str(j)+".xml", "LiHMu_3200_R_"+str(i)+"_G_"+str(j)+".xml", "fid_grad", (100 + i*10)*0.0003 + 0.002*j)
+  #      updatecutval("LiHMu_3200_R_"+str(i)+"_G_"+str(j)+".xml", "LiHMu_3200_R_"+str(i)+"_G_"+str(j)+".xml", "fid_grad", 0)
         submit_to_batch("LiHMu_3200_R_"+str(i)+"_G_"+str(j)+".xml")
-             
+
         updatefilename("LiHMu_3240_0.xml", "LiHMu_3240_R_"+str(i)+"_G_"+str(j)+".xml", "LiHMu_3240_R_"+str(i)+"_G_"+str(j)+".root")
-        updatecutval("LiHMu_3240_R_"+str(i)+"_G_"+str(j)+".xml", "LiHMu_3240_R_"+str(i)+"_G_"+str(j)+".xml", "fid_rad", 100 + i*10)
-        updatecutval("LiHMu_3240_R_"+str(i)+"_G_"+str(j)+".xml", "LiHMu_3240_R_"+str(i)+"_G_"+str(j)+".xml", "fid_grad", 0.002*j)
+        updatecutval("LiHMu_3240_R_"+str(i)+"_G_"+str(j)+".xml", "LiHMu_3240_R_"+str(i)+"_G_"+str(j)+".xml", "fid_rad", 90 + i*10)
+   #     updatecutval("LiHMu_3240_R_"+str(i)+"_G_"+str(j)+".xml", "LiHMu_3240_R_"+str(i)+"_G_"+str(j)+".xml", "fid_grad", 0.002*j)
         submit_to_batch("LiHMu_3240_R_"+str(i)+"_G_"+str(j)+".xml")
-        ''' 
+
+        '''
         updatefilename("XePion_3240.xml", "XePion_3240_R_"+str(i)+"_G_"+str(j)+".xml", "XePion_3240_R_"+str(i)+"_G_"+str(j)+".root")
         updatecutval("XePion_3240_R_"+str(i)+"_G_"+str(j)+".xml", "XePion_3240_R_"+str(i)+"_G_"+str(j)+".xml", "fid_rad", 100 + i*10)
         updatecutval("XePion_3240_R_"+str(i)+"_G_"+str(j)+".xml", "XePion_3240_R_"+str(i)+"_G_"+str(j)+".xml", "fid_grad", 0.005*j)

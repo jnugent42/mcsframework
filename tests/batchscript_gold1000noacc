@@ -1,0 +1,9 @@
+universe       = vanilla
+executable     = sub_script_gold1000noacc.sh
+output         = /data/neutrino03/jnugent/Unfolding/tests/lihgold1000noacc.out
+error          = /data/neutrino03/jnugent/Unfolding/tests/lihgold1000noacc.err             
+log            = /data/neutrino03/jnugent/Unfolding/tests/lihgold1000noacc.log
+requirements   = OpSysAndVer == "CentOS7"
+
+queue
+

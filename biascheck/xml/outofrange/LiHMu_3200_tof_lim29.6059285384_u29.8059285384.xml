@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="yes"?>
+<spec>
+  <file id="outfile" name="../TOFScan/TOFAllScan/LiHMu_3200_tof_lim29.6059285384_u29.8059285384.root"/>
+  <file id="datafile" name="LiHMuon_03200/reduced_tree_datat1.root"/>
+  <file id="trainfile" name="ZeroMuon_03200/reduced_tree_datat1.root"/>
+  <file id="modelfile" name="Cobb_results/LiH-6p5-200-B-hists.root"/>
+  <file id="model1" name="Cobb"/>
+  <file id="model2" name="GEANT"/>
+  <cuts name="TOF_ll" value="29.6059285384"/>
+  <cuts name="TOF_ul" value="29.8059285384"/>
+  <cuts name="fid_rad" value="150.0"/>
+  <cuts name="fid_grad" value="0.012"/>
+  <cuts name="mode" value="2"/>
+  <sys name="niter" value="10"/>
+</spec>

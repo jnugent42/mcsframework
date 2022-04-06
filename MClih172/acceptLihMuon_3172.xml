@@ -3,22 +3,25 @@
   <file id="outfile" name="acceptLihMuon_03172.root"/>
   <file id="outfilename" name="LihMuon_03172.root"/>
   <file id="datafile" name="/data/neutrino/jnugent/LiHMC/coectedoutput/"/>
-  <file id="trainfile" name="/data/neutrino06/jnugent/LiHMC/coectedoutput/"/>
-  <file id="modelfile" name="/data/neutrino03/jnugent/Unfolding/Cobb_results/LiH-6p5-172-B-hists.root"/>
-  <file id="trkreffiname" name="/home/ppe/j/jnugent/workarea/tracker_efficiency/tracker_resolution_plots_29.1147513286.root"/>
-  <file id="trkreffiemptyname" name="/home/ppe/j/jnugent/workarea/emptyeffi/tracker_resolution_plots_29.1147513286.root"/>
+  <file id="trainfile" name="/data/neutrino01/jnugent/LiHMC/coectedoutput/"/>
+  <file id="modelfile" name="/data/neutrino03/jnugent/Unfolding/backup/Cobb_results/LiH-6p5-172-B-hists.root"/>
+  <file id="trkreffiname" name="/data/neutrino03/jnugent/Unfolding/tracker_efficiency/tracker_resolution_plots_29.1147513286.root"/>
+  <file id="trkreffiemptyname" name="/data/neutrino03/jnugent/Unfolding/emptyeffi/tracker_resolution_plots_29.1147513286.root"/>
   <file id="material" name="LiH"/>
   <file id="model3" name="Moliere"/>
   <file id="model2" name="Cobb"/>
   <file id="model1" name="GEANT"/>
+  <file id="isMC" name="1"/>
+  <sys name="rot_ang" value="0.00660308396448"/>
   <cuts name="TOF_ll" value="28.750290925"/>
   <cuts name="TOF_ul" value="28.950290925"/>
-  <cuts name="fid_rad" value="140.0"/>
+  <cuts name="fid_rad" value="130.0"/>
   <cuts name="fid_grad" value="0.012"/>
   <cuts name="mode" value="5"/>
-  <sys name="niter" value="4"/>
+  <sys name="niter" value="10"/>
   <histlimits name="NbinsXY" value="46"/>
   <histlimits name="NbinsTh" value="46"/>
-  <histlimits name="minXY" value="-0.06"/>
-  <histlimits name="maxXY" value="0.06"/>
+  <histlimits name="NbinsTh2" value="46"/>
+  <histlimits name="minXY" value="-0.0705"/>
+  <histlimits name="maxXY" value="0.0705"/>
 </spec>

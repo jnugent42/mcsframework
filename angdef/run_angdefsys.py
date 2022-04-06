@@ -35,7 +35,7 @@ def updatefilename(infile, outfile, newname):
 
 def submitUnfolding(xmlfile):
     execdir = "/data/neutrino03/jnugent/Unfolding/angdef"
-    cmd = [os.path.join(execdir,"MCSUnfolding"), xmlfile] 
+    cmd = [os.path.join(execdir,"MCSUnfolding"), xmlfile]
     proc = subprocess.Popen(cmd)
     proc.wait()
 
@@ -46,7 +46,7 @@ cd %(working_dir)s
 . %(maus_root_dir)s/local_env.sh
 %(execcmd)s %(xmlfile)s
 '''% settings
-  
+
     outfilename = '''%(shellscript)s'''% settings
     outfile0 = open(outfilename, 'w+')
     outfile0.write(testscript)
@@ -56,9 +56,10 @@ cd %(working_dir)s
 universe       = vanilla
 executable     = %(shellscript)s
 output         = %(working_dir)s/%(name)s.out
-error          = %(working_dir)s/%(name)s.err             
-log            = test.log
+error          = %(working_dir)s/%(name)s.err
+log            = %(working_dir)s/%(name)s.log
 requirements   = OpSysAndVer == "CentOS7"
+request_memory = 6 GB
 
 queue
 '''% settings
@@ -91,7 +92,7 @@ ulim_200 = 27.9
 llim_240 = 1.
 ulim_240 = 27.3
 
-for i in [0,45,135]:
+for i in [15,100]:
 
     updatefilename("angdef_0/LiHMu_3172_0.xml",
                    "angdef_0/LiHMu_3172_"+str(i)+".xml",
@@ -100,7 +101,7 @@ for i in [0,45,135]:
                  "angdef_0/LiHMu_3172_"+str(i)+".xml",
                  "angdef", i)
     submit_to_batch("angdef_0/LiHMu_3172_"+str(i)+".xml")
-    
+
     updatefilename("angdef_0/LiHMu_3200_0.xml",
                    "angdef_0/LiHMu_3200_"+str(i)+".xml",
                    "angdef_0/LiHMu_3200_"+str(i)+".root")

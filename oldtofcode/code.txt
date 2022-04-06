@@ -1,0 +1,297 @@
+
+double MCSAnalysis::CorMomFromTOF(double pz, double mat, double diff){
+
+   double t_BB = TimeofFlight();
+   double dt0 = (_sys["TOF1_z"] - _sys["TOF0_z"]) / 0.299792458 / 1000.;
+   double pzBB = 105.65/sqrt(pow(t_BB,2)/pow(dt0,2)-1);
+   double Eini = sqrt(pzBB*pzBB + 105*105);
+
+   double Iair = 85.7e-6;
+   double Iscin = 64.7e-6;
+   double IAl = 166e-6;
+   double IHe = 41.6e-6;
+   double ILH2 = 21.8e-6;
+   double ILiH = 36.5e-6;
+   double ICu = 322e-6;
+   double IW = 727e-6;
+
+   double zair = 897.16;
+   double zscin = 5.09;
+   double zAl = 16e-4;
+   double zHe = 11.3;
+   double zLH2 = 17.5;
+   double zLiH = 3.25;
+   double zCu = 0.891;
+   double zW = 0.84;
+   
+   double Zair = 0.49919;
+   double Zscin = 0.54141;
+   double ZAl = 13;
+   double ZHe = 2;
+   double ZLH2 = 1;
+   double ZLiH = 0.50321;
+   double ZCu = 29;
+   double ZW = 74;
+   
+   double Aair = 1;
+   double Ascin = 1;
+   double AAl = 26.9815385;
+   double AHe = 4.002602;
+   double ALH2 = 1.008;
+   double ALiH = 1;
+   double ACu = 64;
+   double AW = 184;
+
+   double Rair = 1.205e-3;
+   double Rscin = 1.032;
+   double RAl = 2.699;
+   double RHe = 1.663e-4;
+   double RLH2 = 0.0708;
+   double RLiH = 0.82;
+   double RCu = 8.96;
+   double RW = 19.3;
+   
+   double hwair = 0.71e-6;
+   double hwscin = 21.54e-6;
+   double hwAl = 32.86e-6;
+   double hwHe = 0.26e-6;
+   double hwLH2 = 7.64e-6;
+   double hwLiH = 18.51e-6;
+   double hwCu = 58.27e-6;
+   double hwW = 80.32e-6;
+   
+   double mostprobBBair = MostProbBB(pzBB,Iair,Zair,Aair,hwair,Rair,zair);
+   double mostprobBBscin = MostProbBB(pzBB,Iscin,Zscin,Ascin,hwscin,Rscin,zscin);
+   double mostprobBBAl = MostProbBB(pzBB,IAl,ZAl,AAl,hwAl,RAl,zAl);
+   double mostprobBBHe = MostProbBB(pzBB,IHe,ZHe,AHe,hwHe,RHe,zHe);
+   double mostprobBBLH2 = MostProbBB(pzBB,ILH2,ZLH2,ALH2,hwLH2,RLH2,zLH2);
+   double mostprobBBLiH = MostProbBB(pzBB,ILiH,ZLiH,ALiH,hwLiH,RLiH,zLiH);
+   double mostprobBBCu = MostProbBB(pzBB,ICu,ZCu,ACu,hwCu,RCu,zCu);
+   double mostprobBBW = MostProbBB(pzBB,IW,ZW,AW,hwW,RW,zW);
+   
+   /*
+   std::cout << "mostprobBBair " << mostprobBBair << std::endl;
+   std::cout << "mostprobBBscin " << mostprobBBscin << std::endl;
+   std::cout << "mostprobBBAl " << mostprobBBAl << std::endl;
+   std::cout << "mostprobBBHe " << mostprobBBHe << std::endl;
+   std::cout << "mostprobBBLH2 " << mostprobBBLH2 << std::endl;
+   std::cout << "mostprobBBLiH " << mostprobBBLiH << std::endl;
+   std::cout << "mostprobBBCu " << mostprobBBCu << std::endl;
+   std::cout << "mostprobBBW " << mostprobBBW << std::endl;
+   */
+
+   double BBair = BetheBloch(pzBB,Iair,Zair,Aair,hwair);
+   double BBscin = BetheBloch(pzBB,Iscin,Zscin,Ascin,hwscin);
+   double BBAl = BetheBloch(pzBB,IAl,ZAl,AAl,hwAl);
+   double BBHe = BetheBloch(pzBB,IHe,ZHe,AHe,hwHe);
+   double BBLH2 = BetheBloch(pzBB,ILH2,ZLH2,ALH2,hwLH2);
+   /*
+   std::cout << "BBair " << BBair << std::endl;
+   std::cout << "BBscin " << BBscin << std::endl;
+   std::cout << "BBAl " << BBAl << std::endl;
+   std::cout << "BBHe " << BBHe << std::endl;
+   std::cout << "BBLH2 " << BBLH2 << std::endl;
+   */
+
+   double ELair = BBair*zair*Rair;
+   double ELscin = BBscin*zscin*Rscin;
+   double ELAl = BBAl*zAl*RAl;
+   double ELHe = BBHe*zHe*RHe;
+   double ELLH2 = BBLH2*zLH2*RLH2;
+   /*
+   std::cout << "ELair " << ELair << std::endl;
+   std::cout << "ELscin " << ELscin << std::endl;
+   std::cout << "ELAl " << ELAl << std::endl;
+   std::cout << "ELHe " << ELHe << std::endl;
+   std::cout << "ELLH2 " << ELLH2 << std::endl;
+   */
+  
+   //std::cout << diff << std::endl;
+   double pcor;
+   if (material=="LH2" && mat==0) {
+	   double totEL = mostprobBBair+mostprobBBscin+mostprobBBAl+mostprobBBHe+mostprobBBLH2;
+	   if (diff==1) totEL += mostprobBBCu + mostprobBBW;
+	   double Efin = Eini - totEL;
+	   pcor = sqrt(pow(Efin,2)-pow(105,2));
+           cor_mom->Fill(pcor);
+   }
+   if (material=="LiH" && mat==0) {
+	   double totEL = mostprobBBair+mostprobBBscin+mostprobBBAl+mostprobBBHe+mostprobBBLiH;
+	   //if (diff==1) totEL += mostprobBBCu + mostprobBBW;
+	   double Efin = Eini - totEL;
+	   pcor = sqrt(pow(Efin,2)-pow(105,2));
+           cor_mom->Fill(pcor);
+   }
+   if (mat==1) {
+	   double totEL = mostprobBBair+mostprobBBscin+mostprobBBAl+mostprobBBHe;
+	   //if (diff==1) totEL += mostprobBBCu + mostprobBBW;
+	   double Efin = Eini - totEL;
+	   pcor = sqrt(pow(Efin,2)-pow(105,2));
+   }
+
+   //std::cout << "pzBB " << pzBB << std::endl;
+   //std::cout << "pcor " << pcor << std::endl;
+
+
+   
+   // Initialise and collect initial TOF and pz
+   /*
+   double t_initial = TimeofFlight();
+   double pz_cor = 0;
+ 
+   
+   //if (t_initial != 100) {
+   t_initial = t_initial*0.299792458;
+   //
+   //std::vector<double> path_length = CalculatePathLength(pz);
+   //double s1 = path_length.at(0)/1000;
+   //if (path_length.size() == 2) {
+   //double s2 = path_length.at(1)/1000;
+   //}
+   //
+
+   std::vector<double> rpath_length = rCalculatePathLength(pz);
+   double deltas = rpath_length.at(0)/1000;
+   double s_1 = 12.929-16.952;
+   double s_2 = 21.139-16.952;
+   double c = 299792458;
+   double pz01 = 105.65*(7.64)/sqrt(pow(t_initial,2)-pow((7.64),2));
+   t_initial = t_initial/0.299792458;
+   t_initial = t_initial/1000000000;
+
+   // Paul 6th short order TOF01 
+   
+   double dEdx = 2.5;
+   s_1 = 5.287-16.95;
+   s_2 = 12.929-16.95;
+   double term1 = pow(dEdx,2)*pow((s_1+s_2),2)/(4*pow(105.65,2));
+   double term2 = -(dEdx*c*t_initial*(s_1+s_2))/((12.929-5.287)*105);
+   double term3 = -1;
+   double term4 = pow(c*t_initial/(12.929-5.287),2)-1;
+   std::cout << "term1 " << term1 << std::endl;
+   std::cout << "term2 " << term2 << std::endl;
+   std::cout << "term3 " << term3 << std::endl;
+   std::cout << "term4 " << term4 << std::endl;
+   double x = 105/pz01;
+   My2Function1D myf4;
+   myf4.a = term1;
+   myf4.b = term2;
+   myf4.cp = term3;
+   myf4.d = term4;
+   ROOT::Math::GradFunctor1D  f4(myf4); 
+   ROOT::Math::RootFinder rfn4(ROOT::Math::RootFinder::kGSL_NEWTON);
+   rfn4.SetFunction(f4, x);
+   if (isfinite(myf4.operator()(x)) && isfinite(myf4.Derivative(x))) {
+   rfn4.Solve();
+   }
+   double p01shortPaul6thfor = 105.5/rfn4.Root();
+   
+   double pz_an = p01shortPaul6thfor;
+   */
+/*
+   // Paul 6th order TOF12 
+  
+   double pz12 = 0;
+   double p12Paul6thfor = 0;
+   double t_ds =TimeofFlight12();
+   if (t_ds != 100) {
+   t_ds = t_ds*0.299792458;
+   pz12 = 105.65*(8.209)/sqrt(pow(t_ds,2)-pow((8.209),2));
+   double t_12 = TimeofFlight12()*0.299792458;
+   t_12 = t_12/0.299792458;
+   t_12 = t_12/1000000000;
+   dEdx = 0.5;
+   term1 = pow(dEdx,2)*pow((s_1+s_2),2)/(4*pow(105.65,2));
+   term2 = -(dEdx*c*t_12*(s_1+s_2))/(8.21*105);
+   term3 = -1;
+   term4 = pow(c*t_12/(8.21),2)-1;
+
+   std::cout << "term1 " << term1 << std::endl;
+   std::cout << "term2 " << term2 << std::endl;
+   std::cout << "term3 " << term3 << std::endl;
+   std::cout << "term4 " << term4 << std::endl;
+
+   x = 105/pz12;
+   My2Function1D myf2;
+   myf2.a = term1;
+   myf2.b = term2;
+   myf2.cp = term3;
+   myf2.d = term4;
+   //std::cout << "myf2.operator()(pz) " << myf2.operator()(x) << std::endl;
+   //std::cout << "myf2.Derivative(pz) " << myf2.Derivative(x) << std::endl;
+   ROOT::Math::GradFunctor1D  f2(myf2); 
+   ROOT::Math::RootFinder rfn2(ROOT::Math::RootFinder::kGSL_NEWTON);
+   rfn2.SetFunction(f2, x);
+   if (isfinite(myf2.operator()(x)) && isfinite(myf2.Derivative(x))) {
+   rfn2.Solve();
+   }
+   p12Paul6thfor = 105.5/rfn2.Root();
+  
+   pz_cor = p12Paul6thfor;
+   }
+   */
+   double MCTruth_pz_mid = 0;
+   double MCTruth_pz_up = 0;
+   double MCTruth_pz_down = 0;
+   double TOF0E;
+   double TOF1E;
+   double TOF2E;
+   for ( size_t j=0; j < mcevent->GetVirtualHits()->size(); j++){
+	   energyloss->Fill(mcevent->GetVirtualHits()->at(j).GetPosition().z(),sqrt(pow(mcevent->GetVirtualHits()->at(j).GetMomentum().z(),2)+pow(105,2)));
+	   if (mcevent->GetVirtualHits()->at(j).GetPosition().z()-17000<50 && mcevent->GetVirtualHits()->at(j).GetPosition().z()-17000>-50) {
+		   MCTruth_pz_mid = mcevent->GetVirtualHits()->at(j).GetMomentum().z();
+	   }
+	   if (mcevent->GetVirtualHits()->at(j).GetPosition().z()-16803.7<50 && mcevent->GetVirtualHits()->at(j).GetPosition().z()-16803.7>-50) {
+		   MCTruth_pz_up = mcevent->GetVirtualHits()->at(j).GetMomentum().z();
+	   }
+	   if (mcevent->GetVirtualHits()->at(j).GetPosition().z()-17101.3<50 && mcevent->GetVirtualHits()->at(j).GetPosition().z()-17101.3>-50) {
+		   MCTruth_pz_down = mcevent->GetVirtualHits()->at(j).GetMomentum().z();
+	   }
+	   if (mcevent->GetVirtualHits()->at(j).GetPosition().z()-5000<50 && mcevent->GetVirtualHits()->at(j).GetPosition().z()-5000>-50) {
+		   TOF0E = sqrt(pow(mcevent->GetVirtualHits()->at(j).GetMomentum().z(),2)+pow(105,2));
+	   }
+	   if (mcevent->GetVirtualHits()->at(j).GetPosition().z()-12500<50 && mcevent->GetVirtualHits()->at(j).GetPosition().z()-12500>-50) {
+		   TOF1E = sqrt(pow(mcevent->GetVirtualHits()->at(j).GetMomentum().z(),2)+pow(105,2));
+	   }
+	   if (mcevent->GetVirtualHits()->at(j).GetPosition().z()-21039<50 && mcevent->GetVirtualHits()->at(j).GetPosition().z()-21039>-50) {
+		   TOF2E = sqrt(pow(mcevent->GetVirtualHits()->at(j).GetMomentum().z(),2)+pow(105,2));
+	   }
+
+   }
+   TOF0Energy->Fill(TOF0E);
+   TOF1Energy->Fill(TOF1E);
+   TOF2Energy->Fill(TOF2E);
+   if (MCTruth_pz_up != 0 && MCTruth_pz_down != 0){
+   double true_delta = MCTruth_pz_up - MCTruth_pz_down;	   
+   double MCTruth_pz = (MCTruth_pz_up+MCTruth_pz_down)/2;
+   double res01 = pzBB - MCTruth_pz_mid;
+   //double res12 = pz12 - MCTruth_pz_mid;
+   //double res12p6 = p12Paul6thfor - MCTruth_pz_mid;
+   double res01short = pcor - MCTruth_pz_mid;
+   residual01->Fill(res01);
+   //residual12->Fill(res12);
+   //residual12p6->Fill(res12p6);
+   residual01short->Fill(res01short);
+   mccalc_mom->Fill(MCTruth_pz_mid);
+
+
+   TOF01vsMCTruth->Fill(pzBB,MCTruth_pz_mid);
+   //TOF12vsMCTruth->Fill(pz12,MCTruth_pz_mid);
+   //TOF12Paul6thforvsMCTruth->Fill(p12Paul6thfor,MCTruth_pz_mid);
+   
+   TOF01shortPaul6thforvsMCTruth->Fill(pcor,MCTruth_pz_mid);
+   //std::cout << "MCTruth_pz_mid " << MCTruth_pz_mid << std::endl;
+   	}
+
+   //}
+   double t_ds =TimeofFlight12();
+   if (t_ds != 100) {
+   t_ds = t_ds*0.299792458;
+   pcor = 105.65*(8.209)/sqrt(pow(t_ds,2)-pow((8.209),2));
+   }
+   TOF12vsMCTruth->Fill(pcor, MCTruth_pz_mid);
+
+   //std::cout << "pcor 12 " << pcor << std::endl;
+   PathLengthInLH2(pcor);
+   return pcor;
+}

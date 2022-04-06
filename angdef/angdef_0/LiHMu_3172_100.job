@@ -1,0 +1,10 @@
+
+universe       = vanilla
+executable     = angdef_0/LiHMu_3172_100.sh
+output         = /data/neutrino03/jnugent/Unfolding/angdef/angdef_0/LiHMu_3172_100.out
+error          = /data/neutrino03/jnugent/Unfolding/angdef/angdef_0/LiHMu_3172_100.err
+log            = /data/neutrino03/jnugent/Unfolding/angdef/angdef_0/LiHMu_3172_100.log
+requirements   = OpSysAndVer == "CentOS7"
+request_memory = 6 GB
+
+queue

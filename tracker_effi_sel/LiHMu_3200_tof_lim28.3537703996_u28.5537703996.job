@@ -1,0 +1,10 @@
+
+universe       = vanilla
+executable     = LiHMu_3200_tof_lim28.3537703996_u28.5537703996.sh
+output         = /data/neutrino03/jnugent/Unfolding/TOFsys/LiHMu_3200_tof_lim28.3537703996_u28.5537703996.out
+error          = /data/neutrino03/jnugent/Unfolding/TOFsys/LiHMu_3200_tof_lim28.3537703996_u28.5537703996.err
+log            = /data/neutrino03/jnugent/Unfolding/TOFsys/LiHMu_3200_tof_lim28.3537703996_u28.5537703996.log
+requirements   = OpSysAndVer == "CentOS7"
+request_memory = 6 GB
+
+queue

@@ -1,0 +1,479 @@
+void MCSAnalysis::ConvolveWithInputDistribution(std::string distname){
+  int isfirst = 0;
+  bool isGEANT = false;
+  bool isCobb = false;
+  bool isMoliere = false;
+  if (distname.find(modelname1.c_str()) != std::string::npos)
+    isGEANT = true;
+  if (distname.find(modelname2.c_str()) != std::string::npos)
+    isCobb = true;
+  if (distname.find(modelname3.c_str()) != std::string::npos)
+    isMoliere = true;
+
+  TFile* infile = new TFile(modelfile.c_str());
+
+  TH1D* hiswX = new TH1D("hiswX","", 1000, -5, 5);
+  TH1D* hiswY = new TH1D("hiswY","", 1000, -5, 5);
+
+  // Efficiency plots
+  TH1D* scatx = 
+    new TH1D("scatx","Change in Projected Angle (X);#Delta#theta_{X}; Events per 4 mrad",
+         _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+
+  TH1D* scaty = 
+    new TH1D("scaty","Change in Projected Angle (Y);#Delta#theta_{Y}; Events per 4 mrad",
+         _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+
+  TH1D* scatscat = 
+    new TH1D("scatscat","Scattering Angle between Momentum Vectors;#theta_{Scatt}; Events per mrad",
+         _histlimits["NbinsTh"], _histlimits["minTh"], _histlimits["maxTh"]);
+
+  TH1D* scat2scatt = 
+    new TH1D("scat2scatt","Scattering Angle between Momentum Vectors;#theta^{2}_{Scatt}; Events per mrad",_histlimits["NbinsTh2"], _histlimits["minTh2"], _histlimits["maxTh2"]);
+
+  std::string tmpname = "thetaX_refconv_";
+  tmpname += distname;
+  TH1D* thetaX_refconv = 
+    new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#Delta#theta_{X}; Events per 4 mrad",
+         _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+  tmpname = "thetaX_holdrefconv_";
+  tmpname += distname;
+  TH1D* thetaX_holdrefconv = 
+    new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#Delta#theta_{X}; Events per 4 mrad",
+         _histlimits["NbinsXY"]*4, _histlimits["minXY"]*2, _histlimits["maxXY"]*2);
+  tmpname = "thetaX_empty_";
+  tmpname += distname;
+  TH1D* thetaX_empty = 
+    new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#Delta#theta_{X}; Events per 4 mrad",
+         _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+  tmpname = "thetaX_emptyminus_";
+  tmpname += distname;
+  TH1D* thetaX_emptyminus = 
+    new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#Delta#theta_{X}; Events per 4 mrad",
+         _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+  tmpname = "thetaX_emptyasymm_";
+  tmpname += distname;
+  TH1* thetaX_emptyasymm = 
+    new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#Delta#theta_{X}; Events per 4 mrad",
+         _histlimits["NbinsXY"]/2, 0, _histlimits["maxXY"]);
+
+  tmpname = "thetaY_refconv_";
+  tmpname += distname;
+  TH1D* thetaY_refconv = 
+    new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#Delta#theta_{Y}; Events per 4 mrad",
+         _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+  tmpname = "thetaY_holdrefconv_";
+  tmpname += distname;
+  TH1D* thetaY_holdrefconv = 
+    new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#Delta#theta_{Y}; Events per 4 mrad",
+         _histlimits["NbinsXY"]*4, _histlimits["minXY"]*2, _histlimits["maxXY"]*2);
+  tmpname = "thetaY_empty_";
+  tmpname += distname;
+  TH1D* thetaY_empty = 
+    new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#Delta#theta_{Y}; Events per 4 mrad",
+         _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+  tmpname += distname;
+  TH1D* thetaY_emptyfold = 
+    new TH1D(tmpname.c_str(),";#theta_{Y};#theta_{Yi}-#theta_{Y46-i}",
+         _histlimits["NbinsXY"]/2, _histlimits["minXY"], 0);
+  tmpname = "thetaY_emptyminus_";
+  tmpname += distname;
+  TH1D* thetaY_emptyminus = 
+    new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#Delta#theta_{Y}; Events per 4 mrad",
+         _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+  tmpname = "thetaY_emptyasymm_";
+  tmpname += distname;
+  TH1* thetaY_emptyasymm = 
+    new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#Delta#theta_{Y}; Events per 4 mrad",
+         _histlimits["NbinsXY"]/2, 0, _histlimits["maxXY"]);
+
+  tmpname = "thetaScatt_refconv_";
+  tmpname += distname;
+  TH1D* thetaScatt_refconv = 
+    new TH1D(tmpname.c_str(),"Scattering Angle between Momentum Vectors;#theta_{Scatt}; Events per mrad",
+         _histlimits["NbinsTh"], _histlimits["minTh"], _histlimits["maxTh"]);
+
+  tmpname = "thetaScatt_empty_";
+  tmpname += distname;
+  TH1D* thetaScatt_empty = 
+    new TH1D(tmpname.c_str(),"Scattering Angle between Momentum Vectors;#theta_{Scatt}; Events per mrad",
+         _histlimits["NbinsTh"], _histlimits["minTh"], _histlimits["maxTh"]);
+  tmpname = "thetaScatt_holdrefconv_";
+  tmpname += distname;
+  TH1D* thetaScatt_holdrefconv = 
+    new TH1D(tmpname.c_str(),"Scattering Angle between Momentum Vectors;#theta_{Scatt}; Events per mrad",
+         _histlimits["NbinsTh"]*4, _histlimits["minTh"]*2, _histlimits["maxTh"]*4);
+
+
+  tmpname = "theta2Scatt_refconv_";
+  tmpname += distname;
+  TH1D* theta2Scatt_refconv = 
+    new TH1D(tmpname.c_str(),"Scattering Angle between Momentum Vectors;#theta^{2}_{Scatt}; Events per mrad",
+         _histlimits["NbinsTh2"], _histlimits["minTh2"], _histlimits["maxTh2"]);
+
+
+  tmpname = "thetaScatt_refconv_vp_";
+  tmpname += distname;
+  TH2D* thetaScatt_refconv_vp = 
+    new TH2D(tmpname.c_str(),"Scattering Angle between Momentum Vectors;Momentum (MeV/c); #theta_{Scatt}", 
+         200, 100, 300, _histlimits["NbinsTh"], _histlimits["minTh"], _histlimits["maxTh"]);
+    
+  TH2D* thetaXUS_thetaXDS = 
+    new TH2D("thetaXUS_thetaXDS","Upstream vs. Downstream Angle;#theta_{X}^{US}; #theta_{X}^{DS}",
+         _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"], 
+         _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+  TH2D* thetaYUS_thetaYDS = 
+    new TH2D("thetaYUS_thetaYDS","Upstream vs. Downstream Angle;#theta_{X}^{US}; #theta_{X}^{DS}",
+         _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"],
+         _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+
+  tmpname = "thetaX_";
+  tmpname += distname;
+
+  std::cout<<"Convolution with "<<tmpname<<" from "<<modelfile<<std::endl;
+  TH1D* hx = (TH1D*)infile->Get(tmpname.c_str());
+  tmpname = "thetaY_";
+  tmpname += distname;
+  TH1D* hy = (TH1D*)infile->Get(tmpname.c_str());
+  tmpname = "thetaScatt_";
+  tmpname += distname;
+  TH1D* hScatt = (TH1D*)infile->Get(tmpname.c_str());
+  tmpname = "theta2Scatt_";
+  tmpname += distname;
+  TH1D* h2Scatt = new TH1D(tmpname.c_str(),"Scattering Angle between Momentum Vectors;#theta^{2}_{Scatt}; Events per mrad", _histlimits["NbinsTh2"], _histlimits["minTh2"], _histlimits["maxTh2"]);
+  for (int j=0; j<1e6; j++){
+      double angle = hScatt->GetRandom();
+      double anglesqu = angle*angle;
+          h2Scatt->Fill(anglesqu);
+  }
+
+
+
+  // Collection DSConvSet;
+  // for (int l=0; l<10; l++){
+  for (int i=0; i<_USMCset.N(); i++){
+      std::vector<double> nominalTheta = RotDefineProjectionAngles(_USMCset.E(i), _DSMCset.E(i), angdef);
+      double nomthetaX = nominalTheta[0];
+      double nomthetaY = nominalTheta[1];
+      double nomthetascat = nominalTheta[2];
+      thetaY_empty->Fill(nomthetaY);
+      thetaY_emptyminus->Fill(-nomthetaY);
+      thetaX_empty->Fill(nomthetaX);
+      thetaX_emptyminus->Fill(-nomthetaX);
+      thetaScatt_empty->Fill(nomthetascat);
+
+    for (int j=0; j<20; j++){
+      double dthetaX = -1;
+      double dthetaY = -1;
+          dthetaX = hx->GetRandom() * _sys["resX"];
+          dthetaY = hy->GetRandom() * _sys["resY"];
+          /*
+      while (dthetaX<accpt || dthetaX>-accpt || dthetaY<accpt || dthetaY>-accpt){
+          //std::cout << "accpt " << accpt << std::endl;
+          //std::cout << "dthetaX " << dthetaX << std::endl;
+          //std::cout << "dthetaY " << dthetaY << std::endl;
+          dthetaX = hx->GetRandom() * _sys["resX"];
+          dthetaY = hy->GetRandom() * _sys["resY"];
+      }
+      */
+      // First project the upstream track to the absorber 
+      double zabspos = _sys["abspos"] + 0.0;
+      Vars projvarAbs = PropagateVarsMu(_USMCset.E(i), zabspos);
+      double xabs = projvarAbs.X;  /// _USMCset.E(i).X + _USMCset.E(i).dXdz * dzabsUS;
+      double yabs = projvarAbs.Y;  /// _USMCset.E(i).Y + _USMCset.E(i).dYdz * dzabsUS;
+      // Now add the angle from the model to the downstream measurement.
+      double dXdz_abs = _DSMCset.E(i).dXdz + tan(dthetaY);
+      double dYdz_abs = _DSMCset.E(i).dYdz + tan(dthetaX);
+      // double d_thetaY    = atan(dXdz_abs) - atan(_DSMCset.E(i).dXdz);
+      // double d_thetaX    = atan(dYdz_abs) - atan(_DSMCset.E(i).dYdz);
+      
+      // Project the track into the downstream reference plane
+      // double xref = xabs + dXdz_abs * dzabsDS;
+      // double yref = yabs + dYdz_abs * dzabsDS;
+      Vars tmpvar = _DSMCset.E(i);
+      tmpvar.X = xabs;
+      tmpvar.Y = yabs;
+      tmpvar.Z = _sys["abspos"];
+      tmpvar.dXdz = dXdz_abs;
+      tmpvar.dYdz = dYdz_abs;
+      tmpvar.px   = dXdz_abs * _USMCset.E(i).pz;
+      tmpvar.py   = dYdz_abs * _USMCset.E(i).pz;
+      tmpvar.pz   = _USMCset.E(i).pz;
+      tmpvar.TOF12= _USMCset.E(i).TOF12;
+      tmpvar.TOF01= _USMCset.E(i).TOF01;
+      std::vector<double> projDTheta = RotDefineProjectionAngles(tmpvar, _DSMCset.E(i), angdef);
+      double d_thetaX = projDTheta[0];
+      double d_thetaY = projDTheta[1];
+
+      //double cosdthetaScatt = ( (1 + dXdz_abs * _DSMCset.E(i).dXdz + dYdz_abs*_DSMCset.E(i).dYdz) / 
+      //            sqrt( 1 + dXdz_abs*dXdz_abs + dYdz_abs*dYdz_abs) / 
+      //            sqrt(1 + _DSMCset.E(i).dXdz*_DSMCset.E(i).dXdz + _DSMCset.E(i).dYdz * _DSMCset.E(i).dYdz) );
+      double dthetaScatt = projDTheta[2];  /// acos(cosdthetaScatt);
+      Vars projvar = PropagateVarsMu(tmpvar, _sys["abspos"] + 2993.05);
+      // Remove events that do not pass through the tracker at its centre
+      // double xtracker = xabs + dXdz_abs * (_sys["abspos"] + 549.95);
+      // double ytracker = yabs + dYdz_abs * (dzabsDS + 549.95);
+      
+      if( sqrt(projvar.X*projvar.X + projvar.Y*projvar.Y) > meanp ){
+    tmpvar.X = 0.0;
+    tmpvar.Y = 0.0;
+    tmpvar.Z = 0.0;
+    tmpvar.dXdz = 1./2.;
+    tmpvar.dYdz = 1./2.;
+      }
+      std::vector<double> projTheta = RotDefineProjectionAngles(_USMCset.E(i), tmpvar, angdef);
+      double thetaY = projTheta[1];   /// atan(tmpvar.dXdz) - atan(_USMCset.E(i).dXdz);
+      double thetaX = projTheta[0];   /// atan(tmpvar.dYdz) - atan(_USMCset.E(i).dYdz);
+      // double cosScatt = ( (1 + _USMCset.E(i).dXdz * tmpvar.dXdz +
+      //           _USMCset.E(i).dYdz * tmpvar.dYdz )/
+      //          sqrt(1 + _USMCset.E(i).dXdz*_USMCset.E(i).dXdz +
+      //               _USMCset.E(i).dYdz*_USMCset.E(i).dYdz)/
+      //          sqrt(1 + tmpvar.dXdz*tmpvar.dXdz +
+      //               tmpvar.dYdz*tmpvar.dYdz));
+      double thetaScatt = projTheta[2];  /// acos(cosScatt);
+      thetaXUS_thetaXDS->Fill(atan(_USMCset.E(i).dXdz), atan(tmpvar.dXdz));
+      thetaYUS_thetaYDS->Fill(atan(_USMCset.E(i).dYdz), atan(tmpvar.dYdz));
+      thetaX_refconv->Fill(thetaX);
+      thetaY_refconv->Fill(thetaY);
+      //thetaScatt_refconv->Fill(thetaScatt);
+      //theta2Scatt_refconv->Fill(thetaScatt*thetaScatt);
+      thetaScatt_refconv_vp->Fill(_USMCset.E(i).pz, thetaScatt);
+    
+      // Apply efficiency correction via weighting 
+      /*
+      double binx = scatx->Fill(thetaX);
+      //std::cout << "binx " << binx << std::endl;
+      TFile *f=new TFile(trkreffiname.c_str());
+      TGraphAsymmErrors* efficiency_scat_x = (TGraphAsymmErrors*)f->Get("Effx_graph");
+      double x;
+      double y;
+      efficiency_scat_x->GetPoint(binx,x,y);
+      double effipred = y; 
+      binx = scatx->Fill(nomthetaX);
+      TFile *fempty=new TFile(trkreffiemptyname.c_str());
+      TGraphAsymmErrors* efficiency_empty_scat_x = (TGraphAsymmErrors*)fempty->Get("Effx_graph");
+      double a;
+      double b;
+      efficiency_empty_scat_x->GetPoint(binx,a,b);
+      double effiempdata = b;
+      if (effiempdata==0) effiempdata = 0.1;
+      //std::cout << "effipred " << effipred << std::endl;
+      //std::cout << "binx " << binx << std::endl;
+      //std::cout << "effiempdata " << effiempdata << std::endl;
+      double weightX = effipred/effiempdata; 
+      //std::cout << "weightX " << weightX << std::endl;
+      double biny = scaty->Fill(thetaY);
+      //std::cout << "biny " << biny << std::endl;
+      TGraphAsymmErrors* efficiency_scat_y = (TGraphAsymmErrors*)f->Get("Effy_graph");
+      double xy;
+      double yy;
+      efficiency_scat_y->GetPoint(biny,xy,yy);
+      double effipredy = yy; 
+      biny = scaty->Fill(nomthetaY);
+      TGraphAsymmErrors* efficiency_empty_scat_y = (TGraphAsymmErrors*)fempty->Get("Effy_graph");
+      double ay;
+      double by;
+      efficiency_empty_scat_y->GetPoint(biny,ay,by);
+      double effiempdatay = by;
+      if (effiempdatay==0) effiempdatay = 0.1;
+      double weightY = effipredy/effiempdatay; 
+      //std::cout << "effipredy " << effipredy << std::endl;
+      //std::cout << "biny " << biny << std::endl;
+      //std::cout << "effiempdatay " << effiempdatay << std::endl;
+      //std::cout << "weightY " << weightY << std::endl;
+      double binscatt = scatscat->Fill(thetaScatt);
+      TGraphAsymmErrors* efficiency_scat_scatt = (TGraphAsymmErrors*)f->Get("Effscatt_graph");
+      double xscatt;
+      double yscatt;
+      efficiency_scat_scatt->GetPoint(binscatt,xscatt,yscatt);
+      double effipredscatt = yscatt; 
+      binscatt = scatscat->Fill(nomthetascat);
+      TGraphAsymmErrors* efficiency_empty_scat_scatt = (TGraphAsymmErrors*)fempty->Get("Effscatt_graph");
+      double ascatt;
+      double bscatt;
+      efficiency_empty_scat_scatt->GetPoint(binscatt,ascatt,bscatt);
+      double effiempdatascatt = bscatt;
+      if (effiempdatascatt==0) effiempdatascatt = 0.1;
+      double weightscatt = effipredscatt/effiempdatascatt; 
+      //std::cout << "binscatt " << binscatt << std::endl;
+      //std::cout << "effipredscatt " << effipredscatt << std::endl;
+      //std::cout << "effiempdatascatt " << effiempdatascatt << std::endl;
+      //std::cout << "weightscatt " << weightscatt << std::endl;
+      double bin2scatt = scat2scatt->Fill(thetaScatt*thetaScatt);
+      TGraphAsymmErrors* efficiency_scat_2scatt = (TGraphAsymmErrors*)f->Get("Eff2scatt_graph");
+      double x2scatt;
+      double y2scatt;
+      efficiency_scat_2scatt->GetPoint(bin2scatt,x2scatt,y2scatt);
+      double effipred2scatt = y2scatt; 
+      bin2scatt = scat2scatt->Fill(nomthetascat*nomthetascat);
+      TGraphAsymmErrors* efficiency_empty_scat_2scatt = (TGraphAsymmErrors*)fempty->Get("Eff2scatt_graph");
+      double a2scatt;
+      double b2scatt;
+      efficiency_empty_scat_2scatt->GetPoint(bin2scatt,a2scatt,b2scatt);
+      double effiempdata2scatt = b2scatt;
+      if (effiempdata2scatt==0) effiempdata2scatt = 0.1;
+      if (effipred2scatt==0) effipred2scatt = 1;
+      double weight2scatt = effipred2scatt/effiempdata2scatt; 
+      f->Close();
+      fempty->Close();
+      //std::cout << "bin2scatt " << bin2scatt << std::endl;
+      //std::cout << "effipred2scatt " << effipred2scatt << std::endl;
+      //std::cout << "effiempdata2scatt " << effiempdata2scatt << std::endl;
+      //std::cout << "weight2scatt " << weight2scatt << std::endl;
+      //std::cout << "weightX " << weightX << std::endl;
+      //std::cout << "weightY " << weightY << std::endl;
+      //std::cout << "weightscatt " << weightscatt << std::endl;
+      //std::cout << "weight2scatt " << weight2scatt << std::endl;
+     
+      hiswX->Fill(weightX);
+      hiswY->Fill(weightY);
+      if (isGEANT) {
+          resp_thetaX.Fill(thetaX, d_thetaX, weightX);
+          resp_thetaY.Fill(thetaY, d_thetaY, weightY);
+          resp_thetaScatt.Fill(thetaScatt, dthetaScatt, weightscatt);
+          resp_theta2Scatt.Fill(thetaScatt*thetaScatt, dthetaScatt*dthetaScatt, weight2scatt);
+      }
+      if (isCobb) {
+          tresp_thetaX.Fill(thetaX, d_thetaX, weightX);
+          tresp_thetaY.Fill(thetaY, d_thetaY, weightY);
+          tresp_thetaScatt.Fill(thetaScatt, dthetaScatt, weightscatt);
+          tresp_theta2Scatt.Fill(thetaScatt*thetaScatt, dthetaScatt*dthetaScatt, weight2scatt);
+      }
+      if (isMoliere) {
+          mresp_thetaX.Fill(thetaX, d_thetaX, weightX);
+          mresp_thetaY.Fill(thetaY, d_thetaY, weightY);
+          mresp_thetaScatt.Fill(thetaScatt, dthetaScatt, weightscatt);
+          mresp_theta2Scatt.Fill(thetaScatt*thetaScatt, dthetaScatt*dthetaScatt, weight2scatt);
+      }
+      */
+      if (isGEANT) {
+          resp_thetaX.Fill(thetaX, -d_thetaX);
+          resp_thetaY.Fill(thetaY, -d_thetaY);
+          resp_thetaScatt.Fill(thetaScatt, dthetaScatt);
+          resp_theta2Scatt.Fill(thetaScatt*thetaScatt, dthetaScatt*dthetaScatt);
+      }
+      if (isCobb) {
+          tresp_thetaX.Fill(thetaX, -d_thetaX);
+          tresp_thetaY.Fill(thetaY, -d_thetaY);
+          tresp_thetaScatt.Fill(thetaScatt, dthetaScatt);
+          tresp_theta2Scatt.Fill(thetaScatt*thetaScatt, dthetaScatt*dthetaScatt);
+      }
+      if (isMoliere) {
+          mresp_thetaX.Fill(thetaX, -d_thetaX);
+          mresp_thetaY.Fill(thetaY, -d_thetaY);
+          mresp_thetaScatt.Fill(thetaScatt, dthetaScatt);
+          mresp_theta2Scatt.Fill(thetaScatt*thetaScatt, dthetaScatt*dthetaScatt);
+      }
+       
+      /*
+      isfirst == 1 ? tresp_thetaX.Fill(thetaX, d_thetaX) : resp_thetaX.Fill(thetaX, d_thetaX);
+      std::cout << "thetaX " << thetaX << std::endl;
+      isfirst == 1 ? tresp_thetaY.Fill(thetaY, d_thetaY) : resp_thetaY.Fill(thetaY, d_thetaY);
+      std::cout << "thetaY " << thetaY << std::endl;
+      isfirst == 1 ? tresp_thetaScatt.Fill(thetaScatt, dthetaScatt) : resp_thetaScatt.Fill(thetaScatt, dthetaScatt); 
+      std::cout << "thetaScatt " << thetaScatt << std::endl;
+      isfirst == 1 ? tresp_theta2Scatt.Fill(thetaScatt*thetaScatt, dthetaScatt*dthetaScatt) : resp_theta2Scatt.Fill(thetaScatt*thetaScatt, dthetaScatt*dthetaScatt); 
+      */
+    }
+  }
+
+  thetaX_empty = trkreffix(thetaX_empty);
+  thetaY_empty = trkreffiy(thetaY_empty);
+  thetaScatt_empty = trkreffiscatt(thetaScatt_empty);
+   for (int i=0;i<1e6;i++) {
+           Double_t x2 = thetaX_empty->GetRandom();
+           x2 += hx->GetRandom();
+           Double_t y2 = thetaY_empty->GetRandom();
+           y2 += hy->GetRandom();
+           Double_t scat2 = thetaScatt_empty->GetRandom();
+           scat2 += hScatt->GetRandom();
+      thetaX_holdrefconv->Fill(x2);
+      thetaY_holdrefconv->Fill(y2);
+      thetaScatt_holdrefconv->Fill(scat2);
+      x2=0;
+      y2=0;
+      scat2=0;
+   }
+   
+   int meanpx = 0;
+   int i=0;
+   while (meanpx==0) {
+           if (thetaX_holdrefconv->GetBinLowEdge(i)>thetaX_holdrefconv->GetMean()) meanpx=i;
+           i++;
+   }
+   int meanpy = 0;
+   i=0;
+   while (meanpy==0) {
+           if (thetaY_holdrefconv->GetBinLowEdge(i)>thetaY_holdrefconv->GetMean()) meanpy=i;
+           i++;
+   }
+//   for (i = 1; i < 48; i++) thetaX_refconv->SetBinContent(i,thetaX_holdrefconv->GetBinContent(i+meanpx-25));
+  // for (i = 1; i < 48; i++) thetaY_refconv->SetBinContent(i,thetaY_holdrefconv->GetBinContent(i+meanpy-25));
+   int startscatt = 0;
+   while (startscatt==0) {
+           if (thetaScatt_holdrefconv->GetBinContent(i)>0) startscatt=i;
+           i++;
+   }
+   for (i = 1; i < 46; i++) thetaScatt_refconv->SetBinContent(i,thetaScatt_holdrefconv->GetBinContent(i+startscatt));
+  for (int j=0; j<1e6; j++){
+      double angle = thetaScatt_refconv->GetRandom();
+      double anglesqu = angle*angle;
+          theta2Scatt_refconv->Fill(anglesqu);
+  }
+  
+
+  TCanvas *c1 = new TCanvas();
+  hiswX->Draw();
+  c1->SaveAs("hiswX.pdf");
+  c1->Clear();
+  hiswY->Draw();
+  c1->SaveAs("hiswY.pdf");
+  outfile->cd();
+  thetaXUS_thetaXDS->Write();
+  thetaYUS_thetaYDS->Write();
+  thetaX_refconv->Write();
+  thetaY_refconv->Write();
+  thetaY_empty->Write();
+  for (int i=1;i<24;i++) {
+      thetaY_emptyfold->SetBinContent(i,thetaY_empty->GetBinContent(i)-thetaY_empty->GetBinContent(46-i));
+  }
+  thetaY_emptyfold->Write();
+  c1->Clear();
+  thetaY_emptyasymm=thetaY_empty->GetAsymmetry(thetaY_emptyminus);
+  thetaY_emptyasymm->Draw();
+  TF1*  fM2D = new TF1("fM2D", "[0]+x*[1]", 0, 0.02);
+  //fM2D->SetParameter(0,0);
+  //fM2D->SetParameter(1,1);
+  //fM2D->SetParNames("A","B");
+  //thetaY_emptyasymm->Fit("pol1","RES","",0.,0.02);
+  thetaY_emptyasymm->Fit(fM2D,"RES");
+  //fM2D->Draw("SAME");
+  thetaY_emptyasymm->SetName("thetaY_emptyasymm");
+  thetaY_emptyasymm->Write();
+  thetaY_emptyasymm->GetXaxis()->SetRange(0,0.06);
+  c1->SaveAs("thetaY_emptyasymm.pdf");
+  c1->Clear();
+  thetaX_emptyasymm=thetaX_empty->GetAsymmetry(thetaX_emptyminus);
+  thetaX_emptyasymm->Draw();
+  //thetaX_emptyasymm->Fit("pol1","RES","",0,0.02);
+  thetaX_emptyasymm->Fit(fM2D,"RES");
+  //fM2D->Draw("SAME");
+  thetaX_emptyasymm->SetName("thetaX_emptyasymm");
+  thetaX_emptyasymm->Write();
+  thetaX_emptyasymm->GetXaxis()->SetRange(0,0.06);
+  c1->SaveAs("thetaX_emptyasymm.pdf");
+  c1->Clear();
+  thetaY_emptyfold->Draw();
+  c1->Print("thetaY_emptyfold.pdf");
+  c1->Print("thetaY_emptyfold.root");
+  thetaScatt_refconv->Write();
+  theta2Scatt_refconv->Write();
+  thetaScatt_refconv_vp->Write();
+  hx->Write();
+  hy->Write();
+  hScatt->Write();
+  h2Scatt->Write();
+  delete c1;
+
+}
+

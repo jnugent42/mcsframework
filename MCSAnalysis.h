@@ -5,6 +5,7 @@
 #include <typeinfo>
 #include <iostream>
 #include <sstream>
+#include <list>
 
 // This is what we are here for
 #include "RooUnfold.h"
@@ -34,6 +35,8 @@
 #include "TSystem.h"
 #include "TString.h"
 #include "TFrame.h"
+#include "TMultiGraph.h"
+#include "TEfficiency.h"
 
 // Read directly from the MAUS data structure.
 #include "src/common_cpp/DataStructure/TOFEvent.hh"
@@ -63,6 +66,12 @@
 // And my own home brew object collection.
 #include "Collection.h"
 
+#include "libxml/tree.h"
+#include "libxml/parser.h"
+#include "libxml/xpath.h"
+#include "libxml/xpathInternals.h"
+#include <stdio.h>      /* printf, NULL */
+#include <stdlib.h>     /* strtold */
   
 class MCSAnalysis {
  public:
@@ -76,24 +85,51 @@ class MCSAnalysis {
   TChain* GetMCTree(){ return mcchain; }
   TChain* GetMCEmptyTree(){ return mcemptychain; }
   //TFileInfo* GetFileInfo(){ return fileinfo;}
+  void toffitting();
   void Execute(int mode);
+  void dataevents(int mode);
   void dataSelection(int mode);
   void referenceSelection();
   void generateMCSResponse();
   void TruthData(int mode);
   void ConvolveWithInputDistribution(std::string distname);
   void ConvolveWithVirtualInputDistribution(std::string distname);
-  void DoUnfolding();
-  void DoDeconvolution(std::string model, int n_sel);
+  void DoUnfolding(Collection& _USsethold, Collection& _DSsethold, Collection& _USMCsethold, Collection& _DSMCsethold);
+  //void DoUnfolding();
+  void DoDeconvolution(std::string model, int mode, int n_sel);
+  void DoVirtualDeconvolution(std::string model, int n_sel);
   void DoFFTDeconvolution();
   void UpdateRunInfo();
   void PlotRunInfo();
   void FitGaussian(std::string outfilename);
   void CalculateChi2(std::string outfilename, std::string distname);
   void print();
-  TH1D* trkreffix(TH1D* h1);
-  TH1D* trkreffiy(TH1D* h1);
+  void complots(int mode);
+  std::vector<float> FillCrossCheck();
+    int counttof1sp1 = 0;
+    int counttof1sp0 = 0;
+    int counttofcoincidence = 0;
+    int counttof0sp1 = 0;
+    int counttof0sp0 = 0;
+  TH1D* thetaX_all;
+  TH1D* thetaX_tof;
+  TH1D* thetaX_diff;
+  TH1D* thetaX_chi;
+  TH1D* thetaX_proj;
+  TH1D* thetaY_all;
+  TH1D* thetaY_tof;
+  TH1D* thetaY_diff;
+  TH1D* thetaY_chi;
+  TH1D* thetaY_proj;
+  TH1D* trkreffix(TH1D* h1, bool muldiv);
+  TH1D* trkreffiy(TH1D* h1, bool muldiv);
   TH1D* trkreffiscatt(TH1D* h1);
+  float dte01MC;
+  float dte12MC;
+  float dte01data;
+  float dte12data;
+  float dte01;
+  float dte12;
   TH1D* trkreffi2scatt(TH1D* h1);
   double myfunc(double pz, double s1, double s2, double E, double delta);
   double myfunc_deriv(double pz, double s1, double s2, double E, double delta);
@@ -102,11 +138,30 @@ class MCSAnalysis {
   double operator()(double x) const { return x*x; } 
   double Eval(double x) const { return x+x; }
   double Derivative(double x) const { return 2*x; }
+  int list172[100] = {7764, 7826, 7766, 7827, 7767, 7831, 7782, 7832, 7783, 7861, 7785, 7863, 7786, 7864, 7787, 7865, 7799, 7866, 7800, 7768, 7806, 7833, 7822, 7823, 7824, 7825}; 
+  int list200[100] = {7726, 7807, 7729, 7834, 7735, 7835, 7736, 7836, 7754, 7838, 7770, 7841, 7771, 7842, 7772, 7843, 7773, 7777, 7778, 7837, 7784, 7788, 7789, 7797, 7798, 7804};
+  int list240[100] = {7727, 7817, 7733, 7818, 7737, 7819, 7738, 7844, 7775, 7847, 7776, 7848, 7790, 7849, 7794, 7741, 7795, 7852, 7796, 7853, 7805, 7854, 7808, 7855, 7809, 7856, 7813, 7858, 7814, 7859, 7816, 7860, 7845}; 
 
   void Setangdef(double a){ angdef=a; }
-  void SetTOFUpperLimit(double a){ TOF_upper_limit=a; }
-  void SetTOFLowerLimit(double a){ TOF_lower_limit=a; }
+  void Setbeamtype(int a){ beamtype=a; }
+  void Setmode(double a){ mode=a; }
+  void Setoffset(double a){ offset=a; }
+  void SetisMC(double a){ isMC=a; }
+  void SetTOFsys(double a){ TOFsys=a; }
+  void Setoffset_needed(int a){ offset_needed=a; }
+  void Setrot_ang(double a){ rot_ang=a; }
+  void Setrot_ang_empty(double a){ rot_ang_empty=a; }
+  void Setrot_angX(double a){ rot_angX=a; }
+  void Setrot_ang_emptyX(double a){ rot_ang_emptyX=a; }
+  void Setaccpt(double a){ accpt=a; }
+  void SetTOFUpperLimit(long double a){ TOF_upper_limit=a; }
+  void SetTOFLowerLimit(long double a){ TOF_lower_limit=a; }
+  void SetPUpperLimit(double a){ P_upper_limit=a; }
+  void SetPLowerLimit(double a){ P_lower_limit=a; }
+  void SetTOFUpperLimitRef(long double a){ TOF_upper_limit_ref=a; }
+  void SetTOFLowerLimitRef(long double a){ TOF_lower_limit_ref=a; }
   void SetRadialLimit(double a){ meanp=a; }
+  void SetEffCut(double a){ eff_cut=a; }
   void SetGradientLimit(double a){ sigmap=a; }
   void SetModelFileName(std::string a){ modelfile=a; }
   void SetModelFileName2(std::string a){ modelfile2=a; }
@@ -124,19 +179,55 @@ class MCSAnalysis {
 
  private:
   
-  int jUS, jDS, kUS, kDS;
+  int jUS, jDS, kUS, kDS, lUS, lDS;
   
+  double percentTOF2;
+  double TOF1Hit = 0;
+  double TOF2Hit = 0;
   double angdef;
-  double TOF_lower_limit;
-  double TOF_upper_limit;
+  int beamtype;
+  double isMC;
+  bool TOFsys;
+  int offset_needed;
+  bool isEmpty;
+  double rot_ang;
+  double rot_ang_empty;
+  double rot_angX;
+  double rot_ang_emptyX;
+  double accpt;
+  double DScor = 0;
+  double refDScor = 0;
+  double UScor = 0;
+  double refUScor = 0;
+  long double TOF_lower_limit;
+  long double TOF_upper_limit;
+  long double P_lower_limit;
+  long double P_upper_limit;
+  long double TOF_lower_limit_ref;
+  long double TOF_upper_limit_ref;
   double semom;
+  double meanmom;
   double rmsmom;
   double errrmsmom;
   double bwmom;
+  double empty_semom;
+  double empty_meanmom;
+  double empty_rmsmom;
+  double empty_errrmsmom;
+  double empty_bwmom;
+  double mode;
+  double offset;
 
+  double difradius;
   double meanp;
+  double eff_cut;
   double sigmap;
   int binlimit;
+  double weight172;
+  double weight200;
+  double weight240;
+  double TOFtotal;
+  double tX_rG_int;
   
   std::string modelfile;
   std::string modelfile2;
@@ -162,6 +253,14 @@ class MCSAnalysis {
   Collection _UStmpset;
   Collection USTruthSet;
   Collection DSTruthSet;
+  Collection USTruthSetLiH;
+  Collection DSTruthSetLiH;
+  Collection mcreconUSTruthSet;
+  Collection mcreconDSTruthSet;
+  Collection eventMCUSAllTOF;
+  Collection eventMCDSAllTOF;
+  Collection USeventset;
+  Collection DSeventset;
 
   RooUnfoldResponse resp_thetaX;
   RooUnfoldResponse resp_thetaY;
@@ -185,6 +284,7 @@ class MCSAnalysis {
   
   int USabsPlaneI;
   int DSabsPlaneI;
+  int centre;
 
 
   
@@ -201,6 +301,8 @@ class MCSAnalysis {
   
   int runnumber, LastRunNumber; 
   int SpillNumber;
+  int tracker0;
+  int tracker1;
   MAUS::TOFEvent* tofevent;
   MAUS::SciFiEvent* scifievent;
   MAUS::KLEvent* klevent;
@@ -213,18 +315,33 @@ class MCSAnalysis {
   TFile* outfile;
   std::string outfilename;
   TH1D* diffradius;
+  TH1D* chi2pern;
   TH1D* projradius;
+  TH1D* nocutprojradius;
   TH2D* trackno;
+  TH2D* eventnovspz;
   TH2D* tofhitno;
   TH1D* pathlengthabs;
   TH1D* tof10;
   TH1D* tof10_sel;
+  TH1D* noweighttof10;
+  TH1D* noweighttof21;
+  TH1D* rawtime;
+  TH1D* rawtime12;
+  TH1D* uncor_mom;
+  TH1D* uncor_momsel;
   TH1D* tof21;
   TH1D* tof21_sel;
   TH1D* calc_mom;
   TH2D* t_cor;
+  TH1D* residual;
   TH1D* residual01;
   TH1D* residual12;
+  TH1D* residualUD;
+  TH1D* refresidual;
+  TH1D* refresidual01;
+  TH1D* refresidual12;
+  TH1D* refresidualUD;
   TH1D* residual12p6;
   TH1D* residual01j;
   TH1D* residual01short;
@@ -241,10 +358,14 @@ class MCSAnalysis {
   TH2D* pzdEdx;
   TH2D* residual_plot;
   TH2D* TOF01vsTOF12;
+  TH2D* refTOF01vsTOF12;
   TH2D* TOF01forvsTOF01absfor;
   TH2D* TOFcom;
+  TH1D* MCTruth;
+  TH1D* refMCTruth;
   TH2D* TOF01vsMCTruth;
-  TH2D* TOF12vsMCTruth;
+  TH2D* refTOFvsMCTruth;
+  TH2D* TOFvsMCTruth;
   TH2D* TOF12Paul6thforvsMCTruth;
   TH2D* TOF12longPaul6thforvsMCTruth;
   TH2D* TOF12Paul2ndforvsMCTruth;
@@ -270,6 +391,14 @@ class MCSAnalysis {
   TH1D* theta_true_x_bin;
   TH1D* theta_true_y_graph;
   TH1D* theta_true_scat_graph;
+  TH1D* theta_true_scat2_graph;
+  TH1D* minustheta_true_x_graph;
+  TH1D* minustheta_true_y_graph;
+  TH1D* mctheta_true_x_graph;
+  TH1D* mctheta_true_y_graph;
+  TH1D* mctheta_true_scat_graph;
+  TH1D* sym_theta_true_x_graph;
+  TH1D* sym_theta_true_y_graph;
 
   TH2D* scattering_proj_x_R;
   TH2D* scattering_proj_y_R;
@@ -294,40 +423,56 @@ class MCSAnalysis {
   std::vector<double> path_length;
   
   bool MatchUSDS();
-  bool PIDSelection(bool isdata);
-  bool RadialSelection(double pz, double pos, double radius);
+  bool PIDSelection(const bool& isdata);
+  Vars RadialSelection(double& pz, double& pos, double& radius);
   bool TruthMatchUSDS();
-  bool TruthTime(bool isdata);
-  bool TruthRadialSelection(double pz, double pos, double radius, int j);
-  std::vector<double> DefineProjectionAngles(Vars US, Vars DS);
-  std::vector<double> RotDefineProjectionAngles(Vars US, Vars DS, int l);
-  TH1D *defineHist2(const char* name, const char* title, Int_t nbinsx, Double_t xlow, Double_t xup);
-  double MomentumFromTOF(bool isdata);
-  double BetheBloch(double pz, double Imat, double Z, double A, double hw);
-  double MostProbBB(double pz, double Imat, double Z, double A, double hw, double R, double z);
-  double TimeofFlight();
-  double TimeofFlight12();
-  std::vector<double> CalculatePathLength(double pz);
-  std::vector<double> rCalculatePathLength(double pz);
-  double PathLengthInLH2(double pz);
-  double CorMomFromTOF(double pz, double mat, double diff);
+  bool TruthTime(const bool& isdata);
+  bool TruthTime12(const bool& isdata);
+  bool TruthRadialSelection(double& pz, double& pos, double& radius, int& j);
+  std::vector<double> DefineProjectionAngles(Vars& US, Vars& DS);
+  std::vector<double> RotDefineProjectionAngles(const Vars& US, const Vars& DS, int l);
+  std::vector<double> mcRotDefineProjectionAngles(const Vars& US, const Vars& DS, int l);
+  TH1D *defineHist2(const char* name, const char* title, Double_t& nbinsx, Double_t& xlow, Double_t& xup);
+  double ReadOffset(bool file);
+  double WriteOffset(bool file);
+  double getoffset(xmlNode * a_node, bool file);
+  double MomentumFromTOF(const bool& isdata);
+  double BetheBloch(double& pz, double& Imat, double& Z, double& A, double& hw);
+  double MostProbBB(double& pz, double& Imat, double& Z, double& A, double& hw, double& R, double& z);
+  double TimeofFlight(const bool& raw);
+  double TimeofFlight12(const bool& raw);
+  std::vector<double> CalculatePathLength(double& pz);
+  std::vector<double> rCalculatePathLength(double& pz);
+  double PathLengthInLH2(double& pz);
+  double CorMomFromTOF(Vars& set, double& diff, const bool& isdata);
+  double MomCalc(double& TOF, const bool& isdata);
   bool findVirtualPlanes();
-  void FillMuScattResponse(bool event_ok, Vars& US, Vars& DS, Vars& USMC, Vars& DSMC);
-  void FillMCSResponse(bool event_ok, Vars& US, Vars& DS, Vars& USMC, Vars& DSMC);
-  void TruthGraph(Collection& USMC, Collection& DSMC);
-  void FillVarsVirtual(Vars& tmpvar, int j);
-  void FillCollectionSciFi(Collection& Set, int j, int k, double pz, int isDS, bool project=false);
-  void FillVarsSciFi(Vars& tmpvar, int j, int k, double pz, int isDS);
-  void make_beam_histograms(Collection Set, std::string desc, std::string suffix);
-  void make_acceptance_histograms(Collection USset, Collection DSset, 
+    void tophatl();
+    double_t tophatl_(double_t *x, double_t *par);
+  void FillMuScattResponse(bool& event_ok, Vars& US, Vars& DS, Vars& USMC, Vars& DSMC);
+  void FillMCSResponse(bool& event_ok, Vars& US, Vars& DS, Vars& USMC, Vars& DSMC);
+  void TruthGraph(Collection& USMC, Collection& DSMC, bool recon);
+  void FillVarsVirtual(Vars& tmpvar, int& j, int& centre);
+  void FillCollectionSciFi(Collection& Set, int& j, int& k, int& l, int& pid, double& pz, int& isDS, Vars& difproj, Vars& proj, std::vector<float> chi2nUS, int& beamtype, double& ptruth, const bool& difcut, const bool& fidcut, const bool& chicut, const bool& TOFcut);     
+  void FillEventCollection(Collection& Set, Vars& tmpvar);     
+  void FillVarsSciFi(Vars& tmpvar, int& j, int& k, int& l, int& pid, double& pz, int& isDS, Vars& proj, Vars& projdif, std::vector<float> chi2nUS, int& beamtype, double& ptruth, const bool& difcut, const bool& fidcut, const bool& chicut, const bool& TOFcut);
+  void make_beam_histograms(Collection& Set, std::string desc, std::string suffix);
+  void data_make_beam_histograms(Collection& Set, std::string desc, std::string suffix, Collection& SetMC);
+  void make_acceptance_histograms(Collection& USset, Collection& DSset, 
 				  std::string desc, std::string suffix);
-  void make_scattering_acceptance_histograms(Collection USset,
-					     Collection DSset,
-					     Collection DSrefset,
+  void make_scattering_acceptance_histograms(Collection& USset,
+					     Collection& DSset,
+					     Collection& DSrefset,
+					     std::string desc,
+					     std::string suffix);
+  void trkr_eff(Collection& USTruthSethold,
+					     Collection& DSTruthSethold,
+					     Collection& _USsethold,
+					     Collection& _DSsethold,
 					     std::string desc,
 					     std::string suffix);
   Json::Value SetupConfig(int verbose_level);
-  Vars PropagateVarsMu(Vars event, double z0);
+  Vars PropagateVarsMu(const Vars& event, const double& z0);
   /*
   static TVectorD p_vec;
   static TVectorD res;

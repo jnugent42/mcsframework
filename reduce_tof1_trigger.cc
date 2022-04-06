@@ -213,61 +213,61 @@ int main(int argc, char* argv[]) {
 
     std::vector<std::string> filelist;
     if(argc == 1){
-      std::cout<<"This is a MAUS tree skim that selects events that \n";
-      std::cout<<"produce triggers in TOF2 and writes the reconstructed event \n";
-      std::cout<<"objects and the MCevent objects to a tree. The resulting \n";
-      std::cout<<"tree may be used with the \"tree->Draw()\" command on the \n";
-      std::cout<<"root command line or with the \"run_sp_ensemble_analysis\"\n";
-      std::cout<<"executable.\n"<<std::endl;
-      std::cout<<"To run the command, provide one or more input files as arguements.\n";
+        std::cout<<"This is a MAUS tree skim that selects events that \n";
+        std::cout<<"produce triggers in TOF2 and writes the reconstructed event \n";
+        std::cout<<"objects and the MCevent objects to a tree. The resulting \n";
+        std::cout<<"tree may be used with the \"tree->Draw()\" command on the \n";
+        std::cout<<"root command line or with the \"run_sp_ensemble_analysis\"\n";
+        std::cout<<"executable.\n"<<std::endl;
+        std::cout<<"To run the command, provide one or more input files as arguements.\n";
     }
     std::string type  = argv[1];
     std::string type1 = argv[1];
     for (int ifile = 1; ifile < argc; ifile++){
-      TFile* file = new TFile(argv[ifile]);
-      if(file->IsZombie()) continue;
-      TTree* Spill = (TTree*)file->Get("Spill");
-      if(!Spill) continue;
-      file->Close();
-      std::cout<<"Adding "<<argv[ifile]<<" to file list."<<std::endl;
-      filelist.push_back(argv[ifile]);
+        TFile* file = new TFile(argv[ifile]);
+        if(file->IsZombie()) continue;
+        TTree* Spill = (TTree*)file->Get("Spill");
+        if(!Spill) continue;
+        file->Close();
+        std::cout<<"Adding "<<argv[ifile]<<" to file list."<<std::endl;
+        filelist.push_back(argv[ifile]);
     }
-    
+
     MAUS::Data *data = new MAUS::Data();
     double tof1pos = 12929.2608098;
     double tof2pos = 20500;
     // Make histograms; to fill later on
     TH1D tof2_digits_0_hist("tof2 digits_0",
-                            "tof2 digits for plane 0;Slab number",
-                            10, -0.5, 9.5);
+            "tof2 digits for plane 0;Slab number",
+            10, -0.5, 9.5);
     TH1D tof2_digits_1_hist("tof2 digits_1",
-                            "tof2 digits for plane 1;Slab number",
-                            10, -0.5, 9.5);
+            "tof2 digits for plane 1;Slab number",
+            10, -0.5, 9.5);
     TH1D hrate("hrate", 
-	       ";Position along Z axis (m);Particles at Virtual Plane", \
-	       240,0.5,24.5);
+            ";Position along Z axis (m);Particles at Virtual Plane", \
+            240,0.5,24.5);
     TH2D hr("hr", 
-	    ";Position along Z axis (m); Radial Position (m)",	
-	    240,0.5,24.5,100,0.0, 0.5);
+            ";Position along Z axis (m); Radial Position (m)",	
+            240,0.5,24.5,100,0.0, 0.5);
     TH2D hx("hx", 
-	    ";Position along Z axis (m); X Position (m)",	
-	    240,0.5,24.5,200,-1.0, 1.0);
+            ";Position along Z axis (m); X Position (m)",	
+            240,0.5,24.5,200,-1.0, 1.0);
     TH3D hxy("hxy", 
-	    ";Position along Z axis (m); X Position (m); Y Position (m)",	
-	     240,0.5,24.5,100,-1.0, 1.0, 100, -1.0, 1.0);
+            ";Position along Z axis (m); X Position (m); Y Position (m)",	
+            240,0.5,24.5,100,-1.0, 1.0, 100, -1.0, 1.0);
     TH2D hp("hp", 
-	    ";Position along Z axis (m); Momentum (MeV/c)",	
-	    240,0.5,24.5,100,0,400);
+            ";Position along Z axis (m); Momentum (MeV/c)",	
+            240,0.5,24.5,100,0,400);
     TH2D hdp("hdp", 
-	    ";Position along Z axis (m); Change in Momentum (MeV/c)",	
-	    240,0.5,24.5,500,0,200);
+            ";Position along Z axis (m); Change in Momentum (MeV/c)",	
+            240,0.5,24.5,500,0,200);
     // Create a new file to store the output
     std::string fname = "reduced_tree";
     //int found = type.find_last_of("/");
     //fname += type.substr(found-9,9);
     fname += ".root";
     TFile* outfile = new TFile(fname.c_str(),"RECREATE");
-    
+
     std::cout<<"Make tree; to fill later on"<<std::endl;
     TTree* tree = new TTree("recon_reduced_tree","Reduced MAUS Spill");
     TTree* mctree = new TTree("Truth_reduced_tree","Reduced MAUS MCSpill");
@@ -302,230 +302,236 @@ int main(int argc, char* argv[]) {
     Collection USrefSet;
     int TOF0count=0, TOF1count=0, TOF2count=0;
     for (filename = filelist.begin(); filename < filelist.end(); filename++){
-      // irstream infile((*filename).c_str(), "Spill");
-      TFile infile((*filename).c_str());
-      TTree* Spill = (TTree*)infile.Get("Spill");
-      Spill->SetBranchAddress("data", &data);
-      // Iterate over all events
-      std::cout<<"Considering file "<<(*filename).c_str()<<std::endl;
-      for ( int i=0; i<Spill->GetEntries(); i++){
-	Spill->GetEntry(i);
-        MAUS::Spill* spill = data->GetSpill();
-        // Iterate over all events; top level event in the "Spill" tree
-        // corresponds to a daq_event; e.g. "start_of_burst" (spill start
-        //  signal) or "physics_event" (spill data)
-        if (spill != NULL && spill->GetDaqEventType() == "physics_event") {
-	  // Each recon event corresponds to a particle trigger; data in the
-	  // recon event should all have the same trigger
-	  if(type.find("recon")!=std::string::npos){
-	    RunNumber = spill->GetRunNumber();
-	    SpillNumber = spill->GetSpillNumber();
-	  }
-	  for (size_t ii = 0;  ii < spill->GetReconEvents()->size(); ++ii) {
-	    // TOF event holds TOF information for the particle trigger
-	    MAUS::TOFEvent* tof_event =
-	      (*spill->GetReconEvents())[ii]->GetTOFEvent();
-	    MAUS::TOFEventDigit digits;
-	    if(type.find("mc")!=std::string::npos){
-	       mcevent    = (*spill->GetMCEvents())[ii];
-	       // if(fabs(mcevent->GetPrimary()->GetParticleId()) != 13) continue;
-	    }
-	    if (tof_event != NULL)
-	      digits = tof_event->GetTOFEventDigit();
-	    else
-	      continue;
-	    // std::cout<<"Found TOF digits at event "<<i<<std::endl;
-	    // Iterate over TOF digits
-	    bool plane0digit = false;
-	    bool plane1digit = false;
-	    for (size_t j = 0; j < digits.GetTOF0DigitArray().size(); ++j) {
-	      MAUS::TOFDigit tof0_digit = digits.GetTOF0DigitArray()[j];
-	      // get the slab where the digit was registered
-	      if (tof0_digit.GetPlane() == 0) {
-		plane0digit = true;
-	      } else {
-		plane1digit = true;
-	      }
-	    }
-	    if( plane0digit && plane1digit ) TOF0count++;
-	    plane0digit = false;
-	    plane1digit = false;
-	    for (size_t j = 0; j < digits.GetTOF1DigitArray().size(); ++j) {
-	      MAUS::TOFDigit tof1_digit = digits.GetTOF1DigitArray()[j];
-	      // get the slab where the digit was registered
-	      if (tof1_digit.GetPlane() == 0) {
-		plane0digit = true;
-	      } else {
-		plane1digit = true;
-	      }
-	    }
-	    if( plane0digit && plane1digit ){
-	      TOF1count++;
-	      tofevent   = tof_event;
-	      scifievent = (*spill->GetReconEvents())[ii]->GetSciFiEvent();
-	      ckovevent  = (*spill->GetReconEvents())[ii]->GetCkovEvent();
-	      klevent    = (*spill->GetReconEvents())[ii]->GetKLEvent();
-	      emrevent   = (*spill->GetReconEvents())[ii]->GetEMREvent();
-	      if(type.find("sim")!=std::string::npos){
-                 mcevent = (*spill->GetMCEvents())[ii];
-              }
-	      tree->Fill();
-	     
-	      //tree->Fill();
-	      //if(type1.find("data")!=std::string::npos) tree->Fill();
-	      //if(type1.find("sim")!=std::string::npos) mctree->Fill();
-	    }
+        // irstream infile((*filename).c_str(), "Spill");
+        TFile infile((*filename).c_str());
+        TTree* Spill = (TTree*)infile.Get("Spill");
+        Spill->SetBranchAddress("data", &data);
+        // Iterate over all events
+        std::cout<<"Considering file "<<(*filename).c_str()<<std::endl;
+        std::string string = (*filename).c_str();
+        /* std::size_t founds = string.find_last_of("/"); */
+        /* std::size_t founde = string.find_last_of("/", founds-1); */
+        /* std::string runnumber = string.substr(founds, founde); */
+        /* std::cout << runnumber << std::endl; */
+        for ( int i=0; i<Spill->GetEntries(); i++){
+            Spill->GetEntry(i);
+            MAUS::Spill* spill = data->GetSpill();
+            // Iterate over all events; top level event in the "Spill" tree
+            // corresponds to a daq_event; e.g. "start_of_burst" (spill start
+            //  signal) or "physics_event" (spill data)
+            if (spill != NULL && spill->GetDaqEventType() == "physics_event") {
+                // Each recon event corresponds to a particle trigger; data in the
+                // recon event should all have the same trigger
+                if(type.find("recon")!=std::string::npos){
+                    RunNumber = spill->GetRunNumber();
+                    /* RunNumber = stoi(runnumber.substr(0,4)); */
+                    SpillNumber = spill->GetSpillNumber();
+                }
+                for (size_t ii = 0;  ii < spill->GetReconEvents()->size(); ++ii) {
+                    // TOF event holds TOF information for the particle trigger
+                    MAUS::TOFEvent* tof_event =
+                        (*spill->GetReconEvents())[ii]->GetTOFEvent();
+                    MAUS::TOFEventDigit digits;
+                    if(type.find("mc")!=std::string::npos){
+                        mcevent    = (*spill->GetMCEvents())[ii];
+                        // if(fabs(mcevent->GetPrimary()->GetParticleId()) != 13) continue;
+                    }
+                    if (tof_event != NULL)
+                        digits = tof_event->GetTOFEventDigit();
+                    else
+                        continue;
+                    // std::cout<<"Found TOF digits at event "<<i<<std::endl;
+                    // Iterate over TOF digits
+                    bool plane0digit = false;
+                    bool plane1digit = false;
+                    for (size_t j = 0; j < digits.GetTOF0DigitArray().size(); ++j) {
+                        MAUS::TOFDigit tof0_digit = digits.GetTOF0DigitArray()[j];
+                        // get the slab where the digit was registered
+                        if (tof0_digit.GetPlane() == 0) {
+                            plane0digit = true;
+                        } else {
+                            plane1digit = true;
+                        }
+                    }
+                    if( plane0digit && plane1digit ) TOF0count++;
+                    plane0digit = false;
+                    plane1digit = false;
+                    for (size_t j = 0; j < digits.GetTOF1DigitArray().size(); ++j) {
+                        MAUS::TOFDigit tof1_digit = digits.GetTOF1DigitArray()[j];
+                        // get the slab where the digit was registered
+                        if (tof1_digit.GetPlane() == 0) {
+                            plane0digit = true;
+                        } else {
+                            plane1digit = true;
+                        }
+                    }
+                    if( plane0digit && plane1digit ){
+                        TOF1count++;
+                        tofevent   = tof_event;
+                        scifievent = (*spill->GetReconEvents())[ii]->GetSciFiEvent();
+                        ckovevent  = (*spill->GetReconEvents())[ii]->GetCkovEvent();
+                        klevent    = (*spill->GetReconEvents())[ii]->GetKLEvent();
+                        emrevent   = (*spill->GetReconEvents())[ii]->GetEMREvent();
+                        if(type.find("sim")!=std::string::npos){
+                            mcevent = (*spill->GetMCEvents())[ii];
+                        }
+                        tree->Fill();
 
-	    plane0digit = false;
-	    plane1digit = false;
-	    for (size_t j = 0; j < digits.GetTOF2DigitArray().size(); ++j) {
-	      MAUS::TOFDigit tof2_digit = digits.GetTOF2DigitArray()[j];
-	      // get the slab where the digit was registered
-	      if (tof2_digit.GetPlane() == 0) {
-		tof2_digits_0_hist.Fill(tof2_digit.GetSlab());
-		plane0digit = true;
-	      } else {
-		tof2_digits_1_hist.Fill(tof2_digit.GetSlab());
-		plane1digit = true;
-	      }
-	    }
-	    if( plane0digit && plane1digit ) TOF2count++;
-	  }
-	  
-	  if(type.find("sim")!=std::string::npos){
-	    for (size_t ij=0; ij<spill->GetMCEvents()->size(); ij++){
-               MAUS::TOFHitArray* tofhit = (*spill->GetMCEvents())[ij]->GetTOFHits();
-               for (int i=0;i<tofhit->size();i++) {
-                  if (tofhit->at(i).GetPosition().Z() - 12929 < 20 and tofhit->at(i).GetPosition().Z() - 12929 > -20){        
-			  mcevent = (*spill->GetMCEvents())[ij];
-			  mctree->Fill();
-                  }
-              }
-	      // find particles that pass through TOF2 regardless of PID
-	      int nverthits = (*spill->GetMCEvents())[ij]->GetVirtualHits()->size();
-	      bool tof2trigger=false;
-	      for(int k=0; k<nverthits; k++){
-		double z = ((*spill->GetMCEvents())[ij]->GetVirtualHits())->at(k).GetPosition().z();
-		double x = ((*spill->GetMCEvents())[ij]->GetVirtualHits())->at(k).GetPosition().x();
-		double y = ((*spill->GetMCEvents())[ij]->GetVirtualHits())->at(k).GetPosition().y();
-		double pz = ((*spill->GetMCEvents())[ij]->GetVirtualHits())->at(k).GetMomentum().z();
-		double px = ((*spill->GetMCEvents())[ij]->GetVirtualHits())->at(k).GetMomentum().x();
-		double py = ((*spill->GetMCEvents())[ij]->GetVirtualHits())->at(k).GetMomentum().y();
-		double dp = 0;
-		double pmag = sqrt(px*px + py*py + pz*pz);
-		if(k>0){
-		  double dpx = -((*spill->GetMCEvents())[ij]->GetVirtualHits())->at(k-1).GetMomentum().x() + px;
-		  double dpy = -((*spill->GetMCEvents())[ij]->GetVirtualHits())->at(k-1).GetMomentum().y() + py;
-		  double dpz = -((*spill->GetMCEvents())[ij]->GetVirtualHits())->at(k-1).GetMomentum().z() + pz;
-		  dp = sqrt(dpx*dpx + dpy*dpy + dpz*dpz) *  pz / pmag;
-		}
-		int pid = ((*spill->GetMCEvents())[ij]->GetVirtualHits())->at(k).GetParticleId();
-		hrate.Fill(z/1000.);
-		hp.Fill(z/1000.,sqrt(px*px + py*py + pz*pz));
-		hr.Fill(z/1000.,sqrt(x*x + y*y)/1000.);
-		hx.Fill(z/1000.,x/1000.);
-		hxy.Fill(z/1000., x/1000., y/1000.);
-		hdp.Fill(z/1000., dp);
-		if ( k == 0 ){
-		  Vars tmp;
-		  tmp.X = x;
-		  tmp.Y = y;
-		  tmp.Z = z;
-		  tmp.dXdz = px;
-		  tmp.dYdz = py;
-		  tmp.TOF12 = pz;
-		  tmp.TOF01 = pz;
-		  if (abs(pid) == 13)
-		    muonSet.append_instance(tmp);
-		  else if(abs(pid) == 211)
-		    pionSet.append_instance(tmp);
-		  else if(abs(pid) == 11)
-		    electronSet.append_instance(tmp);
-		}
-		
-		if ( k == 48 ){
-		  Vars tmp;
-		  tmp.X = x;
-		  tmp.Y = y;
-		  tmp.Z = z;
-		  tmp.dXdz = px;
-		  tmp.dYdz = py;
-		  tmp.TOF12 = pz;
-		  tmp.TOF01 = pz;
-		  USrefSet.append_instance(tmp);
-		}
-		if(fabs(z - tof1pos) < 50.){
-		  if  (fabs(x) < 300. && fabs(y) < 300.) {
+                        //tree->Fill();
+                        //if(type1.find("data")!=std::string::npos) tree->Fill();
+                        //if(type1.find("sim")!=std::string::npos) mctree->Fill();
+                    }
 
-		  }
-		}
-	      }
-	    }
-	    /*
-	    if(false){
-	      mcevent    = (*spill->GetMCEvents())[ij];
-	      // primary    = (*spill->GetMCEvents())[ij]->GetPrimary();
-	      // sphitarray = (*spill->GetMCEvents())[ij]->GetSpecialVirtualHits();
-	      mctree->Fill();
-	      }*/
-	  }
+                    plane0digit = false;
+                    plane1digit = false;
+                    for (size_t j = 0; j < digits.GetTOF2DigitArray().size(); ++j) {
+                        MAUS::TOFDigit tof2_digit = digits.GetTOF2DigitArray()[j];
+                        // get the slab where the digit was registered
+                        if (tof2_digit.GetPlane() == 0) {
+                            tof2_digits_0_hist.Fill(tof2_digit.GetSlab());
+                            plane0digit = true;
+                        } else {
+                            tof2_digits_1_hist.Fill(tof2_digit.GetSlab());
+                            plane1digit = true;
+                        }
+                    }
+                    if( plane0digit && plane1digit ) TOF2count++;
+                }
+
+                /* if(type.find("sim")!=std::string::npos){ */
+                    for (size_t ij=0; ij<spill->GetMCEvents()->size(); ij++){
+                        MAUS::TOFHitArray* tofhit = (*spill->GetMCEvents())[ij]->GetTOFHits();
+                        for (int i=0;i<tofhit->size();i++) {
+                            if (tofhit->at(i).GetPosition().Z() - 12929 < 20 and tofhit->at(i).GetPosition().Z() - 12929 > -20){        
+                                mcevent = (*spill->GetMCEvents())[ij];
+                                mctree->Fill();
+                            }
+                        }
+                        // find particles that pass through TOF2 regardless of PID
+                        int nverthits = (*spill->GetMCEvents())[ij]->GetVirtualHits()->size();
+                        bool tof2trigger=false;
+                        for(int k=0; k<nverthits; k++){
+                            double z = ((*spill->GetMCEvents())[ij]->GetVirtualHits())->at(k).GetPosition().z();
+                            double x = ((*spill->GetMCEvents())[ij]->GetVirtualHits())->at(k).GetPosition().x();
+                            double y = ((*spill->GetMCEvents())[ij]->GetVirtualHits())->at(k).GetPosition().y();
+                            double pz = ((*spill->GetMCEvents())[ij]->GetVirtualHits())->at(k).GetMomentum().z();
+                            double px = ((*spill->GetMCEvents())[ij]->GetVirtualHits())->at(k).GetMomentum().x();
+                            double py = ((*spill->GetMCEvents())[ij]->GetVirtualHits())->at(k).GetMomentum().y();
+                            double dp = 0;
+                            double pmag = sqrt(px*px + py*py + pz*pz);
+                            if(k>0){
+                                double dpx = -((*spill->GetMCEvents())[ij]->GetVirtualHits())->at(k-1).GetMomentum().x() + px;
+                                double dpy = -((*spill->GetMCEvents())[ij]->GetVirtualHits())->at(k-1).GetMomentum().y() + py;
+                                double dpz = -((*spill->GetMCEvents())[ij]->GetVirtualHits())->at(k-1).GetMomentum().z() + pz;
+                                dp = sqrt(dpx*dpx + dpy*dpy + dpz*dpz) *  pz / pmag;
+                            }
+                            int pid = ((*spill->GetMCEvents())[ij]->GetVirtualHits())->at(k).GetParticleId();
+                            hrate.Fill(z/1000.);
+                            hp.Fill(z/1000.,sqrt(px*px + py*py + pz*pz));
+                            hr.Fill(z/1000.,sqrt(x*x + y*y)/1000.);
+                            hx.Fill(z/1000.,x/1000.);
+                            hxy.Fill(z/1000., x/1000., y/1000.);
+                            hdp.Fill(z/1000., dp);
+                            if ( k == 0 ){
+                                Vars tmp;
+                                tmp.X = x;
+                                tmp.Y = y;
+                                tmp.Z = z;
+                                tmp.dXdz = px;
+                                tmp.dYdz = py;
+                                tmp.TOF12 = pz;
+                                tmp.TOF01 = pz;
+                                if (abs(pid) == 13)
+                                    muonSet.append_instance(tmp);
+                                else if(abs(pid) == 211)
+                                    pionSet.append_instance(tmp);
+                                else if(abs(pid) == 11)
+                                    electronSet.append_instance(tmp);
+                            }
+
+                            if ( k == 48 ){
+                                Vars tmp;
+                                tmp.X = x;
+                                tmp.Y = y;
+                                tmp.Z = z;
+                                tmp.dXdz = px;
+                                tmp.dYdz = py;
+                                tmp.TOF12 = pz;
+                                tmp.TOF01 = pz;
+                                USrefSet.append_instance(tmp);
+                            }
+                            if(fabs(z - tof1pos) < 50.){
+                                if  (fabs(x) < 300. && fabs(y) < 300.) {
+
+                                }
+                            }
+                        }
+                    }
+                    /*
+                       if(false){
+                       mcevent    = (*spill->GetMCEvents())[ij];
+                    // primary    = (*spill->GetMCEvents())[ij]->GetPrimary();
+                    // sphitarray = (*spill->GetMCEvents())[ij]->GetSpecialVirtualHits();
+                    mctree->Fill();
+                    }*/
+                /* } */
+            }
         }
-      }
     }
     outfile->cd();
     if(type.find("recon")!=std::string::npos){
-      tree->Write();
-      tree->Print();
+        tree->Write();
+        tree->Print();
     }
     if(type.find("sim")!=std::string::npos){
-      hrate.Write();
-      hr.Write();
-      hp.Write();
-      hdp.Write();
-      hx.Write();
-      hxy.Write();
-      tree->Write();
-      tree->Print();
-      mctree->Write();
-      mctree->Print();
-      make_beam_histograms(muonSet, "Muons", "muon", outfile); 
-      make_beam_histograms(pionSet, "Pions", "pion", outfile); 
-      make_beam_histograms(electronSet, "Electrons", "electron", outfile); 
-      make_beam_histograms(USrefSet, "Upstream Reference Plane", "USref", outfile); 
-      // Now plot the histograms
-      TCanvas canvas_0("tof2_digits_0", "tof2_digits_0");
-      tof2_digits_0_hist.Draw();
-      canvas_0.Draw();
-      canvas_0.Print("tof2_digits_0_load_root_file_cpp.pdf");
-      TCanvas canvas_1("tof2_digits_1", "tof2_digits_1");
-      tof2_digits_1_hist.Draw();
-      canvas_1.Draw();
-      canvas_1.Print("tof2_digits_1_load_root_file_cpp.pdf");
-      TCanvas c0("events_v_z","events_v_z");
-      c0.Draw();
-      c0.SetLogy();
-      hrate.Draw();
-      c0.Print("virtual_hits_v_z.pdf");
-      TCanvas c1("beam_radius_v_z","beam_radius_v_z");
-      c1.Draw();
-      c1.SetLogz();
-      hr.Draw("colz");
-      c1.Print("beam_radius_v_z.pdf");
-      TCanvas c2("beam_momentum_v_z","beam_momentum_v_z");
-      c2.Draw();
-      c2.SetLogz();
-      hp.Draw("colz");
-      c2.Print("beam_momentum_v_z.pdf");
-      TCanvas c3("momentum_change_v_z","momentum_change_v_z");
-      c3.Draw();
-      c3.SetLogz();
-      hdp.Draw("colz");
-      c3.Print("momentum_change_v_z.pdf");    
-      TCanvas c4("beam_x_v_z","beam_x_v_z");
-      c4.Draw();
-      c4.SetLogz();
-      hx.Draw("colz");
-      c4.Print("beam_x_v_z.pdf");
+        hrate.Write();
+        hr.Write();
+        hp.Write();
+        hdp.Write();
+        hx.Write();
+        hxy.Write();
+        tree->Write();
+        tree->Print();
+        mctree->Write();
+        mctree->Print();
+        make_beam_histograms(muonSet, "Muons", "muon", outfile); 
+        make_beam_histograms(pionSet, "Pions", "pion", outfile); 
+        make_beam_histograms(electronSet, "Electrons", "electron", outfile); 
+        make_beam_histograms(USrefSet, "Upstream Reference Plane", "USref", outfile); 
+        // Now plot the histograms
+        TCanvas canvas_0("tof2_digits_0", "tof2_digits_0");
+        tof2_digits_0_hist.Draw();
+        canvas_0.Draw();
+        canvas_0.Print("tof2_digits_0_load_root_file_cpp.pdf");
+        TCanvas canvas_1("tof2_digits_1", "tof2_digits_1");
+        tof2_digits_1_hist.Draw();
+        canvas_1.Draw();
+        canvas_1.Print("tof2_digits_1_load_root_file_cpp.pdf");
+        TCanvas c0("events_v_z","events_v_z");
+        c0.Draw();
+        c0.SetLogy();
+        hrate.Draw();
+        c0.Print("virtual_hits_v_z.pdf");
+        TCanvas c1("beam_radius_v_z","beam_radius_v_z");
+        c1.Draw();
+        c1.SetLogz();
+        hr.Draw("colz");
+        c1.Print("beam_radius_v_z.pdf");
+        TCanvas c2("beam_momentum_v_z","beam_momentum_v_z");
+        c2.Draw();
+        c2.SetLogz();
+        hp.Draw("colz");
+        c2.Print("beam_momentum_v_z.pdf");
+        TCanvas c3("momentum_change_v_z","momentum_change_v_z");
+        c3.Draw();
+        c3.SetLogz();
+        hdp.Draw("colz");
+        c3.Print("momentum_change_v_z.pdf");    
+        TCanvas c4("beam_x_v_z","beam_x_v_z");
+        c4.Draw();
+        c4.SetLogz();
+        hx.Draw("colz");
+        c4.Print("beam_x_v_z.pdf");
     }
     std::cout<<"TOF0 Count:"<<TOF0count<<std::endl;
     std::cout<<"TOF1 Count:"<<TOF1count<<std::endl;

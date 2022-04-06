@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# find . -name *.xml -exec sed -i s/\"minXY\"\ value=\"-0.07\"/\"minXY\"\ value=\"-0.0705\"/g {} \;
+ find . -name "*.xml" -exec sed -i s#28.6371139354\"\/\>#28.6371139354\"\/\>\\n\<cuts\ name=\"TOF_ll_ref\"\ value=\"28.8591643356\"/\>#g {} \;
+ find . -name "*.xml" -exec sed -i s#28.8371139354\"\/\>#28.8371139354\"\/\>\\n\<cuts\ name=\"TOF_ul_ref\"\ value=\"29.0591643356\"/\>#g {} \;
+ 
+ find . -name "*.xml" -exec sed -i s#27.2541567795\"\/\>#27.2541567795\"\/\>\\n\<cuts\ name=\"TOF_ll_ref\"\ value=\"27.3067416205\"/\>#g {} \;
+ find . -name "*.xml" -exec sed -i s#27.4541567795\"\/\>#27.4541567795\"\/\>\\n\<cuts\ name=\"TOF_ul_ref\"\ value=\"27.5067416205\"/\>#g {} \;
+ 
+ find . -name "*.xml" -exec sed -i s#27.9537703996\"\/\>#27.9537703996\"\/\>\\n\<cuts\ name=\"TOF_ll_ref\"\ value=\"28.0920848764\"/\>#g {} \;
+ find . -name "*.xml" -exec sed -i s#28.1537703996\"\/\>#28.1537703996\"\/\>\\n\<cuts\ name=\"TOF_ul_ref\"\ value=\"28.2920848764\"/\>#g {} \;

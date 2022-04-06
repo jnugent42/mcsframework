@@ -1,0 +1,42 @@
+#!/bin/bash
+
+cd MCSsys
+cp ../lih172/LihMuon_03172.root .
+cp ../lih200/LihMuon_03200.root .
+cp ../lih240/LihMuon_03240.root .
+
+cp ../MClih172/LihMuon_03172.root MCLihMuon_03172.root
+cp ../MClih200/LihMuon_03200.root MCLihMuon_03200.root
+cp ../MClih240/LihMuon_03240.root MCLihMuon_03240.root
+
+python extract_MCSsys.py
+cd ..
+
+cd MCDatacom
+python MCDatacom.py
+cd ..
+
+cd plot3 
+python threeMomentaPlot.py
+cd ..
+
+# cd scanrotang
+# mv rot_ang_0/LiHMu_3200_0.xml .
+# ./run_script.sh
+# mv LiHMu_3200_0.xml rot_ang_0
+# cd ..
+
+cd scanradial
+mv accp_rad_0/LiHMu_3200_0.xml .
+./run_script.sh
+mv LiHMu_3200_0.xml accp_rad_0
+cd ..
+
+cd TOFsys
+mv LiHMu_3200_5.xml xml
+cp ../lih172/LihMuon_03172.root .
+cp ../lih200/LihMuon_03200.root .
+cp ../lih240/LihMuon_03240.root .
+./run_script.sh
+cp xml/LiHMu_3200_5.xml .
+

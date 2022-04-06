@@ -1,0 +1,10 @@
+
+universe       = vanilla
+executable     = rot_ang_0/LiHMu_3200_0.0004000000000000006.sh
+output         = /data/neutrino03/jnugent/Unfolding/MCscanrotang/rot_ang_0/LiHMu_3200_0.0004000000000000006.out
+error          = /data/neutrino03/jnugent/Unfolding/MCscanrotang/rot_ang_0/LiHMu_3200_0.0004000000000000006.err             
+log            = /data/neutrino03/jnugent/Unfolding/MCscanrotang/rot_ang_0/LiHMu_3200_0.0004000000000000006.log
+requirements   = OpSysAndVer == "CentOS7"
+request_memory = 10Gb
+
+queue

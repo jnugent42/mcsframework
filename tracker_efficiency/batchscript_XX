@@ -1,0 +1,8 @@
+executable     = sub_script_XX_LL_uu.sh
+output         = /home/ppe/j/jnugent/workarea/tracker_efficiency/job_LL_uu_XX_EEE.out
+error          = /home/ppe/j/jnugent/workarea/tracker_efficiency/job_LL_uu_XX_EEE.err             
+log            = /home/ppe/j/jnugent/workarea/tracker_efficiency/job_LL_uu_XX_EEE.log
+requirements   = OpSysAndVer == "CentOS7"
+
+queue
+

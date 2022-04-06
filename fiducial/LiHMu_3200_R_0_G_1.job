@@ -1,0 +1,9 @@
+
+universe       = vanilla
+executable     = LiHMu_3200_R_0_G_1.sh
+output         = /data/neutrino03/jnugent/Unfolding/fiducial/LiHMu_3200_R_0_G_1.out
+error          = /data/neutrino03/jnugent/Unfolding/fiducial/LiHMu_3200_R_0_G_1.err
+log            = test.log
+requirements   = OpSysAndVer == "CentOS7"
+
+queue

@@ -1,0 +1,10 @@
+
+universe       = vanilla
+executable     = LiHMu_3200_-1.sh
+output         = /data/neutrino03/jnugent/Unfolding/alignment/LiHMu_3200_-1.out
+error          = /data/neutrino03/jnugent/Unfolding/alignment/LiHMu_3200_-1.err
+log            = /data/neutrino03/jnugent/Unfolding/alignment/LiHMu_3200_-1.log
+requirements   = OpSysAndVer == "CentOS7"
+request_memory = 6 GB
+
+queue

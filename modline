@@ -1,0 +1,43 @@
+#!/bin/bash
+
+
+# find . -name local_env.sh -exec sed -i s#.\ /data/neutrino06/jnugent/MAUS-v3.1.2/env.sh#.\ /data/neutrino/jnugent/MAUS-v3.3.2/env.sh#g {} \;
+# find . -name *.xml -exec sed -i s#TOF_ll\"\ value=\"*\"#P_ll\"\ value=\"198\"#g {} \;
+# find . -name *.xml -exec sed -i s#TOF_ul\"\ value=\"*\"#P_ul\"\ value=\"202\"#g {} \;
+# find . -name *.xml -exec sed -i s#datafile\"\ name=\"/data/neutrino/jnugent/v3.3.2/allLiH/#datafile\"\ name=\"/data/neutrino/jnugent/v3.3.4/allLiH/#g {} \;
+# find . -name *.xml -exec sed -i s#trainfile\"\ name=\"/data/neutrino/jnugent/v3.3.2/allZeroAbs/#trainfile\"\ name=\"/data/neutrino/jnugent/v3.3.4/allZeroAbs/#g {} \;
+# find . -name "*.xml" -exec sed -i s#trkreffiname\"\ name=\"/home/ppe/j/jnugent/workarea/tracker_efficiency/#trkreffiname\"\ name=\"/data/neutrino03/jnugent/Unfolding/tracker_efficiency/#g {} \;
+# find . -name "*.xml" -exec sed -i s#trkreffiemptyname\"\ name=\"/home/ppe/j/jnugent/workarea/emptyeffi/#trkreffiemptyname\"\ name=\"/data/neutrino03/jnugent/Unfolding/emptyeffi/#g {} \;
+# find . -name *.py -exec sed -i s#.eps#.pdf#g {} \;
+#find . -name *.xml -exec sed -i s/\"rot_ang\"\ value=\"-0.0008\"/\"rot_ang\"\ value=\"-0.0004\"/g {} \;
+# find . -name *.xml -exec sed -i s/\"rot_angX\"\ value=\"-0.00237\"/\"rot_angX\"\ value=\"-0.00437\"/g {} \;
+# find . -name *.xml -exec sed -i s/\"rot_ang_empty\"\ value=\"-0.00136\"/\"rot_ang_empty\"\ value=\"0.0005\"/g {} \;
+# find . -name *.xml -exec sed -i s/\"rot_ang_emptyX\"\ value=\"0.0008\"/\"rot_ang_emptyX\"\ value=\"-0.007\"/g {} \;
+# find . -name *.xml -exec sed -i s/\"minXY\"\ value=\"-0.0705\"/\"minXY\"\ value=\"-0.0705\"/g {} \;
+# find . -name *.xml -exec sed -i s/\"maxXY\"\ value=\"0.0705\"/\"maxXY\"\ value=\"-0.0705\"/g {} \;
+# find . -name *.xml -exec sed -i s/\"NbinsXY\"\ value=\"47\"/\"NbinsXY\"\ value=\"-0.0705\"/g {} \;
+# find . -name *.xml -exec sed -i s/\"NbinsTh\"\ value=\"47\"/\NbinsTh\"\ value=\"-0.0705\"/g {} \;
+
+# find . -name "*.xml" -exec sed -i s#27.9071541342#27.8918072213#g {} \;
+# find . -name "*.xml" -exec sed -i s#28.1071541342#28.0918072213#g {} \;
+find . -name "*.xml" -exec sed -i s#27.9001204973#28.0196160799#g {} \;
+find . -name "*.xml" -exec sed -i s#28.1001204973#28.2196160799#g {} \;
+ 
+# find . -name "*.xml" -exec sed -i s#28.5890412445#28.6023106126#g {} \;
+# find . -name "*.xml" -exec sed -i s#28.7890412445#28.8023106126#g {} \;
+find . -name "*.xml" -exec sed -i s#28.6886795567#28.7943657389#g {} \;
+find . -name "*.xml" -exec sed -i s#28.8886795567#28.9943657389#g {} \;
+ 
+# find . -name "*.xml" -exec sed -i s#27.2090316164#27.1643870826#g {} \;
+# find . -name "*.xml" -exec sed -i s#27.4090316164#27.3643870826#g {} \;
+find . -name "*.xml" -exec sed -i s#27.0927862221#27.2264200005#g {} \;
+find . -name "*.xml" -exec sed -i s#27.2927862221#27.4264200005#g {} \;
+
+ # find . -name "*.xml" -exec sed -i s#28.6371139354\"\/\>#28.6371139354\"\/\>\\n\<cuts\ name=\"TOF_ll_ref\"\ value=\"28.8591643356\"/\>#g {} \;
+ #find . -name "*.xml" -exec sed -i s#28.8371139354\"\/\>#28.8371139354\"\/\>\\n\<cuts\ name=\"TOF_ul_ref\"\ value=\"29.0591643356\"/\>#g {} \;
+ 
+# find . -name "*.xml" -exec sed -i s#27.2541567795\"\/\>#27.2541567795\"\/\>\\n\<cuts\ name=\"TOF_ll_ref\"\ value=\"27.3067416205\"/\>#g {} \;
+ #find . -name "*.xml" -exec sed -i s#27.4541567795\"\/\>#27.4541567795\"\/\>\\n\<cuts\ name=\"TOF_ul_ref\"\ value=\"27.5067416205\"/\>#g {} \;
+ 
+# find . -name "*.xml" -exec sed -i s#27.9537703996\"\/\>#27.9537703996\"\/\>\\n\<cuts\ name=\"TOF_ll_ref\"\ value=\"28.0920848764\"/\>#g {} \;
+ #find . -name "*.xml" -exec sed -i s#28.1537703996\"\/\>#28.1537703996\"\/\>\\n\<cuts\ name=\"TOF_ul_ref\"\ value=\"28.2920848764\"/\>#g {} \;

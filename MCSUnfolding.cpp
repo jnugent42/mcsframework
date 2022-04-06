@@ -5,11 +5,16 @@
 #include "libxml/parser.h"
 #include "libxml/xpath.h"
 #include "libxml/xpathInternals.h"
+#include <stdio.h>      /* printf, NULL */
+#include <stdlib.h>     /* strtold */
 
 #if defined(LIBXML_XPATH_ENABLED) && defined(LIBXML_SAX1_ENABLED)
 
 struct specvals {
   std::string outfile;
+  double isMC;
+  bool TOFsys;
+  int offset_needed;
   std::string outfilename;
   std::string dataname;
   std::string emptydataname;
@@ -26,15 +31,28 @@ struct specvals {
   std::map<std::string, double> sys;
   std::map<std::string, double> histlimits;
   double angdef;
-  double TOF_ll;
-  double TOF_ul;
+  int beamtype;
+  double rot_ang;
+  double rot_ang_empty;
+  double rot_angX;
+  double rot_ang_emptyX;
+  double accpt;
+  long double TOF_ll;
+  long double TOF_ul;
+  double P_ll;
+  double P_ul;
+  long double TOF_ll_ref;
+  long double TOF_ul_ref;
   double fid_grad;
   double fid_rad;
+  double eff_cut;
   int    mode;
+  int    offset;
 }; 
 
 static void print_element_names(xmlNode * a_node, specvals& spec)
 {
+    char * pEnd;
   xmlNode *cur_node = NULL;
   for (cur_node= a_node; cur_node; cur_node = cur_node->next) { 
     if (cur_node->type == XML_ELEMENT_NODE) {
@@ -53,6 +71,10 @@ static void print_element_names(xmlNode * a_node, specvals& spec)
 	  spec.dataname = (char*)xmlGetProp(cur_node, nm);
 	} else if ( xmlStrEqual(xmlGetProp(cur_node, id), xmlCharStrdup("trainfile")) ){
 	  spec.trainname = (char*)xmlGetProp(cur_node, nm);
+	} else if ( xmlStrEqual(xmlGetProp(cur_node, id), xmlCharStrdup("isMC")) ){
+	  spec.isMC = std::atof((char*)xmlGetProp(cur_node, nm));
+	} else if ( xmlStrEqual(xmlGetProp(cur_node, id), xmlCharStrdup("TOFsys")) ){
+	  spec.TOFsys = std::atof((char*)xmlGetProp(cur_node, nm));
 	} else if ( xmlStrEqual(xmlGetProp(cur_node, id), xmlCharStrdup("modelfile")) ){
 	  spec.modelname = (char*)xmlGetProp(cur_node, nm);
 	} else if ( xmlStrEqual(xmlGetProp(cur_node, id), xmlCharStrdup("modelfile2")) ){
@@ -71,6 +93,8 @@ static void print_element_names(xmlNode * a_node, specvals& spec)
 	  spec.trkreffiname = (char*)xmlGetProp(cur_node, nm);
 	} else if ( xmlStrEqual(xmlGetProp(cur_node, id), xmlCharStrdup("trkreffiemptyname")) ) {
 	  spec.trkreffiemptyname = (char*)xmlGetProp(cur_node, nm);
+	} else if ( xmlStrEqual(xmlGetProp(cur_node, id), xmlCharStrdup("offset_needed")) ) {
+	  spec.offset_needed = std::atof((char*)xmlGetProp(cur_node, nm));
 	}else {
 	  std::cout<<"File designation not recognized. Will ignore "
 		   << xmlGetProp(cur_node, id) 
@@ -80,15 +104,27 @@ static void print_element_names(xmlNode * a_node, specvals& spec)
 
       if (xmlStrEqual(cur_node->name, xmlCharStrdup("cuts")) ) {
         if ( xmlStrEqual(xmlGetProp(cur_node, nm), xmlCharStrdup("TOF_ll")) ){
-	  spec.TOF_ll = std::atof((char*)xmlGetProp(cur_node, vl));
+	  spec.TOF_ll = strtold((char*)xmlGetProp(cur_node, vl),&pEnd);
 	} else if ( xmlStrEqual(xmlGetProp(cur_node, nm), xmlCharStrdup("TOF_ul")) ){
-	  spec.TOF_ul = std::atof((char*)xmlGetProp(cur_node, vl));
+	  spec.TOF_ul = strtold((char*)xmlGetProp(cur_node, vl),&pEnd);
+	} else if ( xmlStrEqual(xmlGetProp(cur_node, nm), xmlCharStrdup("P_ll")) ){
+	  spec.P_ll = strtold((char*)xmlGetProp(cur_node, vl),&pEnd);
+	} else if ( xmlStrEqual(xmlGetProp(cur_node, nm), xmlCharStrdup("P_ul")) ){
+	  spec.P_ul = strtold((char*)xmlGetProp(cur_node, vl),&pEnd);
+	} else if ( xmlStrEqual(xmlGetProp(cur_node, nm), xmlCharStrdup("TOF_ll_ref")) ){
+	  spec.TOF_ll_ref = strtold((char*)xmlGetProp(cur_node, vl),&pEnd);
+	} else if ( xmlStrEqual(xmlGetProp(cur_node, nm), xmlCharStrdup("TOF_ul_ref")) ){
+	  spec.TOF_ul_ref = strtold((char*)xmlGetProp(cur_node, vl),&pEnd);
 	} else if ( xmlStrEqual(xmlGetProp(cur_node, nm), xmlCharStrdup("fid_grad")) ){
 	  spec.fid_grad = std::atof((char*)xmlGetProp(cur_node, vl));
 	} else if ( xmlStrEqual(xmlGetProp(cur_node, nm), xmlCharStrdup("fid_rad")) ){
 	  spec.fid_rad = std::atof((char*)xmlGetProp(cur_node, vl));
+	} else if ( xmlStrEqual(xmlGetProp(cur_node, nm), xmlCharStrdup("eff_cut")) ){
+	  spec.eff_cut = std::atof((char*)xmlGetProp(cur_node, vl));
 	} else if ( xmlStrEqual(xmlGetProp(cur_node, nm), xmlCharStrdup("mode")) ){
 	  spec.mode = std::atof((char*)xmlGetProp(cur_node, vl));
+	} else if ( xmlStrEqual(xmlGetProp(cur_node, nm), xmlCharStrdup("offset")) ){
+	  spec.offset = std::atof((char*)xmlGetProp(cur_node, vl));
 	} else {
 	  std::cout<<"Cut designation not recognized. Will ignore "
 		   << xmlGetProp(cur_node, nm) 
@@ -98,6 +134,18 @@ static void print_element_names(xmlNode * a_node, specvals& spec)
       if (xmlStrEqual(cur_node->name, xmlCharStrdup("sys")) ){
 	if ( xmlStrEqual(xmlGetProp(cur_node, nm), xmlCharStrdup("angdef")) ){
 	  spec.angdef = std::atof((char*)xmlGetProp(cur_node, vl));
+	} else if ( xmlStrEqual(xmlGetProp(cur_node, nm), xmlCharStrdup("rot_ang")) ){
+	  spec.rot_ang = std::atof((char*)xmlGetProp(cur_node, vl));
+	} else if ( xmlStrEqual(xmlGetProp(cur_node, nm), xmlCharStrdup("beamtype")) ){
+	  spec.beamtype = std::atof((char*)xmlGetProp(cur_node, vl));
+	} else if ( xmlStrEqual(xmlGetProp(cur_node, nm), xmlCharStrdup("rot_ang_empty")) ){
+	  spec.rot_ang_empty = std::atof((char*)xmlGetProp(cur_node, vl));
+	} else if ( xmlStrEqual(xmlGetProp(cur_node, nm), xmlCharStrdup("rot_angX")) ){
+	  spec.rot_angX = std::atof((char*)xmlGetProp(cur_node, vl));
+	} else if ( xmlStrEqual(xmlGetProp(cur_node, nm), xmlCharStrdup("rot_ang_emptyX")) ){
+	  spec.rot_ang_emptyX = std::atof((char*)xmlGetProp(cur_node, vl));
+	} else if ( xmlStrEqual(xmlGetProp(cur_node, nm), xmlCharStrdup("accpt")) ){
+	  spec.accpt = std::atof((char*)xmlGetProp(cur_node, vl));
 	} else spec.sys[(char*)xmlGetProp(cur_node, nm)] = 
 	  std::atof((char*)xmlGetProp(cur_node, vl));
       }
@@ -129,6 +177,9 @@ int main(int argc, char* argv[]) {
   specvals spec;
 
   spec.outfile = "";
+  spec.isMC = 0;
+  spec.TOFsys = false;
+  spec.offset_needed = 0;
   spec.dataname  = "";
   spec.trainname = "";
   spec.modelname = "";
@@ -136,12 +187,24 @@ int main(int argc, char* argv[]) {
   spec.geometryname = "";
   spec.trkreffiname = "";
   spec.trkreffiemptyname = "";
+  spec.beamtype = 9999;
   spec.angdef = 0;
+  spec.rot_ang = 0;
+  spec.rot_ang_empty = 0;
+  spec.rot_angX = 0;
+  spec.rot_ang_emptyX = 0;
+  spec.accpt = -0.2;
   spec.TOF_ll = 27.0;
   spec.TOF_ul = 42.0;
+  spec.P_ll = 198.0;
+  spec.P_ul = 200.0;
+  spec.TOF_ll_ref = 27.0;
+  spec.TOF_ul_ref = 42.0;
   spec.fid_grad = 0.01;
   spec.fid_rad  = 150.0;
+  spec.eff_cut  = 0.180;
   spec.mode     = 0;
+  spec.offset     = 0;
 
   if ( argc == 2 ){
     xmlInitParser();
@@ -171,7 +234,9 @@ int main(int argc, char* argv[]) {
     spec.modelname = argv[7];
     spec.modelname2 = argv[7];
     spec.mode      = std::atoi(argv[8]);
+    spec.offset      = std::atoi(argv[14]);
     spec.angdef    = std::atof(argv[9]);
+    spec.rot_ang   = std::atof(argv[10]);
   }
     
   if (spec.mode > 0){
@@ -189,14 +254,29 @@ int main(int argc, char* argv[]) {
   std::cout<<"Use "<<spec.geometryname<<" for propagation\n";
   std::cout<<"\n";
   std::cout<<"angdef " <<spec.angdef<<std::endl;
+  std::cout<<"rot_ang " <<spec.rot_ang<<std::endl;
+  std::cout<<"rot_ang_empty " <<spec.rot_ang_empty<<std::endl;
+  std::cout<<"rot_angX " <<spec.rot_angX<<std::endl;
+  std::cout<<"rot_ang_emptyX " <<spec.rot_ang_emptyX<<std::endl;
+  std::cout<<"accpt " <<spec.accpt<<std::endl;
   std::cout<<"TOF selection between "
 	   <<spec.TOF_ll<<" and "<<spec.TOF_ul<<std::endl;
+  std::cout<<"P selection between "
+	   <<spec.P_ll<<" and "<<spec.P_ul<<std::endl;
+  std::cout<<"TOF reference selection between "
+	   <<spec.TOF_ll_ref<<" and "<<spec.TOF_ul_ref<<std::endl;
   std::cout<<"Fiducial selection contained by radius "
 	   <<spec.fid_rad<<" with scattering "<<spec.fid_grad<<std::endl;
+  std::cout<<"Efficiency cut " <<spec.eff_cut<<std::endl;
+  std::cout<<"isMC "<<spec.isMC<<std::endl; 
+  std::cout<<"TOFsys "<<spec.TOFsys<<std::endl; 
+  std::cout<<"offset_needed "<<spec.offset_needed<<std::endl; 
+  std::cout<<"mode "<<spec.mode<<std::endl; 
+  std::cout<<"offset "<<spec.offset<<std::endl; 
+  std::cout<<"beamtype "<<spec.beamtype<<std::endl; 
   std::cout<<"\n";
 
   MCSAnalysis anal("recon_reduced_tree", "Truth_reduced_tree", mode_tree, spec.outfile, spec.histlimits);
-
   /*
   TFile* data = new TFile(spec.dataname.c_str());
   if(data->IsZombie()){
@@ -210,15 +290,30 @@ int main(int argc, char* argv[]) {
   }
   */
   anal.Setangdef(spec.angdef);
+  anal.Setrot_ang(spec.rot_ang);
+  anal.Setrot_ang_empty(spec.rot_ang_empty);
+  anal.Setrot_angX(spec.rot_angX);
+  anal.Setrot_ang_emptyX(spec.rot_ang_emptyX);
+  anal.Setaccpt(spec.accpt);
   anal.SetTOFLowerLimit(spec.TOF_ll);
   anal.SetTOFUpperLimit(spec.TOF_ul);
+  anal.SetPLowerLimit(spec.P_ll);
+  anal.SetPUpperLimit(spec.P_ul);
+  anal.SetTOFLowerLimitRef(spec.TOF_ll_ref);
+  anal.SetTOFUpperLimitRef(spec.TOF_ul_ref);
   anal.SetRadialLimit(spec.fid_rad);
+  anal.SetEffCut(spec.eff_cut);
   anal.SetGradientLimit(spec.fid_grad);
   anal.SetModelFileName(spec.modelname.c_str());
   anal.SetModelName1(spec.model1);
   anal.SetModelName2(spec.model2);
   anal.SetModelName3(spec.model3);
   anal.SetMaterial(spec.material);
+  anal.SetisMC(spec.isMC);
+  anal.SetTOFsys(spec.TOFsys);
+  anal.Setoffset_needed(spec.offset_needed);
+  anal.Setmode(spec.mode);
+  anal.Setoffset(spec.offset);
   std::ostringstream strs;
   /*
   strs << spec.TOF_ll;
@@ -227,6 +322,7 @@ int main(int argc, char* argv[]) {
   */
   anal.SetTrkrEffiName(spec.trkreffiname.c_str());
   anal.SetTrkrEffiEmptyName(spec.trkreffiemptyname.c_str());
+  anal.Setbeamtype(spec.beamtype);
   anal.SetParentGeometryFile(spec.geometryname.c_str());
   anal.SetFileName(spec.outfilename.c_str());
 
@@ -236,6 +332,7 @@ int main(int argc, char* argv[]) {
   while (ent = gSystem->GetDirEntry(dir)) {
       fn = fn.Append(ent);
           if (fn.Contains("ZeroAbs")) {
+          //if (fn.Contains("output_7652ZeroAbs200_7600_7629.root")) {
           if (fn.Contains(".root")) {
 	          anal.GetRefTree()->Add(fn);
 	  }
@@ -249,6 +346,8 @@ int main(int argc, char* argv[]) {
   while (ent = gSystem->GetDirEntry(dir)) {
       fn = fn.Append(ent);
           if (fn.Contains("LiH2") || fn.Contains("LiH1")) {
+	  /* //if (fn.Contains("output_7790LiH240_7600_7629.root")) { */
+          //if (fn.Contains("7000")) {
           if (fn.Contains(".root")) {
 	          anal.GetTree()->Add(fn);
 	  }
@@ -262,8 +361,9 @@ int main(int argc, char* argv[]) {
   while (ent = gSystem->GetDirEntry(dir)) {
       fn = fn.Append(ent);
           if (fn.Contains("LiH2") || fn.Contains("LiH1")) {
+      //if (fn.Contains("output_7790LiH240_7600_7629.root")) {        
+      //if (fn.Contains("700000")) {
           if (fn.Contains(".root")) {
-
 	          anal.GetMCTree()->Add(fn);
 	  }
       }
@@ -276,6 +376,7 @@ int main(int argc, char* argv[]) {
   while (ent = gSystem->GetDirEntry(dir)) {
       fn = fn.Append(ent);
           if (fn.Contains("ZeroAbs")) {
+          //if (fn.Contains("700")) {
           if (fn.Contains(".root")) {
 	          anal.GetMCEmptyTree()->Add(fn);
 	  }
@@ -292,6 +393,7 @@ int main(int argc, char* argv[]) {
     std::cout<<"Adding systematic effect "<<it->first
 	     <<" with value "<<it->second<<std::endl;
   }
+  std::cout<<"11"<<std::endl; 
   anal.Execute(spec.mode);
 
   anal.Write();

@@ -1,0 +1,9 @@
+universe       = vanilla
+executable     = sub_script_bayes100it.sh
+output         = /data/neutrino03/jnugent/Unfolding/tests/lihbayes100it.out
+error          = /data/neutrino03/jnugent/Unfolding/tests/lihbayes100it.err             
+log            = /data/neutrino03/jnugent/Unfolding/tests/lihbayes100it.log
+requirements   = OpSysAndVer == "CentOS7"
+
+queue
+

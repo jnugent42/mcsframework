@@ -1,0 +1,2500 @@
+desc: (none)
+cmd: ../MCSUnfolding 0LihMuon_3200.xml
+time_unit: i
+#-----------
+snapshot=0
+#-----------
+time=0
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=1
+#-----------
+time=3174248190
+mem_heap_B=39200985
+mem_heap_extra_B=1471647
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=2
+#-----------
+time=5700063382
+mem_heap_B=39117089
+mem_heap_extra_B=1464407
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=3
+#-----------
+time=9119287878
+mem_heap_B=38941292
+mem_heap_extra_B=1460852
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=4
+#-----------
+time=11744645613
+mem_heap_B=168957780
+mem_heap_extra_B=1692748
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=5
+#-----------
+time=14752900297
+mem_heap_B=195887587
+mem_heap_extra_B=1695245
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=6
+#-----------
+time=16903067263
+mem_heap_B=210765524
+mem_heap_extra_B=1695548
+mem_stacks_B=0
+heap_tree=detailed
+n10: 210765524 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 95335210 0x6893055: TBuffer::TBuffer(TBuffer::EMode, int) (TBuffer.cxx:72)
+  n2: 95335210 0x77F74F7: TBufferFile::TBufferFile(TBuffer::EMode, int) (TBufferFile.cxx:109)
+   n1: 95335210 0x925DF55: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:95)
+    n1: 95335210 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+     n1: 95335210 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+      n2: 95335210 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+       n1: 95283068 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+        n2: 95283068 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+         n1: 88255678 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+          n1: 88255678 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+           n1: 88255678 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+            n0: 88255678 0x412851: main (MCSUnfolding.cpp:358)
+         n2: 7027390 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n1: 6766680 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n1: 6766680 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+            n1: 6766680 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+             n0: 6766680 0x412851: main (MCSUnfolding.cpp:358)
+          n0: 260710 in 1 place, below massif's threshold (1.00%)
+       n0: 52142 in 1 place, below massif's threshold (1.00%)
+   n0: 0 in 3 places, all below massif's threshold (1.00%)
+ n1: 50729072 0x68CFFC8: TStorage::ReAlloc(void*, unsigned long, unsigned long) (TStorage.cxx:234)
+  n2: 50729072 0x681F1C3: TObjArray::Expand(int) (TObjArray.cxx:385)
+   n2: 50712464 0x681F854: TObjArray::AddAtAndExpand(TObject*, int) (TObjArray.cxx:232)
+    n1: 50449808 0x68BBA66: TProcessID::PutObjectWithID(TObject*, unsigned int) (TProcessID.cxx:337)
+     n1: 50449808 0x68B371E: TObject::Streamer(TBuffer&) (TObject.cxx:833)
+      n1: 50449808 0x78EA3D5: TStreamerInfoActions::ReadTObject(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:285)
+       n1: 50449808 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+        n1: 50449808 0x77F08B3: TBufferFile::ReadClassBuffer(TClass const*, void*, TClass const*) (TBufferFile.cxx:3893)
+         n1: 50449808 0x77F81B3: TBufferFile::ReadObjectAny(TClass const*) (TClass.h:451)
+          n1: 50449808 0x782B5B7: TGenCollectionStreamer::ReadObjects(int, TBuffer&, TClass const*) (TGenCollectionStreamer.cxx:405)
+           n1: 50449808 0x782C141: TGenCollectionStreamer::ReadBufferGeneric(TBuffer&, void*, TClass const*) (TGenCollectionStreamer.cxx:1387)
+            n1: 50449808 0x77F1924: TBufferFile::ReadFastArray(void*, TClass const*, int, TMemberStreamer*, TClass const*) (TClass.h:451)
+             n1: 50449808 0x78B45C4: int TStreamerInfoActions::ReadSTL<&TStreamerInfoActions::ReadSTLMemberWiseSameClass, &TStreamerInfoActions::ReadSTLObjectWiseFastArray>(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:706)
+              n1: 50449808 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+               n1: 50449808 0x926C1C9: TBranchElement::ReadLeavesMember(TBuffer&) (TBranchElement.cxx:4034)
+                n1: 50449808 0x92605A0: TBranch::GetEntry(long long, int) (TBranch.cxx:1278)
+                 n1: 50449808 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+                  n1: 50449808 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+                   n1: 50449808 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+                    n1: 50449808 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+                     n1: 50449808 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+                      n0: 50449808 0x412851: main (MCSUnfolding.cpp:358)
+    n0: 262656 in 3 places, all below massif's threshold (1.00%)
+   n0: 16608 in 1 place, below massif's threshold (1.00%)
+ n2: 26633840 0x680C826: TArrayD::Set(int) (TArrayD.cxx:114)
+  n2: 26537880 0x82C6A0B: TH2D::TH2D(char const*, char const*, int, double, double, int, double, double) (TH2.cxx:3922)
+   n1: 24960832 0x437C76: MCSAnalysis::MCSAnalysis(std::string, std::string, std::string, std::string, std::map<std::string, double, std::less<std::string>, std::allocator<std::pair<std::string const, double> > >) (MCSAnalysis.cpp:128)
+    n0: 24960832 0x411C9A: main (MCSUnfolding.cpp:246)
+   n0: 1577048 in 19 places, all below massif's threshold (1.00%)
+  n0: 95960 in 4 places, all below massif's threshold (1.00%)
+ n1: 13031536 0x68D00C6: TStorage::ReAllocChar(char*, unsigned long, unsigned long) (TStorage.cxx:275)
+  n1: 13031536 0x6892D01: TBuffer::Expand(int, bool) (TBuffer.cxx:211)
+   n1: 13031536 0x92B2225: TTree::GetTransientBuffer(int) (TTree.cxx:878)
+    n1: 13031536 0x925DFB3: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:104)
+     n1: 13031536 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+      n1: 13031536 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+       n1: 13031536 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+        n1: 13031536 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+         n2: 13031536 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n1: 13031536 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n1: 13031536 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+            n1: 13031536 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+             n0: 13031536 0x412851: main (MCSUnfolding.cpp:358)
+          n0: 0 in 1 place, below massif's threshold (1.00%)
+ n0: 9736026 in 2298 places, all below massif's threshold (1.00%)
+ n1: 4194304 0x68CE2F8: TRegexp::MakeWildcard(char const*) (ThreadLocalStorage.h:303)
+  n1: 4194304 0x68CE383: TRegexp::TRegexp(char const*, bool) (TRegexp.cxx:55)
+   n1: 4194304 0x92C06EF: TTree::SetBranchStatus(char const*, bool, unsigned int*) (TTree.cxx:7454)
+    n1: 4194304 0x928E5E6: TChain::LoadTree(long long) (TChain.cxx:1586)
+     n1: 4194304 0x928ED04: TChain::LoadTree(long long) (TChain.cxx:1519)
+      n1: 4194304 0x928ED04: TChain::LoadTree(long long) (TChain.cxx:1519)
+       n1: 4194304 0x928ED04: TChain::LoadTree(long long) (TChain.cxx:1519)
+        n1: 4194304 0x928ED04: TChain::LoadTree(long long) (TChain.cxx:1519)
+         n1: 4194304 0x928ED04: TChain::LoadTree(long long) (TChain.cxx:1519)
+          n1: 4194304 0x928ED04: TChain::LoadTree(long long) (TChain.cxx:1519)
+           n1: 4194304 0x928ED04: TChain::LoadTree(long long) (TChain.cxx:1519)
+            n1: 4194304 0x928ED04: TChain::LoadTree(long long) (TChain.cxx:1519)
+             n1: 4194304 0x928ED04: TChain::LoadTree(long long) (TChain.cxx:1519)
+              n1: 4194304 0x928ED04: TChain::LoadTree(long long) (TChain.cxx:1519)
+               n1: 4194304 0x928ED04: TChain::LoadTree(long long) (TChain.cxx:1519)
+                n1: 4194304 0x928ED04: TChain::LoadTree(long long) (TChain.cxx:1519)
+                 n1: 4194304 0x928ED04: TChain::LoadTree(long long) (TChain.cxx:1519)
+                  n1: 4194304 0x928ED04: TChain::LoadTree(long long) (TChain.cxx:1519)
+                   n1: 4194304 0x928ED04: TChain::LoadTree(long long) (TChain.cxx:1519)
+                    n1: 4194304 0x928ED04: TChain::LoadTree(long long) (TChain.cxx:1519)
+                     n1: 4194304 0x928ED04: TChain::LoadTree(long long) (TChain.cxx:1519)
+                      n1: 4194304 0x928ED04: TChain::LoadTree(long long) (TChain.cxx:1519)
+                       n1: 4194304 0x928ED04: TChain::LoadTree(long long) (TChain.cxx:1519)
+                        n1: 4194304 0x928ED04: TChain::LoadTree(long long) (TChain.cxx:1519)
+                         n1: 4194304 0x928ED04: TChain::LoadTree(long long) (TChain.cxx:1519)
+                          n1: 4194304 0x928ED04: TChain::LoadTree(long long) (TChain.cxx:1519)
+                           n1: 4194304 0x928ED04: TChain::LoadTree(long long) (TChain.cxx:1519)
+                            n1: 4194304 0x928ED04: TChain::LoadTree(long long) (TChain.cxx:1519)
+                             n1: 4194304 0x928ED04: TChain::LoadTree(long long) (TChain.cxx:1519)
+                              n0: 4194304 0x928ED04: TChain::LoadTree(long long) (TChain.cxx:1519)
+ n2: 3323328 0x683989E: TCint::CallFunc_Factory() const (TCint.cxx:2652)
+  n2: 3279600 0x6848E5B: TClass::CallShowMembers(void*, TMemberInspector&, int) const (TClass.cxx:1900)
+   n1: 2317584 0x68555DB: TClass::BuildRealData(void*, bool) (TClass.cxx:1719)
+    n0: 2317584 in 6 places, all below massif's threshold (1.00%)
+   n0: 962016 in 1 place, below massif's threshold (1.00%)
+  n0: 43728 in 1 place, below massif's threshold (1.00%)
+ n1: 3244032 0x474861: void std::vector<Vars, std::allocator<Vars> >::_M_emplace_back_aux<Vars const&>(Vars const&) (new_allocator.h:104)
+  n0: 3244032 in 4 places, all below massif's threshold (1.00%)
+ n1: 2397616 0x68D0217: TStorage::ObjectAlloc(unsigned long) (TStorage.cxx:325)
+  n0: 2397616 in 307 places, all below massif's threshold (1.00%)
+ n1: 2140560 0x6E324E4: G__memfunc_next (newlink.cxx:11598)
+  n0: 2140560 in 3 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=7
+#-----------
+time=19852859105
+mem_heap_B=262728083
+mem_heap_extra_B=1708213
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=8
+#-----------
+time=24105049510
+mem_heap_B=316457360
+mem_heap_extra_B=1708064
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=9
+#-----------
+time=26228945022
+mem_heap_B=329795570
+mem_heap_extra_B=1717414
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=10
+#-----------
+time=29198674994
+mem_heap_B=375604176
+mem_heap_extra_B=1719328
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=11
+#-----------
+time=32903651050
+mem_heap_B=413161732
+mem_heap_extra_B=1729060
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=12
+#-----------
+time=35278767708
+mem_heap_B=440113308
+mem_heap_extra_B=1732812
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=13
+#-----------
+time=38684029660
+mem_heap_B=477422116
+mem_heap_extra_B=1743692
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=14
+#-----------
+time=40761418978
+mem_heap_B=508214936
+mem_heap_extra_B=2103472
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=15
+#-----------
+time=43846033481
+mem_heap_B=519418734
+mem_heap_extra_B=2232770
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=16
+#-----------
+time=45669139684
+mem_heap_B=519904113
+mem_heap_extra_B=2268559
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=17
+#-----------
+time=48862290954
+mem_heap_B=501876656
+mem_heap_extra_B=2280720
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=18
+#-----------
+time=52965138118
+mem_heap_B=501796962
+mem_heap_extra_B=2273918
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=19
+#-----------
+time=55701126893
+mem_heap_B=501777984
+mem_heap_extra_B=2273968
+mem_stacks_B=0
+heap_tree=detailed
+n6: 501777984 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 332297056 0x68CFFC8: TStorage::ReAlloc(void*, unsigned long, unsigned long) (TStorage.cxx:234)
+  n2: 332297056 0x681F1C3: TObjArray::Expand(int) (TObjArray.cxx:385)
+   n2: 332280448 0x681F854: TObjArray::AddAtAndExpand(TObject*, int) (TObjArray.cxx:232)
+    n1: 332001792 0x68BBA66: TProcessID::PutObjectWithID(TObject*, unsigned int) (TProcessID.cxx:337)
+     n1: 332001792 0x68B371E: TObject::Streamer(TBuffer&) (TObject.cxx:833)
+      n1: 332001792 0x78EA3D5: TStreamerInfoActions::ReadTObject(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:285)
+       n1: 332001792 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+        n1: 332001792 0x77F08B3: TBufferFile::ReadClassBuffer(TClass const*, void*, TClass const*) (TBufferFile.cxx:3893)
+         n1: 332001792 0x77F81B3: TBufferFile::ReadObjectAny(TClass const*) (TClass.h:451)
+          n1: 332001792 0x782B5B7: TGenCollectionStreamer::ReadObjects(int, TBuffer&, TClass const*) (TGenCollectionStreamer.cxx:405)
+           n1: 332001792 0x782C141: TGenCollectionStreamer::ReadBufferGeneric(TBuffer&, void*, TClass const*) (TGenCollectionStreamer.cxx:1387)
+            n1: 332001792 0x77F1924: TBufferFile::ReadFastArray(void*, TClass const*, int, TMemberStreamer*, TClass const*) (TClass.h:451)
+             n1: 332001792 0x78B45C4: int TStreamerInfoActions::ReadSTL<&TStreamerInfoActions::ReadSTLMemberWiseSameClass, &TStreamerInfoActions::ReadSTLObjectWiseFastArray>(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:706)
+              n1: 332001792 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+               n1: 332001792 0x926C1C9: TBranchElement::ReadLeavesMember(TBuffer&) (TBranchElement.cxx:4034)
+                n1: 332001792 0x92605A0: TBranch::GetEntry(long long, int) (TBranch.cxx:1278)
+                 n1: 332001792 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+                  n1: 332001792 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+                   n1: 332001792 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+                    n1: 332001792 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+                     n1: 332001792 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+                      n0: 332001792 0x412851: main (MCSUnfolding.cpp:358)
+    n0: 278656 in 8 places, all below massif's threshold (1.00%)
+   n0: 16608 in 1 place, below massif's threshold (1.00%)
+ n1: 95410944 0x6893055: TBuffer::TBuffer(TBuffer::EMode, int) (TBuffer.cxx:72)
+  n2: 95410944 0x77F74F7: TBufferFile::TBufferFile(TBuffer::EMode, int) (TBufferFile.cxx:109)
+   n1: 95335210 0x925DF55: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:95)
+    n1: 95335210 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+     n1: 95335210 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+      n2: 95335210 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+       n1: 95283068 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+        n2: 95283068 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+         n1: 88255678 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+          n1: 88255678 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+           n1: 88255678 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+            n0: 88255678 0x412851: main (MCSUnfolding.cpp:358)
+         n2: 7027390 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n1: 6766680 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n1: 6766680 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+            n1: 6766680 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+             n0: 6766680 0x412851: main (MCSUnfolding.cpp:358)
+          n0: 260710 in 1 place, below massif's threshold (1.00%)
+       n0: 52142 in 1 place, below massif's threshold (1.00%)
+   n0: 75734 in 4 places, all below massif's threshold (1.00%)
+ n2: 26701552 0x680C826: TArrayD::Set(int) (TArrayD.cxx:114)
+  n2: 26605592 0x82C6A0B: TH2D::TH2D(char const*, char const*, int, double, double, int, double, double) (TH2.cxx:3922)
+   n1: 24960832 0x437C76: MCSAnalysis::MCSAnalysis(std::string, std::string, std::string, std::string, std::map<std::string, double, std::less<std::string>, std::allocator<std::pair<std::string const, double> > >) (MCSAnalysis.cpp:128)
+    n0: 24960832 0x411C9A: main (MCSUnfolding.cpp:246)
+   n0: 1644760 in 55 places, all below massif's threshold (1.00%)
+  n0: 95960 in 6 places, all below massif's threshold (1.00%)
+ n0: 25643904 in 2365 places, all below massif's threshold (1.00%)
+ n2: 13031536 0x68D00C6: TStorage::ReAllocChar(char*, unsigned long, unsigned long) (TStorage.cxx:275)
+  n1: 13031536 0x6892D01: TBuffer::Expand(int, bool) (TBuffer.cxx:211)
+   n1: 13031536 0x92B2225: TTree::GetTransientBuffer(int) (TTree.cxx:878)
+    n1: 13031536 0x925DFB3: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:104)
+     n1: 13031536 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+      n1: 13031536 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+       n1: 13031536 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+        n1: 13031536 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+         n2: 13031536 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n1: 13031536 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n1: 13031536 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+            n1: 13031536 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+             n0: 13031536 0x412851: main (MCSUnfolding.cpp:358)
+          n0: 0 in 1 place, below massif's threshold (1.00%)
+  n0: 0 in 3 places, all below massif's threshold (1.00%)
+ n1: 8692992 0x474861: void std::vector<Vars, std::allocator<Vars> >::_M_emplace_back_aux<Vars const&>(Vars const&) (new_allocator.h:104)
+  n0: 8692992 in 17 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=20
+#-----------
+time=59446125541
+mem_heap_B=617801391
+mem_heap_extra_B=2314937
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=21
+#-----------
+time=61805495427
+mem_heap_B=646136207
+mem_heap_extra_B=2322801
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=22
+#-----------
+time=64981981379
+mem_heap_B=688151968
+mem_heap_extra_B=2329696
+mem_stacks_B=0
+heap_tree=detailed
+n6: 688151968 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 397699672 0x68CFFC8: TStorage::ReAlloc(void*, unsigned long, unsigned long) (TStorage.cxx:234)
+  n2: 397699672 0x681F1C3: TObjArray::Expand(int) (TObjArray.cxx:385)
+   n2: 397667888 0x681F854: TObjArray::AddAtAndExpand(TObject*, int) (TObjArray.cxx:232)
+    n1: 397389232 0x68BBA66: TProcessID::PutObjectWithID(TObject*, unsigned int) (TProcessID.cxx:337)
+     n1: 397389232 0x68B371E: TObject::Streamer(TBuffer&) (TObject.cxx:833)
+      n1: 397389232 0x78EA3D5: TStreamerInfoActions::ReadTObject(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:285)
+       n1: 397389232 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+        n1: 397389232 0x77F08B3: TBufferFile::ReadClassBuffer(TClass const*, void*, TClass const*) (TBufferFile.cxx:3893)
+         n1: 397389232 0x77F81B3: TBufferFile::ReadObjectAny(TClass const*) (TClass.h:451)
+          n1: 397389232 0x782B5B7: TGenCollectionStreamer::ReadObjects(int, TBuffer&, TClass const*) (TGenCollectionStreamer.cxx:405)
+           n1: 397389232 0x782C141: TGenCollectionStreamer::ReadBufferGeneric(TBuffer&, void*, TClass const*) (TGenCollectionStreamer.cxx:1387)
+            n1: 397389232 0x77F1924: TBufferFile::ReadFastArray(void*, TClass const*, int, TMemberStreamer*, TClass const*) (TClass.h:451)
+             n1: 397389232 0x78B45C4: int TStreamerInfoActions::ReadSTL<&TStreamerInfoActions::ReadSTLMemberWiseSameClass, &TStreamerInfoActions::ReadSTLObjectWiseFastArray>(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:706)
+              n1: 397389232 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+               n1: 397389232 0x926C1C9: TBranchElement::ReadLeavesMember(TBuffer&) (TBranchElement.cxx:4034)
+                n1: 397389232 0x92605A0: TBranch::GetEntry(long long, int) (TBranch.cxx:1278)
+                 n1: 397389232 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+                  n1: 397389232 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+                   n2: 397389232 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+                    n1: 332001792 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+                     n1: 332001792 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+                      n0: 332001792 0x412851: main (MCSUnfolding.cpp:358)
+                    n1: 65387440 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+                     n1: 65387440 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+                      n0: 65387440 0x412851: main (MCSUnfolding.cpp:358)
+    n0: 278656 in 8 places, all below massif's threshold (1.00%)
+   n0: 31784 in 1 place, below massif's threshold (1.00%)
+ n1: 186502174 0x6893055: TBuffer::TBuffer(TBuffer::EMode, int) (TBuffer.cxx:72)
+  n2: 186502174 0x77F74F7: TBufferFile::TBufferFile(TBuffer::EMode, int) (TBufferFile.cxx:109)
+   n1: 186502174 0x925DF55: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:95)
+    n1: 186502174 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+     n1: 186502174 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+      n2: 186502174 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+       n1: 186402396 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+        n2: 186402396 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+         n2: 172611810 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+          n1: 88255678 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+           n1: 88255678 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+            n0: 88255678 0x412851: main (MCSUnfolding.cpp:358)
+          n1: 84356132 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+           n1: 84356132 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+            n0: 84356132 0x412851: main (MCSUnfolding.cpp:358)
+         n2: 13790586 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n1: 13291696 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n0: 13291696 in 2 places, all below massif's threshold (1.00%)
+          n0: 498890 in 1 place, below massif's threshold (1.00%)
+       n0: 99778 in 1 place, below massif's threshold (1.00%)
+   n0: 0 in 4 places, all below massif's threshold (1.00%)
+ n2: 37437592 0x68D00C6: TStorage::ReAllocChar(char*, unsigned long, unsigned long) (TStorage.cxx:275)
+  n2: 37437592 0x6892D01: TBuffer::Expand(int, bool) (TBuffer.cxx:211)
+   n1: 24936890 0x92B2225: TTree::GetTransientBuffer(int) (TTree.cxx:878)
+    n1: 24936890 0x925DFB3: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:104)
+     n1: 24936890 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+      n1: 24936890 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+       n1: 24936890 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+        n1: 24936890 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+         n2: 24936890 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n2: 24936890 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n1: 13031536 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+            n1: 13031536 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+             n0: 13031536 0x412851: main (MCSUnfolding.cpp:358)
+           n1: 11905354 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+            n1: 11905354 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+             n0: 11905354 0x412851: main (MCSUnfolding.cpp:358)
+          n0: 0 in 1 place, below massif's threshold (1.00%)
+   n1: 12500702 0x925CEFF: TBasket::ReadBasketBuffers(long long, int, TFile*) (TBasket.cxx:394)
+    n1: 12500702 0x92601E8: TBranch::GetBasket(int) (TBranch.cxx:1112)
+     n1: 12500702 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+      n1: 12500702 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+       n1: 12500702 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+        n1: 12500702 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+         n1: 12500702 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+          n1: 12500702 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+           n0: 12500702 0x412851: main (MCSUnfolding.cpp:358)
+  n0: 0 in 3 places, all below massif's threshold (1.00%)
+ n0: 26784162 in 2397 places, all below massif's threshold (1.00%)
+ n2: 26701552 0x680C826: TArrayD::Set(int) (TArrayD.cxx:114)
+  n2: 26605592 0x82C6A0B: TH2D::TH2D(char const*, char const*, int, double, double, int, double, double) (TH2.cxx:3922)
+   n1: 24960832 0x437C76: MCSAnalysis::MCSAnalysis(std::string, std::string, std::string, std::string, std::map<std::string, double, std::less<std::string>, std::allocator<std::pair<std::string const, double> > >) (MCSAnalysis.cpp:128)
+    n0: 24960832 0x411C9A: main (MCSUnfolding.cpp:246)
+   n0: 1644760 in 55 places, all below massif's threshold (1.00%)
+  n0: 95960 in 6 places, all below massif's threshold (1.00%)
+ n1: 13026816 0x474861: void std::vector<Vars, std::allocator<Vars> >::_M_emplace_back_aux<Vars const&>(Vars const&) (new_allocator.h:104)
+  n0: 13026816 in 23 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=23
+#-----------
+time=67317243152
+mem_heap_B=701588524
+mem_heap_extra_B=2329140
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=24
+#-----------
+time=70176055924
+mem_heap_B=755023145
+mem_heap_extra_B=2334431
+mem_stacks_B=0
+heap_tree=detailed
+n6: 755023145 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 472192288 0x68CFFC8: TStorage::ReAlloc(void*, unsigned long, unsigned long) (TStorage.cxx:234)
+  n2: 472192288 0x681F1C3: TObjArray::Expand(int) (TObjArray.cxx:385)
+   n2: 472160504 0x681F854: TObjArray::AddAtAndExpand(TObject*, int) (TObjArray.cxx:232)
+    n1: 471881848 0x68BBA66: TProcessID::PutObjectWithID(TObject*, unsigned int) (TProcessID.cxx:337)
+     n1: 471881848 0x68B371E: TObject::Streamer(TBuffer&) (TObject.cxx:833)
+      n1: 471881848 0x78EA3D5: TStreamerInfoActions::ReadTObject(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:285)
+       n1: 471881848 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+        n1: 471881848 0x77F08B3: TBufferFile::ReadClassBuffer(TClass const*, void*, TClass const*) (TBufferFile.cxx:3893)
+         n1: 471881848 0x77F81B3: TBufferFile::ReadObjectAny(TClass const*) (TClass.h:451)
+          n1: 471881848 0x782B5B7: TGenCollectionStreamer::ReadObjects(int, TBuffer&, TClass const*) (TGenCollectionStreamer.cxx:405)
+           n1: 471881848 0x782C141: TGenCollectionStreamer::ReadBufferGeneric(TBuffer&, void*, TClass const*) (TGenCollectionStreamer.cxx:1387)
+            n1: 471881848 0x77F1924: TBufferFile::ReadFastArray(void*, TClass const*, int, TMemberStreamer*, TClass const*) (TClass.h:451)
+             n1: 471881848 0x78B45C4: int TStreamerInfoActions::ReadSTL<&TStreamerInfoActions::ReadSTLMemberWiseSameClass, &TStreamerInfoActions::ReadSTLObjectWiseFastArray>(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:706)
+              n1: 471881848 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+               n1: 471881848 0x926C1C9: TBranchElement::ReadLeavesMember(TBuffer&) (TBranchElement.cxx:4034)
+                n1: 471881848 0x92605A0: TBranch::GetEntry(long long, int) (TBranch.cxx:1278)
+                 n1: 471881848 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+                  n1: 471881848 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+                   n2: 471881848 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+                    n1: 332001792 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+                     n1: 332001792 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+                      n0: 332001792 0x412851: main (MCSUnfolding.cpp:358)
+                    n1: 139880056 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+                     n1: 139880056 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+                      n0: 139880056 0x412851: main (MCSUnfolding.cpp:358)
+    n0: 278656 in 8 places, all below massif's threshold (1.00%)
+   n0: 31784 in 1 place, below massif's threshold (1.00%)
+ n1: 174596812 0x6893055: TBuffer::TBuffer(TBuffer::EMode, int) (TBuffer.cxx:72)
+  n2: 174596812 0x77F74F7: TBufferFile::TBufferFile(TBuffer::EMode, int) (TBufferFile.cxx:109)
+   n1: 174596812 0x925DF55: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:95)
+    n1: 174596812 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+     n1: 174596812 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+      n2: 174596812 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+       n1: 174497034 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+        n2: 174497034 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+         n2: 160706448 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+          n1: 88255678 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+           n1: 88255678 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+            n0: 88255678 0x412851: main (MCSUnfolding.cpp:358)
+          n1: 72450770 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+           n1: 72450770 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+            n0: 72450770 0x412851: main (MCSUnfolding.cpp:358)
+         n2: 13790586 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n1: 13291696 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n0: 13291696 in 2 places, all below massif's threshold (1.00%)
+          n0: 498890 in 1 place, below massif's threshold (1.00%)
+       n0: 99778 in 1 place, below massif's threshold (1.00%)
+   n0: 0 in 4 places, all below massif's threshold (1.00%)
+ n2: 37437592 0x68D00C6: TStorage::ReAllocChar(char*, unsigned long, unsigned long) (TStorage.cxx:275)
+  n2: 37437592 0x6892D01: TBuffer::Expand(int, bool) (TBuffer.cxx:211)
+   n1: 24936890 0x92B2225: TTree::GetTransientBuffer(int) (TTree.cxx:878)
+    n1: 24936890 0x925DFB3: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:104)
+     n1: 24936890 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+      n1: 24936890 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+       n1: 24936890 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+        n1: 24936890 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+         n2: 24936890 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n2: 24936890 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n1: 13031536 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+            n1: 13031536 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+             n0: 13031536 0x412851: main (MCSUnfolding.cpp:358)
+           n1: 11905354 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+            n1: 11905354 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+             n0: 11905354 0x412851: main (MCSUnfolding.cpp:358)
+          n0: 0 in 1 place, below massif's threshold (1.00%)
+   n1: 12500702 0x925CEFF: TBasket::ReadBasketBuffers(long long, int, TFile*) (TBasket.cxx:394)
+    n1: 12500702 0x92601E8: TBranch::GetBasket(int) (TBranch.cxx:1112)
+     n1: 12500702 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+      n1: 12500702 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+       n1: 12500702 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+        n1: 12500702 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+         n1: 12500702 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+          n1: 12500702 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+           n0: 12500702 0x412851: main (MCSUnfolding.cpp:358)
+  n0: 0 in 3 places, all below massif's threshold (1.00%)
+ n0: 26734261 in 2397 places, all below massif's threshold (1.00%)
+ n2: 26701552 0x680C826: TArrayD::Set(int) (TArrayD.cxx:114)
+  n2: 26605592 0x82C6A0B: TH2D::TH2D(char const*, char const*, int, double, double, int, double, double) (TH2.cxx:3922)
+   n1: 24960832 0x437C76: MCSAnalysis::MCSAnalysis(std::string, std::string, std::string, std::string, std::map<std::string, double, std::less<std::string>, std::allocator<std::pair<std::string const, double> > >) (MCSAnalysis.cpp:128)
+    n0: 24960832 0x411C9A: main (MCSUnfolding.cpp:246)
+   n0: 1644760 in 55 places, all below massif's threshold (1.00%)
+  n0: 95960 in 6 places, all below massif's threshold (1.00%)
+ n1: 17360640 0x474861: void std::vector<Vars, std::allocator<Vars> >::_M_emplace_back_aux<Vars const&>(Vars const&) (new_allocator.h:104)
+  n0: 17360640 in 23 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=25
+#-----------
+time=72082546047
+mem_heap_B=747682821
+mem_heap_extra_B=2336083
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=26
+#-----------
+time=75176212296
+mem_heap_B=809747966
+mem_heap_extra_B=2340370
+mem_stacks_B=0
+heap_tree=detailed
+n6: 809747966 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 526900344 0x68CFFC8: TStorage::ReAlloc(void*, unsigned long, unsigned long) (TStorage.cxx:234)
+  n2: 526900344 0x681F1C3: TObjArray::Expand(int) (TObjArray.cxx:385)
+   n2: 526868560 0x681F854: TObjArray::AddAtAndExpand(TObject*, int) (TObjArray.cxx:232)
+    n1: 526589584 0x68BBA66: TProcessID::PutObjectWithID(TObject*, unsigned int) (TProcessID.cxx:337)
+     n1: 526589584 0x68B371E: TObject::Streamer(TBuffer&) (TObject.cxx:833)
+      n1: 526589584 0x78EA3D5: TStreamerInfoActions::ReadTObject(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:285)
+       n1: 526589584 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+        n1: 526589584 0x77F08B3: TBufferFile::ReadClassBuffer(TClass const*, void*, TClass const*) (TBufferFile.cxx:3893)
+         n1: 526589584 0x77F81B3: TBufferFile::ReadObjectAny(TClass const*) (TClass.h:451)
+          n1: 526589584 0x782B5B7: TGenCollectionStreamer::ReadObjects(int, TBuffer&, TClass const*) (TGenCollectionStreamer.cxx:405)
+           n1: 526589584 0x782C141: TGenCollectionStreamer::ReadBufferGeneric(TBuffer&, void*, TClass const*) (TGenCollectionStreamer.cxx:1387)
+            n1: 526589584 0x77F1924: TBufferFile::ReadFastArray(void*, TClass const*, int, TMemberStreamer*, TClass const*) (TClass.h:451)
+             n1: 526589584 0x78B45C4: int TStreamerInfoActions::ReadSTL<&TStreamerInfoActions::ReadSTLMemberWiseSameClass, &TStreamerInfoActions::ReadSTLObjectWiseFastArray>(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:706)
+              n1: 526589584 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+               n1: 526589584 0x926C1C9: TBranchElement::ReadLeavesMember(TBuffer&) (TBranchElement.cxx:4034)
+                n1: 526589584 0x92605A0: TBranch::GetEntry(long long, int) (TBranch.cxx:1278)
+                 n1: 526589584 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+                  n1: 526589584 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+                   n2: 526589584 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+                    n1: 332001792 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+                     n1: 332001792 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+                      n0: 332001792 0x412851: main (MCSUnfolding.cpp:358)
+                    n1: 194587792 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+                     n1: 194587792 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+                      n0: 194587792 0x412851: main (MCSUnfolding.cpp:358)
+    n0: 278976 in 8 places, all below massif's threshold (1.00%)
+   n0: 31784 in 1 place, below massif's threshold (1.00%)
+ n1: 174596812 0x6893055: TBuffer::TBuffer(TBuffer::EMode, int) (TBuffer.cxx:72)
+  n2: 174596812 0x77F74F7: TBufferFile::TBufferFile(TBuffer::EMode, int) (TBufferFile.cxx:109)
+   n1: 174596812 0x925DF55: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:95)
+    n1: 174596812 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+     n1: 174596812 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+      n2: 174596812 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+       n1: 174497034 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+        n2: 174497034 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+         n2: 160706448 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+          n1: 88255678 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+           n1: 88255678 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+            n0: 88255678 0x412851: main (MCSUnfolding.cpp:358)
+          n1: 72450770 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+           n1: 72450770 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+            n0: 72450770 0x412851: main (MCSUnfolding.cpp:358)
+         n2: 13790586 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n1: 13291696 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n0: 13291696 in 2 places, all below massif's threshold (1.00%)
+          n0: 498890 in 1 place, below massif's threshold (1.00%)
+       n0: 99778 in 1 place, below massif's threshold (1.00%)
+   n0: 0 in 4 places, all below massif's threshold (1.00%)
+ n2: 37437592 0x68D00C6: TStorage::ReAllocChar(char*, unsigned long, unsigned long) (TStorage.cxx:275)
+  n2: 37437592 0x6892D01: TBuffer::Expand(int, bool) (TBuffer.cxx:211)
+   n1: 24936890 0x92B2225: TTree::GetTransientBuffer(int) (TTree.cxx:878)
+    n1: 24936890 0x925DFB3: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:104)
+     n1: 24936890 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+      n1: 24936890 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+       n1: 24936890 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+        n1: 24936890 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+         n2: 24936890 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n2: 24936890 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n1: 13031536 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+            n1: 13031536 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+             n0: 13031536 0x412851: main (MCSUnfolding.cpp:358)
+           n1: 11905354 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+            n1: 11905354 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+             n0: 11905354 0x412851: main (MCSUnfolding.cpp:358)
+          n0: 0 in 1 place, below massif's threshold (1.00%)
+   n1: 12500702 0x925CEFF: TBasket::ReadBasketBuffers(long long, int, TFile*) (TBasket.cxx:394)
+    n1: 12500702 0x92601E8: TBranch::GetBasket(int) (TBranch.cxx:1112)
+     n1: 12500702 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+      n1: 12500702 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+       n1: 12500702 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+        n1: 12500702 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+         n1: 12500702 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+          n1: 12500702 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+           n0: 12500702 0x412851: main (MCSUnfolding.cpp:358)
+  n0: 0 in 3 places, all below massif's threshold (1.00%)
+ n0: 26734130 in 2397 places, all below massif's threshold (1.00%)
+ n2: 26701552 0x680C826: TArrayD::Set(int) (TArrayD.cxx:114)
+  n2: 26605592 0x82C6A0B: TH2D::TH2D(char const*, char const*, int, double, double, int, double, double) (TH2.cxx:3922)
+   n1: 24960832 0x437C76: MCSAnalysis::MCSAnalysis(std::string, std::string, std::string, std::string, std::map<std::string, double, std::less<std::string>, std::allocator<std::pair<std::string const, double> > >) (MCSAnalysis.cpp:128)
+    n0: 24960832 0x411C9A: main (MCSUnfolding.cpp:246)
+   n0: 1644760 in 55 places, all below massif's threshold (1.00%)
+  n0: 95960 in 6 places, all below massif's threshold (1.00%)
+ n1: 17377536 0x474861: void std::vector<Vars, std::allocator<Vars> >::_M_emplace_back_aux<Vars const&>(Vars const&) (new_allocator.h:104)
+  n0: 17377536 in 23 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=27
+#-----------
+time=77938163331
+mem_heap_B=820917925
+mem_heap_extra_B=2346611
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=28
+#-----------
+time=80019622422
+mem_heap_B=845001275
+mem_heap_extra_B=2340133
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=29
+#-----------
+time=82805384493
+mem_heap_B=895005571
+mem_heap_extra_B=2347429
+mem_stacks_B=0
+heap_tree=detailed
+n6: 895005571 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 602887384 0x68CFFC8: TStorage::ReAlloc(void*, unsigned long, unsigned long) (TStorage.cxx:234)
+  n2: 602887384 0x681F1C3: TObjArray::Expand(int) (TObjArray.cxx:385)
+   n2: 602855600 0x681F854: TObjArray::AddAtAndExpand(TObject*, int) (TObjArray.cxx:232)
+    n1: 602576624 0x68BBA66: TProcessID::PutObjectWithID(TObject*, unsigned int) (TProcessID.cxx:337)
+     n1: 602576624 0x68B371E: TObject::Streamer(TBuffer&) (TObject.cxx:833)
+      n1: 602576624 0x78EA3D5: TStreamerInfoActions::ReadTObject(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:285)
+       n1: 602576624 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+        n1: 602576624 0x77F08B3: TBufferFile::ReadClassBuffer(TClass const*, void*, TClass const*) (TBufferFile.cxx:3893)
+         n1: 602576624 0x77F81B3: TBufferFile::ReadObjectAny(TClass const*) (TClass.h:451)
+          n1: 602576624 0x782B5B7: TGenCollectionStreamer::ReadObjects(int, TBuffer&, TClass const*) (TGenCollectionStreamer.cxx:405)
+           n1: 602576624 0x782C141: TGenCollectionStreamer::ReadBufferGeneric(TBuffer&, void*, TClass const*) (TGenCollectionStreamer.cxx:1387)
+            n1: 602576624 0x77F1924: TBufferFile::ReadFastArray(void*, TClass const*, int, TMemberStreamer*, TClass const*) (TClass.h:451)
+             n1: 602576624 0x78B45C4: int TStreamerInfoActions::ReadSTL<&TStreamerInfoActions::ReadSTLMemberWiseSameClass, &TStreamerInfoActions::ReadSTLObjectWiseFastArray>(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:706)
+              n1: 602576624 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+               n1: 602576624 0x926C1C9: TBranchElement::ReadLeavesMember(TBuffer&) (TBranchElement.cxx:4034)
+                n1: 602576624 0x92605A0: TBranch::GetEntry(long long, int) (TBranch.cxx:1278)
+                 n1: 602576624 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+                  n1: 602576624 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+                   n2: 602576624 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+                    n1: 332001792 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+                     n1: 332001792 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+                      n0: 332001792 0x412851: main (MCSUnfolding.cpp:358)
+                    n1: 270574832 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+                     n1: 270574832 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+                      n0: 270574832 0x412851: main (MCSUnfolding.cpp:358)
+    n0: 278976 in 8 places, all below massif's threshold (1.00%)
+   n0: 31784 in 1 place, below massif's threshold (1.00%)
+ n1: 162691450 0x6893055: TBuffer::TBuffer(TBuffer::EMode, int) (TBuffer.cxx:72)
+  n2: 162691450 0x77F74F7: TBufferFile::TBufferFile(TBuffer::EMode, int) (TBufferFile.cxx:109)
+   n1: 162691450 0x925DF55: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:95)
+    n1: 162691450 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+     n1: 162691450 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+      n2: 162691450 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+       n1: 162591672 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+        n2: 162591672 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+         n2: 148801086 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+          n1: 88255678 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+           n1: 88255678 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+            n0: 88255678 0x412851: main (MCSUnfolding.cpp:358)
+          n1: 60545408 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+           n1: 60545408 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+            n0: 60545408 0x412851: main (MCSUnfolding.cpp:358)
+         n2: 13790586 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n1: 13291696 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n0: 13291696 in 2 places, all below massif's threshold (1.00%)
+          n0: 498890 in 1 place, below massif's threshold (1.00%)
+       n0: 99778 in 1 place, below massif's threshold (1.00%)
+   n0: 0 in 4 places, all below massif's threshold (1.00%)
+ n2: 49941174 0x68D00C6: TStorage::ReAllocChar(char*, unsigned long, unsigned long) (TStorage.cxx:275)
+  n2: 49941174 0x6892D01: TBuffer::Expand(int, bool) (TBuffer.cxx:211)
+   n1: 25004284 0x925CEFF: TBasket::ReadBasketBuffers(long long, int, TFile*) (TBasket.cxx:394)
+    n1: 25004284 0x92601E8: TBranch::GetBasket(int) (TBranch.cxx:1112)
+     n1: 25004284 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+      n1: 25004284 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+       n1: 25004284 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+        n1: 25004284 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+         n1: 25004284 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+          n1: 25004284 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+           n0: 25004284 0x412851: main (MCSUnfolding.cpp:358)
+   n1: 24936890 0x92B2225: TTree::GetTransientBuffer(int) (TTree.cxx:878)
+    n1: 24936890 0x925DFB3: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:104)
+     n1: 24936890 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+      n1: 24936890 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+       n1: 24936890 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+        n1: 24936890 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+         n2: 24936890 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n2: 24936890 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n1: 13031536 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+            n1: 13031536 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+             n0: 13031536 0x412851: main (MCSUnfolding.cpp:358)
+           n1: 11905354 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+            n1: 11905354 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+             n0: 11905354 0x412851: main (MCSUnfolding.cpp:358)
+          n0: 0 in 1 place, below massif's threshold (1.00%)
+  n0: 0 in 3 places, all below massif's threshold (1.00%)
+ n0: 26721931 in 2397 places, all below massif's threshold (1.00%)
+ n2: 26701552 0x680C826: TArrayD::Set(int) (TArrayD.cxx:114)
+  n2: 26605592 0x82C6A0B: TH2D::TH2D(char const*, char const*, int, double, double, int, double, double) (TH2.cxx:3922)
+   n1: 24960832 0x437C76: MCSAnalysis::MCSAnalysis(std::string, std::string, std::string, std::string, std::map<std::string, double, std::less<std::string>, std::allocator<std::pair<std::string const, double> > >) (MCSAnalysis.cpp:128)
+    n0: 24960832 0x411C9A: main (MCSUnfolding.cpp:246)
+   n0: 1644760 in 55 places, all below massif's threshold (1.00%)
+  n0: 95960 in 6 places, all below massif's threshold (1.00%)
+ n1: 26062080 0x474861: void std::vector<Vars, std::allocator<Vars> >::_M_emplace_back_aux<Vars const&>(Vars const&) (new_allocator.h:104)
+  n0: 26062080 in 23 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=30
+#-----------
+time=86947309488
+mem_heap_B=935899331
+mem_heap_extra_B=2350501
+mem_stacks_B=0
+heap_tree=detailed
+n6: 935899331 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 643778640 0x68CFFC8: TStorage::ReAlloc(void*, unsigned long, unsigned long) (TStorage.cxx:234)
+  n2: 643778640 0x681F1C3: TObjArray::Expand(int) (TObjArray.cxx:385)
+   n2: 643746856 0x681F854: TObjArray::AddAtAndExpand(TObject*, int) (TObjArray.cxx:232)
+    n1: 643467880 0x68BBA66: TProcessID::PutObjectWithID(TObject*, unsigned int) (TProcessID.cxx:337)
+     n1: 643467880 0x68B371E: TObject::Streamer(TBuffer&) (TObject.cxx:833)
+      n1: 643467880 0x78EA3D5: TStreamerInfoActions::ReadTObject(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:285)
+       n1: 643467880 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+        n1: 643467880 0x77F08B3: TBufferFile::ReadClassBuffer(TClass const*, void*, TClass const*) (TBufferFile.cxx:3893)
+         n1: 643467880 0x77F81B3: TBufferFile::ReadObjectAny(TClass const*) (TClass.h:451)
+          n1: 643467880 0x782B5B7: TGenCollectionStreamer::ReadObjects(int, TBuffer&, TClass const*) (TGenCollectionStreamer.cxx:405)
+           n1: 643467880 0x782C141: TGenCollectionStreamer::ReadBufferGeneric(TBuffer&, void*, TClass const*) (TGenCollectionStreamer.cxx:1387)
+            n1: 643467880 0x77F1924: TBufferFile::ReadFastArray(void*, TClass const*, int, TMemberStreamer*, TClass const*) (TClass.h:451)
+             n1: 643467880 0x78B45C4: int TStreamerInfoActions::ReadSTL<&TStreamerInfoActions::ReadSTLMemberWiseSameClass, &TStreamerInfoActions::ReadSTLObjectWiseFastArray>(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:706)
+              n1: 643467880 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+               n1: 643467880 0x926C1C9: TBranchElement::ReadLeavesMember(TBuffer&) (TBranchElement.cxx:4034)
+                n1: 643467880 0x92605A0: TBranch::GetEntry(long long, int) (TBranch.cxx:1278)
+                 n1: 643467880 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+                  n1: 643467880 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+                   n2: 643467880 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+                    n1: 332001792 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+                     n1: 332001792 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+                      n0: 332001792 0x412851: main (MCSUnfolding.cpp:358)
+                    n1: 311466088 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+                     n1: 311466088 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+                      n0: 311466088 0x412851: main (MCSUnfolding.cpp:358)
+    n0: 278976 in 8 places, all below massif's threshold (1.00%)
+   n0: 31784 in 1 place, below massif's threshold (1.00%)
+ n1: 162691450 0x6893055: TBuffer::TBuffer(TBuffer::EMode, int) (TBuffer.cxx:72)
+  n2: 162691450 0x77F74F7: TBufferFile::TBufferFile(TBuffer::EMode, int) (TBufferFile.cxx:109)
+   n1: 162691450 0x925DF55: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:95)
+    n1: 162691450 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+     n1: 162691450 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+      n2: 162691450 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+       n1: 162591672 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+        n2: 162591672 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+         n2: 148801086 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+          n1: 88255678 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+           n1: 88255678 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+            n0: 88255678 0x412851: main (MCSUnfolding.cpp:358)
+          n1: 60545408 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+           n1: 60545408 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+            n0: 60545408 0x412851: main (MCSUnfolding.cpp:358)
+         n2: 13790586 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n1: 13291696 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n0: 13291696 in 2 places, all below massif's threshold (1.00%)
+          n0: 498890 in 1 place, below massif's threshold (1.00%)
+       n0: 99778 in 1 place, below massif's threshold (1.00%)
+   n0: 0 in 4 places, all below massif's threshold (1.00%)
+ n2: 49941174 0x68D00C6: TStorage::ReAllocChar(char*, unsigned long, unsigned long) (TStorage.cxx:275)
+  n2: 49941174 0x6892D01: TBuffer::Expand(int, bool) (TBuffer.cxx:211)
+   n1: 25004284 0x925CEFF: TBasket::ReadBasketBuffers(long long, int, TFile*) (TBasket.cxx:394)
+    n1: 25004284 0x92601E8: TBranch::GetBasket(int) (TBranch.cxx:1112)
+     n1: 25004284 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+      n1: 25004284 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+       n1: 25004284 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+        n1: 25004284 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+         n1: 25004284 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+          n1: 25004284 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+           n0: 25004284 0x412851: main (MCSUnfolding.cpp:358)
+   n1: 24936890 0x92B2225: TTree::GetTransientBuffer(int) (TTree.cxx:878)
+    n1: 24936890 0x925DFB3: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:104)
+     n1: 24936890 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+      n1: 24936890 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+       n1: 24936890 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+        n1: 24936890 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+         n2: 24936890 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n2: 24936890 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n1: 13031536 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+            n1: 13031536 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+             n0: 13031536 0x412851: main (MCSUnfolding.cpp:358)
+           n1: 11905354 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+            n1: 11905354 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+             n0: 11905354 0x412851: main (MCSUnfolding.cpp:358)
+          n0: 0 in 1 place, below massif's threshold (1.00%)
+  n0: 0 in 3 places, all below massif's threshold (1.00%)
+ n0: 26724435 in 2397 places, all below massif's threshold (1.00%)
+ n2: 26701552 0x680C826: TArrayD::Set(int) (TArrayD.cxx:114)
+  n2: 26605592 0x82C6A0B: TH2D::TH2D(char const*, char const*, int, double, double, int, double, double) (TH2.cxx:3922)
+   n1: 24960832 0x437C76: MCSAnalysis::MCSAnalysis(std::string, std::string, std::string, std::string, std::map<std::string, double, std::less<std::string>, std::allocator<std::pair<std::string const, double> > >) (MCSAnalysis.cpp:128)
+    n0: 24960832 0x411C9A: main (MCSUnfolding.cpp:246)
+   n0: 1644760 in 55 places, all below massif's threshold (1.00%)
+  n0: 95960 in 6 places, all below massif's threshold (1.00%)
+ n1: 26062080 0x474861: void std::vector<Vars, std::allocator<Vars> >::_M_emplace_back_aux<Vars const&>(Vars const&) (new_allocator.h:104)
+  n0: 26062080 in 23 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=31
+#-----------
+time=90850859493
+mem_heap_B=911997510
+mem_heap_extra_B=2368842
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=32
+#-----------
+time=95015067996
+mem_heap_B=911997510
+mem_heap_extra_B=2368842
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=33
+#-----------
+time=97228434839
+mem_heap_B=911997510
+mem_heap_extra_B=2368842
+mem_stacks_B=0
+heap_tree=detailed
+n5: 911997510 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 636969096 0x68CFFC8: TStorage::ReAlloc(void*, unsigned long, unsigned long) (TStorage.cxx:234)
+  n2: 636969096 0x681F1C3: TObjArray::Expand(int) (TObjArray.cxx:385)
+   n2: 636937312 0x681F854: TObjArray::AddAtAndExpand(TObject*, int) (TObjArray.cxx:232)
+    n1: 636658336 0x68BBA66: TProcessID::PutObjectWithID(TObject*, unsigned int) (TProcessID.cxx:337)
+     n1: 636658336 0x68B371E: TObject::Streamer(TBuffer&) (TObject.cxx:833)
+      n1: 636658336 0x78EA3D5: TStreamerInfoActions::ReadTObject(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:285)
+       n1: 636658336 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+        n1: 636658336 0x77F08B3: TBufferFile::ReadClassBuffer(TClass const*, void*, TClass const*) (TBufferFile.cxx:3893)
+         n1: 636658336 0x77F81B3: TBufferFile::ReadObjectAny(TClass const*) (TClass.h:451)
+          n1: 636658336 0x782B5B7: TGenCollectionStreamer::ReadObjects(int, TBuffer&, TClass const*) (TGenCollectionStreamer.cxx:405)
+           n1: 636658336 0x782C141: TGenCollectionStreamer::ReadBufferGeneric(TBuffer&, void*, TClass const*) (TGenCollectionStreamer.cxx:1387)
+            n1: 636658336 0x77F1924: TBufferFile::ReadFastArray(void*, TClass const*, int, TMemberStreamer*, TClass const*) (TClass.h:451)
+             n1: 636658336 0x78B45C4: int TStreamerInfoActions::ReadSTL<&TStreamerInfoActions::ReadSTLMemberWiseSameClass, &TStreamerInfoActions::ReadSTLObjectWiseFastArray>(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:706)
+              n1: 636658336 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+               n1: 636658336 0x926C1C9: TBranchElement::ReadLeavesMember(TBuffer&) (TBranchElement.cxx:4034)
+                n1: 636658336 0x92605A0: TBranch::GetEntry(long long, int) (TBranch.cxx:1278)
+                 n1: 636658336 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+                  n1: 636658336 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+                   n2: 636658336 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+                    n1: 332001792 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+                     n1: 332001792 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+                      n0: 332001792 0x412851: main (MCSUnfolding.cpp:358)
+                    n1: 304656544 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+                     n1: 304656544 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+                      n0: 304656544 0x412851: main (MCSUnfolding.cpp:358)
+    n0: 278976 in 8 places, all below massif's threshold (1.00%)
+   n0: 31784 in 1 place, below massif's threshold (1.00%)
+ n1: 162691450 0x6893055: TBuffer::TBuffer(TBuffer::EMode, int) (TBuffer.cxx:72)
+  n2: 162691450 0x77F74F7: TBufferFile::TBufferFile(TBuffer::EMode, int) (TBufferFile.cxx:109)
+   n1: 162691450 0x925DF55: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:95)
+    n1: 162691450 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+     n1: 162691450 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+      n2: 162691450 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+       n1: 162591672 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+        n2: 162591672 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+         n2: 148801086 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+          n1: 88255678 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+           n1: 88255678 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+            n0: 88255678 0x412851: main (MCSUnfolding.cpp:358)
+          n1: 60545408 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+           n1: 60545408 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+            n0: 60545408 0x412851: main (MCSUnfolding.cpp:358)
+         n2: 13790586 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n1: 13291696 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n0: 13291696 in 2 places, all below massif's threshold (1.00%)
+          n0: 498890 in 1 place, below massif's threshold (1.00%)
+       n0: 99778 in 1 place, below massif's threshold (1.00%)
+   n0: 0 in 4 places, all below massif's threshold (1.00%)
+ n2: 49941174 0x68D00C6: TStorage::ReAllocChar(char*, unsigned long, unsigned long) (TStorage.cxx:275)
+  n2: 49941174 0x6892D01: TBuffer::Expand(int, bool) (TBuffer.cxx:211)
+   n1: 25004284 0x925CEFF: TBasket::ReadBasketBuffers(long long, int, TFile*) (TBasket.cxx:394)
+    n1: 25004284 0x92601E8: TBranch::GetBasket(int) (TBranch.cxx:1112)
+     n1: 25004284 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+      n1: 25004284 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+       n1: 25004284 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+        n1: 25004284 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+         n1: 25004284 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+          n1: 25004284 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+           n0: 25004284 0x412851: main (MCSUnfolding.cpp:358)
+   n1: 24936890 0x92B2225: TTree::GetTransientBuffer(int) (TTree.cxx:878)
+    n1: 24936890 0x925DFB3: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:104)
+     n1: 24936890 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+      n1: 24936890 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+       n1: 24936890 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+        n1: 24936890 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+         n2: 24936890 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n2: 24936890 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n1: 13031536 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+            n1: 13031536 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+             n0: 13031536 0x412851: main (MCSUnfolding.cpp:358)
+           n1: 11905354 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+            n1: 11905354 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+             n0: 11905354 0x412851: main (MCSUnfolding.cpp:358)
+          n0: 0 in 1 place, below massif's threshold (1.00%)
+  n0: 0 in 3 places, all below massif's threshold (1.00%)
+ n0: 35614830 in 2424 places, all below massif's threshold (1.00%)
+ n2: 26780960 0x680C826: TArrayD::Set(int) (TArrayD.cxx:114)
+  n2: 26673304 0x82C6A0B: TH2D::TH2D(char const*, char const*, int, double, double, int, double, double) (TH2.cxx:3922)
+   n1: 24960832 0x437C76: MCSAnalysis::MCSAnalysis(std::string, std::string, std::string, std::string, std::map<std::string, double, std::less<std::string>, std::allocator<std::pair<std::string const, double> > >) (MCSAnalysis.cpp:128)
+    n0: 24960832 0x411C9A: main (MCSUnfolding.cpp:246)
+   n0: 1712472 in 55 places, all below massif's threshold (1.00%)
+  n0: 107656 in 6 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=34
+#-----------
+time=99344337730
+mem_heap_B=911997510
+mem_heap_extra_B=2368842
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=35
+#-----------
+time=102539674782
+mem_heap_B=911997510
+mem_heap_extra_B=2368842
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=36
+#-----------
+time=105716489205
+mem_heap_B=911997510
+mem_heap_extra_B=2368842
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=37
+#-----------
+time=107911040675
+mem_heap_B=911997510
+mem_heap_extra_B=2368842
+mem_stacks_B=0
+heap_tree=detailed
+n5: 911997510 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 636969096 0x68CFFC8: TStorage::ReAlloc(void*, unsigned long, unsigned long) (TStorage.cxx:234)
+  n2: 636969096 0x681F1C3: TObjArray::Expand(int) (TObjArray.cxx:385)
+   n2: 636937312 0x681F854: TObjArray::AddAtAndExpand(TObject*, int) (TObjArray.cxx:232)
+    n1: 636658336 0x68BBA66: TProcessID::PutObjectWithID(TObject*, unsigned int) (TProcessID.cxx:337)
+     n1: 636658336 0x68B371E: TObject::Streamer(TBuffer&) (TObject.cxx:833)
+      n1: 636658336 0x78EA3D5: TStreamerInfoActions::ReadTObject(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:285)
+       n1: 636658336 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+        n1: 636658336 0x77F08B3: TBufferFile::ReadClassBuffer(TClass const*, void*, TClass const*) (TBufferFile.cxx:3893)
+         n1: 636658336 0x77F81B3: TBufferFile::ReadObjectAny(TClass const*) (TClass.h:451)
+          n1: 636658336 0x782B5B7: TGenCollectionStreamer::ReadObjects(int, TBuffer&, TClass const*) (TGenCollectionStreamer.cxx:405)
+           n1: 636658336 0x782C141: TGenCollectionStreamer::ReadBufferGeneric(TBuffer&, void*, TClass const*) (TGenCollectionStreamer.cxx:1387)
+            n1: 636658336 0x77F1924: TBufferFile::ReadFastArray(void*, TClass const*, int, TMemberStreamer*, TClass const*) (TClass.h:451)
+             n1: 636658336 0x78B45C4: int TStreamerInfoActions::ReadSTL<&TStreamerInfoActions::ReadSTLMemberWiseSameClass, &TStreamerInfoActions::ReadSTLObjectWiseFastArray>(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:706)
+              n1: 636658336 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+               n1: 636658336 0x926C1C9: TBranchElement::ReadLeavesMember(TBuffer&) (TBranchElement.cxx:4034)
+                n1: 636658336 0x92605A0: TBranch::GetEntry(long long, int) (TBranch.cxx:1278)
+                 n1: 636658336 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+                  n1: 636658336 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+                   n2: 636658336 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+                    n1: 332001792 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+                     n1: 332001792 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+                      n0: 332001792 0x412851: main (MCSUnfolding.cpp:358)
+                    n1: 304656544 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+                     n1: 304656544 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+                      n0: 304656544 0x412851: main (MCSUnfolding.cpp:358)
+    n0: 278976 in 8 places, all below massif's threshold (1.00%)
+   n0: 31784 in 1 place, below massif's threshold (1.00%)
+ n1: 162691450 0x6893055: TBuffer::TBuffer(TBuffer::EMode, int) (TBuffer.cxx:72)
+  n2: 162691450 0x77F74F7: TBufferFile::TBufferFile(TBuffer::EMode, int) (TBufferFile.cxx:109)
+   n1: 162691450 0x925DF55: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:95)
+    n1: 162691450 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+     n1: 162691450 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+      n2: 162691450 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+       n1: 162591672 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+        n2: 162591672 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+         n2: 148801086 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+          n1: 88255678 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+           n1: 88255678 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+            n0: 88255678 0x412851: main (MCSUnfolding.cpp:358)
+          n1: 60545408 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+           n1: 60545408 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+            n0: 60545408 0x412851: main (MCSUnfolding.cpp:358)
+         n2: 13790586 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n1: 13291696 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n0: 13291696 in 2 places, all below massif's threshold (1.00%)
+          n0: 498890 in 1 place, below massif's threshold (1.00%)
+       n0: 99778 in 1 place, below massif's threshold (1.00%)
+   n0: 0 in 4 places, all below massif's threshold (1.00%)
+ n2: 49941174 0x68D00C6: TStorage::ReAllocChar(char*, unsigned long, unsigned long) (TStorage.cxx:275)
+  n2: 49941174 0x6892D01: TBuffer::Expand(int, bool) (TBuffer.cxx:211)
+   n1: 25004284 0x925CEFF: TBasket::ReadBasketBuffers(long long, int, TFile*) (TBasket.cxx:394)
+    n1: 25004284 0x92601E8: TBranch::GetBasket(int) (TBranch.cxx:1112)
+     n1: 25004284 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+      n1: 25004284 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+       n1: 25004284 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+        n1: 25004284 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+         n1: 25004284 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+          n1: 25004284 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+           n0: 25004284 0x412851: main (MCSUnfolding.cpp:358)
+   n1: 24936890 0x92B2225: TTree::GetTransientBuffer(int) (TTree.cxx:878)
+    n1: 24936890 0x925DFB3: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:104)
+     n1: 24936890 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+      n1: 24936890 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+       n1: 24936890 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+        n1: 24936890 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+         n2: 24936890 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n2: 24936890 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n1: 13031536 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+            n1: 13031536 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+             n0: 13031536 0x412851: main (MCSUnfolding.cpp:358)
+           n1: 11905354 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+            n1: 11905354 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+             n0: 11905354 0x412851: main (MCSUnfolding.cpp:358)
+          n0: 0 in 1 place, below massif's threshold (1.00%)
+  n0: 0 in 3 places, all below massif's threshold (1.00%)
+ n0: 35614830 in 2424 places, all below massif's threshold (1.00%)
+ n2: 26780960 0x680C826: TArrayD::Set(int) (TArrayD.cxx:114)
+  n2: 26673304 0x82C6A0B: TH2D::TH2D(char const*, char const*, int, double, double, int, double, double) (TH2.cxx:3922)
+   n1: 24960832 0x437C76: MCSAnalysis::MCSAnalysis(std::string, std::string, std::string, std::string, std::map<std::string, double, std::less<std::string>, std::allocator<std::pair<std::string const, double> > >) (MCSAnalysis.cpp:128)
+    n0: 24960832 0x411C9A: main (MCSUnfolding.cpp:246)
+   n0: 1712472 in 55 places, all below massif's threshold (1.00%)
+  n0: 107656 in 6 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=38
+#-----------
+time=110255901501
+mem_heap_B=911997510
+mem_heap_extra_B=2368842
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=39
+#-----------
+time=114384251076
+mem_heap_B=911999218
+mem_heap_extra_B=2368886
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=40
+#-----------
+time=118685425908
+mem_heap_B=911999218
+mem_heap_extra_B=2368886
+mem_stacks_B=0
+heap_tree=detailed
+n5: 911999218 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 636969096 0x68CFFC8: TStorage::ReAlloc(void*, unsigned long, unsigned long) (TStorage.cxx:234)
+  n2: 636969096 0x681F1C3: TObjArray::Expand(int) (TObjArray.cxx:385)
+   n2: 636937312 0x681F854: TObjArray::AddAtAndExpand(TObject*, int) (TObjArray.cxx:232)
+    n1: 636658336 0x68BBA66: TProcessID::PutObjectWithID(TObject*, unsigned int) (TProcessID.cxx:337)
+     n1: 636658336 0x68B371E: TObject::Streamer(TBuffer&) (TObject.cxx:833)
+      n1: 636658336 0x78EA3D5: TStreamerInfoActions::ReadTObject(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:285)
+       n1: 636658336 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+        n1: 636658336 0x77F08B3: TBufferFile::ReadClassBuffer(TClass const*, void*, TClass const*) (TBufferFile.cxx:3893)
+         n1: 636658336 0x77F81B3: TBufferFile::ReadObjectAny(TClass const*) (TClass.h:451)
+          n1: 636658336 0x782B5B7: TGenCollectionStreamer::ReadObjects(int, TBuffer&, TClass const*) (TGenCollectionStreamer.cxx:405)
+           n1: 636658336 0x782C141: TGenCollectionStreamer::ReadBufferGeneric(TBuffer&, void*, TClass const*) (TGenCollectionStreamer.cxx:1387)
+            n1: 636658336 0x77F1924: TBufferFile::ReadFastArray(void*, TClass const*, int, TMemberStreamer*, TClass const*) (TClass.h:451)
+             n1: 636658336 0x78B45C4: int TStreamerInfoActions::ReadSTL<&TStreamerInfoActions::ReadSTLMemberWiseSameClass, &TStreamerInfoActions::ReadSTLObjectWiseFastArray>(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:706)
+              n1: 636658336 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+               n1: 636658336 0x926C1C9: TBranchElement::ReadLeavesMember(TBuffer&) (TBranchElement.cxx:4034)
+                n1: 636658336 0x92605A0: TBranch::GetEntry(long long, int) (TBranch.cxx:1278)
+                 n1: 636658336 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+                  n1: 636658336 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+                   n2: 636658336 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+                    n1: 332001792 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+                     n1: 332001792 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+                      n0: 332001792 0x412851: main (MCSUnfolding.cpp:358)
+                    n1: 304656544 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+                     n1: 304656544 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+                      n0: 304656544 0x412851: main (MCSUnfolding.cpp:358)
+    n0: 278976 in 8 places, all below massif's threshold (1.00%)
+   n0: 31784 in 1 place, below massif's threshold (1.00%)
+ n1: 162691450 0x6893055: TBuffer::TBuffer(TBuffer::EMode, int) (TBuffer.cxx:72)
+  n2: 162691450 0x77F74F7: TBufferFile::TBufferFile(TBuffer::EMode, int) (TBufferFile.cxx:109)
+   n1: 162691450 0x925DF55: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:95)
+    n1: 162691450 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+     n1: 162691450 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+      n2: 162691450 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+       n1: 162591672 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+        n2: 162591672 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+         n2: 148801086 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+          n1: 88255678 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+           n1: 88255678 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+            n0: 88255678 0x412851: main (MCSUnfolding.cpp:358)
+          n1: 60545408 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+           n1: 60545408 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+            n0: 60545408 0x412851: main (MCSUnfolding.cpp:358)
+         n2: 13790586 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n1: 13291696 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n0: 13291696 in 2 places, all below massif's threshold (1.00%)
+          n0: 498890 in 1 place, below massif's threshold (1.00%)
+       n0: 99778 in 1 place, below massif's threshold (1.00%)
+   n0: 0 in 4 places, all below massif's threshold (1.00%)
+ n2: 49941174 0x68D00C6: TStorage::ReAllocChar(char*, unsigned long, unsigned long) (TStorage.cxx:275)
+  n2: 49941174 0x6892D01: TBuffer::Expand(int, bool) (TBuffer.cxx:211)
+   n1: 25004284 0x925CEFF: TBasket::ReadBasketBuffers(long long, int, TFile*) (TBasket.cxx:394)
+    n1: 25004284 0x92601E8: TBranch::GetBasket(int) (TBranch.cxx:1112)
+     n1: 25004284 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+      n1: 25004284 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+       n1: 25004284 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+        n1: 25004284 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+         n1: 25004284 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+          n1: 25004284 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+           n0: 25004284 0x412851: main (MCSUnfolding.cpp:358)
+   n1: 24936890 0x92B2225: TTree::GetTransientBuffer(int) (TTree.cxx:878)
+    n1: 24936890 0x925DFB3: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:104)
+     n1: 24936890 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+      n1: 24936890 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+       n1: 24936890 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+        n1: 24936890 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+         n2: 24936890 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n2: 24936890 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n1: 13031536 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+            n1: 13031536 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+             n0: 13031536 0x412851: main (MCSUnfolding.cpp:358)
+           n1: 11905354 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+            n1: 11905354 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+             n0: 11905354 0x412851: main (MCSUnfolding.cpp:358)
+          n0: 0 in 1 place, below massif's threshold (1.00%)
+  n0: 0 in 3 places, all below massif's threshold (1.00%)
+ n0: 35616538 in 2425 places, all below massif's threshold (1.00%)
+ n2: 26780960 0x680C826: TArrayD::Set(int) (TArrayD.cxx:114)
+  n2: 26673304 0x82C6A0B: TH2D::TH2D(char const*, char const*, int, double, double, int, double, double) (TH2.cxx:3922)
+   n1: 24960832 0x437C76: MCSAnalysis::MCSAnalysis(std::string, std::string, std::string, std::string, std::map<std::string, double, std::less<std::string>, std::allocator<std::pair<std::string const, double> > >) (MCSAnalysis.cpp:128)
+    n0: 24960832 0x411C9A: main (MCSUnfolding.cpp:246)
+   n0: 1712472 in 55 places, all below massif's threshold (1.00%)
+  n0: 107656 in 6 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=41
+#-----------
+time=121899731624
+mem_heap_B=911999218
+mem_heap_extra_B=2368886
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=42
+#-----------
+time=124233798520
+mem_heap_B=911999218
+mem_heap_extra_B=2368886
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=43
+#-----------
+time=126368253494
+mem_heap_B=912000539
+mem_heap_extra_B=2368909
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=44
+#-----------
+time=129751315867
+mem_heap_B=912000539
+mem_heap_extra_B=2368909
+mem_stacks_B=0
+heap_tree=detailed
+n5: 912000539 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 636969096 0x68CFFC8: TStorage::ReAlloc(void*, unsigned long, unsigned long) (TStorage.cxx:234)
+  n2: 636969096 0x681F1C3: TObjArray::Expand(int) (TObjArray.cxx:385)
+   n2: 636937312 0x681F854: TObjArray::AddAtAndExpand(TObject*, int) (TObjArray.cxx:232)
+    n1: 636658336 0x68BBA66: TProcessID::PutObjectWithID(TObject*, unsigned int) (TProcessID.cxx:337)
+     n1: 636658336 0x68B371E: TObject::Streamer(TBuffer&) (TObject.cxx:833)
+      n1: 636658336 0x78EA3D5: TStreamerInfoActions::ReadTObject(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:285)
+       n1: 636658336 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+        n1: 636658336 0x77F08B3: TBufferFile::ReadClassBuffer(TClass const*, void*, TClass const*) (TBufferFile.cxx:3893)
+         n1: 636658336 0x77F81B3: TBufferFile::ReadObjectAny(TClass const*) (TClass.h:451)
+          n1: 636658336 0x782B5B7: TGenCollectionStreamer::ReadObjects(int, TBuffer&, TClass const*) (TGenCollectionStreamer.cxx:405)
+           n1: 636658336 0x782C141: TGenCollectionStreamer::ReadBufferGeneric(TBuffer&, void*, TClass const*) (TGenCollectionStreamer.cxx:1387)
+            n1: 636658336 0x77F1924: TBufferFile::ReadFastArray(void*, TClass const*, int, TMemberStreamer*, TClass const*) (TClass.h:451)
+             n1: 636658336 0x78B45C4: int TStreamerInfoActions::ReadSTL<&TStreamerInfoActions::ReadSTLMemberWiseSameClass, &TStreamerInfoActions::ReadSTLObjectWiseFastArray>(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:706)
+              n1: 636658336 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+               n1: 636658336 0x926C1C9: TBranchElement::ReadLeavesMember(TBuffer&) (TBranchElement.cxx:4034)
+                n1: 636658336 0x92605A0: TBranch::GetEntry(long long, int) (TBranch.cxx:1278)
+                 n1: 636658336 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+                  n1: 636658336 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+                   n2: 636658336 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+                    n1: 332001792 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+                     n1: 332001792 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+                      n0: 332001792 0x412851: main (MCSUnfolding.cpp:358)
+                    n1: 304656544 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+                     n1: 304656544 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+                      n0: 304656544 0x412851: main (MCSUnfolding.cpp:358)
+    n0: 278976 in 8 places, all below massif's threshold (1.00%)
+   n0: 31784 in 1 place, below massif's threshold (1.00%)
+ n1: 162691450 0x6893055: TBuffer::TBuffer(TBuffer::EMode, int) (TBuffer.cxx:72)
+  n2: 162691450 0x77F74F7: TBufferFile::TBufferFile(TBuffer::EMode, int) (TBufferFile.cxx:109)
+   n1: 162691450 0x925DF55: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:95)
+    n1: 162691450 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+     n1: 162691450 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+      n2: 162691450 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+       n1: 162591672 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+        n2: 162591672 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+         n2: 148801086 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+          n1: 88255678 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+           n1: 88255678 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+            n0: 88255678 0x412851: main (MCSUnfolding.cpp:358)
+          n1: 60545408 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+           n1: 60545408 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+            n0: 60545408 0x412851: main (MCSUnfolding.cpp:358)
+         n2: 13790586 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n1: 13291696 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n0: 13291696 in 2 places, all below massif's threshold (1.00%)
+          n0: 498890 in 1 place, below massif's threshold (1.00%)
+       n0: 99778 in 1 place, below massif's threshold (1.00%)
+   n0: 0 in 4 places, all below massif's threshold (1.00%)
+ n2: 49941174 0x68D00C6: TStorage::ReAllocChar(char*, unsigned long, unsigned long) (TStorage.cxx:275)
+  n2: 49941174 0x6892D01: TBuffer::Expand(int, bool) (TBuffer.cxx:211)
+   n1: 25004284 0x925CEFF: TBasket::ReadBasketBuffers(long long, int, TFile*) (TBasket.cxx:394)
+    n1: 25004284 0x92601E8: TBranch::GetBasket(int) (TBranch.cxx:1112)
+     n1: 25004284 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+      n1: 25004284 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+       n1: 25004284 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+        n1: 25004284 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+         n1: 25004284 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+          n1: 25004284 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+           n0: 25004284 0x412851: main (MCSUnfolding.cpp:358)
+   n1: 24936890 0x92B2225: TTree::GetTransientBuffer(int) (TTree.cxx:878)
+    n1: 24936890 0x925DFB3: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:104)
+     n1: 24936890 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+      n1: 24936890 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+       n1: 24936890 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+        n1: 24936890 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+         n2: 24936890 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n2: 24936890 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n1: 13031536 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+            n1: 13031536 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+             n0: 13031536 0x412851: main (MCSUnfolding.cpp:358)
+           n1: 11905354 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+            n1: 11905354 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+             n0: 11905354 0x412851: main (MCSUnfolding.cpp:358)
+          n0: 0 in 1 place, below massif's threshold (1.00%)
+  n0: 0 in 3 places, all below massif's threshold (1.00%)
+ n0: 35617859 in 2427 places, all below massif's threshold (1.00%)
+ n2: 26780960 0x680C826: TArrayD::Set(int) (TArrayD.cxx:114)
+  n2: 26673304 0x82C6A0B: TH2D::TH2D(char const*, char const*, int, double, double, int, double, double) (TH2.cxx:3922)
+   n1: 24960832 0x437C76: MCSAnalysis::MCSAnalysis(std::string, std::string, std::string, std::string, std::map<std::string, double, std::less<std::string>, std::allocator<std::pair<std::string const, double> > >) (MCSAnalysis.cpp:128)
+    n0: 24960832 0x411C9A: main (MCSUnfolding.cpp:246)
+   n0: 1712472 in 55 places, all below massif's threshold (1.00%)
+  n0: 107656 in 6 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=45
+#-----------
+time=132001844443
+mem_heap_B=912000539
+mem_heap_extra_B=2368909
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=46
+#-----------
+time=134687603659
+mem_heap_B=912000539
+mem_heap_extra_B=2368909
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=47
+#-----------
+time=138371072581
+mem_heap_B=912000539
+mem_heap_extra_B=2368909
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=48
+#-----------
+time=140741886245
+mem_heap_B=912000539
+mem_heap_extra_B=2368909
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=49
+#-----------
+time=143306135749
+mem_heap_B=912000539
+mem_heap_extra_B=2368909
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=50
+#-----------
+time=145356265147
+mem_heap_B=912000539
+mem_heap_extra_B=2368909
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=51
+#-----------
+time=147515202205
+mem_heap_B=912000539
+mem_heap_extra_B=2368909
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=52
+#-----------
+time=149782946923
+mem_heap_B=912000539
+mem_heap_extra_B=2368909
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=53
+#-----------
+time=152159499301
+mem_heap_B=912000539
+mem_heap_extra_B=2368909
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=54
+#-----------
+time=154644859339
+mem_heap_B=912000539
+mem_heap_extra_B=2368909
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=55
+#-----------
+time=157239027037
+mem_heap_B=912000539
+mem_heap_extra_B=2368909
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=56
+#-----------
+time=159942002395
+mem_heap_B=912000539
+mem_heap_extra_B=2368909
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=57
+#-----------
+time=161804434682
+mem_heap_B=912000539
+mem_heap_extra_B=2368909
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=58
+#-----------
+time=163715225914
+mem_heap_B=912000539
+mem_heap_extra_B=2368909
+mem_stacks_B=0
+heap_tree=detailed
+n5: 912000539 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 636969096 0x68CFFC8: TStorage::ReAlloc(void*, unsigned long, unsigned long) (TStorage.cxx:234)
+  n2: 636969096 0x681F1C3: TObjArray::Expand(int) (TObjArray.cxx:385)
+   n2: 636937312 0x681F854: TObjArray::AddAtAndExpand(TObject*, int) (TObjArray.cxx:232)
+    n1: 636658336 0x68BBA66: TProcessID::PutObjectWithID(TObject*, unsigned int) (TProcessID.cxx:337)
+     n1: 636658336 0x68B371E: TObject::Streamer(TBuffer&) (TObject.cxx:833)
+      n1: 636658336 0x78EA3D5: TStreamerInfoActions::ReadTObject(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:285)
+       n1: 636658336 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+        n1: 636658336 0x77F08B3: TBufferFile::ReadClassBuffer(TClass const*, void*, TClass const*) (TBufferFile.cxx:3893)
+         n1: 636658336 0x77F81B3: TBufferFile::ReadObjectAny(TClass const*) (TClass.h:451)
+          n1: 636658336 0x782B5B7: TGenCollectionStreamer::ReadObjects(int, TBuffer&, TClass const*) (TGenCollectionStreamer.cxx:405)
+           n1: 636658336 0x782C141: TGenCollectionStreamer::ReadBufferGeneric(TBuffer&, void*, TClass const*) (TGenCollectionStreamer.cxx:1387)
+            n1: 636658336 0x77F1924: TBufferFile::ReadFastArray(void*, TClass const*, int, TMemberStreamer*, TClass const*) (TClass.h:451)
+             n1: 636658336 0x78B45C4: int TStreamerInfoActions::ReadSTL<&TStreamerInfoActions::ReadSTLMemberWiseSameClass, &TStreamerInfoActions::ReadSTLObjectWiseFastArray>(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:706)
+              n1: 636658336 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+               n1: 636658336 0x926C1C9: TBranchElement::ReadLeavesMember(TBuffer&) (TBranchElement.cxx:4034)
+                n1: 636658336 0x92605A0: TBranch::GetEntry(long long, int) (TBranch.cxx:1278)
+                 n1: 636658336 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+                  n1: 636658336 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+                   n2: 636658336 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+                    n1: 332001792 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+                     n1: 332001792 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+                      n0: 332001792 0x412851: main (MCSUnfolding.cpp:358)
+                    n1: 304656544 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+                     n1: 304656544 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+                      n0: 304656544 0x412851: main (MCSUnfolding.cpp:358)
+    n0: 278976 in 8 places, all below massif's threshold (1.00%)
+   n0: 31784 in 1 place, below massif's threshold (1.00%)
+ n1: 162691450 0x6893055: TBuffer::TBuffer(TBuffer::EMode, int) (TBuffer.cxx:72)
+  n2: 162691450 0x77F74F7: TBufferFile::TBufferFile(TBuffer::EMode, int) (TBufferFile.cxx:109)
+   n1: 162691450 0x925DF55: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:95)
+    n1: 162691450 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+     n1: 162691450 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+      n2: 162691450 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+       n1: 162591672 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+        n2: 162591672 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+         n2: 148801086 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+          n1: 88255678 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+           n1: 88255678 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+            n0: 88255678 0x412851: main (MCSUnfolding.cpp:358)
+          n1: 60545408 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+           n1: 60545408 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+            n0: 60545408 0x412851: main (MCSUnfolding.cpp:358)
+         n2: 13790586 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n1: 13291696 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n0: 13291696 in 2 places, all below massif's threshold (1.00%)
+          n0: 498890 in 1 place, below massif's threshold (1.00%)
+       n0: 99778 in 1 place, below massif's threshold (1.00%)
+   n0: 0 in 4 places, all below massif's threshold (1.00%)
+ n2: 49941174 0x68D00C6: TStorage::ReAllocChar(char*, unsigned long, unsigned long) (TStorage.cxx:275)
+  n2: 49941174 0x6892D01: TBuffer::Expand(int, bool) (TBuffer.cxx:211)
+   n1: 25004284 0x925CEFF: TBasket::ReadBasketBuffers(long long, int, TFile*) (TBasket.cxx:394)
+    n1: 25004284 0x92601E8: TBranch::GetBasket(int) (TBranch.cxx:1112)
+     n1: 25004284 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+      n1: 25004284 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+       n1: 25004284 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+        n1: 25004284 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+         n1: 25004284 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+          n1: 25004284 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+           n0: 25004284 0x412851: main (MCSUnfolding.cpp:358)
+   n1: 24936890 0x92B2225: TTree::GetTransientBuffer(int) (TTree.cxx:878)
+    n1: 24936890 0x925DFB3: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:104)
+     n1: 24936890 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+      n1: 24936890 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+       n1: 24936890 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+        n1: 24936890 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+         n2: 24936890 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n2: 24936890 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n1: 13031536 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+            n1: 13031536 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+             n0: 13031536 0x412851: main (MCSUnfolding.cpp:358)
+           n1: 11905354 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+            n1: 11905354 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+             n0: 11905354 0x412851: main (MCSUnfolding.cpp:358)
+          n0: 0 in 1 place, below massif's threshold (1.00%)
+  n0: 0 in 3 places, all below massif's threshold (1.00%)
+ n0: 35617859 in 2427 places, all below massif's threshold (1.00%)
+ n2: 26780960 0x680C826: TArrayD::Set(int) (TArrayD.cxx:114)
+  n2: 26673304 0x82C6A0B: TH2D::TH2D(char const*, char const*, int, double, double, int, double, double) (TH2.cxx:3922)
+   n1: 24960832 0x437C76: MCSAnalysis::MCSAnalysis(std::string, std::string, std::string, std::string, std::map<std::string, double, std::less<std::string>, std::allocator<std::pair<std::string const, double> > >) (MCSAnalysis.cpp:128)
+    n0: 24960832 0x411C9A: main (MCSUnfolding.cpp:246)
+   n0: 1712472 in 55 places, all below massif's threshold (1.00%)
+  n0: 107656 in 6 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=59
+#-----------
+time=165674376106
+mem_heap_B=912000539
+mem_heap_extra_B=2368909
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=60
+#-----------
+time=167681885258
+mem_heap_B=912000539
+mem_heap_extra_B=2368909
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=61
+#-----------
+time=169737753370
+mem_heap_B=912000539
+mem_heap_extra_B=2368909
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=62
+#-----------
+time=171841980442
+mem_heap_B=912000539
+mem_heap_extra_B=2368909
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=63
+#-----------
+time=173994566474
+mem_heap_B=912000539
+mem_heap_extra_B=2368909
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=64
+#-----------
+time=176195511466
+mem_heap_B=912000539
+mem_heap_extra_B=2368909
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=65
+#-----------
+time=178444815418
+mem_heap_B=912000539
+mem_heap_extra_B=2368909
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=66
+#-----------
+time=180742478330
+mem_heap_B=912000539
+mem_heap_extra_B=2368909
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=67
+#-----------
+time=183088500202
+mem_heap_B=912000539
+mem_heap_extra_B=2368909
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=68
+#-----------
+time=185482881034
+mem_heap_B=912000539
+mem_heap_extra_B=2368909
+mem_stacks_B=0
+heap_tree=detailed
+n5: 912000539 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 636969096 0x68CFFC8: TStorage::ReAlloc(void*, unsigned long, unsigned long) (TStorage.cxx:234)
+  n2: 636969096 0x681F1C3: TObjArray::Expand(int) (TObjArray.cxx:385)
+   n2: 636937312 0x681F854: TObjArray::AddAtAndExpand(TObject*, int) (TObjArray.cxx:232)
+    n1: 636658336 0x68BBA66: TProcessID::PutObjectWithID(TObject*, unsigned int) (TProcessID.cxx:337)
+     n1: 636658336 0x68B371E: TObject::Streamer(TBuffer&) (TObject.cxx:833)
+      n1: 636658336 0x78EA3D5: TStreamerInfoActions::ReadTObject(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:285)
+       n1: 636658336 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+        n1: 636658336 0x77F08B3: TBufferFile::ReadClassBuffer(TClass const*, void*, TClass const*) (TBufferFile.cxx:3893)
+         n1: 636658336 0x77F81B3: TBufferFile::ReadObjectAny(TClass const*) (TClass.h:451)
+          n1: 636658336 0x782B5B7: TGenCollectionStreamer::ReadObjects(int, TBuffer&, TClass const*) (TGenCollectionStreamer.cxx:405)
+           n1: 636658336 0x782C141: TGenCollectionStreamer::ReadBufferGeneric(TBuffer&, void*, TClass const*) (TGenCollectionStreamer.cxx:1387)
+            n1: 636658336 0x77F1924: TBufferFile::ReadFastArray(void*, TClass const*, int, TMemberStreamer*, TClass const*) (TClass.h:451)
+             n1: 636658336 0x78B45C4: int TStreamerInfoActions::ReadSTL<&TStreamerInfoActions::ReadSTLMemberWiseSameClass, &TStreamerInfoActions::ReadSTLObjectWiseFastArray>(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:706)
+              n1: 636658336 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+               n1: 636658336 0x926C1C9: TBranchElement::ReadLeavesMember(TBuffer&) (TBranchElement.cxx:4034)
+                n1: 636658336 0x92605A0: TBranch::GetEntry(long long, int) (TBranch.cxx:1278)
+                 n1: 636658336 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+                  n1: 636658336 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+                   n2: 636658336 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+                    n1: 332001792 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+                     n1: 332001792 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+                      n0: 332001792 0x412851: main (MCSUnfolding.cpp:358)
+                    n1: 304656544 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+                     n1: 304656544 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+                      n0: 304656544 0x412851: main (MCSUnfolding.cpp:358)
+    n0: 278976 in 8 places, all below massif's threshold (1.00%)
+   n0: 31784 in 1 place, below massif's threshold (1.00%)
+ n1: 162691450 0x6893055: TBuffer::TBuffer(TBuffer::EMode, int) (TBuffer.cxx:72)
+  n2: 162691450 0x77F74F7: TBufferFile::TBufferFile(TBuffer::EMode, int) (TBufferFile.cxx:109)
+   n1: 162691450 0x925DF55: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:95)
+    n1: 162691450 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+     n1: 162691450 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+      n2: 162691450 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+       n1: 162591672 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+        n2: 162591672 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+         n2: 148801086 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+          n1: 88255678 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+           n1: 88255678 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+            n0: 88255678 0x412851: main (MCSUnfolding.cpp:358)
+          n1: 60545408 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+           n1: 60545408 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+            n0: 60545408 0x412851: main (MCSUnfolding.cpp:358)
+         n2: 13790586 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n1: 13291696 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n0: 13291696 in 2 places, all below massif's threshold (1.00%)
+          n0: 498890 in 1 place, below massif's threshold (1.00%)
+       n0: 99778 in 1 place, below massif's threshold (1.00%)
+   n0: 0 in 4 places, all below massif's threshold (1.00%)
+ n2: 49941174 0x68D00C6: TStorage::ReAllocChar(char*, unsigned long, unsigned long) (TStorage.cxx:275)
+  n2: 49941174 0x6892D01: TBuffer::Expand(int, bool) (TBuffer.cxx:211)
+   n1: 25004284 0x925CEFF: TBasket::ReadBasketBuffers(long long, int, TFile*) (TBasket.cxx:394)
+    n1: 25004284 0x92601E8: TBranch::GetBasket(int) (TBranch.cxx:1112)
+     n1: 25004284 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+      n1: 25004284 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+       n1: 25004284 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+        n1: 25004284 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+         n1: 25004284 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+          n1: 25004284 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+           n0: 25004284 0x412851: main (MCSUnfolding.cpp:358)
+   n1: 24936890 0x92B2225: TTree::GetTransientBuffer(int) (TTree.cxx:878)
+    n1: 24936890 0x925DFB3: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:104)
+     n1: 24936890 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+      n1: 24936890 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+       n1: 24936890 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+        n1: 24936890 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+         n2: 24936890 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n2: 24936890 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n1: 13031536 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+            n1: 13031536 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+             n0: 13031536 0x412851: main (MCSUnfolding.cpp:358)
+           n1: 11905354 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+            n1: 11905354 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+             n0: 11905354 0x412851: main (MCSUnfolding.cpp:358)
+          n0: 0 in 1 place, below massif's threshold (1.00%)
+  n0: 0 in 3 places, all below massif's threshold (1.00%)
+ n0: 35617859 in 2427 places, all below massif's threshold (1.00%)
+ n2: 26780960 0x680C826: TArrayD::Set(int) (TArrayD.cxx:114)
+  n2: 26673304 0x82C6A0B: TH2D::TH2D(char const*, char const*, int, double, double, int, double, double) (TH2.cxx:3922)
+   n1: 24960832 0x437C76: MCSAnalysis::MCSAnalysis(std::string, std::string, std::string, std::string, std::map<std::string, double, std::less<std::string>, std::allocator<std::pair<std::string const, double> > >) (MCSAnalysis.cpp:128)
+    n0: 24960832 0x411C9A: main (MCSUnfolding.cpp:246)
+   n0: 1712472 in 55 places, all below massif's threshold (1.00%)
+  n0: 107656 in 6 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=69
+#-----------
+time=187346392056
+mem_heap_B=912564336
+mem_heap_extra_B=2401144
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=70
+#-----------
+time=189345069809
+mem_heap_B=912567560
+mem_heap_extra_B=2401232
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=71
+#-----------
+time=191203846109
+mem_heap_B=915324790
+mem_heap_extra_B=2541738
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=72
+#-----------
+time=194115105427
+mem_heap_B=917423188
+mem_heap_extra_B=2597412
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=73
+#-----------
+time=195940619551
+mem_heap_B=919220344
+mem_heap_extra_B=2626592
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=74
+#-----------
+time=199148226421
+mem_heap_B=920260257
+mem_heap_extra_B=2674887
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=75
+#-----------
+time=200985649815
+mem_heap_B=922056033
+mem_heap_extra_B=2704063
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=76
+#-----------
+time=202808794973
+mem_heap_B=922989316
+mem_heap_extra_B=2753676
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=77
+#-----------
+time=204631901803
+mem_heap_B=923031486
+mem_heap_extra_B=2756210
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=78
+#-----------
+time=206455085224
+mem_heap_B=922854308
+mem_heap_extra_B=2749580
+mem_stacks_B=0
+heap_tree=detailed
+n5: 922854308 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 636970008 0x68CFFC8: TStorage::ReAlloc(void*, unsigned long, unsigned long) (TStorage.cxx:234)
+  n2: 636970008 0x681F1C3: TObjArray::Expand(int) (TObjArray.cxx:385)
+   n2: 636938080 0x681F854: TObjArray::AddAtAndExpand(TObject*, int) (TObjArray.cxx:232)
+    n1: 636658336 0x68BBA66: TProcessID::PutObjectWithID(TObject*, unsigned int) (TProcessID.cxx:337)
+     n1: 636658336 0x68B371E: TObject::Streamer(TBuffer&) (TObject.cxx:833)
+      n1: 636658336 0x78EA3D5: TStreamerInfoActions::ReadTObject(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:285)
+       n1: 636658336 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+        n1: 636658336 0x77F08B3: TBufferFile::ReadClassBuffer(TClass const*, void*, TClass const*) (TBufferFile.cxx:3893)
+         n1: 636658336 0x77F81B3: TBufferFile::ReadObjectAny(TClass const*) (TClass.h:451)
+          n1: 636658336 0x782B5B7: TGenCollectionStreamer::ReadObjects(int, TBuffer&, TClass const*) (TGenCollectionStreamer.cxx:405)
+           n1: 636658336 0x782C141: TGenCollectionStreamer::ReadBufferGeneric(TBuffer&, void*, TClass const*) (TGenCollectionStreamer.cxx:1387)
+            n1: 636658336 0x77F1924: TBufferFile::ReadFastArray(void*, TClass const*, int, TMemberStreamer*, TClass const*) (TClass.h:451)
+             n1: 636658336 0x78B45C4: int TStreamerInfoActions::ReadSTL<&TStreamerInfoActions::ReadSTLMemberWiseSameClass, &TStreamerInfoActions::ReadSTLObjectWiseFastArray>(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:706)
+              n1: 636658336 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+               n1: 636658336 0x926C1C9: TBranchElement::ReadLeavesMember(TBuffer&) (TBranchElement.cxx:4034)
+                n1: 636658336 0x92605A0: TBranch::GetEntry(long long, int) (TBranch.cxx:1278)
+                 n1: 636658336 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+                  n1: 636658336 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+                   n2: 636658336 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+                    n1: 332001792 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+                     n1: 332001792 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+                      n0: 332001792 0x412851: main (MCSUnfolding.cpp:358)
+                    n1: 304656544 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+                     n1: 304656544 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+                      n0: 304656544 0x412851: main (MCSUnfolding.cpp:358)
+    n0: 279744 in 8 places, all below massif's threshold (1.00%)
+   n0: 31928 in 1 place, below massif's threshold (1.00%)
+ n1: 162691450 0x6893055: TBuffer::TBuffer(TBuffer::EMode, int) (TBuffer.cxx:72)
+  n2: 162691450 0x77F74F7: TBufferFile::TBufferFile(TBuffer::EMode, int) (TBufferFile.cxx:109)
+   n1: 162691450 0x925DF55: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:95)
+    n1: 162691450 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+     n1: 162691450 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+      n2: 162691450 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+       n1: 162591672 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+        n2: 162591672 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+         n2: 148801086 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+          n1: 88255678 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+           n1: 88255678 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+            n0: 88255678 0x412851: main (MCSUnfolding.cpp:358)
+          n1: 60545408 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+           n1: 60545408 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+            n0: 60545408 0x412851: main (MCSUnfolding.cpp:358)
+         n2: 13790586 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n1: 13291696 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n0: 13291696 in 2 places, all below massif's threshold (1.00%)
+          n0: 498890 in 1 place, below massif's threshold (1.00%)
+       n0: 99778 in 1 place, below massif's threshold (1.00%)
+   n0: 0 in 5 places, all below massif's threshold (1.00%)
+ n2: 49941174 0x68D00C6: TStorage::ReAllocChar(char*, unsigned long, unsigned long) (TStorage.cxx:275)
+  n2: 49941174 0x6892D01: TBuffer::Expand(int, bool) (TBuffer.cxx:211)
+   n1: 25004284 0x925CEFF: TBasket::ReadBasketBuffers(long long, int, TFile*) (TBasket.cxx:394)
+    n1: 25004284 0x92601E8: TBranch::GetBasket(int) (TBranch.cxx:1112)
+     n1: 25004284 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+      n1: 25004284 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+       n1: 25004284 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+        n1: 25004284 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+         n1: 25004284 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+          n1: 25004284 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+           n0: 25004284 0x412851: main (MCSUnfolding.cpp:358)
+   n1: 24936890 0x92B2225: TTree::GetTransientBuffer(int) (TTree.cxx:878)
+    n1: 24936890 0x925DFB3: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:104)
+     n1: 24936890 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+      n1: 24936890 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+       n1: 24936890 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+        n1: 24936890 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+         n2: 24936890 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n2: 24936890 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n1: 13031536 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+            n1: 13031536 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+             n0: 13031536 0x412851: main (MCSUnfolding.cpp:358)
+           n1: 11905354 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+            n1: 11905354 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+             n0: 11905354 0x412851: main (MCSUnfolding.cpp:358)
+          n0: 0 in 1 place, below massif's threshold (1.00%)
+  n0: 0 in 3 places, all below massif's threshold (1.00%)
+ n0: 41126172 in 2573 places, all below massif's threshold (1.00%)
+ n2: 32125504 0x680C826: TArrayD::Set(int) (TArrayD.cxx:114)
+  n2: 31345144 0x82C6A0B: TH2D::TH2D(char const*, char const*, int, double, double, int, double, double) (TH2.cxx:3922)
+   n1: 24960832 0x437C76: MCSAnalysis::MCSAnalysis(std::string, std::string, std::string, std::string, std::map<std::string, double, std::less<std::string>, std::allocator<std::pair<std::string const, double> > >) (MCSAnalysis.cpp:128)
+    n0: 24960832 0x411C9A: main (MCSUnfolding.cpp:246)
+   n0: 6384312 in 72 places, all below massif's threshold (1.00%)
+  n0: 780360 in 9 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=79
+#-----------
+time=208278456679
+mem_heap_B=923004386
+mem_heap_extra_B=2753366
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=80
+#-----------
+time=210101833924
+mem_heap_B=922879908
+mem_heap_extra_B=2749580
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=81
+#-----------
+time=210506490758
+mem_heap_B=974839880
+mem_heap_extra_B=2764648
+mem_stacks_B=0
+heap_tree=detailed
+n5: 974839880 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 637010272 0x68CFFC8: TStorage::ReAlloc(void*, unsigned long, unsigned long) (TStorage.cxx:234)
+  n2: 637010272 0x681F1C3: TObjArray::Expand(int) (TObjArray.cxx:385)
+   n2: 636963680 0x681F854: TObjArray::AddAtAndExpand(TObject*, int) (TObjArray.cxx:232)
+    n1: 636658336 0x68BBA66: TProcessID::PutObjectWithID(TObject*, unsigned int) (TProcessID.cxx:337)
+     n1: 636658336 0x68B371E: TObject::Streamer(TBuffer&) (TObject.cxx:833)
+      n1: 636658336 0x78EA3D5: TStreamerInfoActions::ReadTObject(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:285)
+       n1: 636658336 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+        n1: 636658336 0x77F08B3: TBufferFile::ReadClassBuffer(TClass const*, void*, TClass const*) (TBufferFile.cxx:3893)
+         n1: 636658336 0x77F81B3: TBufferFile::ReadObjectAny(TClass const*) (TClass.h:451)
+          n1: 636658336 0x782B5B7: TGenCollectionStreamer::ReadObjects(int, TBuffer&, TClass const*) (TGenCollectionStreamer.cxx:405)
+           n1: 636658336 0x782C141: TGenCollectionStreamer::ReadBufferGeneric(TBuffer&, void*, TClass const*) (TGenCollectionStreamer.cxx:1387)
+            n1: 636658336 0x77F1924: TBufferFile::ReadFastArray(void*, TClass const*, int, TMemberStreamer*, TClass const*) (TClass.h:451)
+             n1: 636658336 0x78B45C4: int TStreamerInfoActions::ReadSTL<&TStreamerInfoActions::ReadSTLMemberWiseSameClass, &TStreamerInfoActions::ReadSTLObjectWiseFastArray>(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:706)
+              n1: 636658336 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+               n1: 636658336 0x926C1C9: TBranchElement::ReadLeavesMember(TBuffer&) (TBranchElement.cxx:4034)
+                n1: 636658336 0x92605A0: TBranch::GetEntry(long long, int) (TBranch.cxx:1278)
+                 n1: 636658336 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+                  n1: 636658336 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+                   n2: 636658336 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+                    n1: 332001792 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+                     n1: 332001792 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+                      n0: 332001792 0x412851: main (MCSUnfolding.cpp:358)
+                    n1: 304656544 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+                     n1: 304656544 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+                      n0: 304656544 0x412851: main (MCSUnfolding.cpp:358)
+    n0: 305344 in 8 places, all below massif's threshold (1.00%)
+   n0: 46592 in 1 place, below massif's threshold (1.00%)
+ n1: 188925330 0x6893055: TBuffer::TBuffer(TBuffer::EMode, int) (TBuffer.cxx:72)
+  n2: 188925330 0x77F74F7: TBufferFile::TBufferFile(TBuffer::EMode, int) (TBufferFile.cxx:109)
+   n1: 188608394 0x925DF55: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:95)
+    n1: 188608394 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+     n1: 188608394 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+      n2: 188608394 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+       n1: 188508616 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+        n2: 188508616 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+         n3: 174718030 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+          n1: 88255678 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+           n1: 88255678 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+            n0: 88255678 0x412851: main (MCSUnfolding.cpp:358)
+          n1: 60545408 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+           n1: 60545408 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+            n0: 60545408 0x412851: main (MCSUnfolding.cpp:358)
+          n1: 25916944 0x472AC1: MCSAnalysis::TruthData(int) (MCSAnalysis.cpp:1455)
+           n1: 25916944 0x473D59: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:775)
+            n0: 25916944 0x412851: main (MCSUnfolding.cpp:358)
+         n2: 13790586 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n1: 13291696 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n0: 13291696 in 2 places, all below massif's threshold (1.00%)
+          n0: 498890 in 1 place, below massif's threshold (1.00%)
+       n0: 99778 in 1 place, below massif's threshold (1.00%)
+   n0: 316936 in 5 places, all below massif's threshold (1.00%)
+ n2: 75541174 0x68D00C6: TStorage::ReAllocChar(char*, unsigned long, unsigned long) (TStorage.cxx:275)
+  n2: 75541174 0x6892D01: TBuffer::Expand(int, bool) (TBuffer.cxx:211)
+   n1: 50536890 0x92B2225: TTree::GetTransientBuffer(int) (TTree.cxx:878)
+    n1: 50536890 0x925DFB3: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:104)
+     n1: 50536890 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+      n1: 50536890 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+       n1: 50536890 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+        n1: 50536890 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+         n2: 50536890 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n3: 50536890 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n1: 25600000 0x472AC1: MCSAnalysis::TruthData(int) (MCSAnalysis.cpp:1455)
+            n1: 25600000 0x473D59: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:775)
+             n0: 25600000 0x412851: main (MCSUnfolding.cpp:358)
+           n1: 13031536 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+            n1: 13031536 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+             n0: 13031536 0x412851: main (MCSUnfolding.cpp:358)
+           n1: 11905354 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+            n1: 11905354 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+             n0: 11905354 0x412851: main (MCSUnfolding.cpp:358)
+          n0: 0 in 1 place, below massif's threshold (1.00%)
+   n1: 25004284 0x925CEFF: TBasket::ReadBasketBuffers(long long, int, TFile*) (TBasket.cxx:394)
+    n1: 25004284 0x92601E8: TBranch::GetBasket(int) (TBranch.cxx:1112)
+     n1: 25004284 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+      n1: 25004284 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+       n1: 25004284 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+        n1: 25004284 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+         n1: 25004284 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+          n1: 25004284 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+           n0: 25004284 0x412851: main (MCSUnfolding.cpp:358)
+  n0: 0 in 3 places, all below massif's threshold (1.00%)
+ n0: 41237600 in 2573 places, all below massif's threshold (1.00%)
+ n2: 32125504 0x680C826: TArrayD::Set(int) (TArrayD.cxx:114)
+  n2: 31345144 0x82C6A0B: TH2D::TH2D(char const*, char const*, int, double, double, int, double, double) (TH2.cxx:3922)
+   n1: 24960832 0x437C76: MCSAnalysis::MCSAnalysis(std::string, std::string, std::string, std::string, std::map<std::string, double, std::less<std::string>, std::allocator<std::pair<std::string const, double> > >) (MCSAnalysis.cpp:128)
+    n0: 24960832 0x411C9A: main (MCSUnfolding.cpp:246)
+   n0: 6384312 in 72 places, all below massif's threshold (1.00%)
+  n0: 780360 in 9 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=82
+#-----------
+time=210508438456
+mem_heap_B=1000164808
+mem_heap_extra_B=2768784
+mem_stacks_B=0
+heap_tree=detailed
+n5: 1000164808 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 637010272 0x68CFFC8: TStorage::ReAlloc(void*, unsigned long, unsigned long) (TStorage.cxx:234)
+  n2: 637010272 0x681F1C3: TObjArray::Expand(int) (TObjArray.cxx:385)
+   n2: 636963680 0x681F854: TObjArray::AddAtAndExpand(TObject*, int) (TObjArray.cxx:232)
+    n1: 636658336 0x68BBA66: TProcessID::PutObjectWithID(TObject*, unsigned int) (TProcessID.cxx:337)
+     n1: 636658336 0x68B371E: TObject::Streamer(TBuffer&) (TObject.cxx:833)
+      n1: 636658336 0x78EA3D5: TStreamerInfoActions::ReadTObject(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:285)
+       n1: 636658336 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+        n1: 636658336 0x77F08B3: TBufferFile::ReadClassBuffer(TClass const*, void*, TClass const*) (TBufferFile.cxx:3893)
+         n1: 636658336 0x77F81B3: TBufferFile::ReadObjectAny(TClass const*) (TClass.h:451)
+          n1: 636658336 0x782B5B7: TGenCollectionStreamer::ReadObjects(int, TBuffer&, TClass const*) (TGenCollectionStreamer.cxx:405)
+           n1: 636658336 0x782C141: TGenCollectionStreamer::ReadBufferGeneric(TBuffer&, void*, TClass const*) (TGenCollectionStreamer.cxx:1387)
+            n1: 636658336 0x77F1924: TBufferFile::ReadFastArray(void*, TClass const*, int, TMemberStreamer*, TClass const*) (TClass.h:451)
+             n1: 636658336 0x78B45C4: int TStreamerInfoActions::ReadSTL<&TStreamerInfoActions::ReadSTLMemberWiseSameClass, &TStreamerInfoActions::ReadSTLObjectWiseFastArray>(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:706)
+              n1: 636658336 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+               n1: 636658336 0x926C1C9: TBranchElement::ReadLeavesMember(TBuffer&) (TBranchElement.cxx:4034)
+                n1: 636658336 0x92605A0: TBranch::GetEntry(long long, int) (TBranch.cxx:1278)
+                 n1: 636658336 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+                  n1: 636658336 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+                   n2: 636658336 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+                    n1: 332001792 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+                     n1: 332001792 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+                      n0: 332001792 0x412851: main (MCSUnfolding.cpp:358)
+                    n1: 304656544 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+                     n1: 304656544 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+                      n0: 304656544 0x412851: main (MCSUnfolding.cpp:358)
+    n0: 305344 in 8 places, all below massif's threshold (1.00%)
+   n0: 46592 in 1 place, below massif's threshold (1.00%)
+ n1: 214208402 0x6893055: TBuffer::TBuffer(TBuffer::EMode, int) (TBuffer.cxx:72)
+  n2: 214208402 0x77F74F7: TBufferFile::TBufferFile(TBuffer::EMode, int) (TBufferFile.cxx:109)
+   n1: 214208402 0x925DF55: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:95)
+    n1: 214208402 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+     n1: 214208402 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+      n2: 214208402 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+       n1: 214108624 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+        n2: 214108624 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+         n3: 200318038 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+          n1: 88255678 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+           n1: 88255678 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+            n0: 88255678 0x412851: main (MCSUnfolding.cpp:358)
+          n1: 60545408 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+           n1: 60545408 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+            n0: 60545408 0x412851: main (MCSUnfolding.cpp:358)
+          n1: 51516952 0x472AC1: MCSAnalysis::TruthData(int) (MCSAnalysis.cpp:1455)
+           n1: 51516952 0x473D59: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:775)
+            n0: 51516952 0x412851: main (MCSUnfolding.cpp:358)
+         n2: 13790586 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n1: 13291696 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n0: 13291696 in 2 places, all below massif's threshold (1.00%)
+          n0: 498890 in 1 place, below massif's threshold (1.00%)
+       n0: 99778 in 1 place, below massif's threshold (1.00%)
+   n0: 0 in 5 places, all below massif's threshold (1.00%)
+ n2: 75541174 0x68D00C6: TStorage::ReAllocChar(char*, unsigned long, unsigned long) (TStorage.cxx:275)
+  n2: 75541174 0x6892D01: TBuffer::Expand(int, bool) (TBuffer.cxx:211)
+   n1: 50536890 0x92B2225: TTree::GetTransientBuffer(int) (TTree.cxx:878)
+    n1: 50536890 0x925DFB3: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:104)
+     n1: 50536890 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+      n1: 50536890 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+       n1: 50536890 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+        n1: 50536890 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+         n2: 50536890 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n3: 50536890 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n1: 25600000 0x472AC1: MCSAnalysis::TruthData(int) (MCSAnalysis.cpp:1455)
+            n1: 25600000 0x473D59: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:775)
+             n0: 25600000 0x412851: main (MCSUnfolding.cpp:358)
+           n1: 13031536 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+            n1: 13031536 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+             n0: 13031536 0x412851: main (MCSUnfolding.cpp:358)
+           n1: 11905354 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+            n1: 11905354 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+             n0: 11905354 0x412851: main (MCSUnfolding.cpp:358)
+          n0: 0 in 1 place, below massif's threshold (1.00%)
+   n1: 25004284 0x925CEFF: TBasket::ReadBasketBuffers(long long, int, TFile*) (TBasket.cxx:394)
+    n1: 25004284 0x92601E8: TBranch::GetBasket(int) (TBranch.cxx:1112)
+     n1: 25004284 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+      n1: 25004284 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+       n1: 25004284 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+        n1: 25004284 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+         n1: 25004284 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+          n1: 25004284 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+           n0: 25004284 0x412851: main (MCSUnfolding.cpp:358)
+  n0: 0 in 3 places, all below massif's threshold (1.00%)
+ n0: 41279456 in 2573 places, all below massif's threshold (1.00%)
+ n2: 32125504 0x680C826: TArrayD::Set(int) (TArrayD.cxx:114)
+  n2: 31345144 0x82C6A0B: TH2D::TH2D(char const*, char const*, int, double, double, int, double, double) (TH2.cxx:3922)
+   n1: 24960832 0x437C76: MCSAnalysis::MCSAnalysis(std::string, std::string, std::string, std::string, std::map<std::string, double, std::less<std::string>, std::allocator<std::pair<std::string const, double> > >) (MCSAnalysis.cpp:128)
+    n0: 24960832 0x411C9A: main (MCSUnfolding.cpp:246)
+   n0: 6384312 in 72 places, all below massif's threshold (1.00%)
+  n0: 780360 in 9 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=83
+#-----------
+time=212331678363
+mem_heap_B=1008941304
+mem_heap_extra_B=2769816
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=84
+#-----------
+time=214155715051
+mem_heap_B=1008951000
+mem_heap_extra_B=2773808
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=85
+#-----------
+time=215978821454
+mem_heap_B=1008994084
+mem_heap_extra_B=2770972
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=86
+#-----------
+time=217992218274
+mem_heap_B=1008962904
+mem_heap_extra_B=2768088
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=87
+#-----------
+time=219815992832
+mem_heap_B=1008986780
+mem_heap_extra_B=2768300
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=88
+#-----------
+time=221699017217
+mem_heap_B=1008969424
+mem_heap_extra_B=2768472
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=89
+#-----------
+time=223726191345
+mem_heap_B=1008993276
+mem_heap_extra_B=2769460
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=90
+#-----------
+time=225623041900
+mem_heap_B=1008985884
+mem_heap_extra_B=2771228
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=91
+#-----------
+time=226963972251
+mem_heap_B=1010254394
+mem_heap_extra_B=2774718
+mem_stacks_B=0
+heap_tree=detailed
+n5: 1010254394 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 637010272 0x68CFFC8: TStorage::ReAlloc(void*, unsigned long, unsigned long) (TStorage.cxx:234)
+  n2: 637010272 0x681F1C3: TObjArray::Expand(int) (TObjArray.cxx:385)
+   n2: 636963680 0x681F854: TObjArray::AddAtAndExpand(TObject*, int) (TObjArray.cxx:232)
+    n1: 636658336 0x68BBA66: TProcessID::PutObjectWithID(TObject*, unsigned int) (TProcessID.cxx:337)
+     n1: 636658336 0x68B371E: TObject::Streamer(TBuffer&) (TObject.cxx:833)
+      n1: 636658336 0x78EA3D5: TStreamerInfoActions::ReadTObject(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:285)
+       n1: 636658336 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+        n1: 636658336 0x77F08B3: TBufferFile::ReadClassBuffer(TClass const*, void*, TClass const*) (TBufferFile.cxx:3893)
+         n1: 636658336 0x77F81B3: TBufferFile::ReadObjectAny(TClass const*) (TClass.h:451)
+          n1: 636658336 0x782B5B7: TGenCollectionStreamer::ReadObjects(int, TBuffer&, TClass const*) (TGenCollectionStreamer.cxx:405)
+           n1: 636658336 0x782C141: TGenCollectionStreamer::ReadBufferGeneric(TBuffer&, void*, TClass const*) (TGenCollectionStreamer.cxx:1387)
+            n1: 636658336 0x77F1924: TBufferFile::ReadFastArray(void*, TClass const*, int, TMemberStreamer*, TClass const*) (TClass.h:451)
+             n1: 636658336 0x78B45C4: int TStreamerInfoActions::ReadSTL<&TStreamerInfoActions::ReadSTLMemberWiseSameClass, &TStreamerInfoActions::ReadSTLObjectWiseFastArray>(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:706)
+              n1: 636658336 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+               n1: 636658336 0x926C1C9: TBranchElement::ReadLeavesMember(TBuffer&) (TBranchElement.cxx:4034)
+                n1: 636658336 0x92605A0: TBranch::GetEntry(long long, int) (TBranch.cxx:1278)
+                 n1: 636658336 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+                  n1: 636658336 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+                   n2: 636658336 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+                    n1: 332001792 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+                     n1: 332001792 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+                      n0: 332001792 0x412851: main (MCSUnfolding.cpp:358)
+                    n1: 304656544 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+                     n1: 304656544 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+                      n0: 304656544 0x412851: main (MCSUnfolding.cpp:358)
+    n0: 305344 in 8 places, all below massif's threshold (1.00%)
+   n0: 46592 in 1 place, below massif's threshold (1.00%)
+ n1: 222867244 0x6893055: TBuffer::TBuffer(TBuffer::EMode, int) (TBuffer.cxx:72)
+  n2: 222867244 0x77F74F7: TBufferFile::TBufferFile(TBuffer::EMode, int) (TBufferFile.cxx:109)
+   n1: 222783946 0x925DF55: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:95)
+    n1: 222783946 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+     n1: 222783946 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+      n2: 222783946 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+       n1: 222684168 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+        n2: 222684168 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+         n3: 208893582 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+          n1: 88255678 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+           n1: 88255678 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+            n0: 88255678 0x412851: main (MCSUnfolding.cpp:358)
+          n1: 60545408 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+           n1: 60545408 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+            n0: 60545408 0x412851: main (MCSUnfolding.cpp:358)
+          n1: 60092496 0x472AC1: MCSAnalysis::TruthData(int) (MCSAnalysis.cpp:1455)
+           n1: 60092496 0x473D59: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:775)
+            n0: 60092496 0x412851: main (MCSUnfolding.cpp:358)
+         n2: 13790586 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n1: 13291696 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n0: 13291696 in 2 places, all below massif's threshold (1.00%)
+          n0: 498890 in 1 place, below massif's threshold (1.00%)
+       n0: 99778 in 1 place, below massif's threshold (1.00%)
+   n0: 83298 in 5 places, all below massif's threshold (1.00%)
+ n2: 75541174 0x68D00C6: TStorage::ReAllocChar(char*, unsigned long, unsigned long) (TStorage.cxx:275)
+  n2: 75541174 0x6892D01: TBuffer::Expand(int, bool) (TBuffer.cxx:211)
+   n1: 50536890 0x92B2225: TTree::GetTransientBuffer(int) (TTree.cxx:878)
+    n1: 50536890 0x925DFB3: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:104)
+     n1: 50536890 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+      n1: 50536890 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+       n1: 50536890 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+        n1: 50536890 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+         n2: 50536890 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n3: 50536890 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n1: 25600000 0x472AC1: MCSAnalysis::TruthData(int) (MCSAnalysis.cpp:1455)
+            n1: 25600000 0x473D59: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:775)
+             n0: 25600000 0x412851: main (MCSUnfolding.cpp:358)
+           n1: 13031536 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+            n1: 13031536 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+             n0: 13031536 0x412851: main (MCSUnfolding.cpp:358)
+           n1: 11905354 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+            n1: 11905354 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+             n0: 11905354 0x412851: main (MCSUnfolding.cpp:358)
+          n0: 0 in 1 place, below massif's threshold (1.00%)
+   n1: 25004284 0x925CEFF: TBasket::ReadBasketBuffers(long long, int, TFile*) (TBasket.cxx:394)
+    n1: 25004284 0x92601E8: TBranch::GetBasket(int) (TBranch.cxx:1112)
+     n1: 25004284 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+      n1: 25004284 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+       n1: 25004284 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+        n1: 25004284 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+         n1: 25004284 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+          n1: 25004284 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+           n0: 25004284 0x412851: main (MCSUnfolding.cpp:358)
+  n0: 0 in 3 places, all below massif's threshold (1.00%)
+ n0: 42027064 in 2573 places, all below massif's threshold (1.00%)
+ n2: 32808640 0x680C826: TArrayD::Set(int) (TArrayD.cxx:114)
+  n2: 32022264 0x82C6A0B: TH2D::TH2D(char const*, char const*, int, double, double, int, double, double) (TH2.cxx:3922)
+   n1: 24960832 0x437C76: MCSAnalysis::MCSAnalysis(std::string, std::string, std::string, std::string, std::map<std::string, double, std::less<std::string>, std::allocator<std::pair<std::string const, double> > >) (MCSAnalysis.cpp:128)
+    n0: 24960832 0x411C9A: main (MCSUnfolding.cpp:246)
+   n0: 7061432 in 72 places, all below massif's threshold (1.00%)
+  n0: 786376 in 9 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=92
+#-----------
+time=228787079546
+mem_heap_B=1009899809
+mem_heap_extra_B=2778935
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=93
+#-----------
+time=231308113963
+mem_heap_B=1009289785
+mem_heap_extra_B=2792415
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=94
+#-----------
+time=232163700150
+mem_heap_B=1034253637
+mem_heap_extra_B=2796339
+mem_stacks_B=0
+heap_tree=detailed
+n5: 1034253637 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 637010272 0x68CFFC8: TStorage::ReAlloc(void*, unsigned long, unsigned long) (TStorage.cxx:234)
+  n2: 637010272 0x681F1C3: TObjArray::Expand(int) (TObjArray.cxx:385)
+   n2: 636963680 0x681F854: TObjArray::AddAtAndExpand(TObject*, int) (TObjArray.cxx:232)
+    n1: 636658336 0x68BBA66: TProcessID::PutObjectWithID(TObject*, unsigned int) (TProcessID.cxx:337)
+     n1: 636658336 0x68B371E: TObject::Streamer(TBuffer&) (TObject.cxx:833)
+      n1: 636658336 0x78EA3D5: TStreamerInfoActions::ReadTObject(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:285)
+       n1: 636658336 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+        n1: 636658336 0x77F08B3: TBufferFile::ReadClassBuffer(TClass const*, void*, TClass const*) (TBufferFile.cxx:3893)
+         n1: 636658336 0x77F81B3: TBufferFile::ReadObjectAny(TClass const*) (TClass.h:451)
+          n1: 636658336 0x782B5B7: TGenCollectionStreamer::ReadObjects(int, TBuffer&, TClass const*) (TGenCollectionStreamer.cxx:405)
+           n1: 636658336 0x782C141: TGenCollectionStreamer::ReadBufferGeneric(TBuffer&, void*, TClass const*) (TGenCollectionStreamer.cxx:1387)
+            n1: 636658336 0x77F1924: TBufferFile::ReadFastArray(void*, TClass const*, int, TMemberStreamer*, TClass const*) (TClass.h:451)
+             n1: 636658336 0x78B45C4: int TStreamerInfoActions::ReadSTL<&TStreamerInfoActions::ReadSTLMemberWiseSameClass, &TStreamerInfoActions::ReadSTLObjectWiseFastArray>(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:706)
+              n1: 636658336 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+               n1: 636658336 0x926C1C9: TBranchElement::ReadLeavesMember(TBuffer&) (TBranchElement.cxx:4034)
+                n1: 636658336 0x92605A0: TBranch::GetEntry(long long, int) (TBranch.cxx:1278)
+                 n1: 636658336 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+                  n1: 636658336 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+                   n2: 636658336 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+                    n1: 332001792 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+                     n1: 332001792 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+                      n0: 332001792 0x412851: main (MCSUnfolding.cpp:358)
+                    n1: 304656544 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+                     n1: 304656544 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+                      n0: 304656544 0x412851: main (MCSUnfolding.cpp:358)
+    n0: 305344 in 8 places, all below massif's threshold (1.00%)
+   n0: 46592 in 1 place, below massif's threshold (1.00%)
+ n1: 222783946 0x6893055: TBuffer::TBuffer(TBuffer::EMode, int) (TBuffer.cxx:72)
+  n2: 222783946 0x77F74F7: TBufferFile::TBufferFile(TBuffer::EMode, int) (TBufferFile.cxx:109)
+   n1: 222783946 0x925DF55: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:95)
+    n1: 222783946 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+     n1: 222783946 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+      n2: 222783946 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+       n1: 222684168 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+        n2: 222684168 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+         n3: 208893582 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+          n1: 88255678 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+           n1: 88255678 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+            n0: 88255678 0x412851: main (MCSUnfolding.cpp:358)
+          n1: 60545408 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+           n1: 60545408 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+            n0: 60545408 0x412851: main (MCSUnfolding.cpp:358)
+          n1: 60092496 0x472AC1: MCSAnalysis::TruthData(int) (MCSAnalysis.cpp:1455)
+           n1: 60092496 0x473D59: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:775)
+            n0: 60092496 0x412851: main (MCSUnfolding.cpp:358)
+         n2: 13790586 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n1: 13291696 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n0: 13291696 in 2 places, all below massif's threshold (1.00%)
+          n0: 498890 in 1 place, below massif's threshold (1.00%)
+       n0: 99778 in 1 place, below massif's threshold (1.00%)
+   n0: 0 in 5 places, all below massif's threshold (1.00%)
+ n3: 100510214 0x68D00C6: TStorage::ReAllocChar(char*, unsigned long, unsigned long) (TStorage.cxx:275)
+  n2: 75541174 0x6892D01: TBuffer::Expand(int, bool) (TBuffer.cxx:211)
+   n1: 50536890 0x92B2225: TTree::GetTransientBuffer(int) (TTree.cxx:878)
+    n1: 50536890 0x925DFB3: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:104)
+     n1: 50536890 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+      n1: 50536890 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+       n1: 50536890 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+        n1: 50536890 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+         n2: 50536890 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n3: 50536890 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n1: 25600000 0x472AC1: MCSAnalysis::TruthData(int) (MCSAnalysis.cpp:1455)
+            n1: 25600000 0x473D59: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:775)
+             n0: 25600000 0x412851: main (MCSUnfolding.cpp:358)
+           n1: 13031536 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+            n1: 13031536 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+             n0: 13031536 0x412851: main (MCSUnfolding.cpp:358)
+           n1: 11905354 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+            n1: 11905354 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+             n0: 11905354 0x412851: main (MCSUnfolding.cpp:358)
+          n0: 0 in 1 place, below massif's threshold (1.00%)
+   n1: 25004284 0x925CEFF: TBasket::ReadBasketBuffers(long long, int, TFile*) (TBasket.cxx:394)
+    n1: 25004284 0x92601E8: TBranch::GetBasket(int) (TBranch.cxx:1112)
+     n1: 25004284 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+      n1: 25004284 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+       n1: 25004284 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+        n1: 25004284 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+         n1: 25004284 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+          n1: 25004284 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+           n0: 25004284 0x412851: main (MCSUnfolding.cpp:358)
+  n2: 24969040 0x6892CC5: TBuffer::Expand(int, bool) (TBuffer.cxx:208)
+   n2: 24964936 0x77F1A86: TBufferFile::WriteFastArray(double const*, int) (TBufferFile.cxx:2175)
+    n1: 24964936 0x680C8C2: TArrayD::Streamer(TBuffer&) (TArrayD.cxx:157)
+     n1: 24964936 0x6871A3A: TStreamerBase::WriteBuffer(TBuffer&, char*) (TStreamerElement.cxx:805)
+      n1: 24964936 0x797ED57: int TStreamerInfo::WriteBufferAux<char**>(TBuffer&, char** const&, TStreamerInfo::TCompInfo* const*, int, int, int, int, int) (TStreamerInfoWriteBuffer.cxx:634)
+       n1: 24964936 0x7859AAB: TStreamerInfoActions::GenericWriteAction(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:174)
+        n1: 24964936 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+         n2: 24964936 0x77F0F38: TBufferFile::WriteClassBuffer(TClass const*, void*) (TBufferFile.cxx:3941)
+          n2: 24964936 0x82D0F96: TH2D::Streamer(TBuffer&) (TH2.cxx:4096)
+           n1: 24964936 0x77F616D: TBufferFile::WriteObjectClass(void const*, TClass const*) (TClass.h:451)
+            n1: 24964936 0x77F0601: TBufferFile::WriteObjectAny(void const*, TClass const*) (TBufferFile.cxx:2659)
+             n1: 24964936 0x681D79E: TList::Streamer(TBuffer&) (TBuffer.h:401)
+              n1: 24964936 0x77F222D: TBufferFile::WriteFastArray(void**, TClass const*, int, bool, TMemberStreamer*) (TClass.h:451)
+               n1: 24964936 0x797DEF3: int TStreamerInfo::WriteBufferAux<char**>(TBuffer&, char** const&, TStreamerInfo::TCompInfo* const*, int, int, int, int, int) (TStreamerInfoWriteBuffer.cxx:449)
+                n1: 24964936 0x7859AAB: TStreamerInfoActions::GenericWriteAction(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:174)
+                 n1: 24964936 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+                  n1: 24964936 0x77F0F38: TBufferFile::WriteClassBuffer(TClass const*, void*) (TBufferFile.cxx:3941)
+                   n1: 24964936 0x8EFF8F6: TPad::Streamer(TBuffer&) (TPad.cxx:6284)
+                    n1: 24964936 0x8ECF995: TCanvas::Streamer(TBuffer&) (TCanvas.cxx:2060)
+                     n1: 24964936 0x78384D4: TKey::TKey(TObject const*, char const*, int, TDirectory*) (TKey.cxx:253)
+                      n1: 24964936 0x7806393: TFile::CreateKey(TDirectory*, TObject const*, char const*, int) (TFile.cxx:960)
+                       n1: 24964936 0x77FF202: TDirectoryFile::WriteTObject(TObject const*, char const*, char const*, int) (TDirectoryFile.cxx:1829)
+                        n1: 24964936 0x68B4B90: TObject::Write(char const*, int, int) const (TObject.cxx:789)
+                         n1: 24964936 0x77FEF18: TDirectoryFile::SaveObjectAs(TObject const*, char const*, char const*) const (TDirectoryFile.cxx:1454)
+                          n1: 24964936 0x8EFC920: TPad::Print(char const*, char const*) (TPad.cxx:4578)
+                           n1: 24964936 0x8EFE0D4: TPad::SaveAs(char const*, char const*) const (TPad.cxx:5169)
+                            n1: 24964936 0x44106C: MCSAnalysis::Write() (MCSAnalysis.cpp:717)
+                             n1: 24964936 0x473D6E: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:812)
+                              n0: 24964936 0x412851: main (MCSUnfolding.cpp:358)
+           n0: 0 in 2 places, all below massif's threshold (1.00%)
+          n0: 0 in 1 place, below massif's threshold (1.00%)
+    n0: 0 in 1 place, below massif's threshold (1.00%)
+   n0: 4104 in 9 places, all below massif's threshold (1.00%)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n0: 41817333 in 2575 places, all below massif's threshold (1.00%)
+ n2: 32131872 0x680C826: TArrayD::Set(int) (TArrayD.cxx:114)
+  n2: 31345144 0x82C6A0B: TH2D::TH2D(char const*, char const*, int, double, double, int, double, double) (TH2.cxx:3922)
+   n1: 24960832 0x437C76: MCSAnalysis::MCSAnalysis(std::string, std::string, std::string, std::string, std::map<std::string, double, std::less<std::string>, std::allocator<std::pair<std::string const, double> > >) (MCSAnalysis.cpp:128)
+    n0: 24960832 0x411C9A: main (MCSUnfolding.cpp:246)
+   n0: 6384312 in 72 places, all below massif's threshold (1.00%)
+  n0: 786728 in 11 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=95
+#-----------
+time=232235901540
+mem_heap_B=1084179397
+mem_heap_extra_B=2796643
+mem_stacks_B=0
+heap_tree=peak
+n5: 1084179397 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 637010272 0x68CFFC8: TStorage::ReAlloc(void*, unsigned long, unsigned long) (TStorage.cxx:234)
+  n2: 637010272 0x681F1C3: TObjArray::Expand(int) (TObjArray.cxx:385)
+   n2: 636963680 0x681F854: TObjArray::AddAtAndExpand(TObject*, int) (TObjArray.cxx:232)
+    n1: 636658336 0x68BBA66: TProcessID::PutObjectWithID(TObject*, unsigned int) (TProcessID.cxx:337)
+     n1: 636658336 0x68B371E: TObject::Streamer(TBuffer&) (TObject.cxx:833)
+      n1: 636658336 0x78EA3D5: TStreamerInfoActions::ReadTObject(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:285)
+       n1: 636658336 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+        n1: 636658336 0x77F08B3: TBufferFile::ReadClassBuffer(TClass const*, void*, TClass const*) (TBufferFile.cxx:3893)
+         n1: 636658336 0x77F81B3: TBufferFile::ReadObjectAny(TClass const*) (TClass.h:451)
+          n1: 636658336 0x782B5B7: TGenCollectionStreamer::ReadObjects(int, TBuffer&, TClass const*) (TGenCollectionStreamer.cxx:405)
+           n1: 636658336 0x782C141: TGenCollectionStreamer::ReadBufferGeneric(TBuffer&, void*, TClass const*) (TGenCollectionStreamer.cxx:1387)
+            n1: 636658336 0x77F1924: TBufferFile::ReadFastArray(void*, TClass const*, int, TMemberStreamer*, TClass const*) (TClass.h:451)
+             n1: 636658336 0x78B45C4: int TStreamerInfoActions::ReadSTL<&TStreamerInfoActions::ReadSTLMemberWiseSameClass, &TStreamerInfoActions::ReadSTLObjectWiseFastArray>(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:706)
+              n1: 636658336 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+               n1: 636658336 0x926C1C9: TBranchElement::ReadLeavesMember(TBuffer&) (TBranchElement.cxx:4034)
+                n1: 636658336 0x92605A0: TBranch::GetEntry(long long, int) (TBranch.cxx:1278)
+                 n1: 636658336 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+                  n1: 636658336 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+                   n2: 636658336 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+                    n1: 332001792 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+                     n1: 332001792 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+                      n0: 332001792 0x412851: main (MCSUnfolding.cpp:358)
+                    n1: 304656544 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+                     n1: 304656544 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+                      n0: 304656544 0x412851: main (MCSUnfolding.cpp:358)
+    n0: 305344 in 8 places, all below massif's threshold (1.00%)
+   n0: 46592 in 1 place, below massif's threshold (1.00%)
+ n1: 222783946 0x6893055: TBuffer::TBuffer(TBuffer::EMode, int) (TBuffer.cxx:72)
+  n2: 222783946 0x77F74F7: TBufferFile::TBufferFile(TBuffer::EMode, int) (TBufferFile.cxx:109)
+   n1: 222783946 0x925DF55: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:95)
+    n1: 222783946 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+     n1: 222783946 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+      n2: 222783946 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+       n1: 222684168 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+        n2: 222684168 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+         n3: 208893582 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+          n1: 88255678 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+           n1: 88255678 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+            n0: 88255678 0x412851: main (MCSUnfolding.cpp:358)
+          n1: 60545408 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+           n1: 60545408 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+            n0: 60545408 0x412851: main (MCSUnfolding.cpp:358)
+          n1: 60092496 0x472AC1: MCSAnalysis::TruthData(int) (MCSAnalysis.cpp:1455)
+           n1: 60092496 0x473D59: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:775)
+            n0: 60092496 0x412851: main (MCSUnfolding.cpp:358)
+         n2: 13790586 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n1: 13291696 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n0: 13291696 in 2 places, all below massif's threshold (1.00%)
+          n0: 498890 in 1 place, below massif's threshold (1.00%)
+       n0: 99778 in 1 place, below massif's threshold (1.00%)
+   n0: 0 in 5 places, all below massif's threshold (1.00%)
+ n3: 150435974 0x68D00C6: TStorage::ReAllocChar(char*, unsigned long, unsigned long) (TStorage.cxx:275)
+  n2: 75541174 0x6892D01: TBuffer::Expand(int, bool) (TBuffer.cxx:211)
+   n1: 50536890 0x92B2225: TTree::GetTransientBuffer(int) (TTree.cxx:878)
+    n1: 50536890 0x925DFB3: TBasket::TBasket(char const*, char const*, TBranch*) (TBasket.cxx:104)
+     n1: 50536890 0x92AF033: TTree::CreateBasket(TBranch*) (TTree.cxx:3417)
+      n1: 50536890 0x9260159: TBranch::GetBasket(int) (TBranch.cxx:1097)
+       n1: 50536890 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+        n1: 50536890 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+         n2: 50536890 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+          n3: 50536890 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+           n1: 25600000 0x472AC1: MCSAnalysis::TruthData(int) (MCSAnalysis.cpp:1455)
+            n1: 25600000 0x473D59: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:775)
+             n0: 25600000 0x412851: main (MCSUnfolding.cpp:358)
+           n1: 13031536 0x44B288: MCSAnalysis::dataevents(int) (MCSAnalysis.cpp:921)
+            n1: 13031536 0x473582: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:743)
+             n0: 13031536 0x412851: main (MCSUnfolding.cpp:358)
+           n1: 11905354 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+            n1: 11905354 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+             n0: 11905354 0x412851: main (MCSUnfolding.cpp:358)
+          n0: 0 in 1 place, below massif's threshold (1.00%)
+   n1: 25004284 0x925CEFF: TBasket::ReadBasketBuffers(long long, int, TFile*) (TBasket.cxx:394)
+    n1: 25004284 0x92601E8: TBranch::GetBasket(int) (TBranch.cxx:1112)
+     n1: 25004284 0x9260782: TBranch::GetEntry(long long, int) (TBranch.cxx:1236)
+      n1: 25004284 0x927837F: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2327)
+       n1: 25004284 0x9278465: TBranchElement::GetEntry(long long, int) (TBranchElement.cxx:2310)
+        n1: 25004284 0x92B9181: TTree::GetEntry(long long, int) (TTree.cxx:5013)
+         n1: 25004284 0x448D6F: MCSAnalysis::referenceSelection() (MCSAnalysis.cpp:1230)
+          n1: 25004284 0x473BD0: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:766)
+           n0: 25004284 0x412851: main (MCSUnfolding.cpp:358)
+  n3: 74894800 0x6892CC5: TBuffer::Expand(int, bool) (TBuffer.cxx:208)
+   n1: 49929864 0x77F9042: TBufferFile::WriteInt(int) (TBufferFile.h:366)
+    n1: 49929864 0x787AE52: int TStreamerInfoActions::WriteBasicType<int>(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TBuffer.h:351)
+     n1: 49929864 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+      n1: 49929864 0x77F0F38: TBufferFile::WriteClassBuffer(TClass const*, void*) (TBufferFile.cxx:3941)
+       n1: 49929864 0x77F616D: TBufferFile::WriteObjectClass(void const*, TClass const*) (TClass.h:451)
+        n1: 49929864 0x77F0601: TBufferFile::WriteObjectAny(void const*, TClass const*) (TBufferFile.cxx:2659)
+         n1: 49929864 0x6820972: TObjArray::Streamer(TBuffer&) (TBuffer.h:401)
+          n1: 49929864 0x77F616D: TBufferFile::WriteObjectClass(void const*, TClass const*) (TClass.h:451)
+           n1: 49929864 0x77F0601: TBufferFile::WriteObjectAny(void const*, TClass const*) (TBufferFile.cxx:2659)
+            n1: 49929864 0x681D79E: TList::Streamer(TBuffer&) (TBuffer.h:401)
+             n1: 49929864 0x77F222D: TBufferFile::WriteFastArray(void**, TClass const*, int, bool, TMemberStreamer*) (TClass.h:451)
+              n1: 49929864 0x797DEF3: int TStreamerInfo::WriteBufferAux<char**>(TBuffer&, char** const&, TStreamerInfo::TCompInfo* const*, int, int, int, int, int) (TStreamerInfoWriteBuffer.cxx:449)
+               n1: 49929864 0x7859AAB: TStreamerInfoActions::GenericWriteAction(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:174)
+                n1: 49929864 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+                 n1: 49929864 0x77F0F38: TBufferFile::WriteClassBuffer(TClass const*, void*) (TBufferFile.cxx:3941)
+                  n1: 49929864 0x8EFF8F6: TPad::Streamer(TBuffer&) (TPad.cxx:6284)
+                   n1: 49929864 0x8ECF995: TCanvas::Streamer(TBuffer&) (TCanvas.cxx:2060)
+                    n1: 49929864 0x78384D4: TKey::TKey(TObject const*, char const*, int, TDirectory*) (TKey.cxx:253)
+                     n1: 49929864 0x7806393: TFile::CreateKey(TDirectory*, TObject const*, char const*, int) (TFile.cxx:960)
+                      n1: 49929864 0x77FF202: TDirectoryFile::WriteTObject(TObject const*, char const*, char const*, int) (TDirectoryFile.cxx:1829)
+                       n1: 49929864 0x68B4B90: TObject::Write(char const*, int, int) const (TObject.cxx:789)
+                        n1: 49929864 0x77FEF18: TDirectoryFile::SaveObjectAs(TObject const*, char const*, char const*) const (TDirectoryFile.cxx:1454)
+                         n1: 49929864 0x8EFC920: TPad::Print(char const*, char const*) (TPad.cxx:4578)
+                          n1: 49929864 0x8EFE0D4: TPad::SaveAs(char const*, char const*) const (TPad.cxx:5169)
+                           n1: 49929864 0x44106C: MCSAnalysis::Write() (MCSAnalysis.cpp:717)
+                            n1: 49929864 0x473D6E: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:812)
+                             n0: 49929864 0x412851: main (MCSUnfolding.cpp:358)
+   n2: 24964936 0x77F1A86: TBufferFile::WriteFastArray(double const*, int) (TBufferFile.cxx:2175)
+    n1: 24964936 0x680C8C2: TArrayD::Streamer(TBuffer&) (TArrayD.cxx:157)
+     n1: 24964936 0x6871A3A: TStreamerBase::WriteBuffer(TBuffer&, char*) (TStreamerElement.cxx:805)
+      n1: 24964936 0x797ED57: int TStreamerInfo::WriteBufferAux<char**>(TBuffer&, char** const&, TStreamerInfo::TCompInfo* const*, int, int, int, int, int) (TStreamerInfoWriteBuffer.cxx:634)
+       n1: 24964936 0x7859AAB: TStreamerInfoActions::GenericWriteAction(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:174)
+        n1: 24964936 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+         n2: 24964936 0x77F0F38: TBufferFile::WriteClassBuffer(TClass const*, void*) (TBufferFile.cxx:3941)
+          n2: 24964936 0x82D0F96: TH2D::Streamer(TBuffer&) (TH2.cxx:4096)
+           n1: 24964936 0x77F616D: TBufferFile::WriteObjectClass(void const*, TClass const*) (TClass.h:451)
+            n1: 24964936 0x77F0601: TBufferFile::WriteObjectAny(void const*, TClass const*) (TBufferFile.cxx:2659)
+             n1: 24964936 0x681D79E: TList::Streamer(TBuffer&) (TBuffer.h:401)
+              n1: 24964936 0x77F222D: TBufferFile::WriteFastArray(void**, TClass const*, int, bool, TMemberStreamer*) (TClass.h:451)
+               n1: 24964936 0x797DEF3: int TStreamerInfo::WriteBufferAux<char**>(TBuffer&, char** const&, TStreamerInfo::TCompInfo* const*, int, int, int, int, int) (TStreamerInfoWriteBuffer.cxx:449)
+                n1: 24964936 0x7859AAB: TStreamerInfoActions::GenericWriteAction(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (TStreamerInfoActions.cxx:174)
+                 n1: 24964936 0x77F01C3: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (TStreamerInfoActions.h:111)
+                  n1: 24964936 0x77F0F38: TBufferFile::WriteClassBuffer(TClass const*, void*) (TBufferFile.cxx:3941)
+                   n1: 24964936 0x8EFF8F6: TPad::Streamer(TBuffer&) (TPad.cxx:6284)
+                    n1: 24964936 0x8ECF995: TCanvas::Streamer(TBuffer&) (TCanvas.cxx:2060)
+                     n1: 24964936 0x78384D4: TKey::TKey(TObject const*, char const*, int, TDirectory*) (TKey.cxx:253)
+                      n1: 24964936 0x7806393: TFile::CreateKey(TDirectory*, TObject const*, char const*, int) (TFile.cxx:960)
+                       n1: 24964936 0x77FF202: TDirectoryFile::WriteTObject(TObject const*, char const*, char const*, int) (TDirectoryFile.cxx:1829)
+                        n1: 24964936 0x68B4B90: TObject::Write(char const*, int, int) const (TObject.cxx:789)
+                         n1: 24964936 0x77FEF18: TDirectoryFile::SaveObjectAs(TObject const*, char const*, char const*) const (TDirectoryFile.cxx:1454)
+                          n1: 24964936 0x8EFC920: TPad::Print(char const*, char const*) (TPad.cxx:4578)
+                           n1: 24964936 0x8EFE0D4: TPad::SaveAs(char const*, char const*) const (TPad.cxx:5169)
+                            n1: 24964936 0x44106C: MCSAnalysis::Write() (MCSAnalysis.cpp:717)
+                             n1: 24964936 0x473D6E: MCSAnalysis::Execute(int) (MCSAnalysis.cpp:812)
+                              n0: 24964936 0x412851: main (MCSUnfolding.cpp:358)
+           n0: 0 in 2 places, all below massif's threshold (1.00%)
+          n0: 0 in 1 place, below massif's threshold (1.00%)
+    n0: 0 in 1 place, below massif's threshold (1.00%)
+   n0: 0 in 9 places, all below massif's threshold (1.00%)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n0: 41817333 in 2575 places, all below massif's threshold (1.00%)
+ n2: 32131872 0x680C826: TArrayD::Set(int) (TArrayD.cxx:114)
+  n2: 31345144 0x82C6A0B: TH2D::TH2D(char const*, char const*, int, double, double, int, double, double) (TH2.cxx:3922)
+   n1: 24960832 0x437C76: MCSAnalysis::MCSAnalysis(std::string, std::string, std::string, std::string, std::map<std::string, double, std::less<std::string>, std::allocator<std::pair<std::string const, double> > >) (MCSAnalysis.cpp:128)
+    n0: 24960832 0x411C9A: main (MCSUnfolding.cpp:246)
+   n0: 6384312 in 72 places, all below massif's threshold (1.00%)
+  n0: 786728 in 11 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=96
+#-----------
+time=234773010205
+mem_heap_B=1009320099
+mem_heap_extra_B=2798213
+mem_stacks_B=0
+heap_tree=empty

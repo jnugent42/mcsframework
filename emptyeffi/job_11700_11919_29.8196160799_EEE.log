@@ -1,0 +1,80 @@
+000 (40939.000.000) 2021-07-26 16:55:16 Job submitted from host: <194.36.1.200:9618?addrs=194.36.1.200-9618&alias=hex.ppe.gla.ac.uk&noUDP&sock=schedd_1401_8c46>
+...
+040 (40939.000.000) 2021-07-28 04:29:12 Started transferring input files
+	Transferring to host: <192.168.16.111:9618?addrs=192.168.16.111-9618&alias=condor-d19-01.ppe.cluster&noUDP&sock=slot1_7_222987_4385_1030>
+...
+040 (40939.000.000) 2021-07-28 04:29:12 Finished transferring input files
+...
+001 (40939.000.000) 2021-07-28 04:29:13 Job executing on host: <192.168.16.111:9618?addrs=192.168.16.111-9618&alias=condor-d19-01.ppe.cluster&noUDP&sock=startd_2932_afc5>
+...
+006 (40939.000.000) 2021-07-28 04:29:22 Image size of job updated: 35936
+	36  -  MemoryUsage of job (MB)
+	35932  -  ResidentSetSize of job (KB)
+...
+006 (40939.000.000) 2021-07-28 04:34:22 Image size of job updated: 1413396
+	784  -  MemoryUsage of job (MB)
+	802096  -  ResidentSetSize of job (KB)
+...
+006 (40939.000.000) 2021-07-28 04:39:22 Image size of job updated: 1431360
+	784  -  MemoryUsage of job (MB)
+	802096  -  ResidentSetSize of job (KB)
+...
+006 (40939.000.000) 2021-07-28 05:44:30 Image size of job updated: 1434912
+	784  -  MemoryUsage of job (MB)
+	802096  -  ResidentSetSize of job (KB)
+...
+006 (40939.000.000) 2021-07-28 06:14:32 Image size of job updated: 1437956
+	784  -  MemoryUsage of job (MB)
+	802096  -  ResidentSetSize of job (KB)
+...
+006 (40939.000.000) 2021-07-28 07:34:41 Image size of job updated: 1437956
+	786  -  MemoryUsage of job (MB)
+	804800  -  ResidentSetSize of job (KB)
+...
+006 (40939.000.000) 2021-07-28 07:39:41 Image size of job updated: 1437956
+	787  -  MemoryUsage of job (MB)
+	805468  -  ResidentSetSize of job (KB)
+...
+004 (40939.000.000) 2021-07-28 07:41:31 Job was evicted.
+	(0) CPU times
+		Usr 0 02:46:44, Sys 0 00:24:06  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+	0  -  Run Bytes Sent By Job
+	323  -  Run Bytes Received By Job
+	Partitionable Resources :      Usage  Request Allocated 
+	   Cpus                 :       1.00        1         1 
+	   Disk (KB)            : 3226786           1    825748 
+	   Memory (MB)          :     787       10240     10240 
+...
+040 (40939.000.000) 2021-07-28 07:44:17 Started transferring input files
+	Transferring to host: <192.168.16.111:9618?addrs=192.168.16.111-9618&alias=condor-d19-01.ppe.cluster&noUDP&sock=slot1_2_140832_a258_5>
+...
+040 (40939.000.000) 2021-07-28 07:44:17 Finished transferring input files
+...
+001 (40939.000.000) 2021-07-28 07:44:18 Job executing on host: <192.168.16.111:9618?addrs=192.168.16.111-9618&alias=condor-d19-01.ppe.cluster&noUDP&sock=startd_2932_afc5>
+...
+022 (40939.000.000) 2021-07-28 09:08:57 Job disconnected, attempting to reconnect
+    Local schedd and job shadow died, schedd now running again
+    Trying to reconnect to slot1_2@condor-d19-01.ppe.cluster <192.168.16.111:9618?addrs=192.168.16.111-9618&alias=condor-d19-01.ppe.cluster&noUDP&sock=startd_2932_afc5>
+...
+023 (40939.000.000) 2021-07-28 09:08:59 Job reconnected to slot1_2@condor-d19-01.ppe.cluster
+    startd address: <192.168.16.111:9618?addrs=192.168.16.111-9618&alias=condor-d19-01.ppe.cluster&noUDP&sock=startd_2932_afc5>
+    starter address: <192.168.16.111:9618?addrs=192.168.16.111-9618&alias=condor-d19-01.ppe.cluster&noUDP&sock=slot1_2_140832_a258_5>
+...
+005 (40939.000.000) 2021-07-28 11:23:30 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 03:09:10, Sys 0 00:28:07  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 06:56:35, Sys 0 01:01:11  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	3835500544  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+	3835500544  -  Total Bytes Sent By Job
+	646  -  Total Bytes Received By Job
+	Partitionable Resources :      Usage  Request Allocated 
+	   Cpus                 :       0.99        1         1 
+	   Disk (KB)            : 3745623     3745623   4128737 
+	   Memory (MB)          :     977       10240     10240 
+
+	Job terminated of its own accord at 2021-07-28T10:23:19Z.
+...

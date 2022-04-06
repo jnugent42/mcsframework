@@ -1,0 +1,9 @@
+universe       = vanilla
+executable     = sub_script_newmodel.sh
+output         = /data/neutrino03/jnugent/Unfolding/tests/lihnewmodel.out
+error          = /data/neutrino03/jnugent/Unfolding/tests/lihnewmodel.err             
+log            = /data/neutrino03/jnugent/Unfolding/tests/lihnewmodel.log
+requirements   = OpSysAndVer == "CentOS7"
+
+queue
+

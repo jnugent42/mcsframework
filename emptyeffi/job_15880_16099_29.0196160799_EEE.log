@@ -1,0 +1,38 @@
+000 (40738.000.000) 2021-07-26 16:55:00 Job submitted from host: <194.36.1.200:9618?addrs=194.36.1.200-9618&alias=hex.ppe.gla.ac.uk&noUDP&sock=schedd_1401_8c46>
+...
+040 (40738.000.000) 2021-07-27 19:01:31 Started transferring input files
+	Transferring to host: <192.168.16.121:9618?addrs=192.168.16.121-9618&alias=condor-d20-01.ppe.cluster&noUDP&sock=slot1_12_40472_ef67_1207>
+...
+040 (40738.000.000) 2021-07-27 19:01:31 Finished transferring input files
+...
+001 (40738.000.000) 2021-07-27 19:01:32 Job executing on host: <192.168.16.121:9618?addrs=192.168.16.121-9618&alias=condor-d20-01.ppe.cluster&noUDP&sock=startd_40545_137a>
+...
+006 (40738.000.000) 2021-07-27 19:01:40 Image size of job updated: 154700
+	152  -  MemoryUsage of job (MB)
+	154696  -  ResidentSetSize of job (KB)
+...
+006 (40738.000.000) 2021-07-27 19:01:43 Image size of job updated: 760052
+	152  -  MemoryUsage of job (MB)
+	154696  -  ResidentSetSize of job (KB)
+...
+040 (40738.000.000) 2021-07-27 19:01:43 Started transferring output files
+...
+040 (40738.000.000) 2021-07-27 19:01:45 Finished transferring output files
+...
+005 (40738.000.000) 2021-07-27 19:01:45 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:06, Sys 0 00:00:01  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:06, Sys 0 00:00:01  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	718123  -  Run Bytes Sent By Job
+	323  -  Run Bytes Received By Job
+	718123  -  Total Bytes Sent By Job
+	323  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :                 1         1 
+	   Disk (KB)            :      712        1   3637421 
+	   Memory (MB)          :      152    10240     10240 
+
+	Job terminated of its own accord at 2021-07-27T18:01:43Z.
+...

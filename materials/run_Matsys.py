@@ -34,7 +34,7 @@ def updatefilename(infile, outfile, newname):
     doc.freeDoc()
 
 def submitUnfolding(xmlfile):
-    execdir = "/afs/phas.gla.ac.uk/user/j/jnugent/workarea/Unfolding/materials"
+    execdir = "/data/neutrino03/jnugent/Unfolding/materials"
     cmd = [os.path.join(execdir,"MCSUnfolding"), xmlfile] 
     proc = subprocess.Popen(cmd)
     proc.wait()
@@ -68,9 +68,9 @@ queue
     outfile.close()
 
 def submit_to_batch(xmlfile):
-    execdir = "/home/ppe/j/jnugent/workarea/Unfolding/materials"
+    execdir = "/data/neutrino03/jnugent/Unfolding/materials"
     execcmd = os.path.join(execdir,"../MCSUnfolding")
-    maus_root_dir = "/home/ppe/j/jnugent/workarea/Unfolding/materials"
+    maus_root_dir = "/data/neutrino03/jnugent/Unfolding/materials"
     working_dir = os.getcwd()
     name = xmlfile[:-4]
     settings = {"xmlfile":xmlfile, "name":name, "working_dir":working_dir, "maus_root_dir":maus_root_dir, "execcmd":execcmd, "shellscript":xmlfile[:-4]+".sh"}
@@ -103,7 +103,7 @@ for i in [-10,-3,-2,-1,1,2,3,10]:
                  "material_0/LiHMu_3172_res_lim"+str(llim_172 + i*0.0109)+".xml",
                  "resY", llim_172 + i*0.0109)
     submit_to_batch("material_0/LiHMu_3172_res_lim"+str(llim_172 + i*0.0109)+".xml")
-    '''
+    
     updatefilename("material_0/LiHMu_3200_0.xml",
                    "material_0/LiHMu_3200_res_lim"+str(llim_200 + i*0.0109)+".xml",
                    "material_0/LiHMu_3200_res_lim"+str(llim_200 + i*0.0109)+".root")
@@ -114,7 +114,7 @@ for i in [-10,-3,-2,-1,1,2,3,10]:
                  "material_0/LiHMu_3200_res_lim"+str(llim_200 + i*0.0109)+".xml",
                  "resY", llim_200 + i*0.0109)
     submit_to_batch("material_0/LiHMu_3200_res_lim"+str(llim_200 + i*0.0109)+".xml")
-    '''
+    
     
     updatefilename("material_0/LiHMu_3240_0.xml",
                    "material_0/LiHMu_3240_res_lim"+str(llim_240 + i*0.0109)+".xml",

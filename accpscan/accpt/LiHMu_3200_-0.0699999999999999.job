@@ -1,0 +1,9 @@
+
+universe       = vanilla
+executable     = accpt/LiHMu_3200_-0.0699999999999999.sh
+output         = /data/neutrino03/jnugent/Unfolding/accpscan/accpt/LiHMu_3200_-0.0699999999999999.out
+error          = /data/neutrino03/jnugent/Unfolding/accpscan/accpt/LiHMu_3200_-0.0699999999999999.err             
+log            = test.log
+requirements   = OpSysAndVer == "CentOS7"
+
+queue

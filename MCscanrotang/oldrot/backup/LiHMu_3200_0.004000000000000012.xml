@@ -1,0 +1,28 @@
+<?xml version="1.0" standalone="yes"?>
+<spec>
+	<file id="outfile" name="rot_ang_0/LiHMu_3200_0.004000000000000012.root"/>
+  <file id="datafile" name="/data/neutrino/jnugent/v3.3.4/allLiH/"/>
+  <file id="trainfile" name="/data/neutrino/jnugent/v3.3.4/allZeroAbs/"/>
+  <file id="modelfile" name="/data/neutrino03/jnugent/Unfolding/Cobb_results/LiH-6p5-200-B-hists.root"/>
+  <file id="trkreffiname" name="/data/neutrino03/jnugent/Unfolding/tracker_efficiency/tracker_resolution_plots_28.3365596446.root"/>
+  <file id="trkreffiemptyname" name="/data/neutrino03/jnugent/Unfolding/emptyeffi/tracker_resolution_plots_28.3365596446.root"/>
+  <file id="material" name="LiH"/>
+  <file id="model3" name="Moliere"/>
+  <file id="model2" name="Cobb"/>
+  <file id="model1" name="GEANT"/>
+  <sys name="angdef" value="0"/>
+  <sys name="rot_ang" value="0.004000000000000012"/>
+  <sys name="2rot_ang" value="0.004000000000000012"/>
+  <cuts name="TOF_ll" value="28.0818843981"/>
+  <cuts name="TOF_ul" value="28.2818843981"/>
+  <cuts name="TOF_ll2" value="26"/>
+  <cuts name="TOF_ul2" value="30"/>
+  <cuts name="fid_rad" value="140.0"/>
+  <cuts name="fid_grad" value="0.012"/>
+  <cuts name="mode" value="-1"/>
+  <sys name="niter" value="4"/>
+  <histlimits name="NbinsXY" value="46"/>
+  <histlimits name="NbinsTh" value="200"/>
+  <histlimits name="minXY" value="-0.0705"/>
+  <histlimits name="maxXY" value="0.0705"/>
+</spec>

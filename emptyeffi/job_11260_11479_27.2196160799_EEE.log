@@ -1,0 +1,46 @@
+000 (40222.000.000) 2021-07-26 16:54:31 Job submitted from host: <194.36.1.200:9618?addrs=194.36.1.200-9618&alias=hex.ppe.gla.ac.uk&noUDP&sock=schedd_1401_8c46>
+...
+040 (40222.000.000) 2021-07-26 20:17:30 Started transferring input files
+	Transferring to host: <192.168.16.121:9618?addrs=192.168.16.121-9618&alias=condor-d20-01.ppe.cluster&noUDP&sock=slot1_9_40472_ef67_950>
+...
+040 (40222.000.000) 2021-07-26 20:17:30 Finished transferring input files
+...
+001 (40222.000.000) 2021-07-26 20:17:31 Job executing on host: <192.168.16.121:9618?addrs=192.168.16.121-9618&alias=condor-d20-01.ppe.cluster&noUDP&sock=startd_40545_137a>
+...
+006 (40222.000.000) 2021-07-26 20:17:39 Image size of job updated: 161776
+	158  -  MemoryUsage of job (MB)
+	161772  -  ResidentSetSize of job (KB)
+...
+006 (40222.000.000) 2021-07-26 20:22:39 Image size of job updated: 1417620
+	655  -  MemoryUsage of job (MB)
+	670492  -  ResidentSetSize of job (KB)
+...
+006 (40222.000.000) 2021-07-26 20:27:40 Image size of job updated: 1472764
+	655  -  MemoryUsage of job (MB)
+	670492  -  ResidentSetSize of job (KB)
+...
+006 (40222.000.000) 2021-07-26 20:37:41 Image size of job updated: 1472764
+	824  -  MemoryUsage of job (MB)
+	843460  -  ResidentSetSize of job (KB)
+...
+040 (40222.000.000) 2021-07-27 00:11:09 Started transferring output files
+...
+040 (40222.000.000) 2021-07-27 00:11:21 Finished transferring output files
+...
+005 (40222.000.000) 2021-07-27 00:11:21 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 03:25:54, Sys 0 00:25:50  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 03:25:54, Sys 0 00:25:50  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	3665551104  -  Run Bytes Sent By Job
+	323  -  Run Bytes Received By Job
+	3665551104  -  Total Bytes Sent By Job
+	323  -  Total Bytes Received By Job
+	Partitionable Resources :      Usage  Request Allocated 
+	   Cpus                 :       0.99        1         1 
+	   Disk (KB)            : 3579655           1   3637421 
+	   Memory (MB)          :     824       10240     10240 
+
+	Job terminated of its own accord at 2021-07-26T23:11:09Z.
+...

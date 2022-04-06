@@ -1,0 +1,9 @@
+universe       = vanilla
+executable     = sub_script_generateMCS.sh
+output         = /data/neutrino03/jnugent/Unfolding/tests/lihgenerateMCS.out
+error          = /data/neutrino03/jnugent/Unfolding/tests/lihgenerateMCS.err             
+log            = /data/neutrino03/jnugent/Unfolding/tests/lihgenerateMCS.log
+requirements   = OpSysAndVer == "CentOS7"
+
+queue
+

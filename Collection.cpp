@@ -15,6 +15,31 @@ Vars Vars::operator+(const Vars& right){
   result.TOF01 = TOF01 + right.TOF01;
   result.isgood = isgood || right.isgood;
   result.pid    = abs(pid) == 13 && abs(right.pid) == 13 ? pid : 0;
+  result.projX = projX + right.projX;
+  result.projY = projY + right.projY;
+  result.projdifX = projdifX + right.projdifX;
+  result.projdifY = projdifY + right.projdifY;
+  result.chi2nUS = chi2nUS;
+  result.chi2nDS = chi2nDS;
+  result.beamtype = beamtype;
+  result.jUS = jUS;
+  result.kUS = kUS;
+  result.lUS = lUS;
+  result.jDS = jDS;
+  result.kDS = kDS;
+  result.lDS = lDS;
+  bool   difcut = difcut;
+  bool   fidcut = fidcut;
+  bool   chicut = chicut;
+  bool   TOFcut = TOFcut;
+  result.ptruth = ptruth;
+  result.mcX = mcX + right.mcX;
+  result.mcY = mcY + right.mcY;
+  result.mcZ = mcZ + right.mcZ;
+  result.mcdXdz = mcdXdz + right.mcdXdz;
+  result.mcdYdz = mcdYdz + right.mcdYdz;
+  result.mcpx = mcpx + right.mcpx;
+  result.mcpy = mcpy + right.mcpy;
   return result;
 }
 
@@ -32,6 +57,31 @@ Vars Vars::operator-(const Vars& right){
   result.TOF01 = TOF01 - right.TOF01;
   result.isgood = isgood || right.isgood;
   result.pid    = abs(pid) == 13 && abs(right.pid) == 13 ? pid : 0;
+  result.projX = projX - right.projX;
+  result.projY = projY - right.projY;
+  result.projdifX = projdifX - right.projdifX;
+  result.projdifY = projdifY - right.projdifY;
+  result.chi2nUS = chi2nUS;
+  result.chi2nDS = chi2nDS;
+  result.beamtype = beamtype;
+  result.jUS = jUS;
+  result.kUS = kUS;
+  result.lUS = lUS;
+  result.jDS = jDS;
+  result.kDS = kDS;
+  result.lDS = lDS;
+  bool   difcut = difcut;
+  bool   fidcut = fidcut;
+  bool   chicut = chicut;
+  bool   TOFcut = TOFcut;
+  result.ptruth = ptruth;
+  result.mcX = mcX - right.mcX;
+  result.mcY = mcY - right.mcY;
+  result.mcZ = mcZ - right.mcZ;
+  result.mcdXdz = mcdXdz - right.mcdXdz;
+  result.mcdYdz = mcdYdz - right.mcdYdz;
+  result.mcpx = mcpx - right.mcpx;
+  result.mcpy = mcpy - right.mcpy;
   return result;
 }
 
@@ -49,6 +99,31 @@ Vars Vars::operator*(const Vars& right){
   result.TOF01 = TOF01 * right.TOF01;
   result.isgood = isgood && right.isgood;
   result.pid    = abs(pid) == 13 && abs(right.pid) == 13 ? pid : 0;
+  result.projX = projX * right.projX;
+  result.projY = projY * right.projY;
+  result.projdifX = projdifX * right.projdifX;
+  result.projdifY = projdifY * right.projdifY;
+  result.chi2nUS = chi2nUS;
+  result.chi2nDS = chi2nDS;
+  result.beamtype = beamtype;
+  result.jUS = jUS;
+  result.kUS = kUS;
+  result.lUS = lUS;
+  result.jDS = jDS;
+  result.kDS = kDS;
+  result.lDS = lDS;
+  bool   difcut = difcut;
+  bool   fidcut = fidcut;
+  bool   chicut = chicut;
+  bool   TOFcut = TOFcut;
+  result.ptruth = ptruth;
+  result.mcX = mcX * right.mcX;
+  result.mcY = mcY * right.mcY;
+  result.mcZ = mcZ * right.mcZ;
+  result.mcdXdz = mcdXdz * right.mcdXdz;
+  result.mcdYdz = mcdYdz * right.mcdYdz;
+  result.mcpx = mcpx * right.mcpx;
+  result.mcpy = mcpy * right.mcpy;
   return result;
 }
 
@@ -67,6 +142,31 @@ Vars Vars::operator*(const double right){
   result.TOF01 = TOF01 * right;
   result.isgood = isgood;
   result.pid    = pid;
+  result.projX = projX * right;
+  result.projY = projY * right;
+  result.projdifX = projdifX * right;
+  result.projdifY = projdifY * right;
+  result.chi2nUS = chi2nUS;
+  result.chi2nDS = chi2nDS;
+  result.beamtype = beamtype;
+  result.jUS = jUS;
+  result.kUS = kUS;
+  result.lUS = lUS;
+  result.jDS = jDS;
+  result.kDS = kDS;
+  result.lDS = lDS;
+  bool   difcut = difcut;
+  bool   fidcut = fidcut;
+  bool   chicut = chicut;
+  bool   TOFcut = TOFcut;
+  result.ptruth = ptruth;
+  result.mcX = mcX * right;
+  result.mcY = mcY * right;
+  result.mcZ = mcZ * right;
+  result.mcdXdz = mcdXdz * right;
+  result.mcdYdz = mcdYdz * right;
+  result.mcpx = mcpx * right;
+  result.mcpy = mcpy * right;
   return result;
 }
 
@@ -84,6 +184,31 @@ Vars Vars::operator/(const Vars& right){
   result.TOF01 = TOF01 / right.TOF01; 
   result.isgood = isgood && right.isgood;
   result.pid    = abs(pid) == 13 && abs(right.pid) == 13 ? pid : 0;
+  result.projX = projX / right.projX;
+  result.projY = projY / right.projY;
+  result.projdifX = projdifX / right.projdifX;
+  result.projdifY = projdifY / right.projdifY;
+  result.chi2nUS = chi2nUS;
+  result.chi2nDS = chi2nDS;
+  result.beamtype = beamtype;
+  result.jUS = jUS;
+  result.kUS = kUS;
+  result.lUS = lUS;
+  result.jDS = jDS;
+  result.kDS = kDS;
+  result.lDS = lDS;
+  bool   difcut = difcut;
+  bool   fidcut = fidcut;
+  bool   chicut = chicut;
+  bool   TOFcut = TOFcut;
+  result.ptruth = ptruth;
+  result.mcX = mcX / right.mcX;
+  result.mcY = mcY / right.mcY;
+  result.mcZ = mcZ / right.mcZ;
+  result.mcdXdz = mcdXdz / right.mcdXdz;
+  result.mcdYdz = mcdYdz / right.mcdYdz;
+  result.mcpx = mcpx / right.mcpx;
+  result.mcpy = mcpy / right.mcpy;
   return result;
 }
 
@@ -102,6 +227,31 @@ Vars Vars::operator/(const double right){
   result.TOF01 = TOF01 / right;
   result.isgood = isgood;
   result.pid    = pid;
+  result.projX = projX / right;
+  result.projY = projY / right;
+  result.projdifX = projdifX / right;
+  result.projdifY = projdifY / right;
+  result.chi2nUS = chi2nUS;
+  result.chi2nDS = chi2nDS;
+  result.beamtype = beamtype;
+  result.jUS = jUS;
+  result.kUS = kUS;
+  result.lUS = lUS;
+  result.jDS = jDS;
+  result.kDS = kDS;
+  result.lDS = lDS;
+  bool   difcut = difcut;
+  bool   fidcut = fidcut;
+  bool   chicut = chicut;
+  bool   TOFcut = TOFcut;
+  result.ptruth = ptruth;
+  result.mcX = mcX / right;
+  result.mcY = mcY / right;
+  result.mcZ = mcZ / right;
+  result.mcdXdz = mcdXdz / right;
+  result.mcdYdz = mcdYdz / right;
+  result.mcpx = mcpx / right;
+  result.mcpy = mcpy / right;
   return result;
 }
 
@@ -118,6 +268,31 @@ void Vars::Zero(){
   TOF01 = 0.0;
   isgood = false;
   pid   = 0;
+  projX = 0;
+  projY = 0;
+  projdifX = 0;
+  projdifY = 0;
+  chi2nUS = 0;
+  chi2nDS = 0;
+  beamtype = 0;
+  jUS = 0;
+  kUS = 0;
+  lUS = 0;
+  jDS = 0;
+  kDS = 0;
+  lDS = 0;
+  difcut = false;
+  chicut = false;
+  TOFcut = false;
+  fidcut = false;
+  ptruth = 0;
+  mcX = 0;
+  mcY = 0;
+  mcZ = 0;
+  mcdXdz = 0.0;
+  mcdYdz = 0.0;
+  mcpx = 0;
+  mcpy = 0;
 }
 
 void Collection::init_mean() {

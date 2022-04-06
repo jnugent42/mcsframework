@@ -4,6 +4,7 @@ output         = /data/neutrino03/jnugent/Unfolding/batch/MClihXXYY.out
 error          = /data/neutrino03/jnugent/Unfolding/batch/MClihXXYY.err             
 log            = /data/neutrino03/jnugent/Unfolding/batch/MClihXXYY.log
 requirements   = OpSysAndVer == "CentOS7"
+request_memory = 50 GB
 
 queue
 

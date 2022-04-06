@@ -1,0 +1,9 @@
+
+universe       = vanilla
+executable     = TOFAllscan/LiHMu_3240_tof_lim26.3398395872_u26.5398395872.sh
+output         = /data/neutrino03/jnugent/Unfolding/TOFScan/LiHMu_3240_tof_lim26.3398395872_u26.5398395872.out
+error          = /data/neutrino03/jnugent/Unfolding/TOFScan/LiHMu_3240_tof_lim26.3398395872_u26.5398395872.err             
+log            = test.log
+requirements   = OpSysAndVer == "CentOS7"
+
+queue

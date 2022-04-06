@@ -1,0 +1,210 @@
+INFO: Using third party libraries from /data/neutrino/jnugent/MAUS-v3.3.2
+MAUS web front-end directory: /data/neutrino/jnugent/MAUS-v3.3.2/third_party/install/lib/maus-apps-0.3
+    Database directory: /data/neutrino/jnugent/MAUS-v3.3.2/third_party/install/lib/maus-apps-0.3/db
+    Media directory: /data/neutrino/jnugent/MAUS-v3.3.2/third_party/install/lib/maus-apps-0.3/media
+    Media directory (raw images): /data/neutrino/jnugent/MAUS-v3.3.2/third_party/install/lib/maus-apps-0.3/media/raw
+SUCCESS: MAUS setup
+Algorithm to analyse reduced MAUS root
+trees for multiple scattering measurements
+and to unfold the distribution
+
+Received 2 arguements.
+node type: Element, name: spec, with prop id: (null), prop name: (null), prop value: (null)
+node type: Element, name: file, with prop id: outfile, prop name: LiHMu_3200_tof_lim28.8918072213_u29.0918072213.root, prop value: (null)
+node type: Element, name: file, with prop id: datafile, prop name: /data/neutrino/jnugent/v3.3.4/allLiH/, prop value: (null)
+node type: Element, name: file, with prop id: trainfile, prop name: /data/neutrino/jnugent/v3.3.4/allZeroAbs/, prop value: (null)
+node type: Element, name: file, with prop id: modelfile, prop name: /data/neutrino03/jnugent/Unfolding/backup/Cobb_results/LiH-6p5-200-B-hists.root, prop value: (null)
+node type: Element, name: file, with prop id: trkreffiname, prop name: /home/ppe/j/jnugent/workarea/tracker_efficiency/tracker_resolution_plots_28.8918072213.root, prop value: (null)
+node type: Element, name: file, with prop id: trkreffiemptyname, prop name: /home/ppe/j/jnugent/workarea/emptyeffi/tracker_resolution_plots_28.9001204973.root, prop value: (null)
+node type: Element, name: file, with prop id: material, prop name: LiH, prop value: (null)
+node type: Element, name: file, with prop id: model3, prop name: Moliere, prop value: (null)
+node type: Element, name: file, with prop id: model2, prop name: Cobb, prop value: (null)
+node type: Element, name: file, with prop id: model1, prop name: GEANT, prop value: (null)
+node type: Element, name: file, with prop id: isMC, prop name: 0, prop value: (null)
+node type: Element, name: file, with prop id: TOFsys, prop name: true, prop value: (null)
+node type: Element, name: sys, with prop id: (null), prop name: rot_ang, prop value: 0.00660308396448
+node type: Element, name: sys, with prop id: (null), prop name: rot_ang_empty, prop value: 0.00701214461075
+node type: Element, name: sys, with prop id: (null), prop name: rot_angX, prop value: 0.00082219457384
+node type: Element, name: sys, with prop id: (null), prop name: rot_ang_emptyX, prop value: -0.000969660289119
+node type: Element, name: cuts, with prop id: (null), prop name: TOF_ll, prop value: 28.8918072213
+node type: Element, name: cuts, with prop id: (null), prop name: TOF_ll_ref, prop value: 28.9001204973
+node type: Element, name: cuts, with prop id: (null), prop name: TOF_ul, prop value: 29.0918072213
+node type: Element, name: cuts, with prop id: (null), prop name: TOF_ul_ref, prop value: 29.1001204973
+node type: Element, name: cuts, with prop id: (null), prop name: fid_rad, prop value: 90.0
+node type: Element, name: cuts, with prop id: (null), prop name: fid_grad, prop value: 0.012
+node type: Element, name: cuts, with prop id: (null), prop name: mode, prop value: -1
+node type: Element, name: sys, with prop id: (null), prop name: niter, prop value: 10
+node type: Element, name: histlimits, with prop id: (null), prop name: NbinsXY, prop value: 47
+node type: Element, name: histlimits, with prop id: (null), prop name: NbinsTh, prop value: 47
+node type: Element, name: histlimits, with prop id: (null), prop name: minXY, prop value: -0.0705
+node type: Element, name: histlimits, with prop id: (null), prop name: maxXY, prop value: 0.0705
+node type: Element, name: histlimits, with prop id: (null), prop name: maxTh, prop value: 0.07
+node type: Element, name: histlimits, with prop id: (null), prop name: NbinsTh2, prop value: 47
+Writing outfile to LiHMu_3200_tof_lim28.8918072213_u29.0918072213.root
+Reading outfilename at 
+Reading data from /data/neutrino/jnugent/v3.3.4/allLiH/
+Reading reference data from /data/neutrino/jnugent/v3.3.4/allZeroAbs/
+Reading models from /data/neutrino03/jnugent/Unfolding/backup/Cobb_results/LiH-6p5-200-B-hists.root
+Reading models from 
+Use  for propagation
+
+angdef 0
+rot_ang 0.00660308
+rot_ang_empty 0.00701214
+rot_angX 0.000822195
+rot_ang_emptyX -0.00096966
+accpt -0.2
+TOF selection between 28.8918 and 29.0918
+P selection between 198 and 200
+TOF reference selection between 28.9001 and 29.1001
+Fiducial selection contained by radius 90 with scattering 0.012
+Efficiency cut 0.18
+isMC 0
+TOFsys 0
+offset_needed 0
+mode -1
+offset 0
+beamtype 9999
+
+Adding systematic effect niter with value 10
+11
+Reading from /data/neutrino03/jnugent/Unfolding/mom_offset.xml
+node type: Element, name: LiH, with prop id: 28.0, prop name: 2
+node type: Element, name: ref, with prop id: 28.0, prop name: 2
+DScor 0
+refDScor 0
+Reading from /data/neutrino03/jnugent/Unfolding/USDS_mom_offset.xml
+node type: Element, name: LiH, with prop id: 27.9538, prop name: -0.584729
+node type: Element, name: ref, with prop id: 28.0921, prop name: 0.645152
+node type: Element, name: LiH, with prop id: 26.9538, prop name: 7.88449
+node type: Element, name: ref, with prop id: 27.0921, prop name: 6.50894
+node type: Element, name: LiH, with prop id: 27.5538, prop name: 1.43615
+node type: Element, name: ref, with prop id: 27.6921, prop name: 2.02469
+node type: Element, name: LiH, with prop id: 27.1538, prop name: 5.16956
+node type: Element, name: ref, with prop id: 27.2921, prop name: 4.76871
+node type: Element, name: LiH, with prop id: 28.9538, prop name: -5.44327
+node type: Element, name: ref, with prop id: 29.0921, prop name: -3.76682
+node type: Element, name: LiH, with prop id: 28.5538, prop name: -3.20115
+node type: Element, name: ref, with prop id: 28.6921, prop name: -1.79669
+node type: Element, name: LiH, with prop id: 27.7538, prop name: 0.309431
+node type: Element, name: ref, with prop id: 27.8921, prop name: 1.24059
+node type: Element, name: LiH, with prop id: 27.3538, prop name: 2.93627
+node type: Element, name: ref, with prop id: 27.4921, prop name: 3.16719
+node type: Element, name: LiH, with prop id: 29.1538, prop name: -6.53921
+node type: Element, name: ref, with prop id: 29.2921, prop name: -4.64168
+node type: Element, name: LiH, with prop id: 28.7538, prop name: -4.52321
+node type: Element, name: ref, with prop id: 28.8921, prop name: -2.99386
+node type: Element, name: LiH, with prop id: 28.1538, prop name: -1.63816
+node type: Element, name: ref, with prop id: 28.2921, prop name: -0.464639
+node type: Element, name: LiH, with prop id: 28.3538, prop name: -2.46284
+node type: Element, name: ref, with prop id: 28.4921, prop name: -1.1337
+node type: Element, name: LiH, with prop id: 28.6371, prop name: -3.76725
+node type: Element, name: LiH, with prop id: 27.2542, prop name: -0.750653
+node type: Element, name: ref, with prop id: 28.8592, prop name: -4.96172
+UScor 0
+refUScor 0
+mode -1
+4878723
+Event 0
+Event 100000
+Event 200000
+Event 300000
+Event 400000
+Event 500000
+Event 600000
+Event 700000
+Event 800000
+Event 900000
+Event 1000000
+Event 1100000
+Event 1200000
+Event 1300000
+Event 1400000
+Event 1500000
+Event 1600000
+Event 1700000
+Event 1800000
+Event 1900000
+Event 2000000
+Event 2100000
+Event 2200000
+Event 2300000
+Event 2400000
+Event 2500000
+Event 2600000
+Event 2700000
+Event 2800000
+Event 2900000
+Event 3000000
+Event 3100000
+Event 3200000
+Event 3300000
+Event 3400000
+Event 3500000
+Event 3600000
+Event 3700000
+Event 3800000
+Event 3900000
+Event 4000000
+Event 4100000
+Event 4200000
+Event 4300000
+Event 4400000
+Event 4500000
+Event 4600000
+Event 4700000
+Event 4800000
+a172eventcount 1117505
+a200eventcount 1193401
+a240eventcount 1075792
+TOFtotal 3.3867e+06
+3386698
+Event 0
+Event 100000
+Event 200000
+Event 300000
+Event 400000
+Event 500000
+Event 600000
+Event 700000
+Event 800000
+Event 900000
+Event 1000000
+Event 1100000
+Event 1200000
+Event 1300000
+Event 1400000
+Event 1500000
+Event 1600000
+Event 1700000
+Event 1800000
+Event 1900000
+Event 2000000
+Event 2100000
+Event 2200000
+Event 2300000
+Event 2400000
+Event 2500000
+Event 2600000
+Event 2700000
+Event 2800000
+Event 2900000
+Event 3000000
+Event 3100000
+Event 3200000
+Event 3300000
+1217315
+reference
+Event 0
+Event 100000
+Event 200000
+Event 300000
+Event 400000
+Event 500000
+Event 600000
+Event 700000
+Event 800000
+Event 900000
+Event 1000000
+Event 1100000
+Event 1200000
