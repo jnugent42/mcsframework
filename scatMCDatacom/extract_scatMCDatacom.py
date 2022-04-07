@@ -34,7 +34,7 @@ def ExtractPars(xmlfile):
     thX_MCmgE = rf.Get("thetaX_ref")
 
     t101 = TText(0.18,0.885,"MICE Internal ISIS cycle 2015/04")
-    t201 = TText(0.18,0.85,"LiH, MAUS v3.1.2")
+    t201 = TText(0.18,0.85,"LiH, MAUS v3.3.2")
     t101.SetNDC(1)
     t101.SetTextSize(0.04)
     t101.SetTextFont(42)
@@ -71,7 +71,7 @@ def ExtractPars(xmlfile):
     c.Print(rootfile[:5]+"MCDataScatDis.eps")
     
     t101 = TText(0.18,0.885,"MICE Internal ISIS cycle 2015/04")
-    t201 = TText(0.18,0.85,"LiH, MAUS v3.1.2")
+    t201 = TText(0.18,0.85,"LiH, MAUS v3.3.2")
     t101.SetNDC(1)
     t101.SetTextSize(0.04)
     t101.SetTextFont(42)

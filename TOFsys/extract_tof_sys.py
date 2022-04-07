@@ -36,7 +36,9 @@ def plotFiles(meas172, measfile, meas240, syslist):
             ["tofmomentum",mval[16][0]-3*mval[14][1], mval[16][0]+3*mval[14][1]],
             ["tofrefmomentum",mval[17][0]-3*mval[14][1], mval[17][0]+3*mval[14][1]],
             ["truthmomentum",mval[16][0]-3*mval[14][1], mval[16][0]+3*mval[14][1]],
-            ["reftruthmomentum",mval[17][0]-3*mval[14][1], mval[17][0]+3*mval[14][1]]
+            ["reftruthmomentum",mval[17][0]-3*mval[14][1], mval[17][0]+3*mval[14][1]],
+            ["tof12momentum",mval[20][0]-3*mval[14][1], mval[20][0]+3*mval[14][1]],
+            ["tof12refmomentum",mval[21][0]-3*mval[14][1], mval[21][0]+3*mval[14][1]]
             ]
     # for par in pars:
     #     hists.append(TH1D(par[0], ";"+par[0],100,par[1],par[2]))
@@ -78,7 +80,7 @@ p1                        =      1.17466   +/-   0.00142602
             #sysval[16][0] -= 9.41
             # sysval[16][1] *= 0.780
 
-        if sysval[2][0] > 3000.: # and pcomp < sysval[-1][0] + 10:
+        if sysval[2][0] > 3500.: # and pcomp < sysval[-1][0] + 10:
            print "sdgndfgbdfgb"
            print "sysval",sysval
            pointlist.append(sysval)
@@ -89,15 +91,17 @@ p1                        =      1.17466   +/-   0.00142602
         graphs[-1].SetName(par[0])
         # graphs[-1].SetTitle("; #Delta t_{12}(ns);"
         if par[0] == "rawmeantheta2" or par[0] == "meantheta2":
-            graphs[-1].SetTitle("; P_z (MeV/c);  #sqrt{<#theta^{2}>/2} (milliradians)")
+            graphs[-1].SetTitle("; #it{p} (MeV/c);  #sqrt{<#theta^{2}>/2} (milliradians)")
         elif par[0] == "rawsigmaX" or par[0] == "sigmaX":
-            graphs[-1].SetTitle("; P_z (MeV/c);  #Theta_{X} (milliradians)")
+            graphs[-1].SetTitle("; #it{p} (MeV/c);  #theta_{X} (milliradians)")
         elif par[0] == "rawsigmaY" or par[0] == "sigmaY":
-            graphs[-1].SetTitle("; P_z (MeV/c);  #Theta_{Y} (milliradians)")
+            graphs[-1].SetTitle("; #it{p} (MeV/c);  #theta_{Y} (milliradians)")
         elif par[0] == "integralX":
-            graphs[-1].SetTitle("; P_z (MeV/c);  Integral of Events in Bin")
+            graphs[-1].SetTitle("; #it{p} (MeV/c);  Integral of Events in Bin")
+        elif par[0] == "tof12momentum":
+            graphs[-1].SetTitle("; #it{p} (MeV/c);#Delta t_{12} (ns)")
         else:
-            graphs[-1].SetTitle("; P_z (MeV/c);#Delta t_{01} (ns)")
+            graphs[-1].SetTitle("; #it{p} (MeV/c);#Delta t_{01} (ns)")
     j = 0
     FillGraphs(graphs, pointlist, offset, scale)
     # func = TF1("func",'[0] + [1]*13.6*sqrt(x*x + 105.65 * 105.65)/x/x + [2]*13.6*13.6*(x*x + 105.65 * 105.65)/x/x/x/x',150,280)
@@ -186,6 +190,8 @@ p1                        =      1.17466   +/-   0.00142602
             fdn.SetLineColor(4)
             fdn.SetLineWidth(1)
             # leg.AddEntry(fdn, "Fit minus stat. error", "l")
+            fup.SetRange(140,280)
+            fdn.SetRange(140,280)
             fup.Draw('lsame')
             fdn.Draw('lsame')
             func0.SetParameter(0, 253*(1 + 0.036*math.log(0.253*0.253)))
@@ -320,6 +326,13 @@ def FillGraphs(graphs, pointlist, offset, scale):
             if graphs[i].GetName() == "tofrefmomentum" and float(point[17][0]) > 10:
                 graphs[i].SetPoint(j, (scale * float(point[17][0]) + offset),
                                    float(point[i][0]))
+            if graphs[i].GetName() == "tof12momentum" and float(point[20][0]) > 10:
+	        print float(point[20][0])
+                graphs[i].SetPoint(j, (scale * float(point[20][0]) + offset),
+                                   float(point[i][0]))
+            if graphs[i].GetName() == "tof12refmomentum" and float(point[21][0]) > 10:
+                graphs[i].SetPoint(j, (scale * float(point[21][0]) + offset),
+                                   float(point[i][0]))
         j+=1
 
 
@@ -366,6 +379,8 @@ def ExtractPars(xmlfile):
     ptruthref  = rf.Get("refMCTruth")
     tof01  = rf.Get("dataDS_TOF01")
     tof01ref  = rf.Get("dataDSref_TOF01")
+    tof12  = rf.Get("dataDS_TOF12")
+    tof12ref  = rf.Get("dataDSref_TOF12")
 
     vals.append([thX_md.Integral(), math.sqrt(thX_md.Integral())])
     if thX_md.Integral() < 0:
@@ -414,6 +429,8 @@ def ExtractPars(xmlfile):
         vals.append([ptruth.GetMean(), ptruth.GetMeanError()])
         vals.append([ptruthref.GetMean(), ptruthref.GetMeanError()])
 
+        vals.append([tof12.GetMean(), tof12.GetMeanError()])
+        vals.append([tof12ref.GetMean(), tof12ref.GetMeanError()])
         # vals.append([beamsize.GetRMS(), beamsize.GetRMSError()])
         # vals.append([beamsize.GetRMS(), beamsize.GetRMSError()])
         #vals.append([pcalc.GetMean(), pcalc.GetRMS()])

@@ -1,0 +1,23 @@
+<?xml version="1.0" standalone="yes"?>
+<spec>
+  <file id="outfile" name="LiHMu_3240_80.root"/>
+  <file id="datafile" name="../LiHMuon_03240/reduced_tree_datat1.root"/>
+  <file id="trainfile" name="../ZeroMuon_03240/reduced_tree_datat1.root"/>
+  <file id="modelfile" name="../Cobb_results/LiH-6p5-240-hists.root"/>
+  <file id="model1" name="Cobb"/>
+  <file id="model2" name="GEANT"/>
+  <cuts name="TOF_ll" value="27.4329625324"/>
+  <cuts name="TOF_ul" value="27.6329625324"/>
+  <cuts name="fid_rad" value="150.0"/>
+  <cuts name="fid_grad" value="0.012"/>
+  <cuts name="mode" value="2"/>
+  <sys name="alXUS" value="0.600056420285"/>
+  <sys name="alYUS" value="-1.32775304252"/>
+  <sys name="alXDS" value="0.237208675951"/>
+  <sys name="alYDS" value="0.429141118714"/>
+  <sys name="thXUS" value="3.2396152972e-05"/>
+  <sys name="thYUS" value="0.00666757494079"/>
+  <sys name="thXDS" value="0.0151373616709"/>
+  <sys name="thYDS" value="-0.00526784262192"/>
+  <sys name="niter" value="10"/>
+</spec>

@@ -60,6 +60,25 @@ MCSAnalysis::MCSAnalysis(std::string tree, std::string mctree, std::string reftr
     tracker0 = 0;
     tracker1 = 1;
 
+    double stops[9] = {0.0000, 0.1250, 0.2500, 0.3750, 0.5000, 0.6250, 0.7500, 0.8750, 1.0000};
+    double red[9]   = {0.2082, 0.0592, 0.0780, 0.0232, 0.1802, 0.5301, 0.8186, 0.9956, 0.9764};
+    double green[9] = {0.1664, 0.3599, 0.5041, 0.6419, 0.7178, 0.7492, 0.7328, 0.7862, 0.9832};
+    double blue[9]  = {0.5293, 0.8684, 0.8385, 0.7914, 0.6425, 0.4662, 0.3499, 0.1968, 0.0539};
+    double ncontours = 255;
+    TColor::CreateGradientColorTable(9, stops, red, green, blue, ncontours);
+    gStyle->SetNumberContours(ncontours);
+    gStyle->SetPadBottomMargin(0.15);
+    gStyle->SetPadLeftMargin(0.15);
+    gStyle->SetPadRightMargin(0.15);
+    gStyle->SetNdivisions(505, "x");
+    gStyle->SetLabelSize(0.05, "x");
+    gStyle->SetTitleSize(0.06, "x");
+    gStyle->SetTitleOffset(1.10, "x");
+    gStyle->SetNdivisions(505, "y");
+    gStyle->SetLabelSize(0.05, "y");
+    gStyle->SetTitleSize(0.06, "y");
+    gStyle->SetTitleOffset(1.10, "y");
+
     _histlimits["NbinsXY"] = histlimits.count("NbinsXY") != 0 ? histlimits["NbinsXY"]: 200.0;
     _histlimits["minXY"] = histlimits.count("minXY") != 0 ? histlimits["minXY"]: -0.2;
     _histlimits["maxXY"] = histlimits.count("maxXY") != 0 ? histlimits["maxXY"]:  0.2;
@@ -117,6 +136,8 @@ MCSAnalysis::MCSAnalysis(std::string tree, std::string mctree, std::string reftr
     TOF_lower_limit_ref = 27;
     TOF_upper_limit_ref = 28;
 
+    DSentries = 0;
+    DSrefentries = 0;
     DScor = 0;
     DScor = 0;
     difradius = 90;
@@ -147,19 +168,19 @@ MCSAnalysis::MCSAnalysis(std::string tree, std::string mctree, std::string reftr
     difEloss = new TH1D("difEloss","difEloss", 10, 0, 10);
     energylossproj = new TH1D("energylossproj","energylossproj", 40, 5000, 24000);
     //energylosspro = new TH1D("energylosspro","energylosspro", 40, 5000, 24000);
-    residual = new TH1D("residual","residual", 25, -50, 50);
-    residual12 = new TH1D("residual12","residual12", 25, -50, 50);
-    residual01 = new TH1D("residual01","residual01", 25, -50, 50);
-    residualUD = new TH1D("residualUD","residualUD", 25, -50, 50);
-    refresidual = new TH1D("refresidual","refresidual", 25, -50, 50);
-    refresidual01 = new TH1D("refresidual01","refresidual01", 25, -50, 50);
-    refresidual12 = new TH1D("refresidual12","refresidual12", 25, -50, 50);
-    refresidualUD = new TH1D("refresidualUD","refresidualUD", 25, -50, 50);
+    residual = new TH1D("residual","residual", 100, -25, 25);
+    residual12 = new TH1D("residual12","residual12", 100, -50, 50);
+    residual01 = new TH1D("residual01","residual01", 100, -50, 50);
+    residualUD = new TH1D("residualUD","residualUD", 100, -50, 50);
+    refresidual = new TH1D("refresidual","refresidual", 100, -50, 50);
+    refresidual01 = new TH1D("refresidual01","refresidual01", 100, -50, 50);
+    refresidual12 = new TH1D("refresidual12","refresidual12", 100, -50, 50);
+    refresidualUD = new TH1D("refresidualUD","refresidualUD", 100, -50, 50);
     pzdEdx = new TH2D("pzdEdx","pzdEdz", 100, 1, 100,250, -500, 500);
     TOFcom = new TH2D("TOF01 vs TOF12","TOF01 vs TOF12", 33, 100, 350,33, 100, 350);
     energyloss = new TH2D("energyloss","energyloss", 40, 5000, 24000,350, 100, 450);
-    TOFvsMCTruth = new TH2D("TOFvsMCTruth","", 33, 100, 350,33, 100, 350);
-    refTOFvsMCTruth = new TH2D("refTOFvsMCTruth","", 33, 100, 350,33, 100, 350);
+    TOFvsMCTruth = new TH2D("TOFvsMCTruth","", 200, 150, 250,200, 150, 250);
+    refTOFvsMCTruth = new TH2D("refTOFvsMCTruth","", 14, 150, 250,14, 150, 250);
     MCTruth = new TH1D("MCTruth","MCTruth", 33, 100, 350);
     refMCTruth = new TH1D("refMCTruth","refMCTruth",33, 100, 350);
     TOF01vsTOF12 = new TH2D("TOF01vsTOF12","TOF01vsTOF12", 40, 100, 300,40, 100, 300);
@@ -185,10 +206,10 @@ MCSAnalysis::MCSAnalysis(std::string tree, std::string mctree, std::string reftr
     noweighttof10 = new TH1D("noweighttof10","TOF Between Stations 1 and 0; t_{TOF1} - t_{TOF0} (ns)", 150, 10, 40);
     noweighttof21 = new TH1D("noweighttof21","TOF Between Stations 2 and 1; t_{TOF2} - t_{TOF1} (ns)", 150, 0, 50);
     calc_mom = new TH1D("calc_mom","Momentum Calculated from TOF; Momentum (MeV/c)", 100, 0, 400);
-    cor_mom = new TH1D("LiH_mom","; #P_z (MeV/c)", 180, 120, 300);
-    uncor_mom = new TH1D("uncor_mom","; #P_z (MeV/c)", 180, 120, 300);
+    cor_mom = new TH1D("LiH_mom","; #it{p} (MeV/c); Normalized Entries", 180, 120, 300);
+    uncor_mom = new TH1D("uncor_mom","; #it{p} (MeV/c); Normalized Entries", 180, 120, 300);
     uncor_momsel = new TH1D("uncor_momsel","Cor Momentum Calculated from TOF; Momentum (MeV/c)", 180, 120, 300);
-    mccalc_mom = new TH1D("empty_mom","; #P_z (MeV/c)", 100, 0, 400);
+    mccalc_mom = new TH1D("empty_mom","; #it{p} (MeV/c); Normalized Entries", 100, 0, 400);
     mctrue_mom = new TH1D("mctrue_mom","Momentum from Virtual Planes; Momentum (MeV/c)", 400, 0, 400);
     cuts_accept   = new TH1D("cuts_accept", 
             ";Selection Criteria; Surviving Events", 6, 0, 6);
@@ -205,30 +226,30 @@ MCSAnalysis::MCSAnalysis(std::string tree, std::string mctree, std::string reftr
                 NBINS, scat_bin_array);
 
     sym_theta_true_x_graph =
-        new TH1D("thetaX_graphsym","Change in Projected Angle (X);#theta_{X}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+        new TH1D("thetaX_graphsym","Change in Projected Angle (X);#it{#theta_{X}}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
     sym_theta_true_y_graph =
-        new TH1D("thetaY_graphsym","Change in Projected Angle (X);#theta_{X}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+        new TH1D("thetaY_graphsym","Change in Projected Angle (X);#it{#theta_{X}}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
     theta_true_x_graph =
-        new TH1D("thetaX_graph","Change in Projected Angle (X);#theta_{X}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+        new TH1D("thetaX_graph","Change in Projected Angle (X);#it{#theta_{X}}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
     theta_true_y_graph =
-        new TH1D("thetaY_graph","Change in Projected Angle (X);#theta_{X}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+        new TH1D("thetaY_graph","Change in Projected Angle (X);#it{#theta_{X}}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
     minustheta_true_x_graph =
-        new TH1D("minusthetaX_graph","Change in Projected Angle (X);#theta_{X}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+        new TH1D("minusthetaX_graph","Change in Projected Angle (X);#it{#theta_{X}}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
     minustheta_true_y_graph =
-        new TH1D("minusthetaY_graph","Change in Projected Angle (X);#theta_{X}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+        new TH1D("minusthetaY_graph","Change in Projected Angle (X);#it{#theta_{X}}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
     theta_true_scat_graph = 
-        new TH1D("thetaScatt_graph","Scattering Angle between Momentum Vectors;#theta_{Scatt}; Events per mrad",
+        new TH1D("thetaScatt_graph","Scattering Angle between Momentum Vectors;#it{#theta_{Scatt}}; Events per mrad",
                 _histlimits["NbinsTh"], _histlimits["minTh"], _histlimits["maxTh"]);
     theta_true_scat2_graph = 
         new TH1D("theta2Scatt_graph","Scattering Angle between Momentum Vectors;#theta^{2}_{Scatt}; Events per mrad",
                 _histlimits["NbinsTh2"], _histlimits["minTh2"], _histlimits["maxTh2"]);
 
     mctheta_true_x_graph =
-        new TH1D("thetaX_graphmc","Change in Projected Angle (X);#theta_{X}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+        new TH1D("thetaX_graphmc","Change in Projected Angle (X);#it{#theta_{X}}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
     mctheta_true_y_graph =
-        new TH1D("thetaY_graphmc","Change in Projected Angle (X);#theta_{X}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+        new TH1D("thetaY_graphmc","Change in Projected Angle (X);#it{#theta_{X}}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
     mctheta_true_scat_graph = 
-        new TH1D("theta_true_scat_graphmc","Scattering Angle between Momentum Vectors;#theta_{Scatt}; Events per mrad",
+        new TH1D("theta_true_scat_graphmc","Scattering Angle between Momentum Vectors;#it{#theta_{Scatt}}; Events per mrad",
                 _histlimits["NbinsTh"], _histlimits["minTh"], _histlimits["maxTh"]);
     scattering_proj_x_resp =
         new TH2D("scattering_proj_x_resp",
@@ -255,26 +276,26 @@ MCSAnalysis::MCSAnalysis(std::string tree, std::string mctree, std::string reftr
                 NBINS, scat_bin_array);
 
     thetaX_all =
-        new TH1D("thetaX_all","Change in Projected Angle (X);#theta_{X}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+        new TH1D("thetaX_all","Change in Projected Angle (X);#it{#theta_{X}}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
     thetaX_tof =
-        new TH1D("thetaX_tof","Change in Projected Angle (X);#theta_{X}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+        new TH1D("thetaX_tof","Change in Projected Angle (X);#it{#theta_{X}}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
     thetaX_proj =
-        new TH1D("thetaX_proj","Change in Projected Angle (X);#theta_{X}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+        new TH1D("thetaX_proj","Change in Projected Angle (X);#it{#theta_{X}}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
     thetaX_diff =
-        new TH1D("thetaX_diff","Change in Projected Angle (X);#theta_{X}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+        new TH1D("thetaX_diff","Change in Projected Angle (X);#it{#theta_{X}}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
     thetaX_chi =
-        new TH1D("thetaX_chi","Change in Projected Angle (X);#theta_{X}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+        new TH1D("thetaX_chi","Change in Projected Angle (X);#it{#theta_{X}}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
 
     thetaY_all =
-        new TH1D("thetaY_all","Change in Projected Angle (Y);#theta_{Y}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+        new TH1D("thetaY_all","Change in Projected Angle (Y);#it{#theta_{Y}}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
     thetaY_tof =
-        new TH1D("thetaY_tof","Change in Projected Angle (Y);#theta_{Y}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+        new TH1D("thetaY_tof","Change in Projected Angle (Y);#it{#theta_{Y}}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
     thetaY_proj =
-        new TH1D("thetaY_proj","Change in Projected Angle (Y);#theta_{Y}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+        new TH1D("thetaY_proj","Change in Projected Angle (Y);#it{#theta_{Y}}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
     thetaY_diff =
-        new TH1D("thetaY_diff","Change in Projected Angle (Y);#theta_{Y}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+        new TH1D("thetaY_diff","Change in Projected Angle (Y);#it{#theta_{Y}}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
     thetaY_chi =
-        new TH1D("thetaY_chi","Change in Projected Angle (Y);#theta_{Y}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+        new TH1D("thetaY_chi","Change in Projected Angle (Y);#it{#theta_{Y}}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
 
     jUS=-1;
     jDS=-1;
@@ -308,9 +329,9 @@ MCSAnalysis::~MCSAnalysis(){
 
 void MCSAnalysis::Write(){
 
-    TText t1 = TText(0.12,0.785,"MICE Preliminary");
-    TText t3 = TText(0.12,0.75,"ISIS cycle 2015/04");
-    TText t2 = TText(0.12,0.715,"LiH, MAUS v3.1.2");
+    TText t1 = TText(0.18,0.8,"MICE Preliminary");
+    TText t3 = TText(0.18,0.765,"ISIS cycle 2015/04");
+    TText t2 = TText(0.18,0.73,"LiH, MAUS v3.3.2");
     t1.SetNDC(1);
     t1.SetTextSize(0.04);
     t1.SetTextFont(42);
@@ -400,16 +421,16 @@ void MCSAnalysis::Write(){
     cor_mom->Draw();
     c1->SaveAs("cor_mom.pdf");
     c1->Clear();
-    MCTruth->GetXaxis()->SetTitle("pz TOF MeV/c");
+    MCTruth->GetXaxis()->SetTitle("P_{z} TOF MeV/c");
     MCTruth->Draw();
     c1->SaveAs("MCTruth.pdf");
     c1->Clear();
-    refMCTruth->GetXaxis()->SetTitle("pz TOF MeV/c");
+    refMCTruth->GetXaxis()->SetTitle("P_{z} TOF MeV/c");
     refMCTruth->Draw();
     c1->SaveAs("refMCTruth.pdf");
     c1->Clear();
-    TOF01vsTOF12->GetXaxis()->SetTitle("pz US (MeV/c)");
-    TOF01vsTOF12->GetYaxis()->SetTitle("pz DS (MeV/c)");
+    TOF01vsTOF12->GetXaxis()->SetTitle("P_{z} US (MeV/c)");
+    TOF01vsTOF12->GetYaxis()->SetTitle("P_{z} DS (MeV/c)");
     TOF01vsTOF12->Draw("colz");
     float col1 = 0.2082*0.9;
     float col2 = 0.1664*0.9;
@@ -423,19 +444,32 @@ void MCSAnalysis::Write(){
     c1->SaveAs("TOF01vsTOF12.pdf");
     c1->Clear();
     gStyle->SetOptStat(0);
-    TOFvsMCTruth->GetXaxis()->SetTitle("Reconstructed P_z (MeV/c)");
-    TOFvsMCTruth->GetYaxis()->SetTitle("True pz at abs. centre (MeV/c)");
+    TOFvsMCTruth->GetXaxis()->SetTitle("Reconstructed #it{p} (MeV/c)");
+    TOFvsMCTruth->GetXaxis()->SetLabelSize(0.05);
+    TOFvsMCTruth->GetYaxis()->SetTitle("True #it{p} at abs. centre (MeV/c)");
+    TOFvsMCTruth->GetYaxis()->SetLabelSize(0.05);
     TOFvsMCTruth->Draw("colz");
     fillcolour = TColor::GetColor(col1, col2, col3);
     c1->GetFrame()->SetFillColor(fillcolour);
     c1->SetFrameFillColor(fillcolour);
-    TLine *line4 = new TLine(100,100,350,350);
+    TLine *line4 = new TLine(150,150,250,250);
     line4->SetLineColor(kRed);
     line4->Draw();
+    t1.SetTextColor(0);
+    t2.SetTextColor(0);
+    t3.SetTextColor(0);
+    t1.Draw();
+    t3.Draw();
+    t2.Draw();
     c1->SaveAs("TOFvsMCTruth.pdf");
     c1->Clear();
-    refTOFvsMCTruth->GetXaxis()->SetTitle("Reconstructed P_z (MeV/c)");
-    refTOFvsMCTruth->GetYaxis()->SetTitle("True pz at abs. centre (MeV/c)");
+    t1.SetTextColor(1);
+    t2.SetTextColor(1);
+    t3.SetTextColor(1);
+    refTOFvsMCTruth->GetXaxis()->SetTitle("Reconstructed P_{z} (MeV/c)");
+    refTOFvsMCTruth->GetXaxis()->SetLabelSize(0.05);
+    refTOFvsMCTruth->GetYaxis()->SetTitle("True P_{z} at abs. centre (MeV/c)");
+    refTOFvsMCTruth->GetYaxis()->SetLabelSize(0.05);
     refTOFvsMCTruth->Draw("colz");
     c1->GetFrame()->SetFillColor(fillcolour);
     c1->SetFrameFillColor(fillcolour);
@@ -547,27 +581,34 @@ void MCSAnalysis::Write(){
     line7->Draw();
     c1->SaveAs("TOF01forupvsTOF01fordown.pdf");
     c1->Clear();
-    gStyle->SetOptStat(1);
-    residual->GetXaxis()->SetTitle("pz recon - MCTruth (MeV/c)");
+    gStyle->SetOptStat(0);
+    residual->SetTitle("");
+    residual->GetXaxis()->SetTitle("Reconstructed #it{p} #minus True #it{p} (MeV/c)");
+    residual->GetXaxis()->SetLabelSize(0.05);
     residual->GetYaxis()->SetTitle("No. of events");
+    residual->GetYaxis()->SetLabelSize(0.05);
+    //residual->GetYaxis()->SetTitleOffset(1.6);
     residual->Draw();
+    t1.Draw();
+    t3.Draw();
+    t2.Draw();
     c1->SaveAs("residual.pdf");
     c1->Clear();
     TText t11 = TText(0.63,0.785,"MICE Preliminary");
     TText t13 = TText(0.63,0.75,"ISIS cycle 2015/04");
-    TText t12 = TText(0.63,0.715,"LiH, MAUS v3.1.2");
+    TText t12 = TText(0.63,0.715,"LiH, MAUS v3.3.2");
     c1->Clear();
 
     residual12->GetXaxis()->SetTitle("residual12");
     residual12->GetYaxis()->SetTitle("No. of events");
     residual12->Draw();
-    t11.Draw();
-    t13.Draw();
-    t12.Draw();
+    /* t11.Draw(); */
+    /* t13.Draw(); */
+    /* t12.Draw(); */
     residual12->Fit("gaus", "N");
     c1->SaveAs("residual12.pdf");
     c1->Clear();
-    refresidual12->GetXaxis()->SetTitle("pz recon - MCTruth (MeV/c)");
+    refresidual12->GetXaxis()->SetTitle("P_{z} recon - MCTruth (MeV/c)");
     refresidual12->GetYaxis()->SetTitle("No. of events");
     refresidual12->Draw();
     t11.Draw();
@@ -656,7 +697,7 @@ void MCSAnalysis::Write(){
     c1->Clear();
     gStyle->SetOptStat(1);
     gStyle->SetOptStat("nemR");
-    theta_true_x_graph->GetXaxis()->SetTitle("#theta_{x} (mrad)");
+    theta_true_x_graph->GetXaxis()->SetTitle("#it{#theta_{x}} (mrad)");
     theta_true_x_graph->GetYaxis()->SetTitle("No. of events");
     //theta_true_x_graph->Sumw2();
     theta_true_x_graph->SetFillColor(kOrange-2);
@@ -689,7 +730,7 @@ void MCSAnalysis::Write(){
     /* t20.Draw(); */
     TText t100 = TText(0.652,0.585,"MICE Preliminary");
     TText t300 = TText(0.652,0.55,"ISIS cycle 2015/04");
-    TText t200 = TText(0.652,0.515,"LiH, MAUS v3.1.2");
+    TText t200 = TText(0.652,0.515,"LiH, MAUS v3.3.2");
     t100.SetNDC(1);
     t100.SetTextSize(0.04);
     t100.SetTextFont(42);
@@ -707,7 +748,7 @@ void MCSAnalysis::Write(){
     c1->Clear();
     gStyle->SetOptStat(1);
     gStyle->SetOptStat("nemR");
-    theta_true_y_graph->GetXaxis()->SetTitle("#theta_y (mrad)");
+    theta_true_y_graph->GetXaxis()->SetTitle("#it{#theta_y} (mrad)");
     theta_true_y_graph->GetYaxis()->SetTitle("No. of events");
     theta_true_y_graph->DrawNormalized();
 
@@ -763,6 +804,11 @@ void MCSAnalysis::print(){
     std::cout << "bin width sqrt12 " << bwmom/sqrt(12) << std::endl;
     std::cout << "tX_rG_int " << tX_rG_int << std::endl;
     std::cout << "% events reaching TOF2 " << percentTOF2 << std::endl;
+    std::cout << "% events reaching TOF2 " << (TOF2Hit/TOF1Hit)*100 << std::endl;
+    std::cout << "No. of selected events US & " << int(_USset.N()) << " & " << int(DSentries) << " \\" << std::endl;
+    std::cout << "No. of selected events DS " << int(_DSset.N()) << std::endl;
+    std::cout << "No. of selected events US & " << int(_USMCset.N()) << " & " << int(DSrefentries) << " \\" << std::endl;
+    std::cout << "No. of selected events DS " << int(_DSMCset.N()) << std::endl;
 }
 
 void MCSAnalysis::Execute(int mode){
@@ -984,7 +1030,7 @@ void MCSAnalysis::dataevents(int mode){
 
     for (int i=0; i<Nentries; i++){
         /* int beamtype = 0; */
-    std::cout << i << std::endl;
+    /* std::cout << i << std::endl; */
         int pid = -13;
         bool difcut = false;
         bool chicut = false;
@@ -1197,6 +1243,10 @@ void MCSAnalysis::dataSelection(int mode){
             mcreconDSTruthSet.append_instance(DSeventset.E(i));
         }
 
+        TOF1Hit += 1;
+        if (USeventset.E(i).TOF12 > 0 && USeventset.E(i).TOF12 < 100){
+           TOF2Hit += 1;  
+        }
         Nevents++;
         cor_mom->Fill(pz);
         tof10_sel->Fill(USeventset.E(i).TOF01);
@@ -1789,9 +1839,9 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
         if ( rawTOF1HitTime - rawTOF0HitTime < TOF_lower_limit ||
                 rawTOF1HitTime - rawTOF0HitTime > TOF_upper_limit) return false;
  
-        if (tofevent->GetTOFEventSpacePoint().GetTOF1SpacePointArraySize() == 1 ) TOF1Hit += 1;
-        if (tofevent->GetTOFEventSpacePoint().GetTOF2SpacePointArraySize() == 1 )  TOF2Hit += 1;
-        percentTOF2 = TOF2Hit/TOF1Hit;
+        /* if (tofevent->GetTOFEventSpacePoint().GetTOF1SpacePointArraySize() == 1 ) TOF1Hit += 1; */
+        /* if (tofevent->GetTOFEventSpacePoint().GetTOF2SpacePointArraySize() == 1 )  TOF2Hit += 1; */
+        /* percentTOF2 = TOF2Hit/TOF1Hit; */
         /* double pcor = MomCalc(rawTOF1HitTime - rawTOF0HitTime); */
         /* // if ( pcor < P_lower_limit || */
         //      pcor > P_upper_limit) return false;
@@ -2506,11 +2556,11 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
         double mostprobBBCu = MostProbBB(pzBB,ICu,ZCu,ACu,hwCu,RCu,zCu);
         double mostprobBBW = MostProbBB(pzBB,IW,ZW,AW,hwW,RW,zW);
 
-        /* std::cout << "mostprobBBair " << mostprobBBair << std::endl; */
-        /* std::cout << "mostprobBBscin " << mostprobBBscin << std::endl; */
-        /* std::cout << "mostprobBBAl " << mostprobBBAl << std::endl; */
-        /* std::cout << "mostprobBBHe " << mostprobBBHe << std::endl; */
-        /* std::cout << "mostprobBBLiH " << mostprobBBLiH << std::endl; */
+        std::cout << "mostprobBBair " << mostprobBBair << std::endl;
+        std::cout << "mostprobBBscin " << mostprobBBscin << std::endl;
+        std::cout << "mostprobBBAl " << mostprobBBAl << std::endl;
+        std::cout << "mostprobBBHe " << mostprobBBHe << std::endl;
+        std::cout << "mostprobBBLiH " << mostprobBBLiH << std::endl;
         /* std::cout << "mostprobBBLH2 " << mostprobBBLH2 << std::endl; */
         /* std::cout << "mostprobBBCu " << mostprobBBCu << std::endl; */
         /* std::cout << "mostprobBBW " << mostprobBBW << std::endl; */
@@ -2892,6 +2942,7 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
 
         TCanvas* c1 = new TCanvas();
 
+//c1->SetBottomMargin(0.15);
         /* TF1*  tophatl = new TF1("mtophatl", "(1/2)*(1+TMath::Erf([0]*((x-(-0.08+0.025))/0.025)/sqrt(1-((x-(-0.08+0.025))/0.025)*((x-(-0.08+0.025))/0.025))))",-0.08,-0.03); */
         /* TF1*  tophatr = new TF1("mtophatr", "(1/2)*(1+TMath::Erf([0]*((x-(0.08-0.025))/0.025)/sqrt(1-((x-(0.08-0.025))/0.025)*((x-(0.08-0.025))/0.025))))",0.03,0.08); */
         /* TF1*  tophat = new TF1("mtophat", "[0]",-0.03,0.03); */
@@ -2936,14 +2987,15 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
         /* c1->SaveAs("mirror_Effx_graph.pdf"); */
         /* c1->Clear(); */
         efficiency_scat_x->GetYaxis()->SetTitle("Acceptance");
-        efficiency_scat_x->GetYaxis()->SetTitleSize(0.05);
-        efficiency_scat_x->GetXaxis()->SetTitleSize(0.05);
+        efficiency_scat_x->GetYaxis()->SetTitleSize(0.06);
+        efficiency_scat_x->GetXaxis()->SetTitle("#it{#theta_{X}} (mrad)");
+        efficiency_scat_x->GetXaxis()->SetTitleSize(0.06);
         efficiency_scat_x->GetXaxis()->SetRangeUser(-0.0465,0.0465);
         efficiency_scat_x->Draw("AP");
         mirror_tophatl->Draw("SAME");
-    TText t1 = TText(0.32,0.385,"MICE Preliminary");
-    TText t3 = TText(0.32,0.35,"ISIS cycle 2015/04");
-    TText t2 = TText(0.32,0.315,"LiH, MAUS v3.1.2");
+    TText t1 = TText(0.18,0.305,"MICE Preliminary");
+    TText t3 = TText(0.18,0.27,"ISIS cycle 2015/04");
+    TText t2 = TText(0.18,0.235,"LiH, MAUS v3.3.2");
     t1.SetNDC(1);
     t1.SetTextSize(0.04);
     t1.SetTextFont(42);
@@ -3022,6 +3074,7 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
             t += 1;
         }
         TCanvas* c1 = new TCanvas();
+        c1->SetBottomMargin(0.15);
         TF1* mirror_tophatl = new TF1("mmirrortophatl", "[1]*pow(x,6)+[2]*pow(x,4)+[3]*pow(x,2)+[4]",-0.07,0.07);
         mirror_tophatl->SetParameters(-2.70626e+05,-1.25699e+02,-4.02662e+04,2.63579e+00,9.94541e-01);
         efficiency_scat_y->Fit("mmirrortophatl", "R","",-0.07,0.07);
@@ -3031,15 +3084,16 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
         /* c1->SaveAs("mirror_Effy_graph.pdf"); */
         /* c1->Clear(); */
         efficiency_scat_y->GetYaxis()->SetTitle("Acceptance");
-        efficiency_scat_y->GetYaxis()->SetTitleSize(0.05);
-        efficiency_scat_y->GetXaxis()->SetTitleSize(0.05);
+        efficiency_scat_y->GetYaxis()->SetTitleSize(0.06);
+        efficiency_scat_y->GetXaxis()->SetTitle("#it{#theta_{Y}} (mrad)");
+        efficiency_scat_y->GetXaxis()->SetTitleSize(0.06);
         efficiency_scat_y->GetXaxis()->SetRangeUser(-0.0465,0.0465);
         efficiency_scat_y->Draw("AP");
         efficiency_scat_y->Draw("AP");
         mirror_tophatl->Draw("SAME");
-    TText t1 = TText(0.32,0.385,"MICE Preliminary");
-    TText t3 = TText(0.32,0.35,"ISIS cycle 2015/04");
-    TText t2 = TText(0.32,0.315,"LiH, MAUS v3.1.2");
+    TText t1 = TText(0.18,0.305,"MICE Preliminary");
+    TText t3 = TText(0.18,0.27,"ISIS cycle 2015/04");
+    TText t2 = TText(0.18,0.235,"LiH, MAUS v3.3.2");
     t1.SetNDC(1);
     t1.SetTextSize(0.04);
     t1.SetTextFont(42);
@@ -3203,15 +3257,15 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
 
         // Efficiency plots
         TH1D* scatx = 
-            new TH1D("scatx","Change in Projected Angle (X);#theta_{X}; Events per 4 mrad",
+            new TH1D("scatx","Change in Projected Angle (X);#it{#theta_{X}}; Events per 4 mrad",
                     _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
 
         TH1D* scaty = 
-            new TH1D("scaty","Change in Projected Angle (Y);#theta_{Y}; Events per 4 mrad",
+            new TH1D("scaty","Change in Projected Angle (Y);#it{#theta_{Y}}; Events per 4 mrad",
                     _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
 
         TH1D* scatscat = 
-            new TH1D("scatscat","Scattering Angle between Momentum Vectors;#theta_{Scatt}; Events per mrad",
+            new TH1D("scatscat","Scattering Angle between Momentum Vectors;#it{#theta_{Scatt}}; Events per mrad",
                     _histlimits["NbinsTh"], _histlimits["minTh"], _histlimits["maxTh"]);
 
         TH1D* scat2scatt = 
@@ -3220,74 +3274,74 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
         std::string tmpname = "thetaX_refconv_";
         tmpname += distname;
         TH1D* thetaX_refconv = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#theta_{X}; Events per 4 mrad",
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{X}}; Events per 4 mrad",
                     _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaX_holdrefconv_";
         tmpname += distname;
         TH1D* thetaX_holdrefconv = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#theta_{X}; Events per 4 mrad",
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{X}}; Events per 4 mrad",
                     _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaX_empty_";
         tmpname += distname;
         TH1D* thetaX_empty = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#theta_{X}; Events per 4 mrad",
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{X}}; Events per 4 mrad",
                     _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaX_emptyminus_";
         tmpname += distname;
         TH1D* thetaX_emptyminus = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#theta_{X}; Events per 4 mrad",
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{X}}; Events per 4 mrad",
                     _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaX_emptyasymm_";
         tmpname += distname;
         TH1* thetaX_emptyasymm = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#theta_{X}; Events per 4 mrad",
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{X}}; Events per 4 mrad",
                     _histlimits["NbinsXY"]/2, 0, _histlimits["maxXY"]);
 
         tmpname = "thetaY_refconv_";
         tmpname += distname;
         TH1D* thetaY_refconv = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#theta_{Y}; Events per 4 mrad",
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#it{#theta_{Y}}; Events per 4 mrad",
                     _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaY_holdrefconv_";
         tmpname += distname;
         TH1D* thetaY_holdrefconv = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#theta_{Y}; Events per 4 mrad",
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#it{#theta_{Y}}; Events per 4 mrad",
                     _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaY_empty_";
         tmpname += distname;
         TH1D* thetaY_empty = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#theta_{Y}; Events per 4 mrad",
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#it{#theta_{Y}}; Events per 4 mrad",
                     _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname += distname;
         TH1D* thetaY_emptyfold = 
-            new TH1D(tmpname.c_str(),";#theta_{Y};#theta_{Yi}-#theta_{Y46-i}",
+            new TH1D(tmpname.c_str(),";#it{#theta_{Y}};#it{#theta_{Yi}}-#it{#theta_{Y46-i}}",
                     _histlimits["NbinsXY"]/2, _histlimits["minXY"], 0);
         tmpname = "thetaY_emptyminus_";
         tmpname += distname;
         TH1D* thetaY_emptyminus = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#theta_{Y}; Events per 4 mrad",
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#it{#theta_{Y}}; Events per 4 mrad",
                     _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaY_emptyasymm_";
         tmpname += distname;
         TH1* thetaY_emptyasymm = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#theta_{Y}; Events per 4 mrad",
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#it{#theta_{Y}}; Events per 4 mrad",
                     _histlimits["NbinsXY"]/2, 0, _histlimits["maxXY"]);
 
         tmpname = "thetaScatt_refconv_";
         tmpname += distname;
         TH1D* thetaScatt_refconv = 
-            new TH1D(tmpname.c_str(),"Scattering Angle between Momentum Vectors;#theta_{Scatt}; Events per mrad",
+            new TH1D(tmpname.c_str(),"Scattering Angle between Momentum Vectors;#it{#theta_{Scatt}}; Events per mrad",
                     _histlimits["NbinsTh"], _histlimits["minTh"], _histlimits["maxTh"]);
 
         tmpname = "thetaScatt_empty_";
         tmpname += distname;
         TH1D* thetaScatt_empty = 
-            new TH1D(tmpname.c_str(),"Scattering Angle between Momentum Vectors;#theta_{Scatt}; Events per mrad",
+            new TH1D(tmpname.c_str(),"Scattering Angle between Momentum Vectors;#it{#theta_{Scatt}}; Events per mrad",
                     _histlimits["NbinsTh"], _histlimits["minTh"], _histlimits["maxTh"]);
         tmpname = "thetaScatt_holdrefconv_";
         tmpname += distname;
         TH1D* thetaScatt_holdrefconv = 
-            new TH1D(tmpname.c_str(),"Scattering Angle between Momentum Vectors;#theta_{Scatt}; Events per mrad",
+            new TH1D(tmpname.c_str(),"Scattering Angle between Momentum Vectors;#it{#theta_{Scatt}}; Events per mrad",
                     _histlimits["NbinsTh"]*4, _histlimits["minTh"]*2, _histlimits["maxTh"]*4);
 
 
@@ -3301,15 +3355,15 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
         tmpname = "thetaScatt_refconv_vp_";
         tmpname += distname;
         TH2D* thetaScatt_refconv_vp = 
-            new TH2D(tmpname.c_str(),"Scattering Angle between Momentum Vectors;Momentum (MeV/c); #theta_{Scatt}", 
+            new TH2D(tmpname.c_str(),"Scattering Angle between Momentum Vectors;Momentum (MeV/c); #it{#theta_{Scatt}}", 
                     200, 100, 300, _histlimits["NbinsTh"], _histlimits["minTh"], _histlimits["maxTh"]);
 
         TH2D* thetaXUS_thetaXDS = 
-            new TH2D("thetaXUS_thetaXDS","Upstream vs. Downstream Angle;#theta_{X}^{US}; #theta_{X}^{DS}",
+            new TH2D("thetaXUS_thetaXDS","Upstream vs. Downstream Angle;#it{#theta_{X}^{US}}; #it{#theta_{X}^{DS}}",
                     _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"], 
                     _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         TH2D* thetaYUS_thetaYDS = 
-            new TH2D("thetaYUS_thetaYDS","Upstream vs. Downstream Angle;#theta_{X}^{US}; #theta_{X}^{DS}",
+            new TH2D("thetaYUS_thetaYDS","Upstream vs. Downstream Angle;#it{#theta_{X}^{US}}; #it{#theta_{X}^{DS}}",
                     _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"],
                     _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
 
@@ -3720,19 +3774,19 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
         std::string tmpname = "thetaX_refconv_";
         tmpname += distname;
         TH1D* thetaX_refconv = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#theta_{X}; Events per 4 mrad",
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{X}}; Events per 4 mrad",
                     _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
 
         tmpname = "thetaY_refconv_";
         tmpname += distname;
         TH1D* thetaY_refconv = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#theta_{Y}; Events per 4 mrad",
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#it{#theta_{Y}}; Events per 4 mrad",
                     _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
 
         tmpname = "thetaScatt_refconv_";
         tmpname += distname;
         TH1D* thetaScatt_refconv = 
-            new TH1D(tmpname.c_str(),"Scattering Angle between Momentum Vectors;#theta_{Scatt}; Events per mrad",
+            new TH1D(tmpname.c_str(),"Scattering Angle between Momentum Vectors;#it{#theta_{Scatt}}; Events per mrad",
                     _histlimits["NbinsTh"], _histlimits["minTh"], _histlimits["maxTh"]);
 
 
@@ -3745,15 +3799,15 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
         tmpname = "thetaScatt_refconv_vp_";
         tmpname += distname;
         TH2D* thetaScatt_refconv_vp = 
-            new TH2D(tmpname.c_str(),"Scattering Angle between Momentum Vectors;Momentum (MeV/c); #theta_{Scatt}", 
+            new TH2D(tmpname.c_str(),"Scattering Angle between Momentum Vectors;Momentum (MeV/c); #it{#theta_{Scatt}}", 
                     200, 100, 300, _histlimits["NbinsTh"], _histlimits["minTh"], _histlimits["maxTh"]);
 
         TH2D* thetaXUS_thetaXDS = 
-            new TH2D("thetaXUS_thetaXDS","Upstream vs. Downstream Angle;#theta_{X}^{US}; #theta_{X}^{DS}",
+            new TH2D("thetaXUS_thetaXDS","Upstream vs. Downstream Angle;#it{#theta_{X}^{US}}; #it{#theta_{X}^{DS}}",
                     _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"], 
                     _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         TH2D* thetaYUS_thetaYDS = 
-            new TH2D("thetaYUS_thetaYDS","Upstream vs. Downstream Angle;#theta_{X}^{US}; #theta_{X}^{DS}",
+            new TH2D("thetaYUS_thetaYDS","Upstream vs. Downstream Angle;#it{#theta_{X}^{US}}; #it{#theta_{X}^{DS}}",
                     _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"],
                     _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
 
@@ -3886,43 +3940,43 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
 
         std::string  tmpname = "thetaX_recoGold";
         TH1D* thetaX_recoGold = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#theta_{X}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{X}}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaY_recoGold";
         TH1D* thetaY_recoGold = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#theta_{Y}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#it{#theta_{Y}}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaX_recoGoldhold";
         TH1D* thetaX_recoGoldhold = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#theta_{X}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{X}}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaY_recoGoldhold";
         TH1D* thetaY_recoGoldhold = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#theta_{Y}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#it{#theta_{Y}}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaX_recoGoldhold2";
         TH1D* thetaX_recoGoldhold2 = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#theta_{X}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{X}}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaY_recoGoldhold2";
         TH1D* thetaY_recoGoldhold2 = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#theta_{Y}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#it{#theta_{Y}}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaX_recoGoldhold3";
         TH1D* thetaX_recoGoldhold3 = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#theta_{X}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{X}}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaY_recoGoldhold3";
         TH1D* thetaY_recoGoldhold3 = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#theta_{Y}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#it{#theta_{Y}}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaScatt_recoGold";
         TH1D* thetaScatt_recoGold = 
-            new TH1D(tmpname.c_str(),"Scattering Angle between Momentum Vectors;#theta_{Scatt}; Events per mrad",_histlimits["NbinsTh"], _histlimits["minTh"], _histlimits["maxTh"]);
+            new TH1D(tmpname.c_str(),"Scattering Angle between Momentum Vectors;#it{#theta_{Scatt}}; Events per mrad",_histlimits["NbinsTh"], _histlimits["minTh"], _histlimits["maxTh"]);
         tmpname = "theta2Scatt_recoGold";
         TH1D* theta2Scatt_recoGold = 
             new TH1D(tmpname.c_str(),"Scattering Angle between Momentum Vectors;#theta^{2}_{Scatt}; Events per mrad",_histlimits["NbinsTh2"], _histlimits["minTh2"], _histlimits["maxTh2"]);
         tmpname = "thetaX_response";
         TH1D* thetaX_response = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#theta_{X}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{X}}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaY_response";
         TH1D* thetaY_response = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#theta_{Y}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#it{#theta_{Y}}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaScatt_response";
         TH1D* thetaScatt_response = 
-            new TH1D(tmpname.c_str(),"Scattering Angle between Momentum Vectors;#theta_{Scatt}; Events per mrad",_histlimits["NbinsTh"], _histlimits["minTh"], _histlimits["maxTh"]);
+            new TH1D(tmpname.c_str(),"Scattering Angle between Momentum Vectors;#it{#theta_{Scatt}}; Events per mrad",_histlimits["NbinsTh"], _histlimits["minTh"], _histlimits["maxTh"]);
         tmpname = "theta2Scatt_response";
         TH1D* theta2Scatt_response = 
             new TH1D(tmpname.c_str(),"Scattering Angle between Momentum Vectors;#theta^{2}_{Scatt}; Events per mrad",_histlimits["NbinsTh2"], _histlimits["minTh2"], _histlimits["maxTh2"]);
@@ -3933,48 +3987,48 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
 
         tmpname = "thetaX_recoGold_noeffi";
         TH1D* thetaX_recoGold_noeffi = 
-            new TH1D("thetaX_recoGold_noeffi","Change in Projected Angle (X);#theta_{X}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH1D("thetaX_recoGold_noeffi","Change in Projected Angle (X);#it{#theta_{X}}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaY_recoGold_noeffi";
         TH1D* thetaY_recoGold_noeffi = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#theta_{Y}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#it{#theta_{Y}}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaX_recoGold_effi_only_gold";
         TH1D* thetaX_recoGold_effi_only_gold = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#theta_{X}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{X}}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaY_recoGold_effi_only_gold";
         TH1D* thetaY_recoGold_effi_only_gold = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#theta_{Y}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#it{#theta_{Y}}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaX_recoGold_effi_only_response";
         TH1D* thetaX_recoGold_effi_only_response = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#theta_{X}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{X}}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaY_recoGold_effi_only_response";
         TH1D* thetaY_recoGold_effi_only_response = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#theta_{Y}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#it{#theta_{Y}}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
 
         tmpname = "thetaX_recoGoldhold_noeffi";
         TH1D* thetaX_recoGoldhold_noeffi = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#theta_{X}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{X}}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaY_recoGoldhold_noeffi";
         TH1D* thetaY_recoGoldhold_noeffi = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#theta_{Y}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#it{#theta_{Y}}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaX_recoGoldhold_effi_only_gold";
         TH1D* thetaX_recoGoldhold_effi_only_gold = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#theta_{X}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{X}}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaY_recoGoldhold_effi_only_gold";
         TH1D* thetaY_recoGoldhold_effi_only_gold = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#theta_{Y}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#it{#theta_{Y}}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaX_recoGoldhold_effi_only_response";
         TH1D* thetaX_recoGoldhold_effi_only_response = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#theta_{X}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{X}}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaY_recoGoldhold_effi_only_response";
         TH1D* thetaY_recoGoldhold_effi_only_response = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#theta_{Y}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#it{#theta_{Y}}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
 
         tmpname = "thetaX_response_noeffi";
         TH1D* thetaX_response_noeffi = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#theta_{X}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{X}}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaY_response_noeffi";
         TH1D* thetaY_response_noeffi = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#theta_{Y}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#it{#theta_{Y}}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
 
         for(int i=0; i<_DSsethold.N(); i++){
             std::vector<double> projTheta = RotDefineProjectionAngles(_USsethold.E(i), _DSsethold.E(i), angdef);
@@ -3996,6 +4050,7 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
 
         TVectorD NoEntriesGold(1);
         NoEntriesGold[0] = thetaX_recoGold->GetEntries();
+        DSentries = thetaX_recoGold->Integral();
 
         /* this one */
         thetaX_recoGold = trkreffix(thetaX_recoGold,0);
@@ -4042,6 +4097,7 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
 
         TVectorD NoEntriesresp(1);
         NoEntriesresp[0] = thetaX_response->GetEntries();
+        DSrefentries = thetaX_response->Integral();
         
         thetaX_response = trkreffix(thetaX_response,0);
         thetaY_response = trkreffiy(thetaY_response,0);
@@ -4756,15 +4812,15 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
         theta2Scatt_response->Write();
 
         ChiSquareX->SetName("ChiSquareX");
-        ChiSquareX->SetTitle("#chi^{2} and Kolmogorov tests for n and n-1 repetitions of deconvolution of #theta_{X} (boost = 0.75)");
+        ChiSquareX->SetTitle("#chi^{2} and Kolmogorov tests for n and n-1 repetitions of deconvolution of #it{#theta_{X}} (boost = 0.75)");
         ChiSquareX->GetXaxis()->SetTitle("n");
         ChiSquareX->Write();
         ChiSquareY->SetName("ChiSquareY");
-        ChiSquareY->SetTitle("#chi^{2} and Kolmogorov tests for n and n-1 repetitions of deconvolution of #theta_{Y} (boost = 0.75)");
+        ChiSquareY->SetTitle("#chi^{2} and Kolmogorov tests for n and n-1 repetitions of deconvolution of #it{#theta_{Y}} (boost = 0.75)");
         ChiSquareY->GetXaxis()->SetTitle("n");
         ChiSquareY->Write();
         ChiSquareScatt->SetName("ChiSquareScatt");
-        ChiSquareScatt->SetTitle("#chi^{2} and Kolmogorov tests for n and n-1 repetitions of deconvolution of #theta_{Scatt} (boost = 0.75)");
+        ChiSquareScatt->SetTitle("#chi^{2} and Kolmogorov tests for n and n-1 repetitions of deconvolution of #it{#theta_{Scatt}} (boost = 0.75)");
         ChiSquareScatt->GetXaxis()->SetTitle("n");
         ChiSquareScatt->Write();
         ChiSquare2Scatt->SetName("ChiSquare2Scatt");
@@ -4785,7 +4841,7 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
         c2->SetLogy();
         TLegend *leg = new TLegend(.65,.65,.85,.85);
         TMultiGraph *Chi2KolmX = new TMultiGraph();
-        Chi2KolmX->SetTitle("#chi^{2} and Kolmogorov tests for n and n-1 iterations of deconvolution of #theta_{X};n;");
+        Chi2KolmX->SetTitle("#chi^{2} and Kolmogorov tests for n and n-1 iterations of deconvolution of #it{#theta_{X}};n;");
         ChiSquareX->SetLineColor(kRed);
         Chi2KolmX->Add(ChiSquareX, "c");
         Chi2KolmX->Add(KolmogorovX, "c");
@@ -4799,7 +4855,7 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
         c2->Clear();
         leg->Clear();
         TMultiGraph *Chi2KolmY = new TMultiGraph();
-        Chi2KolmY->SetTitle("#chi^{2} and Kolmogorov tests for n and n-1 iterations of deconvolution of #theta_{Y};n;");
+        Chi2KolmY->SetTitle("#chi^{2} and Kolmogorov tests for n and n-1 iterations of deconvolution of #it{#theta_{Y}};n;");
         ChiSquareY->SetLineColor(kRed);
         Chi2KolmY->Add(ChiSquareY, "c");
         Chi2KolmY->Add(KolmogorovY, "c");
@@ -4813,7 +4869,7 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
         c2->Clear();
         leg->Clear();
         TMultiGraph *Chi2KolmScatt = new TMultiGraph();
-        Chi2KolmScatt->SetTitle("#chi^{2} and Kolmogorov tests for n and n-1 iterations of deconvolution of #theta_{Scatt};n;");
+        Chi2KolmScatt->SetTitle("#chi^{2} and Kolmogorov tests for n and n-1 iterations of deconvolution of #it{#theta_{Scatt}};n;");
         ChiSquareScatt->SetLineColor(kRed);
         Chi2KolmScatt->Add(ChiSquareScatt, "c");
         Chi2KolmScatt->Add(KolmogorovScatt, "c");
@@ -4894,35 +4950,35 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
         std::string  tmpname = "thetaX_measdata";
         tmpname += model;
         TH1D* thetaX_measdata = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#theta_{X}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{X}}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaX_asymm";
         tmpname += model;
         TH1* thetaX_asymm = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#theta_{XY}; Events",_histlimits["NbinsXY"]/2, 0, _histlimits["maxXY"]);
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{XY}}; Events",_histlimits["NbinsXY"]/2, 0, _histlimits["maxXY"]);
         tmpname = "thetaX_measdataminus";
         tmpname += model;
         TH1D* thetaX_measdataminus = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#theta_{X}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{X}}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaY_measdata";
         tmpname += model;
         TH1D* thetaY_measdata = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#theta_{Y}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#it{#theta_{Y}}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaY_measdatafold";
         tmpname += model;
         TH1D* thetaY_measdatafold = 
-            new TH1D(tmpname.c_str(),";#theta_{Y};#theta_{Yi}-#theta_{Y46-i}",_histlimits["NbinsXY"]/2, _histlimits["minXY"], 0);
+            new TH1D(tmpname.c_str(),";#it{#theta_{Y}};#it{#theta_{Yi}}-#it{#theta_{Y46-i}}",_histlimits["NbinsXY"]/2, _histlimits["minXY"], 0);
         tmpname = "thetaY_asymm";
         tmpname += model;
         TH1* thetaY_asymm = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#theta_{Y}; Events",_histlimits["NbinsXY"]/2, 0, _histlimits["maxXY"]);
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#it{#theta_{Y}}; Events",_histlimits["NbinsXY"]/2, 0, _histlimits["maxXY"]);
         tmpname = "thetaY_measdataminus";
         tmpname += model;
         TH1D* thetaY_measdataminus = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#theta_{Y}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#it{#theta_{Y}}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaScatt_measdata";
         tmpname += model;
         TH1D* thetaScatt_measdata = 
-            new TH1D(tmpname.c_str(),"Scattering Angle between Momentum Vectors;#theta_{Scatt}; Events per mrad",_histlimits["NbinsTh"], _histlimits["minTh"], _histlimits["maxTh"]);
+            new TH1D(tmpname.c_str(),"Scattering Angle between Momentum Vectors;#it{#theta_{Scatt}}; Events per mrad",_histlimits["NbinsTh"], _histlimits["minTh"], _histlimits["maxTh"]);
         tmpname = "theta2Scatt_measdata";
         tmpname += model;
         TH1D* theta2Scatt_measdata = 
@@ -4930,17 +4986,17 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
         tmpname = "thetaScatt_measdata_vp";
         tmpname += model;
         TH2D* thetaScatt_measdata_vp = 
-            new TH2D(tmpname.c_str(),"Scattering Angle between Momentum Vectors;Momentum (MeV/c); #theta_{Scatt}", 
+            new TH2D(tmpname.c_str(),"Scattering Angle between Momentum Vectors;Momentum (MeV/c); #it{#theta_{Scatt}}", 
                     400, 100, 300, _histlimits["NbinsTh"], _histlimits["minTh"], _histlimits["maxTh"]);
         tmpname = "thetaXUS_thetaXDS";
         tmpname += model;
 
         TH2D* thetaXUS_thetaXDS = 
-            new TH2D(tmpname.c_str(),"Upstream vs. Downstream Angle;#theta_{X}^{US}; #theta_{X}^{DS}",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"], _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH2D(tmpname.c_str(),"Upstream vs. Downstream Angle;#it{#theta_{X}^{US}}; #it{#theta_{X}^{DS}}",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"], _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaYUS_thetaYDS";
         tmpname += model;
         TH2D* thetaYUS_thetaYDS = 
-            new TH2D(tmpname.c_str(),"Upstream vs. Downstream Angle;#theta_{X}^{US}; #theta_{X}^{DS}",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"],_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH2D(tmpname.c_str(),"Upstream vs. Downstream Angle;#it{#theta_{X}^{US}}; #it{#theta_{X}^{DS}}",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"],_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
 
         tmpname = "projposUSDSdiff_";
         tmpname += model;
@@ -4951,11 +5007,11 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
         tmpname = "asymmXYUS_";
         tmpname += model;
         TH2D* asymmXYUS = 
-            new TH2D(tmpname.c_str(),";X(mm);Y(mm)",100, -200, 200, 100, -200, 200);
+            new TH2D(tmpname.c_str(),";#it{x}(mm);#it{y}(mm)",100, -200, 200, 100, -200, 200);
         tmpname = "asymmXYDS_";
         tmpname += model;
         TH2D* asymmXYDS = 
-            new TH2D(tmpname.c_str(),";X(mm);Y(mm)",100, -200, 200, 100, -200, 200);
+            new TH2D(tmpname.c_str(),";#it{x}(mm);#it{y}(mm)",100, -200, 200, 100, -200, 200);
 
         //1D Histogram Settings
         TH1D *defineHist2(const char* name, const char* title, Double_t nbinsx, Double_t xlow, Double_t xup);
@@ -4980,10 +5036,10 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
             std::string  tmpname = "thetaX_measdata_";
             tmpname += l;
             Histo[l] = defineHist2(tmpname.c_str(),tmpname.c_str(),_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
-            //Histo[l] = defineHist2(tmpname.c_str(),"Change in Projected Angle (X);#theta_{X}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            //Histo[l] = defineHist2(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{X}}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
             tmpname = "thetaY_measdata_";
             tmpname += l;
-            Histoy[l] = defineHist2(tmpname.c_str(),"Change in Projected Angle (X);#theta_{X}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            Histoy[l] = defineHist2(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{X}}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
             tmpname = "dotw_";
             tmpname += l;
             Histodotw[l] = defineHist2(tmpname.c_str(),tmpname.c_str(),_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
@@ -5023,9 +5079,9 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
 
         const Int_t NBINS = 19;
         Double_t scat_bin_array[NBINS + 1] = {-0.1151,-0.0938,-0.0754,-0.0597,-0.0463,-0.0347,-0.0248,-0.0162,-0.00895,-0.00269,0.00269,0.00895,0.0162,0.0248,0.0347,0.0463,0.0597,0.0754,0.0938,0.1151};
-        TH1D* scattering_proj_x = new TH1D("scattering_proj_x_DC","Change in Projected Angle (X);#theta_{X}; Events per radian", 
+        TH1D* scattering_proj_x = new TH1D("scattering_proj_x_DC","Change in Projected Angle (X);#it{#theta_{X}}; Events per radian", 
                 NBINS, scat_bin_array);
-        TH1D* scattering_proj_y = new TH1D("scattering_proj_y_DC","Change in Projected Angle (Y);#theta_{Y}; Events per radian", 
+        TH1D* scattering_proj_y = new TH1D("scattering_proj_y_DC","Change in Projected Angle (Y);#it{#theta_{Y}}; Events per radian", 
                 NBINS, scat_bin_array);
 
 
@@ -5182,7 +5238,7 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
         tmpname += model;
         // if(j>0) tmpname += j;
         thetaX_reco->SetName(tmpname.c_str());
-        thetaX_reco->SetTitle(";#Delta #theta_{X}");
+        thetaX_reco->SetTitle(";#Delta #it{#theta_{X}}");
         //thetaX_reco = trkreffix(thetaX_reco);
         TH1D* thetaX_reco_noeffi = (TH1D*)unfold_thetaX.Hreco();
         tmpname = "thetaX_reco_noeffi";
@@ -5193,7 +5249,7 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
         tmpname += model;
         // if(j>0) tmpname += j;
         thetaY_reco->SetName(tmpname.c_str());
-        thetaY_reco->SetTitle(";#Delta #theta_{Y}");
+        thetaY_reco->SetTitle(";#Delta #it{#theta_{Y}}");
         tmpname = "thetaY_reco_noeffi";
         TH1D* thetaY_reco_noeffi = (TH1D*)unfold_thetaY.Hreco();
         tmpname += model;
@@ -5204,7 +5260,7 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
         tmpname += model;
         // if(j>0) tmpname += j;
         thetaScatt_reco->SetName(tmpname.c_str());
-        thetaScatt_reco->SetTitle(";#theta_{Scatt}");
+        thetaScatt_reco->SetTitle(";#it{#theta_{Scatt}}");
         //thetaScatt_reco = trkreffiscatt(thetaScatt_reco);
         TH1D* theta2Scatt_reco = (TH1D*)unfold_theta2Scatt.Hreco();
         tmpname = "theta2Scatt_reco";
@@ -5244,19 +5300,19 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
         tmpname += model;
         // if(j>0) tmpname += j;
         thetaX_truth->SetName(tmpname.c_str());
-        thetaX_truth->SetTitle(";#Delta #theta_{X}");
+        thetaX_truth->SetTitle(";#Delta #it{#theta_{X}}");
         TH1D* thetaY_truth = (TH1D*)unfold_thetaY.response()->Htruth();
         tmpname = "thetaY_";
         tmpname += model;
         // if(j>0) tmpname += j;
         thetaY_truth->SetName(tmpname.c_str());
-        thetaX_truth->SetTitle(";#Delta #theta_{Y}");
+        thetaX_truth->SetTitle(";#Delta #it{#theta_{Y}}");
         TH1D* thetaScatt_truth = (TH1D*)unfold_thetaScatt.response()->Htruth();
         tmpname = "thetaScatt_";
         tmpname += model;
         // if(j>0) tmpname += j;
         thetaScatt_truth->SetName(tmpname.c_str());
-        thetaScatt_truth->SetTitle(";#theta_{Scatt}");
+        thetaScatt_truth->SetTitle(";#it{#theta_{Scatt}}");
         TH1D* theta2Scatt_truth = (TH1D*)unfold_theta2Scatt.response()->Htruth();
         tmpname = "theta2Scatt_";
         tmpname += model;
@@ -5269,19 +5325,19 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
         tmpname += model;
         // if(j>0) tmpname += j;
         thetaX_measured->SetName(tmpname.c_str());
-        thetaX_measured->SetTitle(";#Delta #theta_{X}");
+        thetaX_measured->SetTitle(";#Delta #it{#theta_{X}}");
         TH1D* thetaY_measured = (TH1D*)unfold_thetaY.response()->Hmeasured();
         tmpname = "thetaY_measured";
         tmpname += model;
         // if(j>0) tmpname += j;
         thetaY_measured->SetName(tmpname.c_str());
-        thetaY_measured->SetTitle(";#Delta #theta_{Y}");
+        thetaY_measured->SetTitle(";#Delta #it{#theta_{Y}}");
         TH1D* thetaScatt_measured = (TH1D*)unfold_thetaScatt.response()->Hmeasured();
         tmpname = "thetaScatt_measured";
         tmpname += model;
         // if(j>0) tmpname += j;
         thetaScatt_measured->SetName(tmpname.c_str());
-        thetaScatt_measured->SetTitle(";#theta_{Scatt}");
+        thetaScatt_measured->SetTitle(";#it{#theta_{Scatt}}");
         TH1D* theta2Scatt_measured = (TH1D*)unfold_theta2Scatt.response()->Hmeasured();
         tmpname = "theta2Scatt_measured";
         tmpname += model;
@@ -5410,7 +5466,7 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
         fM2D->DrawCopy("SAME");
         //thetaY_asymm->Fit("pol1","RES","",0,0.02);
         thetaY_asymm->SetName("thetaY_asymm");
-        thetaY_asymm->SetTitle("#theta_Y Asymmetry");
+        thetaY_asymm->SetTitle("#it{#theta_Y} Asymmetry");
         thetaY_asymm->GetYaxis()->SetTitle("Asymmetry");
         thetaY_asymm->GetXaxis()->SetRange(0,0.06);
         thetaY_asymm->Write();
@@ -5423,7 +5479,7 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
         thetaX_asymm->Fit(fM2D,"RES");
         fM2D->DrawCopy("SAME");
         thetaX_asymm->SetName("thetaX_asymm");
-        thetaX_asymm->SetTitle("#theta_X Asymmetry");
+        thetaX_asymm->SetTitle("#it{#theta_X} Asymmetry");
         thetaX_asymm->GetYaxis()->SetTitle("Asymmetry");
         thetaX_asymm->GetXaxis()->SetRange(0,0.06);
         thetaX_asymm->Write();
@@ -5610,35 +5666,35 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
         std::string  tmpname = "thetaX_measdata";
         tmpname += model;
         TH1D* thetaX_measdata = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#theta_{X}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{X}}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaX_asymm";
         tmpname += model;
         TH1* thetaX_asymm = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#theta_{XY}; Events",_histlimits["NbinsXY"]/2, 0, _histlimits["maxXY"]);
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{XY}}; Events",_histlimits["NbinsXY"]/2, 0, _histlimits["maxXY"]);
         tmpname = "thetaX_measdataminus";
         tmpname += model;
         TH1D* thetaX_measdataminus = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#theta_{X}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{X}}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaY_measdata";
         tmpname += model;
         TH1D* thetaY_measdata = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#theta_{Y}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#it{#theta_{Y}}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaY_measdatafold";
         tmpname += model;
         TH1D* thetaY_measdatafold = 
-            new TH1D(tmpname.c_str(),";#theta_{Y};#theta_{Yi}-#theta_{Y46-i}",_histlimits["NbinsXY"]/2, _histlimits["minXY"], 0);
+            new TH1D(tmpname.c_str(),";#it{#theta_{Y}};#it{#theta_{Yi}}-#it{#theta_{Y46-i}}",_histlimits["NbinsXY"]/2, _histlimits["minXY"], 0);
         tmpname = "thetaY_asymm";
         tmpname += model;
         TH1* thetaY_asymm = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#theta_{Y}; Events",_histlimits["NbinsXY"]/2, 0, _histlimits["maxXY"]);
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#it{#theta_{Y}}; Events",_histlimits["NbinsXY"]/2, 0, _histlimits["maxXY"]);
         tmpname = "thetaY_measdataminus";
         tmpname += model;
         TH1D* thetaY_measdataminus = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#theta_{Y}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#it{#theta_{Y}}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaScatt_measdata";
         tmpname += model;
         TH1D* thetaScatt_measdata = 
-            new TH1D(tmpname.c_str(),"Scattering Angle between Momentum Vectors;#theta_{Scatt}; Events per mrad",_histlimits["NbinsTh"], _histlimits["minTh"], _histlimits["maxTh"]);
+            new TH1D(tmpname.c_str(),"Scattering Angle between Momentum Vectors;#it{#theta_{Scatt}}; Events per mrad",_histlimits["NbinsTh"], _histlimits["minTh"], _histlimits["maxTh"]);
         tmpname = "theta2Scatt_measdata";
         tmpname += model;
         TH1D* theta2Scatt_measdata = 
@@ -5646,17 +5702,17 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
         tmpname = "thetaScatt_measdata_vp";
         tmpname += model;
         TH2D* thetaScatt_measdata_vp = 
-            new TH2D(tmpname.c_str(),"Scattering Angle between Momentum Vectors;Momentum (MeV/c); #theta_{Scatt}", 
+            new TH2D(tmpname.c_str(),"Scattering Angle between Momentum Vectors;Momentum (MeV/c); #it{#theta_{Scatt}}", 
                     400, 100, 300, _histlimits["NbinsTh"], _histlimits["minTh"], _histlimits["maxTh"]);
         tmpname = "thetaXUS_thetaXDS";
         tmpname += model;
 
         TH2D* thetaXUS_thetaXDS = 
-            new TH2D(tmpname.c_str(),"Upstream vs. Downstream Angle;#theta_{X}^{US}; #theta_{X}^{DS}",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"], _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH2D(tmpname.c_str(),"Upstream vs. Downstream Angle;#it{#theta_{X}^{US}}; #it{#theta_{X}^{DS}}",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"], _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         tmpname = "thetaYUS_thetaYDS";
         tmpname += model;
         TH2D* thetaYUS_thetaYDS = 
-            new TH2D(tmpname.c_str(),"Upstream vs. Downstream Angle;#theta_{X}^{US}; #theta_{X}^{DS}",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"],_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH2D(tmpname.c_str(),"Upstream vs. Downstream Angle;#it{#theta_{X}^{US}}; #it{#theta_{X}^{DS}}",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"],_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
 
         tmpname = "projposUSDSdiff_";
         tmpname += model;
@@ -5667,11 +5723,11 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
         tmpname = "asymmXYUS_";
         tmpname += model;
         TH2D* asymmXYUS = 
-            new TH2D(tmpname.c_str(),";X(mm);Y(mm)",100, -200, 200, 100, -200, 200);
+            new TH2D(tmpname.c_str(),";#it{x}(mm);#it{y}(mm)",100, -200, 200, 100, -200, 200);
         tmpname = "asymmXYDS_";
         tmpname += model;
         TH2D* asymmXYDS = 
-            new TH2D(tmpname.c_str(),";X(mm);Y(mm)",100, -200, 200, 100, -200, 200);
+            new TH2D(tmpname.c_str(),";#it{x}(mm);#it{y}(mm)",100, -200, 200, 100, -200, 200);
 
         //1D Histogram Settings
         TH1D *defineHist2(const char* name, const char* title, Double_t nbinsx, Double_t xlow, Double_t xup);
@@ -5697,7 +5753,7 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
             tmpname += l;
             Histo[l] = defineHist2(tmpname.c_str(),tmpname.c_str(),_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
             /* Histo[l] = defineHist2(tmpname.c_str(),tmpname.c_str(),_histlimits["NbinsXY"],_histlimits["minXY"], _histlimits["maxXY"]); */
-            //Histo[l] = defineHist2(tmpname.c_str(),"Change in Projected Angle (X);#theta_{X}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            //Histo[l] = defineHist2(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{X}}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
             tmpname = "thetaY_measdata_";
             tmpname += l;
             Histoy[l] = defineHist2(tmpname.c_str(),tmpname.c_str(),_histlimits["NbinsXY"],_histlimits["minXY"], _histlimits["maxXY"]);
@@ -5740,9 +5796,9 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
 
         const Int_t NBINS = 19;
         Double_t scat_bin_array[NBINS + 1] = {-0.1151,-0.0938,-0.0754,-0.0597,-0.0463,-0.0347,-0.0248,-0.0162,-0.00895,-0.00269,0.00269,0.00895,0.0162,0.0248,0.0347,0.0463,0.0597,0.0754,0.0938,0.1151};
-        TH1D* scattering_proj_x = new TH1D("scattering_proj_x_DC","Change in Projected Angle (X);#theta_{X}; Events per radian", 
+        TH1D* scattering_proj_x = new TH1D("scattering_proj_x_DC","Change in Projected Angle (X);#it{#theta_{X}}; Events per radian", 
                 NBINS, scat_bin_array);
-        TH1D* scattering_proj_y = new TH1D("scattering_proj_y_DC","Change in Projected Angle (Y);#theta_{Y}; Events per radian", 
+        TH1D* scattering_proj_y = new TH1D("scattering_proj_y_DC","Change in Projected Angle (Y);#it{#theta_{Y}}; Events per radian", 
                 NBINS, scat_bin_array);
 
 
@@ -5904,7 +5960,7 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
         tmpname += model;
         // if(j>0) tmpname += j;
         thetaX_reco->SetName(tmpname.c_str());
-        thetaX_reco->SetTitle(";#Delta #theta_{X}");
+        thetaX_reco->SetTitle(";#Delta #it{#theta_{X}}");
         //thetaX_reco = trkreffix(thetaX_reco);
         TH1D* thetaX_reco_noeffi = (TH1D*)unfold_thetaX.Hreco();
         tmpname = "thetaX_reco_noeffi";
@@ -5915,7 +5971,7 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
         tmpname += model;
         // if(j>0) tmpname += j;
         thetaY_reco->SetName(tmpname.c_str());
-        thetaY_reco->SetTitle(";#Delta #theta_{Y}");
+        thetaY_reco->SetTitle(";#Delta #it{#theta_{Y}}");
         tmpname = "thetaY_reco_noeffi";
         TH1D* thetaY_reco_noeffi = (TH1D*)unfold_thetaY.Hreco();
         tmpname += model;
@@ -5926,7 +5982,7 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
         tmpname += model;
         // if(j>0) tmpname += j;
         thetaScatt_reco->SetName(tmpname.c_str());
-        thetaScatt_reco->SetTitle(";#theta_{Scatt}");
+        thetaScatt_reco->SetTitle(";#it{#theta_{Scatt}}");
         //thetaScatt_reco = trkreffiscatt(thetaScatt_reco);
         TH1D* theta2Scatt_reco = (TH1D*)unfold_theta2Scatt.Hreco();
         tmpname = "theta2Scatt_reco";
@@ -5966,19 +6022,19 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
         tmpname += model;
         // if(j>0) tmpname += j;
         thetaX_truth->SetName(tmpname.c_str());
-        thetaX_truth->SetTitle(";#Delta #theta_{X}");
+        thetaX_truth->SetTitle(";#Delta #it{#theta_{X}}");
         TH1D* thetaY_truth = (TH1D*)unfold_thetaY.response()->Htruth();
         tmpname = "thetaY_";
         tmpname += model;
         // if(j>0) tmpname += j;
         thetaY_truth->SetName(tmpname.c_str());
-        thetaX_truth->SetTitle(";#Delta #theta_{Y}");
+        thetaX_truth->SetTitle(";#Delta #it{#theta_{Y}}");
         TH1D* thetaScatt_truth = (TH1D*)unfold_thetaScatt.response()->Htruth();
         tmpname = "thetaScatt_";
         tmpname += model;
         // if(j>0) tmpname += j;
         thetaScatt_truth->SetName(tmpname.c_str());
-        thetaScatt_truth->SetTitle(";#theta_{Scatt}");
+        thetaScatt_truth->SetTitle(";#it{#theta_{Scatt}}");
         TH1D* theta2Scatt_truth = (TH1D*)unfold_theta2Scatt.response()->Htruth();
         tmpname = "theta2Scatt_";
         tmpname += model;
@@ -5991,19 +6047,19 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
         tmpname += model;
         // if(j>0) tmpname += j;
         thetaX_measured->SetName(tmpname.c_str());
-        thetaX_measured->SetTitle(";#Delta #theta_{X}");
+        thetaX_measured->SetTitle(";#Delta #it{#theta_{X}}");
         TH1D* thetaY_measured = (TH1D*)unfold_thetaY.response()->Hmeasured();
         tmpname = "thetaY_measured";
         tmpname += model;
         // if(j>0) tmpname += j;
         thetaY_measured->SetName(tmpname.c_str());
-        thetaY_measured->SetTitle(";#Delta #theta_{Y}");
+        thetaY_measured->SetTitle(";#Delta #it{#theta_{Y}}");
         TH1D* thetaScatt_measured = (TH1D*)unfold_thetaScatt.response()->Hmeasured();
         tmpname = "thetaScatt_measured";
         tmpname += model;
         // if(j>0) tmpname += j;
         thetaScatt_measured->SetName(tmpname.c_str());
-        thetaScatt_measured->SetTitle(";#theta_{Scatt}");
+        thetaScatt_measured->SetTitle(";#it{#theta_{Scatt}}");
         TH1D* theta2Scatt_measured = (TH1D*)unfold_theta2Scatt.response()->Hmeasured();
         tmpname = "theta2Scatt_measured";
         tmpname += model;
@@ -6132,7 +6188,7 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
         thetaY_asymm->Fit(fM2D,"RES","",0,0.02);
         //fM2D->Draw("SAME");
         thetaY_asymm->SetName("thetaY_asymm");
-        thetaY_asymm->SetTitle("#theta_Y Asymmetry");
+        thetaY_asymm->SetTitle("#it{#theta_Y} Asymmetry");
         thetaY_asymm->GetYaxis()->SetTitle("Asymmetry");
         thetaY_asymm->GetXaxis()->SetRange(0,0.06);
         thetaY_asymm->Write();
@@ -6144,7 +6200,7 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
         thetaX_asymm->Fit(fM2D,"RES","",0,0.02);
         //fM2D->Draw("SAME");
         thetaX_asymm->SetName("thetaX_asymm");
-        thetaX_asymm->SetTitle("#theta_X Asymmetry");
+        thetaX_asymm->SetTitle("#it{#theta_X} Asymmetry");
         thetaX_asymm->GetYaxis()->SetTitle("Asymmetry");
         thetaX_asymm->GetXaxis()->SetRange(0,0.06);
         thetaX_asymm->Write();
@@ -6403,30 +6459,30 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
         // The basic methods associated with the RooUnfolding package
         // First generate a histogram of the measured data.
         TH1D* thetaX_data = 
-            new TH1D("thetaX_data","Change in Projected Angle (X);#theta_{X}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH1D("thetaX_data","Change in Projected Angle (X);#it{#theta_{X}}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         TH1D* thetaY_data = 
-            new TH1D("thetaY_data","Change in Projected Angle (Y);#theta_{Y}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH1D("thetaY_data","Change in Projected Angle (Y);#it{#theta_{Y}}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         TH1D* thetaScatt_data = 
-            new TH1D("thetaScatt_data","Scattering Angle between Momentum Vectors;#theta_{Scatt}; Events per mrad",_histlimits["NbinsTh"], _histlimits["minTh"], _histlimits["maxTh"]);
+            new TH1D("thetaScatt_data","Scattering Angle between Momentum Vectors;#it{#theta_{Scatt}}; Events per mrad",_histlimits["NbinsTh"], _histlimits["minTh"], _histlimits["maxTh"]);
         TH1D* theta2Scatt_data = 
-            new TH1D("theta2Scatt_data","Scattering Angle between Momentum Vectors;#theta_{Scatt}^{2}; Events per mrad",_histlimits["NbinsTh"], _histlimits["minTh2"], _histlimits["maxTh2"]);
+            new TH1D("theta2Scatt_data","Scattering Angle between Momentum Vectors;#it{#theta_{Scatt}^{2}}; Events per mrad",_histlimits["NbinsTh"], _histlimits["minTh2"], _histlimits["maxTh2"]);
 
         TH1D* thetaX_ref = 
-            new TH1D("thetaX_ref","Change in Projected Angle (X);#theta_{X}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH1D("thetaX_ref","Change in Projected Angle (X);#it{#theta_{X}}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         TH1D* thetaY_ref = 
-            new TH1D("thetaY_ref","Change in Projected Angle (Y);#theta_{Y}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            new TH1D("thetaY_ref","Change in Projected Angle (Y);#it{#theta_{Y}}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
         TH1D* thetaScatt_ref = 
-            new TH1D("thetaScatt_ref","Scattering Angle between Momentum Vectors;#theta_{Scatt}; Events per mrad",_histlimits["NbinsTh"], _histlimits["minTh"], _histlimits["maxTh"]);
+            new TH1D("thetaScatt_ref","Scattering Angle between Momentum Vectors;#it{#theta_{Scatt}}; Events per mrad",_histlimits["NbinsTh"], _histlimits["minTh"], _histlimits["maxTh"]);
         TH1D* theta2Scatt_ref = 
-            new TH1D("theta2Scatt_ref","Scattering Angle between Momentum Vectors;#theta_{Scatt}^{2}; Events per mrad",_histlimits["NbinsTh2"], _histlimits["minTh2"], _histlimits["maxTh2"]);
+            new TH1D("theta2Scatt_ref","Scattering Angle between Momentum Vectors;#it{#theta_{Scatt}^{2}}; Events per mrad",_histlimits["NbinsTh2"], _histlimits["minTh2"], _histlimits["maxTh2"]);
 
         /*
            TH1D* thetaX_fft = 
-           new TH1D("thetaX_fft","Change in Projected Angle (X);#theta_{X}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+           new TH1D("thetaX_fft","Change in Projected Angle (X);#it{#theta_{X}}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
            TH1D* thetaY_fft = 
-           new TH1D("thetaY_fft","Change in Projected Angle (Y);#theta_{Y}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+           new TH1D("thetaY_fft","Change in Projected Angle (Y);#it{#theta_{Y}}; Events per 4 mrad",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
            TH1D* thetaScatt_fft = 
-           new TH1D("thetaScatt_fft","Scattering Angle between Momentum Vectors;#theta_{Scatt}; Events per mrad",_histlimits["NbinsTh"], _histlimits["minTh"], _histlimits["maxTh"]);
+           new TH1D("thetaScatt_fft","Scattering Angle between Momentum Vectors;#it{#theta_{Scatt}}; Events per mrad",_histlimits["NbinsTh"], _histlimits["minTh"], _histlimits["maxTh"]);
 
 
            TH1D* fftX_data = 
@@ -6457,14 +6513,14 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
            new TH1D("fftScatt_divIm","Scattering Angle between Momentum Vectors;mode_{Scatt}; Events per mrad",400, 0, 400);
            */
         TH2D* thetaScatt_measdata_vp = 
-            new TH2D("thetaScatt_measdata_vp","Scattering Angle between Momentum Vectors;Momentum (MeV/c); #theta_{Scatt}", 
+            new TH2D("thetaScatt_measdata_vp","Scattering Angle between Momentum Vectors;Momentum (MeV/c); #it{#theta_{Scatt}}", 
                     400, 100, 300, _histlimits["NbinsTh"], _histlimits["minTh"], _histlimits["maxTh"]);
 
         const Int_t NBINS = 19;
         Double_t scat_bin_array[NBINS + 1] = {-0.1151,-0.0938,-0.0754,-0.0597,-0.0463,-0.0347,-0.0248,-0.0162,-0.00895,-0.00269,0.00269,0.00895,0.0162,0.0248,0.0347,0.0463,0.0597,0.0754,0.0938,0.1151};
-        TH1D* scattering_proj_x = new TH1D("scattering_proj_x_DC","Change in Projected Angle (X);#theta_{X}; Events per radian", 
+        TH1D* scattering_proj_x = new TH1D("scattering_proj_x_DC","Change in Projected Angle (X);#it{#theta_{X}}; Events per radian", 
                 NBINS, scat_bin_array);
-        TH1D* scattering_proj_y = new TH1D("scattering_proj_y_DC","Change in Projected Angle (Y);#theta_{Y}; Events per radian", 
+        TH1D* scattering_proj_y = new TH1D("scattering_proj_y_DC","Change in Projected Angle (Y);#it{#theta_{Y}}; Events per radian", 
                 NBINS, scat_bin_array);
 
         TH2D* projposUSDSdiff = 
@@ -6718,10 +6774,10 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
         gemitt->SetTitle(";Run Number;Emittance (mm)");
         TGraphErrors* gmeanX = new TGraphErrors(_run.size());
         gmeanX->SetName("gmeanX");
-        gmeanX->SetTitle(";Run Number;Mean X (mm)");
+        gmeanX->SetTitle(";Run Number;Mean #it{x} (mm)");
         TGraphErrors* gmeanY = new TGraphErrors(_run.size());
         gmeanY->SetName("gmeanY");
-        gmeanY->SetTitle(";Run Number;Mean Y (mm)");
+        gmeanY->SetTitle(";Run Number;Mean #it{y} (mm)");
         TGraphErrors* gmeandXdz = new TGraphErrors(_run.size());
         gmeandXdz->SetName("gmeandXdz");
         gmeandXdz->SetTitle(";Run Number;Mean dXdz (mm)");
@@ -6925,10 +6981,10 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
             }
             tmpname = "MCthetaX_asymm";
             TH1* MCthetaX_asymm = 
-                new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#theta_{XY}; Events",_histlimits["NbinsXY"]/2, 0, _histlimits["maxXY"]);
+                new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{XY}}; Events",_histlimits["NbinsXY"]/2, 0, _histlimits["maxXY"]);
             tmpname = "MCthetaY_asymm";
             TH1* MCthetaY_asymm = 
-                new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#theta_{Y}; Events",_histlimits["NbinsXY"]/2, 0, _histlimits["maxXY"]);
+                new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#it{#theta_{Y}}; Events",_histlimits["NbinsXY"]/2, 0, _histlimits["maxXY"]);
             TCanvas* c1 = new TCanvas();
             MCthetaY_asymm=theta_true_y_graph->GetAsymmetry(minustheta_true_y_graph);
             MCthetaY_asymm->Draw();
@@ -6940,7 +6996,7 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
             MCthetaY_asymm->Fit(fM2D,"RES");
             //fM2D->Draw("SAME");
             MCthetaY_asymm->SetName("MCthetaY_asymm");
-            MCthetaY_asymm->SetTitle("#theta_Y Asymmetry");
+            MCthetaY_asymm->SetTitle("#it{#theta_Y} Asymmetry");
             MCthetaY_asymm->GetYaxis()->SetTitle("Asymmetry");
             MCthetaY_asymm->GetXaxis()->SetRange(0,0.06);
             outfile->cd();
@@ -6953,7 +7009,7 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
             MCthetaX_asymm->Fit(fM2D,"RES");
             //fM2D->Draw("SAME");
             MCthetaX_asymm->SetName("MCthetaX_asymm");
-            MCthetaX_asymm->SetTitle("#theta_X Asymmetry");
+            MCthetaX_asymm->SetTitle("#it{#theta_X} Asymmetry");
             MCthetaX_asymm->GetYaxis()->SetTitle("Asymmetry");
             MCthetaX_asymm->GetXaxis()->SetRange(0,0.06);
             MCthetaX_asymm->Write();
@@ -6967,9 +7023,9 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
             htruthmirrorl->Write();
             htruthmirrorr->Write();
             tmpname = "thetaX_graphsym";
-            TH1* thetaX_graphsym = new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#theta_{XY}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            TH1* thetaX_graphsym = new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{XY}}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
             tmpname = "thetaY_graphsym";
-            TH1* thetaY_graphsym = new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#theta_{XY}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
+            TH1* thetaY_graphsym = new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{XY}}; Events",_histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
             for (int i = 1; i < _histlimits["NbinsXY"]+1; i++) thetaX_graphsym->SetBinContent(i,(theta_true_x_graph->GetBinContent(i)+theta_true_x_graph->GetBinContent(_histlimits["NbinsXY"]+1-i))/2);
             for (int i = 1; i < _histlimits["NbinsXY"]+1; i++) thetaY_graphsym->SetBinContent(i,(theta_true_y_graph->GetBinContent(i)+theta_true_y_graph->GetBinContent(_histlimits["NbinsXY"]+1-i))/2);
             thetaX_graphsym->Draw();
@@ -7279,28 +7335,28 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
 
         /* std::cout << desc << std::endl; */
         /* std::cout << Set.N() << std::endl; */
-        std::string tmptitle = desc + ";X (mm); Y (mm)";
+        std::string tmptitle = desc + ";#it{x} (mm); #it{y} (mm)";
         std::string tmpname  = suffix + "_XY";
         TH2D* XY = new TH2D(tmpname.c_str(),tmptitle.c_str(), 90, -225, 225, 90, -225, 225);
-        tmptitle = desc + ";X (mm); dXdz";
+        tmptitle = desc + ";#it{x} (mm); dXdz";
         tmpname  = suffix + "_XdXdz";
         TH2D* XdXdz = new TH2D(tmpname.c_str(),tmptitle.c_str(), 90, -225, 225, 90, -0.125, 0.125);
-        tmptitle = desc + ";X (mm); dYdz";
+        tmptitle = desc + ";#it{x} (mm); dYdz";
         tmpname  = suffix + "_XdYdz";
         TH2D* XdYdz = new TH2D(tmpname.c_str(),tmptitle.c_str(), 90, -225, 225, 90, -0.125, 0.125);
-        tmptitle = desc + ";Y (mm); dXdz";
+        tmptitle = desc + ";#it{y} (mm); dXdz";
         tmpname  = suffix + "_YdXdz";
         TH2D* YdXdz = new TH2D(tmpname.c_str(),tmptitle.c_str(), 90, -225, 225, 90, -0.125, 0.125);
-        tmptitle = desc + ";Y (mm); dYdz";
+        tmptitle = desc + ";#it{y} (mm); dYdz";
         tmpname  = suffix + "_YdYdz";
         TH2D* YdYdz = new TH2D(tmpname.c_str(),tmptitle.c_str(), 90, -225, 225, 90, -0.125, 0.125);
         tmptitle = desc + ";dXdz; dYdz";
         tmpname  = suffix + "_dXdzdYdz";
         TH2D* dXdzdYdz = new TH2D(tmpname.c_str(),tmptitle.c_str(), 90, -0.125, 0.125, 90, -0.125, 0.125);
-        tmptitle = desc + ";X (mm); TOF01 (ns)";
+        tmptitle = desc + ";#it{x} (mm); TOF01 (ns)";
         tmpname  = suffix + "_XTOF01";
         TH2D* XTOF01 = new TH2D(tmpname.c_str(),tmptitle.c_str(), 90, -225, 225, 90, 20.0, 45.0);
-        tmptitle = desc + ";Y (mm); TOF01 (ns)";
+        tmptitle = desc + ";#it{y} (mm); TOF01 (ns)";
         tmpname  = suffix + "_YTOF01";
         TH2D* YTOF01 = new TH2D(tmpname.c_str(),tmptitle.c_str(), 90, -225, 225, 90, 20.0, 45.0);
         tmptitle = desc + ";dXdz; TOF01 (ns)";
@@ -7496,28 +7552,28 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
 
     void MCSAnalysis::make_beam_histograms(Collection& Set, std::string desc, std::string suffix){
 
-        std::string tmptitle = desc + ";X (mm); Y (mm)";
+        std::string tmptitle = desc + ";#it{x} (mm); #it{y} (mm)";
         std::string tmpname  = suffix + "_XY";
         TH2D* XY = new TH2D(tmpname.c_str(),tmptitle.c_str(), 90, -225, 225, 90, -225, 225);
-        tmptitle = desc + ";X (mm); dXdz";
+        tmptitle = desc + ";#it{x} (mm); dXdz";
         tmpname  = suffix + "_XdXdz";
         TH2D* XdXdz = new TH2D(tmpname.c_str(),tmptitle.c_str(), 90, -225, 225, 90, -0.125, 0.125);
-        tmptitle = desc + ";X (mm); dYdz";
+        tmptitle = desc + ";#it{x} (mm); dYdz";
         tmpname  = suffix + "_XdYdz";
         TH2D* XdYdz = new TH2D(tmpname.c_str(),tmptitle.c_str(), 90, -225, 225, 90, -0.125, 0.125);
-        tmptitle = desc + ";Y (mm); dXdz";
+        tmptitle = desc + ";#it{y} (mm); dXdz";
         tmpname  = suffix + "_YdXdz";
         TH2D* YdXdz = new TH2D(tmpname.c_str(),tmptitle.c_str(), 90, -225, 225, 90, -0.125, 0.125);
-        tmptitle = desc + ";Y (mm); dYdz";
+        tmptitle = desc + ";#it{y} (mm); dYdz";
         tmpname  = suffix + "_YdYdz";
         TH2D* YdYdz = new TH2D(tmpname.c_str(),tmptitle.c_str(), 90, -225, 225, 90, -0.125, 0.125);
         tmptitle = desc + ";dXdz; dYdz";
         tmpname  = suffix + "_dXdzdYdz";
         TH2D* dXdzdYdz = new TH2D(tmpname.c_str(),tmptitle.c_str(), 90, -0.125, 0.125, 90, -0.125, 0.125);
-        tmptitle = desc + ";X (mm); TOF01 (ns)";
+        tmptitle = desc + ";#it{x} (mm); TOF01 (ns)";
         tmpname  = suffix + "_XTOF01";
         TH2D* XTOF01 = new TH2D(tmpname.c_str(),tmptitle.c_str(), 90, -225, 225, 90, 20.0, 45.0);
-        tmptitle = desc + ";Y (mm); TOF01 (ns)";
+        tmptitle = desc + ";#it{y} (mm); TOF01 (ns)";
         tmpname  = suffix + "_YTOF01";
         TH2D* YTOF01 = new TH2D(tmpname.c_str(),tmptitle.c_str(), 90, -225, 225, 90, 20.0, 45.0);
         tmptitle = desc + ";dXdz; TOF01 (ns)";
@@ -7680,25 +7736,25 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
 
     void MCSAnalysis::make_acceptance_histograms(Collection& USset, Collection& DSset, 
             std::string desc, std::string suffix){
-        std::string tmptitle = desc + ";X (mm); Y (mm)";
+        std::string tmptitle = desc + ";#it{x} (mm); #it{y} (mm)";
         std::string tmpname  = suffix + "_posaccXY";
         TH2D* posaccXY = new TH2D(tmpname.c_str(), tmptitle.c_str(), 75, -300, 300, 75, -300, 300);
-        tmptitle = desc + ";X (mm); Y (mm)";
+        tmptitle = desc + ";#it{x} (mm); #it{y} (mm)";
         tmpname  = suffix + "_divaccXY";
         TH2D* divaccXY = new TH2D(tmpname.c_str(), tmptitle.c_str(), 75, -300, 300, 75, -300, 300);
-        tmptitle = desc + ";X (mm); Y (mm)";
+        tmptitle = desc + ";#it{x} (mm); #it{y} (mm)";
         tmpname  = suffix + "_posresXY";
         TH2D* posresXY = new TH2D(tmpname.c_str(), tmptitle.c_str(), 75, -300, 300, 75, -300, 300);
-        tmptitle = desc + ";X (mm); Y (mm)";
+        tmptitle = desc + ";#it{x} (mm); #it{y} (mm)";
         tmpname  = suffix + "_divresXY";
         TH2D* divresXY = new TH2D(tmpname.c_str(), tmptitle.c_str(), 75, -300, 300, 75, -300, 300);
-        tmptitle = desc + ";X (mm); Y (mm)";
+        tmptitle = desc + ";#it{x} (mm); #it{y} (mm)";
         tmpname  = suffix + "_posres2XY";
         TH2D* posres2XY = new TH2D(tmpname.c_str(), tmptitle.c_str(), 75, -300, 300, 75, -300, 300);
-        tmptitle = desc + ";X (mm); Y (mm)";
+        tmptitle = desc + ";#it{x} (mm); #it{y} (mm)";
         tmpname  = suffix + "_divres2XY";
         TH2D* divres2XY = new TH2D(tmpname.c_str(), tmptitle.c_str(), 75, -300, 300, 75, -300, 300);
-        tmptitle = desc + ";X (mm); Y (mm)";
+        tmptitle = desc + ";#it{x} (mm); #it{y} (mm)";
         tmpname  = suffix + "_posXY";
         TH2D* posXY = new TH2D(tmpname.c_str(), tmptitle.c_str(), 75, -300, 300, 75, -300, 300);
         tmptitle = desc + ";dX/dz ; dY/dz";
@@ -7970,95 +8026,95 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
             std::string desc,
             std::string suffix){
 
-        std::string tmptitle = desc + ";#theta_Y (radians)";
+        std::string tmptitle = desc + ";#it{#theta_{#it{Y}}} (radians)";
         std::string tmpname = "thetaY_all_";
         tmpname += suffix;
         TH1D* thetaY_all = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#theta_{Y}; Events per 4 mrad",
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#it{#theta_{Y}}; Events per 4 mrad",
                     _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
-        tmptitle = desc + ";#theta_X (radians)";
+        tmptitle = desc + ";#it{#theta_{#it{X}a}} (radians)";
         tmpname = "thetaX_all_";
         tmpname += suffix;
         TH1D* thetaX_all = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#theta_{X}; Events per 4 mrad",
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{X}}; Events per 4 mrad",
                     _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
 
-        tmptitle = desc + ";#theta_Y (radians)";
+        tmptitle = desc + ";#it{#theta_{#it{Y}}} (radians)";
         tmpname = "thetaY_acc_";
         tmpname += suffix;
         TH1D* thetaY_acc = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#theta_{Y}; Events per 4 mrad",
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#it{#theta_{Y}}; Events per 4 mrad",
                     _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
-        tmptitle = desc + ";#theta_X (radians)";
+        tmptitle = desc + ";#it{#theta_{#it{X}}} (radians)";
         tmpname = "thetaX_acc_";
         tmpname += suffix;
         TH1D* thetaX_acc = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#theta_{X}; Events per 4 mrad",
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{X}}; Events per 4 mrad",
                     _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
 
-        tmptitle = desc + ";#theta_Y (radians)";
+        tmptitle = desc + ";#it{#theta_{#it{Y}}} (radians)";
         tmpname = "thetaY_divacc_";
         tmpname += suffix;
         TH1D* thetaY_divacc = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#theta_{Y}; Events per 4 mrad",
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#it{#theta_{Y}}; Events per 4 mrad",
                     _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
-        tmptitle = desc + ";#theta_X (radians)";
+        tmptitle = desc + ";#it{#theta_{#it{X}}} (radians)";
         tmpname = "thetaX_divacc_";
         tmpname += suffix;
         TH1D* thetaX_divacc = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#theta_{X}; Events per 4 mrad",
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{X}}; Events per 4 mrad",
                     _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
 
-        tmptitle = desc + ";#theta_Y (radians)";
+        tmptitle = desc + ";#it{#theta_{#it{Y}}} (radians)";
         tmpname = "thetaY_res_";
         tmpname += suffix;
         TH1D* thetaY_res = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#theta_{Y}; Events per 4 mrad",
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#it{#theta_{Y}}; Events per 4 mrad",
                     _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
-        tmptitle = desc + ";#theta_X (radians)";
+        tmptitle = desc + ";#it{#theta_{#it{X}}} (radians)";
         tmpname = "thetaX_res_";
         tmpname += suffix;
         TH1D* thetaX_res = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#theta_{X}; Events per 4 mrad",
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{X}}; Events per 4 mrad",
                     _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
 
-        tmptitle = desc + ";#theta_Y (radians)";
+        tmptitle = desc + ";#it{#theta_{#it{Y}}} (radians)";
         tmpname = "thetaY_divres_";
         tmpname += suffix;
         TH1D* thetaY_divres = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#theta_{Y}; Events per 4 mrad",
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#it{#theta_{Y}}; Events per 4 mrad",
                     _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
-        tmptitle = desc + ";#theta_X (radians)";
+        tmptitle = desc + ";#it{#theta_{#it{X}}} (radians)";
         tmpname = "thetaX_divres_";
         tmpname += suffix;
         TH1D* thetaX_divres = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#theta_{X}; Events per 4 mrad",
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{X}}; Events per 4 mrad",
                     _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
 
-        tmptitle = desc + ";#theta_Y (radians)";
+        tmptitle = desc + ";#it{#theta_{#it{Y}}} (radians)";
         tmpname = "thetaY_res2_";
         tmpname += suffix;
         TH1D* thetaY_res2 = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#theta_{Y}; Events per 4 mrad",
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#it{#theta_{Y}}; Events per 4 mrad",
                     _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
-        tmptitle = desc + ";#theta_X (radians)";
+        tmptitle = desc + ";#it{#theta_{#it{X}}} (radians)";
         tmpname = "thetaX_res2_";
         tmpname += suffix;
         TH1D* thetaX_res2 = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#theta_{X}; Events per 4 mrad",
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{X}}; Events per 4 mrad",
                     _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
 
-        tmptitle = desc + ";#theta_Y (radians)";
+        tmptitle = desc + ";#it{#theta_{#it{Y}}} (radians)";
         tmpname = "thetaY_divres2_";
         tmpname += suffix;
         TH1D* thetaY_divres2 = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#theta_{Y}; Events per 4 mrad",
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#it{#theta_{Y}}; Events per 4 mrad",
                     _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
-        tmptitle = desc + ";#theta_X (radians)";
+        tmptitle = desc + ";#it{#theta_{#it{X}}} (radians)";
         tmpname = "thetaX_divres2_";
         tmpname += suffix;
         TH1D* thetaX_divres2 = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#theta_{X}; Events per 4 mrad",
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{X}}; Events per 4 mrad",
                     _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
 
         for (int i=0; i<USset.N(); i++){
@@ -8204,30 +8260,30 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
             std::string desc,
             std::string suffix){
 
-        std::string tmptitle = desc + ";#theta_Y (radians)";
+        std::string tmptitle = desc + ";#it{#theta_{#it{Y}}} (radians)";
         std::string tmpname = "thetaY_effi_";
         tmpname += suffix;
         /* TEfficiency* thetaY_effi = */ 
-        /*     new TEfficiency(tmpname.c_str(),"Change in Projected Angle (Y);#theta_{Y}; Events per 4 mrad", */
+        /*     new TEfficiency(tmpname.c_str(),"Change in Projected Angle (Y);#it{#theta_{Y}}; Events per 4 mrad", */
         /*             _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]); */
-        /* tmptitle = desc + ";#theta_X (radians)"; */
+        /* tmptitle = desc + ";#it{#theta_{#it{X}}} (radians)"; */
         /* tmpname = "thetaX_effi_"; */
         /* tmpname += suffix; */
         /* TEfficiency* thetaX_effi = */ 
-        /*     new TEfficiency(tmpname.c_str(),"Change in Projected Angle (X);#theta_{X}; Events per 4 mrad", */
+        /*     new TEfficiency(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{X}}; Events per 4 mrad", */
         /*             _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]); */
 
-        tmptitle = desc + ";#theta_Y (radians)";
+        tmptitle = desc + ";#it{#theta_{#it{Y}}} (radians)";
         tmpname = "thetaY_reco_";
         tmpname += suffix;
         TH1D* thetaY_reco = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#theta_{Y}; Events per 4 mrad",
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (Y);#it{#theta_{Y}}; Events per 4 mrad",
                     _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
-        tmptitle = desc + ";#theta_X (radians)";
+        tmptitle = desc + ";#it{#theta_{#it{X}}} (radians)";
         tmpname = "thetaX_reco_";
         tmpname += suffix;
         TH1D* thetaX_reco = 
-            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#theta_{X}; Events per 4 mrad",
+            new TH1D(tmpname.c_str(),"Change in Projected Angle (X);#it{#theta_{X}}; Events per 4 mrad",
                     _histlimits["NbinsXY"], _histlimits["minXY"], _histlimits["maxXY"]);
 
         for (int i=0; i<_DSsethold.N(); i++){
@@ -8243,7 +8299,7 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
         /*     thetaY_reco->Fill(0); */
     TText t1 = TText(0.12,0.785,"MICE Preliminary");
     TText t3 = TText(0.12,0.75,"ISIS cycle 2015/04");
-    TText t2 = TText(0.12,0.715,"LiH, MAUS v3.1.2");
+    TText t2 = TText(0.12,0.715,"LiH, MAUS v3.3.2");
             t1.SetNDC(1);
             t1.SetTextSize(0.04);
             t1.SetTextFont(42);
@@ -8262,7 +8318,7 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
             TCanvas *c5 = new TCanvas();
             TGraphAsymmErrors *thetaX_effi_graph = thetaX_effi->CreateGraph();
             thetaX_effi_graph->SetName("Effx_graph");
-            thetaX_effi_graph->GetXaxis()->SetTitle("#theta_{x} (mrad);");
+            thetaX_effi_graph->GetXaxis()->SetTitle("#it{#theta_{X}} (mrad);");
             thetaX_effi_graph->GetYaxis()->SetTitle("Efficiency");
             thetaX_effi_graph->Draw("ap");
             t1.Draw();
@@ -8278,7 +8334,7 @@ bool MCSAnalysis::PIDSelection(const bool& isdata=true){
             TCanvas *c7 = new TCanvas();
             TGraphAsymmErrors *thetaY_effi_graph = thetaY_effi->CreateGraph();
             thetaY_effi_graph->SetName("Effy_graph");
-            thetaY_effi_graph->GetXaxis()->SetTitle("#theta_{y} (mrad);");
+            thetaY_effi_graph->GetXaxis()->SetTitle("#it{#theta_{Y}} (mrad);");
             thetaY_effi_graph->GetYaxis()->SetTitle("Efficiency");
             thetaY_effi_graph->Draw("ap");
             t1.Draw();

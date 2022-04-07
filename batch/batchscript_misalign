@@ -1,0 +1,10 @@
+universe       = vanilla
+executable     = sub_script_misalign.sh
+output         = /data/neutrino03/jnugent/Unfolding/batch/lihmisalign.out
+error          = /data/neutrino03/jnugent/Unfolding/batch/lihmisalign.err             
+log            = /data/neutrino03/jnugent/Unfolding/batch/lihmisalign.log
+requirements   = OpSysAndVer == "CentOS7"
+request_memory = 6 GB
+
+queue
+

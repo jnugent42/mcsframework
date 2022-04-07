@@ -84,6 +84,10 @@ cd batch
 ./submitsplitjobbashscript.sh
 cd ..
 
+# cd misalign
+# ../MCSUnfolding LihMuon_3200.xml
+# cd ..
+
 : '
 cd MCTOFsys
 python run_TOFsys.py

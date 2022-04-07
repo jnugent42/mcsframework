@@ -4,6 +4,32 @@ import sys, math
 from math import sqrt
 import pprint
 import scipy.special as sc
+import ROOT
+import numpy
+
+stops = [0.0000, 0.1250, 0.2500, 0.3750, 0.5000, 0.6250, 0.7500, 0.8750, 1.0000]
+red   = [0.2082, 0.0592, 0.0780, 0.0232, 0.1802, 0.5301, 0.8186, 0.9956, 0.9764]
+green = [0.1664, 0.3599, 0.5041, 0.6419, 0.7178, 0.7492, 0.7328, 0.7862, 0.9832]
+blue  = [0.5293, 0.8684, 0.8385, 0.7914, 0.6425, 0.4662, 0.3499, 0.1968, 0.0539]
+s = numpy.array(stops)
+r = numpy.array(red)
+g = numpy.array(green)
+b = numpy.array(blue)
+ncontours = 255
+npoints = len(s)
+ROOT.TColor.CreateGradientColorTable(npoints, s, r, g, b, ncontours)
+ROOT.gStyle.SetNumberContours(ncontours)
+# axes and labels
+ROOT.gStyle.SetPadBottomMargin(0.15)
+ROOT.gStyle.SetPadLeftMargin(0.15)
+ROOT.gStyle.SetPadRightMargin(0.15)
+for axis in "X", "Y":
+    ROOT.gStyle.SetNdivisions(505, axis)
+    ROOT.gStyle.SetLabelSize(0.05, axis)
+    ROOT.gStyle.SetTitleSize(0.06, axis)
+    ROOT.gStyle.SetTitleOffset(1.10, axis)
+level=0.9
+ROOT.TColor.GetColor(0.2082*level, 0.1664*level, 0.5293*level)
 
 TROOT.gROOT.SetBatch(1)
 
@@ -16,7 +42,7 @@ class plotgen:
         # self.histstatenames = ['measdataCobb','refconv_GEANT','refconv_Cobb', 'refconv_Moliere', 'ref', 'GEANT']
         self.histstatenames = ['measdataCobb','refconv_GEANT','refconv_Cobb', 'refconv_Moliere']
         self.normnames = ['measdata', 'GEANT', 'recoGold','conv', 'ref', 'graph']
-        self.histstatedesc = ['Raw Data','GEANT4 Default MCS', 'Carlisle-Cobb', 'Moliere']
+        self.histstatedesc = ['Raw Data','GEANT4 Model Default MCS', 'Carlisle-Cobb', 'Moliere']
         self.histcolors = [1, 4, 2, 6]
         self.histopts  = ['lp','lp','lp','lp']
         self.RMS = {}
@@ -33,10 +59,10 @@ class plotgen:
 
     def formatHists(self, hist, i):
         hist.SetMarkerColor(self.histcolors[i])
-        hist.GetXaxis().SetLabelSize(0.05)
-        hist.GetXaxis().SetTitleSize(0.05)
-        hist.GetYaxis().SetLabelSize(0.05)
-        hist.GetYaxis().SetTitleSize(0.05)
+#        hist.GetXaxis().SetLabelSize(0.05)
+#        hist.GetXaxis().SetTitleSize(0.05)
+#        hist.GetYaxis().SetLabelSize(0.05)
+#        hist.GetYaxis().SetTitleSize(0.05)
         hist.SetLineColor(self.histcolors[i])
         hist.SetMarkerColor(self.histcolors[i])
         hist.SetLineWidth(3)
@@ -372,7 +398,7 @@ class plotgen:
                     # print "res",res
                     # print "err2hist",err2hist
 
-                hist.SetBinError(j, sqrt(err2))
+                hist.SetBinError(hist.GetMaximumBin()-24+j, 0)
 
             if err2hist > 0:
                 resplot.SetBinContent(j, res/sqrt(err2hist))
@@ -412,6 +438,7 @@ class plotgen:
             #print i, resplot.GetXaxis().GetBinCenter(j), res, chi2, err2, ndf
             #print i, resplot.GetXaxis().GetBinCenter(j), res, chi2, err2, ndf
 
+        ndf += 2
         c = TCanvas(self.fname[:-5]+'s_'+histvar+'_c1')
         c.SetBottomMargin(0.15)
         c.SetTopMargin(0.075)
@@ -540,6 +567,10 @@ class plotgen:
                   hists.append(fMC.Get(histvar+'_'+x))
                   # print "MC"
                   # print hists
+               elif self.histstatedesc[kkk]=="No Absorber MC":
+                  fMC = TFile("MC"+self.fname)
+                  x = 'ref'
+                  hists.append(fMC.Get(histvar+'_'+x))
                else:
                   hists.append(f.Get(histvar+'_'+x))
                   # print "data"
@@ -555,18 +586,25 @@ class plotgen:
                  # print 'x',x
                  if self.histstatedesc[jjj]=="LiH MC":
                         fMCnorm = TFile("MC"+self.fname)
-                        norms.append(fMCnorm.Get(x)[0])
+                        norms.append(fMCnorm.Get(x)[0]*3)
+                        jjj += 1
+                        # print "sdgbsfgbsfgbsfbgs"
+                        break
+
+                 if self.histstatedesc[jjj]=="No Absorber MC":
+                        fMCnorm = TFile("MC"+self.fname)
+                        norms.append(fMCnorm.Get(x)[0]*3)
                         jjj += 1
                         # print "sdgbsfgbsfgbsfbgs"
                         break
 
                  if ("conv" in n):
-                        norms.append(1e6)
+                        norms.append(1e6*3)
                         break
                  if (n in "Moliere" and len(norms)>1):
                         # print hists[2].Integral()
                         # norms.append((norms[0]*3e-3))
-                        norms.append(hists[2].Integral())
+                        norms.append(hists[2].Integral()*3)
                         # norms.append(10000)
                         # break
                  if (x in n):
@@ -576,11 +614,11 @@ class plotgen:
                     jjj += 1
 
                     if (f.Get(x)[0]>0):
-                        norms.append(f.Get(x)[0])
+                        norms.append(f.Get(x)[0]*3)
                     else:
                         norms.append(1)
                     if (x=="conv"):
-                        norms.append(f.Get("refconv")[0])
+                        norms.append(f.Get("refconv")[0]*3)
                     break
 
 
@@ -592,10 +630,11 @@ class plotgen:
             resplots[0].SetTitle('')
             resplots[0].GetYaxis().SetTitle("Normalized Residuals")
 
-            leg = TLegend(0.5,0.5,0.9,0.9)
+            leg = TLegend(0.18,0.6,0.75,0.8)
             leg.SetLineColor(10)
             self.central = 0
             self.total = 0
+            c = TCanvas(self.fname[:-5]+'_'+histvar+'_c1')
             for i in range(len(self.histstatedesc)):
                 hists[i].Sumw2()
                 hists[i]*3
@@ -606,31 +645,57 @@ class plotgen:
                 self.addToRMS(i, hists[i], hists[0], resplots[i], histvar, norms, pname)
                 if histvar=='theta2Scatt':
                     # hists[i].GetYaxis().SetTitle('Probability per '+str("%.2f" % round(1000*1000*hists[i].GetXaxis().GetBinWidth(4),2))+' mrad^{2}')
-                    hists[i].GetYaxis().SetTitle('Probability per mrad')
+                    hists[i].GetYaxis().SetTitle('Probability per mrad^{2}')
                 else:
                     # hists[i].GetYaxis().SetTitle('Probability per '+str("%.2f" % round(1000*hists[i].GetXaxis().GetBinWidth(4),2))+' mrad')
                     hists[i].GetYaxis().SetTitle('Probability per mrad')
+                    c.SetLeftMargin(0.15);
+#                    hists[i].GetYaxis().SetTitleOffset(1.4)
                 leg.AddEntry(hists[i], self.histstatedesc[i], self.histopts[i])
                 # print hists[i]
                 # print hists[0]
                 self.calculateChi2(i, hists[i], hists[0], resplots[i], histvar, pname, norms)
 
 
-            c = TCanvas(self.fname[:-5]+'_'+histvar+'_c1')
+
             if self.desc[0] == 'XePion':
                 t1 = TText(0.18,0.885,"MICE ISIS cycle 2015/03")
-                t2 = TText(0.18,0.85,"Xe, "+self.desc[1][2:5]+", MAUS v3.1.2")
-            else:
-                t1 = TText(0.18,0.885,"MICE ISIS cycle 2015/04")
-                t2 = TText(0.18,0.85,"LiH, "+self.desc[1][2:5]+", MAUS v3.3.2")
+                t2 = TText(0.18,0.85,"Xe, "+self.desc[1][2:5]+", MAUS v3.3.2")
+            elif "LiH" in self.histstatedesc[i]:
+                t1 = TText(0.18,0.885,"MICE Internal")
+                t6 = TText(0.18,0.84,"ISIS cycle 2015/04")
+                t2 = TText(0.18,0.795,"LiH, "+self.desc[1][2:5]+" MeV/c, MAUS v3.3.2")
                 t3 = TText(0.18,0.84,"Central, "+str((self.central/self.total)*100)+",%")
+            elif "No Absorber" in self.histstatedesc[i]:
+                t1 = TText(0.18,0.885,"MICE Internal")
+                t6 = TText(0.18,0.84,"ISIS cycle 2015/04")
+                t2 = TText(0.18,0.795,"No Absorber, "+self.desc[1][2:5]+" MeV/c, MAUS v3.3.2")
+                t3 = TText(0.18,0.84,"Central, "+str((self.central/self.total)*100)+",%")
+            elif "conv" in self.histstatedesc[i]:
+                t1 = TText(0.18,0.885,"MICE Internal")
+                t6 = TText(0.18,0.84,"ISIS cycle 2015/04")
+                t2 = TText(0.18,0.795,"LiH, "+self.desc[1][2:5]+" MeV/c, MAUS v3.3.2")
+                t3 = TText(0.18,0.84,"Central, "+str((self.central/self.total)*100)+",%")
+            else:
+                t1 = TText(0.18,0.885,"MICE Internal")
+                t6 = TText(0.18,0.84,"ISIS cycle 2015/04")
+                t2 = TText(0.18,0.795,"LiH, "+self.desc[1][2:5]+" MeV/c, MAUS v3.3.2")
+                t3 = TText(0.18,0.84,"Central, "+str((self.central/self.total)*100)+",%")
+            print self.histstatedesc[i]
             t1.SetNDC(1)
             t1.SetTextSize(0.04)
             t1.SetTextFont(42)
             t2.SetNDC(1)
-            t2.SetTextSize(0.03)
+            t2.SetTextSize(0.04)
             t2.SetTextFont(42)
-            hists[0].GetYaxis().SetRangeUser(4e-5,0.2)
+            t6.SetNDC(1)
+            t6.SetTextSize(0.04)
+            t6.SetTextFont(42)
+            hists[0].GetYaxis().SetRangeUser(4e-5,0.06)
+            if "No Absorber" in self.histstatedesc[0]:
+                hists[0].GetYaxis().SetRangeUser(4e-5,0.1)
+            if self.histstatedesc[1]=="ref MC":
+                hists[0].GetYaxis().SetRangeUser(4e-5,0.1)
             hists[0].SetTitle(";"+hists[0].GetXaxis().GetTitle()+" (radians);"+hists[0].GetYaxis().GetTitle())
 
             histsminus0 = TH1D("",";;asymmetry",47,-0.06,0.06)
@@ -649,7 +714,7 @@ class plotgen:
             c.Clear()
 
             hists[0].Draw('ep')
-            leg.SetTextSize(0.03)
+            leg.SetTextSize(0.04)
             leg.Draw('same')
             c.SetBottomMargin(0.15)
             c.SetTopMargin(0.075)
@@ -657,15 +722,30 @@ class plotgen:
             for h in hists:
                 h.Draw('same')
                 t1.Draw()
+                t6.Draw()
                 t2.Draw()
                 integral = hists[0].Integral()
-                t4 = TText(0.18,0.8,"Integral "+str(integral))
+                sumofw = hists[0].GetSumOfWeights()
+                t4 = TText(0.18,0.8,"Sum of Weights "+str(sumofw))
+                # t4 = TText(0.18,0.8,"Integral "+str(integral))
                 t4.SetNDC(1)
                 t4.SetTextSize(0.03)
                 t4.SetTextFont(42)
-                t4.Draw()
+                # t4.Draw()
                 if histvar == 'theta2Scatt':
                    c.SetLogy()
+                   # h.Fit("pol1","","",0.0,0.002)
+                   # hists[0].SetTitle(";"+hists[0].GetXaxis().GetTitle()+";"+hists[0].GetYaxis().GetTitle())
+                   hists[0].SetTitle("; #theta_{Scatt}^{2} (radians^{2});"+hists[0].GetYaxis().GetTitle())
+                   # TF1  *flin = new TF1("flin","sin(x)/x",0,0.002)
+                   hists[0].Fit("expo","","",0.0,0.002)
+                   g = hists[0].GetListOfFunctions().FindObject("expo")
+                   par =  g.GetParameters()
+                   t5 = TText(0.7,0.885,"m="+str("%.2f" % par[1]))
+                   t5.SetNDC(1)
+                   t5.SetTextSize(0.04)
+                   t5.SetTextFont(42)
+                   t5.Draw()
                    h.GetYaxis().SetRangeUser(1e-4,1)
                 c.SaveAs(pname+'_'+self.fname[:-5]+'_'+histvar+'_sys.pdf')
                 # c.SaveAs(pname+'_'+self.fname[:-5]+'_'+histvar+'_sys.root')
@@ -689,9 +769,10 @@ class plotgen:
                 r.GetYaxis().SetRangeUser(-10,10)
                 # r.GetYaxis().SetRangeUser(-1e-2,1e-2)
                 r.Draw('psame')
-            leg.SetTextSize(0.03)
+            leg.SetTextSize(0.04)
             leg.Draw('same')
             t1.Draw()
+            t6.Draw()
             t2.Draw()
             c.SaveAs(pname+'_'+self.fname[:-5]+'_'+histvar+'_sys_res_T.pdf')
             c.SaveAs(pname+'_'+self.fname[:-5]+'_'+histvar+'_sys_res_pq.jpg')
@@ -823,7 +904,7 @@ class plotgen:
         #                  " & "+str(self.pvalue[histvar][self.histstatenames[2]][0])+ \
         #                  " & "+str(self.pvalue[histvar][self.histstatenames[2]][1])+ \
         #                  "\\\\")
-        if pname == 'Gold' or pname == "MCdata" :
+        if pname == 'Gold' or pname == "MCdata"  or pname == "MCref" :
          for histvar in self.histvarnames:
              # summary.append(str("%.2f" % mom[0])+"$\pm$"+str("%.2f" % mom[1])+\
              summary.append(str("%.2f" % mom[0])+\
@@ -853,6 +934,7 @@ class plotgen:
                           "$\pm$"+str("%.2f" % self.RMSsyserr[histvar][self.histstatenames[0]]["Sum"])+ \
                           " & "+str("%.2f" % self.RMS[histvar][self.histstatenames[1]])+ \
                           "$\pm$"+str("%.2f" % self.RMSErr[histvar][self.histstatenames[1]])+ \
+                          "$\pm$"+str("%.2f" % self.RMSsyserr[histvar][self.histstatenames[1]]["Sum"])+ \
                           " & "+str("%.2f" % self.Chi2[histvar][self.histstatenames[1]][0])+ \
                           " / "+ str(self.Chi2[histvar][self.histstatenames[1]][1])+ \
                           # " & "+str("%.2f" % self.pvalue[histvar][self.histstatenames[1]][0],1))+ \
@@ -938,14 +1020,28 @@ if __name__ == '__main__':
     raw200.normnames = ['measdata', 'ref', 'conv']
     raw240.normnames = ['measdata', 'ref', 'conv']
     raw172.histstatenames = ['measdataGEANT','ref','refconv_GEANT']
-    raw172.histstatedesc = ['LiH Data','Empty Data', 'GEANT conv. with Empty Data']
+    raw172.histstatedesc = ['LiH Data','No Absorber Data', 'GEANT4 conv. No Absorber Data']
     raw200.histstatenames = ['measdataGEANT','ref','refconv_GEANT']
-    raw200.histstatedesc = ['LiH Data','Empty Data', 'GEANT conv. with Empty Data']
+    raw200.histstatedesc = ['LiH Data','No Absorber Data', 'GEANT4 conv. No Absorber Data']
     raw240.histstatenames = ['measdataGEANT','ref','refconv_GEANT']
-    raw240.histstatedesc = ['LiH Data','Empty Data', 'GEANT conv. with Empty Data']
+    raw240.histstatedesc = ['LiH Data','No Absorber Data', 'GEANT4 conv. No Absorber Data']
     [ref172, refsys172] = raw172.MCSPlot("refG4")
     [ref200, refsys200] = raw200.MCSPlot("refG4")
     [ref240, refsys240] = raw240.MCSPlot("refG4")
+
+    print "\n"
+    raw172.normnames = ['ref', 'ref']
+    raw200.normnames = ['ref', 'ref']
+    raw240.normnames = ['ref', 'ref']
+    raw172.histstatenames = ['ref','refMC']
+    raw172.histstatedesc = ['No Absorber Data','No Absorber MC']
+    raw200.histstatenames = ['ref','refMC']
+    raw200.histstatedesc = ['No Absorber Data','No Absorber MC']
+    raw240.histstatenames = ['ref','refMC']
+    raw240.histstatedesc = ['No Absorber Data','No Absorber MC']
+    [MCref172, MCrefsys172] = raw172.MCSPlot("MCref")
+    [MCref200, MCrefsys200] = raw200.MCSPlot("MCref")
+    [MCref240, MCrefsys240] = raw240.MCSPlot("MCref")
 
     print "\n"
     raw172.normnames = ['measdata', 'measdata']
@@ -975,11 +1071,11 @@ if __name__ == '__main__':
     rawnoerror200.normnames = ['measdata', 'measdata', 'conv']
     rawnoerror240.normnames = ['measdata', 'measdata', 'conv']
     rawnoerror172.histstatenames = ['measdataGEANT','measdataMC','refconv_GEANT']
-    rawnoerror172.histstatedesc = ['LiH Data','LiH MC', 'GEANT conv. with Empty Data']
+    rawnoerror172.histstatedesc = ['LiH Data','LiH MC', 'GEANT4 conv. No Absorber Data']
     rawnoerror200.histstatenames = ['measdataGEANT','measdataMC','refconv_GEANT']
-    rawnoerror200.histstatedesc = ['LiH Data','LiH MC', 'GEANT conv. with Empty Data']
+    rawnoerror200.histstatedesc = ['LiH Data','LiH MC', 'GEANT4 conv. No Absorber Data']
     rawnoerror240.histstatenames = ['measdataGEANT','measdataMC','refconv_GEANT']
-    rawnoerror240.histstatedesc = ['LiH Data','LiH MC', 'GEANT conv. with Empty Data']
+    rawnoerror240.histstatedesc = ['LiH Data','LiH MC', 'GEANT4 conv. No Absorber Data']
     [MCdatanoerror172, MCdatanoerrorsys172] = rawnoerror172.MCSPlot("MCdatanoerror")
     [MCdatanoerror200, MCdatanoerrorsys200] = rawnoerror200.MCSPlot("MCdatanoerror")
     [MCdatanoerror240, MCdatanoerrorsys240] = rawnoerror240.MCSPlot("MCdatanoerror")
@@ -989,11 +1085,11 @@ if __name__ == '__main__':
     raw200.normnames = ['measdata', 'conv', 'conv']
     raw240.normnames = ['measdata', 'conv', 'conv']
     raw172.histstatenames = ['measdataGEANT','refconv_GEANT','refconv_Moliere']
-    raw172.histstatedesc = ['LiH Data', 'GEANT conv. with Empty Data','Moliere conv. with Empty Data']
+    raw172.histstatedesc = ['LiH Data', 'GEANT4 conv. No Absorber Data','Moliere conv. No Absorber Data']
     raw200.histstatenames = ['measdataGEANT','refconv_GEANT','refconv_Moliere']
-    raw200.histstatedesc = ['LiH Data', 'GEANT conv. with Empty Data','Moliere conv. with Empty Data']
+    raw200.histstatedesc = ['LiH Data', 'GEANT4 conv. No Absorber Data','Moliere conv. No Absorber Data']
     raw240.histstatenames = ['measdataGEANT','refconv_GEANT','refconv_Moliere']
-    raw240.histstatedesc = ['LiH Data', 'GEANT conv. with Empty Data','Moliere conv. with Empty Data']
+    raw240.histstatedesc = ['LiH Data', 'GEANT4 conv. No Absorber Data','Moliere conv. No Absorber Data']
     [con172, consys172] = raw172.MCSPlot("con")
     [con200, consys200] = raw200.MCSPlot("con")
     [con240, consys240] = raw240.MCSPlot("con")
@@ -1134,11 +1230,11 @@ if __name__ == '__main__':
     raw200.normnames = ['recoGold', 'GEANT', 'Moliere']
     raw240.normnames = ['recoGold', 'GEANT', 'Moliere']
     raw172.histstatenames = ['recoGold', 'GEANT', 'Moliere']
-    raw172.histstatedesc = ['Deconvolved Gold', 'GEANT', 'Moliere Model']
+    raw172.histstatedesc = ['Deconvolved Data', 'GEANT4 Model', 'Moliere Model']
     raw200.histstatenames = ['recoGold', 'GEANT', 'Moliere']
-    raw200.histstatedesc = ['Deconvolved Gold', 'GEANT', 'Moliere Model']
+    raw200.histstatedesc = ['Deconvolved Data', 'GEANT4 Model', 'Moliere Model']
     raw240.histstatenames = ['recoGold', 'GEANT', 'Moliere']
-    raw240.histstatedesc = ['Deconvolved Gold', 'GEANT', 'Moliere Model']
+    raw240.histstatedesc = ['Deconvolved Data', 'GEANT4 Model', 'Moliere Model']
 
     [Gold172, Goldsys172] = raw172.MCSPlot("Result")
     [Gold200, Goldsys200] = raw200.MCSPlot("Result")
@@ -1157,11 +1253,35 @@ if __name__ == '__main__':
     print '\hline'
     print ' \& $\\Delta\\theta_{X}$ & $\\Delta\\theta_{Y}$ & $\\langle\\theta_{Scatt}^{2}\\rangle$ \\\\'
     for i in range(len(raw172.sysFiles)):
-        print raw172.sysFiles[i][3], Goldsys200[i]
+        print ' \&  ',raw172.sysFiles[i][3], Goldsys172[i]
+    print '\hline\n'
+    print 'Sum'
+    print ' \& $\\Delta\\theta_{X}$ & $\\Delta\\theta_{Y}$ & $\\langle\\theta_{Scatt}^{2}\\rangle$ \\\\'
+    print Goldsys172[-1]
+    print '\hline\n'
+    print '\hline'
+
+    print '\hline\n'
+    print '\hline'
+    print ' \& $\\Delta\\theta_{X}$ & $\\Delta\\theta_{Y}$ & $\\langle\\theta_{Scatt}^{2}\\rangle$ \\\\'
+    for i in range(len(raw172.sysFiles)):
+        print ' \& ',raw172.sysFiles[i][3], Goldsys200[i]
     print '\hline\n'
     print 'Sum'
     print ' \& $\\Delta\\theta_{X}$ & $\\Delta\\theta_{Y}$ & $\\langle\\theta_{Scatt}^{2}\\rangle$ \\\\'
     print Goldsys200[-1]
+    print '\hline\n'
+    print '\hline'
+
+    print '\hline\n'
+    print '\hline'
+    print ' \& $\\Delta\\theta_{X}$ & $\\Delta\\theta_{Y}$ & $\\langle\\theta_{Scatt}^{2}\\rangle$ \\\\'
+    for i in range(len(raw172.sysFiles)):
+        print ' \& ',raw172.sysFiles[i][3], Goldsys240[i]
+    print '\hline\n'
+    print 'Sum'
+    print ' \& $\\Delta\\theta_{X}$ & $\\Delta\\theta_{Y}$ & $\\langle\\theta_{Scatt}^{2}\\rangle$ \\\\'
+    print Goldsys240[-1]
     print '\hline\n'
     print '\hline'
 
@@ -1257,7 +1377,7 @@ if __name__ == '__main__':
     Goldfile200.histvarnames = ['thetaX','thetaY']
     # Goldfile200.histstatenames = ['recoGoldhold3_sym', 'graph']
     Goldfile200.histstatenames = ['recoGold', 'graph']
-    Goldfile200.histstatedesc = ['Deconvolved Gold', 'Truth']
+    Goldfile200.histstatedesc = ['Deconvolved Data', 'Truth']
     [Goldout200, Goldoutsys200] = Goldfile200.MCSPlot("Gold")
 
 

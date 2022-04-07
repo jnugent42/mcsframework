@@ -15,7 +15,8 @@ do
         done;
 done;
 
-for bs in 172 200 240 rot200;
+for bs in 172 200 240 rot200 misalign;
+# for bs in misalign;
 do
     sed -e "s/XX/$bs/g" sub_script_XX.sh >& sub_script_$bs.sh
     sed -e "s/XX/$bs/g" batchscript_XX >& batchscript_$bs

@@ -39,4 +39,8 @@ cp ../lih200/LihMuon_03200.root .
 cp ../lih240/LihMuon_03240.root .
 ./run_script.sh
 cp xml/LiHMu_3200_5.xml .
+cd .. 
 
+cd offsplot
+python offsetplot.py
+cd ..

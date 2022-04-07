@@ -184,6 +184,8 @@ class MCSAnalysis {
   double percentTOF2;
   double TOF1Hit = 0;
   double TOF2Hit = 0;
+  double DSentries = 0;
+  double DSrefentries = 0;
   double angdef;
   int beamtype;
   double isMC;

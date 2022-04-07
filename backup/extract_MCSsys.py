@@ -302,10 +302,10 @@ class plotgen:
             c = TCanvas(self.fname[:-5]+'_'+histvar+'_c1')
             if self.desc[0] == 'XePion':
                 t1 = TText(0.18,0.885,"MICE ISIS cycle 2015/03")
-                t2 = TText(0.18,0.85,"Xe, "+self.desc[1][2:5]+", MAUS v3.1.2")
+                t2 = TText(0.18,0.85,"Xe, "+self.desc[1][2:5]+", MAUS v3.3.2")
             else:
                 t1 = TText(0.18,0.885,"MICE ISIS cycle 2015/04")
-                t2 = TText(0.18,0.85,"LiH, "+self.desc[1][2:5]+", MAUS v3.1.2")
+                t2 = TText(0.18,0.85,"LiH, "+self.desc[1][2:5]+", MAUS v3.3.2")
             t1.SetNDC(1)
             t1.SetTextSize(0.04)
             t1.SetTextFont(42)
